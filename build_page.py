@@ -1507,10 +1507,10 @@ HTML_CONTENT = """<!DOCTYPE html>
           </a>
         </div>
 
-        <!-- Founder Signature Block -->
+        <!-- Architecture Team Block -->
         <div class="mt-10 pt-6 border-t border-divider text-center">
-          <div class="text-sm font-bold text-slateDark">Shukhrat Iskandarov</div>
-          <div class="text-xs text-slateMuted mt-0.5" data-t="founderRole">Founder at GPTify.co & Co-Founder at Cubeo.ai</div>
+          <div class="text-sm font-bold text-slateDark" data-t="auditTeamName">GPTify Architecture Team</div>
+          <div class="text-xs text-slateMuted mt-0.5" data-t="auditTeamRole">Pragmatic Workflow & Operations Systems</div>
         </div>
       </div>
     </div>
@@ -1919,7 +1919,8 @@ HTML_CONTENT = """<!DOCTYPE html>
         founderGuarantee: "<strong>Our Guarantee:</strong> If we fail to identify at least $2,000+ in annual recoverable operational savings during the call, we will candidly say so and respect your time.",
         founderCtaPrimary: "Book a 30-Min Demo Call",
         founderCtaTelegram: "Message on Telegram",
-        founderRole: "Founder at GPTify.co & Co-Founder at Cubeo.ai",
+        auditTeamName: "GPTify Architecture Team",
+        auditTeamRole: "Pragmatic Workflow & Operations Systems",
 
         modalBadge: "LIVE DEMO & AUDIT",
         modalTitle: "Book a Live Demo & System Audit",
@@ -2157,7 +2158,8 @@ HTML_CONTENT = """<!DOCTYPE html>
         founderGuarantee: "<strong>Bizning kafolat:</strong> Agar suhbat davomida biznesingizda yiliga kamida $2,000+ tejamkorlik nuqtalarini topa olmasak, buni ochiq aytamiz va vaqtingizni behuda olmaymiz.",
         founderCtaPrimary: "30 Daqiqalik Demo Belgilash",
         founderCtaTelegram: "Telegram orqali yozish",
-        founderRole: "Founder at GPTify.co & Co-Founder at Cubeo.ai",
+        auditTeamName: "GPTify Tizim Muhandislari Guruhi",
+        auditTeamRole: "Amaliy biznes jarayonlari va operatsion tizimlar",
 
         modalBadge: "JONLI DEMO & AUDIT",
         modalTitle: "Jonli Demo va Tizim Auditini Belgilash",
@@ -2395,7 +2397,8 @@ HTML_CONTENT = """<!DOCTYPE html>
         founderGuarantee: "<strong>Наша гарантия:</strong> Если мы не сможем найти точки экономии как минимум на $2,000+ в год, мы честно скажем об этом и не станем отнимать ваше время.",
         founderCtaPrimary: "Забронировать 30-Мин Демо",
         founderCtaTelegram: "Написать в Telegram",
-        founderRole: "Основатель GPTify.co & Сооснователь Cubeo.ai",
+        auditTeamName: "Команда Архитектуры GPTify",
+        auditTeamRole: "Практические бизнес-процессы и операционные системы",
 
         modalBadge: "ЖИВОЕ ДЕМО И АУДИТ",
         modalTitle: "Запросить Живое Демо и Аудит Системы",
