@@ -219,10 +219,10 @@ HTML_CONTENT = """<!DOCTYPE html>
 
   <!-- ==================== STICKY NAVIGATION ==================== -->
   <header class="sticky top-0 z-50 bg-[#FAF9F5]/92 backdrop-blur-md border-b border-divider">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-      <div class="flex items-center gap-8">
-        <a href="/" class="flex items-center gap-3 group cursor-pointer" aria-label="GPTify OS">
-          <div class="w-10 h-10 rounded-xl bg-white border border-divider flex items-center justify-center p-2 shadow-2xs group-hover:border-emerald-400 group-hover:shadow-xs transition-all duration-200">
+    <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-4 lg:gap-6">
+        <a href="/" class="flex items-center gap-2.5 group cursor-pointer flex-shrink-0" aria-label="GPTify OS">
+          <div class="w-9 h-9 rounded-xl bg-white border border-divider flex items-center justify-center p-1.5 shadow-2xs group-hover:border-emerald-400 group-hover:shadow-xs transition-all duration-200">
             <svg class="w-full h-full" viewBox="0 0 100 100" fill="none">
               <path fill="#087F6A" d="M51.4 9 A41 41 0 1 0 88 65.4 V42 H47 V58 H73.7 A25 25 0 1 1 50.9 25 Z"/>
               <path fill="#B7F34A" d="M61 9 H88 V36 H78 V19 H61 Z"/>
@@ -230,80 +230,80 @@ HTML_CONTENT = """<!DOCTYPE html>
           </div>
           <div class="flex flex-col">
             <div class="flex items-center gap-1.5">
-              <span class="text-xl font-bold tracking-tight text-slateDark" style="font-family:'Poppins', sans-serif;">GPTify</span>
-              <span class="bg-[#087F6A] text-white font-bold text-[10px] tracking-wider uppercase px-2 py-0.5 rounded-md" style="font-family:'Poppins', sans-serif;">OS</span>
+              <span class="text-lg font-bold tracking-tight text-slateDark" style="font-family:'Poppins', sans-serif;">GPTify</span>
+              <span class="bg-[#087F6A] text-white font-bold text-[9px] tracking-wider uppercase px-1.5 py-0.5 rounded" style="font-family:'Poppins', sans-serif;">OS</span>
             </div>
-            <span class="text-[9px] font-mono tracking-widest text-slateMuted uppercase font-bold" data-t="navTagline">SERVICE BUSINESS AI OS</span>
+            <span class="text-[8px] font-mono tracking-widest text-slateMuted uppercase font-bold" data-t="navTagline">SERVICE BUSINESS AI OS</span>
           </div>
         </a>
 
         <!-- Desktop Navigation Links -->
-        <nav class="hidden lg:flex items-center gap-1 text-sm font-semibold text-slate-700 pl-4 border-l border-divider" aria-label="Navigation">
-          <a href="#services" class="px-3.5 py-1.5 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors duration-150 cursor-pointer" data-t="navEngines">5 Core Engines</a>
-          <a href="#flywheel" class="px-3.5 py-1.5 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors duration-150 cursor-pointer" data-t="navFlywheel">The Connected Loop</a>
-          <a href="#solutions" class="px-3.5 py-1.5 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors duration-150 cursor-pointer" data-t="navSolutions">Industry Solutions</a>
-          <a href="#calculator" class="px-3.5 py-1.5 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors duration-150 cursor-pointer" data-t="navCalculator">Loss Calculator</a>
-          <a href="#configurator" class="px-3.5 py-1.5 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors duration-150 cursor-pointer" data-t="navConfigurator">Fleet Configurator</a>
-          <a href="#faq" class="px-3.5 py-1.5 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors duration-150 cursor-pointer" data-t="navFaq">FAQ</a>
+        <nav class="hidden lg:flex items-center gap-1 xl:gap-2 text-xs xl:text-sm font-semibold text-slate-700 pl-3 xl:pl-4 border-l border-divider" aria-label="Navigation">
+          <a href="#services" class="px-2.5 py-1 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors duration-150 cursor-pointer whitespace-nowrap" data-t="navEngines">5 Engines</a>
+          <a href="#flywheel" class="px-2.5 py-1 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors duration-150 cursor-pointer whitespace-nowrap" data-t="navFlywheel">Connected Loop</a>
+          <a href="#solutions" class="px-2.5 py-1 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors duration-150 cursor-pointer whitespace-nowrap" data-t="navSolutions">Solutions</a>
+          <a href="#calculator" class="px-2.5 py-1 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors duration-150 cursor-pointer whitespace-nowrap" data-t="navCalculator">Calculator</a>
+          <a href="#configurator" class="px-2.5 py-1 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors duration-150 cursor-pointer whitespace-nowrap" data-t="navConfigurator">Configurator</a>
+          <a href="#faq" class="px-2.5 py-1 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors duration-150 cursor-pointer whitespace-nowrap" data-t="navFaq">FAQ</a>
         </nav>
       </div>
 
-      <div class="flex items-center gap-3">
+      <div class="flex items-center gap-2.5 sm:gap-3 flex-shrink-0">
         <!-- 3-Language Switcher (EN / UZ / RU) -->
-        <div class="flex items-center bg-[#EAE8E1] border border-divider rounded-full p-1 text-xs font-mono font-bold">
+        <div class="flex items-center bg-[#EAE8E1] border border-divider rounded-full p-0.5 text-xs font-mono font-bold">
           <button type="button" onclick="setLang('en')" id="btn-lang-en" class="lang-pill-btn active">EN</button>
           <button type="button" onclick="setLang('uz')" id="btn-lang-uz" class="lang-pill-btn">UZ</button>
           <button type="button" onclick="setLang('ru')" id="btn-lang-ru" class="lang-pill-btn">RU</button>
         </div>
 
-        <button type="button" id="navBookBtn" onclick="openDemoModal()" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emeraldBrand hover:bg-emeraldDark text-white text-xs sm:text-sm font-bold shadow-sm transition-all duration-200 cursor-pointer">
+        <button type="button" id="navBookBtn" onclick="openDemoModal()" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-emeraldBrand hover:bg-emeraldDark text-white text-xs font-bold shadow-sm transition-all duration-200 cursor-pointer whitespace-nowrap">
           <span data-t="navBook">Book a Demo</span>
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </button>
       </div>
     </div>
   </header>
 
   <!-- ==================== HERO SECTION WITH LIVE COMMAND CENTER ==================== -->
-  <section class="pt-14 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-divider">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+  <section class="pt-6 sm:pt-8 lg:pt-9 pb-12 lg:pb-14 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-divider">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
       
       <!-- Left Column: Editorial Headline & Value Proposition -->
       <div class="lg:col-span-6">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-divider text-xs font-bold text-slateDark mb-6 shadow-2xs">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-divider text-[11px] font-bold text-slateDark mb-3.5 shadow-2xs">
           <span class="w-2 h-2 rounded-full bg-emeraldBrand badge-live-pulse" aria-hidden="true"></span>
           <span data-t="heroBadge">AI Operating System for Service Businesses</span>
         </div>
 
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-slateDark tracking-tight leading-[1.12] mb-6" data-t="heroH1">
+        <h1 class="text-3xl sm:text-4xl lg:text-[40px] xl:text-[46px] font-black text-slateDark tracking-tight leading-[1.12] mb-3.5" data-t="heroH1">
           The AI Operating System <br>
           <span class="font-serif italic font-normal text-emeraldBrand text-[1.12em] tracking-normal">for Service Businesses.</span>
         </h1>
 
-        <p class="text-base sm:text-lg text-slate-600 leading-relaxed mb-8 max-w-xl" data-t="heroSub">
-          Connect customer conversations, CRM, scheduling, meetings, outreach and business data through a unified layer of AI agents. Zero manual data entry — your entire business workflow runs seamlessly 24/7.
+        <p class="text-xs sm:text-sm lg:text-[15px] text-slate-600 leading-relaxed mb-5 max-w-lg" data-t="heroSub">
+          Connect customer conversations, CRM, scheduling, meetings, outreach and business data through a unified layer of AI agents. Zero manual data entry — running 24/7.
         </p>
 
         <!-- CTA & Strategy Session Details -->
-        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-8">
-          <button type="button" id="heroCtaPrimary" onclick="openDemoModal()" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-slateDark hover:bg-slate-800 text-white font-bold text-sm text-center shadow-md transition-all duration-200 flex items-center justify-center gap-2.5 cursor-pointer">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3.5 mb-5">
+          <button type="button" id="heroCtaPrimary" onclick="openDemoModal()" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-slateDark hover:bg-slate-800 text-white font-bold text-xs sm:text-sm text-center shadow-md transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer">
             <span data-t="heroCtaPrimary">Book a Live Demo</span>
             <svg class="w-4 h-4 text-limeSpark" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
           </button>
-          <div class="text-xs text-slateMuted">
+          <div class="text-[11px] text-slateMuted">
             <span class="font-bold text-slateDark block" data-t="heroCtaNote">Free · 30 Minutes · Zero Obligation</span>
             <span data-t="heroCtaSub">Custom architecture blueprint for your business model</span>
           </div>
         </div>
 
         <!-- Quick Proof Badges -->
-        <div class="flex flex-wrap items-center gap-y-3 gap-x-6 text-xs font-semibold text-slate-700 pt-6 border-t border-divider">
+        <div class="flex flex-wrap items-center gap-y-2 gap-x-4 text-[11px] sm:text-xs font-semibold text-slate-700 pt-4 border-t border-divider">
           <span class="flex items-center gap-1.5">
-            <svg class="w-4 h-4 text-emeraldBrand flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+            <svg class="w-3.5 h-3.5 text-emeraldBrand flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
             <span data-t="proof1">5 Specialized Engines: Ailo, ILDAM, Bandla, Mirzo & Izlo</span>
           </span>
           <span class="flex items-center gap-1.5">
-            <svg class="w-4 h-4 text-emeraldBrand flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+            <svg class="w-3.5 h-3.5 text-emeraldBrand flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
             <span data-t="proof2">Clinics · Education · Automotive · Professional Services</span>
           </span>
         </div>
@@ -313,14 +313,14 @@ HTML_CONTENT = """<!DOCTYPE html>
       <div class="lg:col-span-6 relative">
         
         <!-- Floating Chip 1 -->
-        <div class="float-a absolute -top-4 right-2 sm:right-6 z-20 bg-white border border-divider rounded-xl px-3.5 py-2 shadow-lg flex items-center gap-2 text-xs font-bold text-slateDark">
+        <div class="float-a absolute -top-3 right-2 sm:right-5 z-20 bg-white border border-divider rounded-xl px-3 py-1.5 shadow-md flex items-center gap-2 text-[11px] font-bold text-slateDark">
           <span class="w-2 h-2 rounded-full bg-emeraldBrand badge-live-pulse"></span>
           <span data-t="heroFloat1">Ailo: 47 Inquiries Triaged in 8s</span>
         </div>
 
         <!-- Floating Chip 2 -->
-        <div class="float-b absolute -bottom-4 left-2 sm:left-4 z-20 bg-white border border-divider rounded-xl px-3.5 py-2 shadow-lg flex items-center gap-2 text-xs font-bold text-slateDark">
-          <svg class="w-4 h-4 text-indigoBrand" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"/></svg>
+        <div class="float-b absolute -bottom-3 left-2 sm:left-4 z-20 bg-white border border-divider rounded-xl px-3 py-1.5 shadow-md flex items-center gap-2 text-[11px] font-bold text-slateDark">
+          <svg class="w-3.5 h-3.5 text-indigoBrand" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"/></svg>
           <span data-t="heroFloat2">Izlo: 14 Outbound Accounts Reached</span>
         </div>
 
@@ -329,63 +329,63 @@ HTML_CONTENT = """<!DOCTYPE html>
           <div class="fake-cursor hidden sm:block"></div>
 
           <!-- Window Top Bar -->
-          <div class="flex items-center justify-between px-4 py-3 bg-[#F8FAFC] border-b border-divider text-xs">
+          <div class="flex items-center justify-between px-4 py-2.5 bg-[#F8FAFC] border-b border-divider text-xs">
             <div class="flex items-center gap-2">
               <span class="w-2.5 h-2.5 rounded-full bg-[#FF5F57]"></span>
               <span class="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]"></span>
               <span class="w-2.5 h-2.5 rounded-full bg-[#28C840]"></span>
-              <span class="font-mono text-[11px] text-slate-500 ml-2">os.gptify.co/command-center</span>
+              <span class="font-mono text-[10px] text-slate-500 ml-1.5">os.gptify.co/command-center</span>
             </div>
-            <div class="flex items-center gap-1.5 text-emerald-800 font-mono text-[10px] font-bold bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">
+            <div class="flex items-center gap-1.5 text-emerald-800 font-mono text-[9.5px] font-bold bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">
               <span class="w-1.5 h-1.5 rounded-full bg-emeraldBrand"></span>
               <span data-t="dashStatus">5/5 FLEET LIVE</span>
             </div>
           </div>
 
           <!-- Window Body -->
-          <div class="p-5 sm:p-6 bg-white space-y-5">
+          <div class="p-4 sm:p-5 bg-white space-y-3.5">
             
             <!-- Real-time Metrics Grid -->
-            <div class="grid grid-cols-3 gap-3">
-              <div class="p-3 rounded-xl bg-subtle/80 border border-divider">
-                <div class="flex items-center justify-between text-[10px] font-mono text-slateMuted font-bold">
+            <div class="grid grid-cols-3 gap-2.5">
+              <div class="p-2.5 rounded-xl bg-subtle/80 border border-divider">
+                <div class="flex items-center justify-between text-[9.5px] font-mono text-slateMuted font-bold">
                   <span data-t="kpi1Label">LEADS</span>
                   <span class="text-emeraldBrand">+18%</span>
                 </div>
-                <div class="text-xl font-mono font-black text-slateDark mt-1">47</div>
-                <svg viewBox="0 0 100 24" class="w-full h-5 mt-1">
+                <div class="text-lg font-mono font-black text-slateDark mt-0.5">47</div>
+                <svg viewBox="0 0 100 24" class="w-full h-4 mt-0.5">
                   <path d="M0,18 L15,16 L30,19 L45,12 L60,14 L75,7 L90,9 L100,2" fill="none" stroke="#087F6A" stroke-width="2" stroke-linecap="round" class="sparkline-path"/>
                 </svg>
               </div>
 
-              <div class="p-3 rounded-xl bg-subtle/80 border border-divider">
-                <div class="flex items-center justify-between text-[10px] font-mono text-slateMuted font-bold">
+              <div class="p-2.5 rounded-xl bg-subtle/80 border border-divider">
+                <div class="flex items-center justify-between text-[9.5px] font-mono text-slateMuted font-bold">
                   <span data-t="kpi2Label">ENGINES</span>
                   <span class="text-emeraldBrand" data-t="kpi2Active">Active</span>
                 </div>
-                <div class="text-xl font-mono font-black text-slateDark mt-1">5/5</div>
-                <div class="flex items-end gap-1 h-5 mt-1 pt-1">
-                  <span class="w-1.5 bg-emeraldBrand rounded-xs h-3"></span>
-                  <span class="w-1.5 bg-amberBrand rounded-xs h-4"></span>
-                  <span class="w-1.5 bg-purpleBrand rounded-xs h-5"></span>
-                  <span class="w-1.5 bg-skyBrand rounded-xs h-4"></span>
-                  <span class="w-1.5 bg-indigoBrand rounded-xs h-5"></span>
+                <div class="text-lg font-mono font-black text-slateDark mt-0.5">5/5</div>
+                <div class="flex items-end gap-1 h-4 mt-0.5 pt-0.5">
+                  <span class="w-1.5 bg-emeraldBrand rounded-xs h-2.5"></span>
+                  <span class="w-1.5 bg-amberBrand rounded-xs h-3"></span>
+                  <span class="w-1.5 bg-purpleBrand rounded-xs h-4"></span>
+                  <span class="w-1.5 bg-skyBrand rounded-xs h-3"></span>
+                  <span class="w-1.5 bg-indigoBrand rounded-xs h-4"></span>
                 </div>
               </div>
 
-              <div class="p-3 rounded-xl bg-subtle/80 border border-divider">
-                <div class="flex items-center justify-between text-[10px] font-mono text-slateMuted font-bold">
+              <div class="p-2.5 rounded-xl bg-subtle/80 border border-divider">
+                <div class="flex items-center justify-between text-[9.5px] font-mono text-slateMuted font-bold">
                   <span data-t="kpi3Label">TIME SAVED</span>
                   <span class="text-emeraldBrand font-bold" data-t="kpi3Sub">This Week</span>
                 </div>
-                <div class="text-xl font-mono font-black text-slateDark mt-1">52.5h</div>
-                <div class="text-[10px] font-mono text-slate-500 mt-1" data-t="kpi3Value">~$480 saved</div>
+                <div class="text-lg font-mono font-black text-slateDark mt-0.5">52.5h</div>
+                <div class="text-[9.5px] font-mono text-slate-500 mt-0.5" data-t="kpi3Value">~$480 saved</div>
               </div>
             </div>
 
             <!-- Live Operations Telemetry Stream (All 5 Engines) -->
             <div>
-              <div class="flex items-center justify-between mb-2.5 text-[11px] font-mono text-slate-500 font-bold uppercase tracking-wider">
+              <div class="flex items-center justify-between mb-2 text-[10px] font-mono text-slate-500 font-bold uppercase tracking-wider">
                 <span data-t="telemetryTitle">Autonomous Event Telemetry</span>
                 <span class="text-emeraldBrand flex items-center gap-1 font-bold">
                   <span class="w-1.5 h-1.5 rounded-full bg-emeraldBrand"></span>
@@ -393,55 +393,55 @@ HTML_CONTENT = """<!DOCTYPE html>
                 </span>
               </div>
 
-              <div class="space-y-2 text-xs">
+              <div class="space-y-1.5 text-[11px] sm:text-xs">
                 <!-- Stream 1: Ailo -->
-                <div class="flex items-center justify-between p-2 rounded-xl bg-emerald-50/60 border border-emerald-100">
-                  <div class="flex items-center gap-2">
-                    <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+                <div class="flex items-center justify-between p-1.5 sm:p-2 rounded-lg bg-emerald-50/60 border border-emerald-100">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-600 flex-shrink-0"></span>
                     <span class="font-bold text-slateDark">Ailo:</span>
-                    <span class="text-slate-600 truncate max-w-[180px] sm:max-w-[250px]" data-t="tel1">WhatsApp inquiry qualified in 8s; routed to Bandla</span>
+                    <span class="text-slate-600 truncate max-w-[170px] sm:max-w-[240px]" data-t="tel1">WhatsApp inquiry qualified in 8s; routed to Bandla</span>
                   </div>
-                  <span class="font-mono text-[10px] text-slate-400">00:08</span>
+                  <span class="font-mono text-[9px] text-slate-400">00:08</span>
                 </div>
 
                 <!-- Stream 2: Izlo -->
-                <div class="flex items-center justify-between p-2 rounded-xl bg-indigo-50/60 border border-indigo-100">
-                  <div class="flex items-center gap-2">
-                    <span class="w-2 h-2 rounded-full bg-indigo-600"></span>
+                <div class="flex items-center justify-between p-1.5 sm:p-2 rounded-lg bg-indigo-50/60 border border-indigo-100">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-indigo-600 flex-shrink-0"></span>
                     <span class="font-bold text-slateDark">Izlo:</span>
-                    <span class="text-slate-600 truncate max-w-[180px] sm:max-w-[250px]" data-t="tel2">14 B2B accounts prospected via Email & LinkedIn; 3 replies</span>
+                    <span class="text-slate-600 truncate max-w-[170px] sm:max-w-[240px]" data-t="tel2">14 B2B accounts prospected via Email & LinkedIn</span>
                   </div>
-                  <span class="font-mono text-[10px] text-slate-400">10:42</span>
+                  <span class="font-mono text-[9px] text-slate-400">10:42</span>
                 </div>
 
                 <!-- Stream 3: ILDAM -->
-                <div class="flex items-center justify-between p-2 rounded-xl bg-amber-50/60 border border-amber-100">
-                  <div class="flex items-center gap-2">
-                    <span class="w-2 h-2 rounded-full bg-amber-600"></span>
+                <div class="flex items-center justify-between p-1.5 sm:p-2 rounded-lg bg-amber-50/60 border border-amber-100">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-amber-600 flex-shrink-0"></span>
                     <span class="font-bold text-slateDark">ILDAM:</span>
-                    <span class="text-slate-600 truncate max-w-[180px] sm:max-w-[250px]" data-t="tel3">Deal moved to Proposal stage; advance invoice scheduled</span>
+                    <span class="text-slate-600 truncate max-w-[170px] sm:max-w-[240px]" data-t="tel3">Deal moved to Proposal stage; advance invoice scheduled</span>
                   </div>
-                  <span class="font-mono text-[10px] text-slate-400">11:15</span>
+                  <span class="font-mono text-[9px] text-slate-400">11:15</span>
                 </div>
 
                 <!-- Stream 4: Bandla -->
-                <div class="flex items-center justify-between p-2 rounded-xl bg-purple-50/60 border border-purple-100">
-                  <div class="flex items-center gap-2">
-                    <span class="w-2 h-2 rounded-full bg-purple-600"></span>
+                <div class="flex items-center justify-between p-1.5 sm:p-2 rounded-lg bg-purple-50/60 border border-purple-100">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-purple-600 flex-shrink-0"></span>
                     <span class="font-bold text-slateDark">Bandla:</span>
-                    <span class="text-slate-600 truncate max-w-[180px] sm:max-w-[250px]" data-t="tel4">Consultation confirmed for Thu 14:00; invites synced</span>
+                    <span class="text-slate-600 truncate max-w-[170px] sm:max-w-[240px]" data-t="tel4">Consultation confirmed for Thu 14:00; invites synced</span>
                   </div>
-                  <span class="font-mono text-[10px] text-slate-400">11:30</span>
+                  <span class="font-mono text-[9px] text-slate-400">11:30</span>
                 </div>
 
                 <!-- Stream 5: Mirzo -->
-                <div class="flex items-center justify-between p-2 rounded-xl bg-sky-50/60 border border-sky-100">
-                  <div class="flex items-center gap-2">
-                    <span class="w-2 h-2 rounded-full bg-sky-600"></span>
+                <div class="flex items-center justify-between p-1.5 sm:p-2 rounded-lg bg-sky-50/60 border border-sky-100">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-sky-600 flex-shrink-0"></span>
                     <span class="font-bold text-slateDark">Mirzo:</span>
-                    <span class="text-slate-600 truncate max-w-[180px] sm:max-w-[250px]" data-t="tel5">42-min meeting summarized; 4 action items sent to Telegram</span>
+                    <span class="text-slate-600 truncate max-w-[170px] sm:max-w-[240px]" data-t="tel5">42-min meeting summarized; 4 action items sent to TG</span>
                   </div>
-                  <span class="font-mono text-[10px] text-slate-400">11:58</span>
+                  <span class="font-mono text-[9px] text-slate-400">11:58</span>
                 </div>
               </div>
             </div>
@@ -1703,17 +1703,17 @@ HTML_CONTENT = """<!DOCTYPE html>
     const TRANSLATIONS = {
       en: {
         navTagline: "SERVICE BUSINESS AI OS",
-        navEngines: "5 Core Engines",
-        navFlywheel: "The Connected Loop",
-        navSolutions: "Industry Solutions",
-        navCalculator: "Loss Calculator",
-        navConfigurator: "Fleet Configurator",
+        navEngines: "5 Engines",
+        navFlywheel: "Connected Loop",
+        navSolutions: "Solutions",
+        navCalculator: "Calculator",
+        navConfigurator: "Configurator",
         navFaq: "FAQ",
         navBook: "Book a Demo",
 
         heroBadge: "AI Operating System for Service Businesses",
         heroH1: "The AI Operating System <br><span class=\\"font-serif italic font-normal text-emeraldBrand text-[1.12em] tracking-normal\\">for Service Businesses.</span>",
-        heroSub: "Connect customer conversations, CRM, scheduling, meetings, outreach and business data through a unified layer of AI agents. Zero manual data entry — your entire business workflow runs seamlessly 24/7.",
+        heroSub: "Connect customer conversations, CRM, scheduling, meetings, outreach and business data through a unified layer of AI agents. Zero manual data entry — running 24/7.",
         heroCtaPrimary: "Book a Live Demo",
         heroCtaNote: "Free · 30 Minutes · Zero Obligation",
         heroCtaSub: "Custom architecture blueprint for your business model",
@@ -1942,17 +1942,17 @@ HTML_CONTENT = """<!DOCTYPE html>
 
       uz: {
         navTagline: "XIZMAT KO'RSATISH BIZNESLARI UCHUN AI OS",
-        navEngines: "5 Asosiy Dvigatel",
-        navFlywheel: "Yagona Konveyer",
-        navSolutions: "Sohaviy Yechimlar",
+        navEngines: "5 Dvigatel",
+        navFlywheel: "Konveyer",
+        navSolutions: "Yechimlar",
         navCalculator: "Kalkulyator",
-        navConfigurator: "Flot Konstruktori",
+        navConfigurator: "Konstruktor",
         navFaq: "Savollar",
         navBook: "Demo Belgilash",
 
         heroBadge: "Xizmat ko'rsatish korxonalari uchun AI operatsion tizimi",
         heroH1: "Xizmat ko'rsatish bizneslari uchun <br><span class=\\"font-serif italic font-normal text-emeraldBrand text-[1.12em] tracking-normal\\">AI operatsion tizimi.</span>",
-        heroSub: "Mijozlar bilan muloqot, CRM, uchrashuvlarni belgilash, majlislar bayonnomasi, mijoz qidirish va avtomatlashtirishni yagona AI qatlami orqali bog'lang. Qo'lda ma'lumot kiritishga chek qo'ying — barcha jarayonlaringiz 24/7 uzluksiz ishlaydi.",
+        heroSub: "Mijozlar bilan muloqot, CRM, uchrashuvlarni belgilash, majlislar bayonnomasi, mijoz qidirish va avtomatlashtirishni yagona AI qatlami orqali bog'lang. Qo'lda ma'lumot kiritishga chek qo'ying — 24/7 uzluksiz ishlaydi.",
         heroCtaPrimary: "Jonli Demo Belgilash",
         heroCtaNote: "Bepul · 30 daqiqa · Majburiyatsiz",
         heroCtaSub: "Biznesingiz modeli uchun moslashtirilgan tizim arxitekturasi",
@@ -2181,17 +2181,17 @@ HTML_CONTENT = """<!DOCTYPE html>
 
       ru: {
         navTagline: "AI OS ДЛЯ СФЕРЫ УСЛУГ",
-        navEngines: "5 Двигателей Системы",
-        navFlywheel: "Единый Конвейер",
-        navSolutions: "Отраслевые Решения",
-        navCalculator: "Калькулятор Потерь",
-        navConfigurator: "Конструктор Флота",
-        navFaq: "Вопросы и Ответы",
+        navEngines: "5 Двигателей",
+        navFlywheel: "Конвейер",
+        navSolutions: "Решения",
+        navCalculator: "Калькулятор",
+        navConfigurator: "Конструктор",
+        navFaq: "Вопросы",
         navBook: "Запросить Демо",
 
         heroBadge: "AI Операционная Система для Сферы Услуг",
         heroH1: "AI операционная система <br><span class=\\"font-serif italic font-normal text-emeraldBrand text-[1.12em] tracking-normal\\">для бизнеса в сфере услуг.</span>",
-        heroSub: "Объедините диалоги с клиентами, CRM, запись на прием, протоколы встреч, поиск клиентов и автоматизацию через единый уровень AI агентов. Никакого ручного ввода данных — весь операционный цикл работает 24/7.",
+        heroSub: "Объедините диалоги с клиентами, CRM, запись на прием, протоколы встреч, поиск клиентов и автоматизацию через единый уровень AI агентов. Никакого ручного ввода данных — работает 24/7.",
         heroCtaPrimary: "Запросить Демо",
         heroCtaNote: "Бесплатно · 30 Минут · Без Обязательств",
         heroCtaSub: "Индивидуальный план архитектуры для вашей бизнес-модели",
