@@ -1,0 +1,2786 @@
+# -*- coding: utf-8 -*-
+"""
+Builder script to generate deploy_os/index.html with:
+- The AI operating system for service businesses positioning
+- The 5-Product Family: Ailo, ILDAM, Bandla, Mirzo, Izlo
+- The Connected Product Story (The Flywheel)
+- The 4 Packaged Industry Solutions (Clinics, Education, Automotive, Professional Services)
+- Trilingual support (EN default primary, UZ "Siz" tone, RU)
+- Telegram lead capture integration
+"""
+
+import sys
+import os
+
+HTML_CONTENT = """<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GPTify OS — The AI Operating System for Service Businesses | GPTify</title>
+  <meta name="description" content="GPTify OS is an AI operating system for service businesses that connects customer conversations, CRM, scheduling, meetings, prospecting and automation through a unified layer of AI agents.">
+  <link rel="canonical" href="https://os.gptify.co">
+  <link rel="icon" type="image/svg+xml" href="gptify-mark.svg">
+
+  <!-- Google Fonts: Poppins (Brand Wordmark), Instrument Serif (Editorial Display), Plus Jakarta Sans (UI Sans), JetBrains Mono (Telemetry) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            serif: ['"Instrument Serif"', 'Georgia', 'serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+            poppins: ['"Poppins"', 'sans-serif'],
+          },
+          colors: {
+            paper: '#FAF9F5',
+            surface: '#FFFFFF',
+            subtle: '#F4F2EC',
+            divider: '#E7E5DF',
+            dividerDark: '#D8D5CD',
+            slateDark: '#0F172A',
+            slateMuted: '#64748B',
+            emeraldBrand: '#087F6A',
+            emeraldDark: '#066352',
+            emeraldLight: '#ECFDF5',
+            limeSpark: '#B7F34A',
+            amberBrand: '#D97706',
+            skyBrand: '#0284C7',
+            purpleBrand: '#7C3AED',
+            indigoBrand: '#4F46E5',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --font-serif: 'Instrument Serif', Georgia, serif;
+      --accent: #087F6A;
+    }
+    body {
+      background-color: #FAF9F5;
+      color: #0F172A;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    /* Live pulse dots */
+    .badge-live-pulse {
+      box-shadow: 0 0 0 0 rgba(8, 127, 106, 0.7);
+      animation: pulseGreen 2.2s infinite;
+    }
+    @keyframes pulseGreen {
+      0% { box-shadow: 0 0 0 0 rgba(8, 127, 106, 0.7); }
+      70% { box-shadow: 0 0 0 8px rgba(8, 127, 106, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(8, 127, 106, 0); }
+    }
+
+    /* Floating badges */
+    @keyframes floatA { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    @keyframes floatB { 0%,100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
+    .float-a { animation: floatA 4.5s ease-in-out infinite; }
+    .float-b { animation: floatB 5.2s ease-in-out infinite; }
+
+    /* Fake cursor moving across hero command center */
+    @keyframes cursorMove {
+      0%   { top: 25%; left: 18%; opacity: 0; }
+      6%   { opacity: 1; }
+      22%  { top: 25%; left: 18%; }
+      32%  { top: 62%; left: 74%; }
+      50%  { top: 62%; left: 74%; }
+      60%  { top: 44%; left: 42%; }
+      78%  { top: 44%; left: 42%; }
+      88%  { top: 25%; left: 18%; }
+      94%  { opacity: 1; top: 25%; left: 18%; }
+      100% { opacity: 0; top: 25%; left: 18%; }
+    }
+    .fake-cursor {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      animation: cursorMove 10s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 10;
+      background: #087F6A;
+      box-shadow: 0 0 0 4px rgba(8, 127, 106, 0.25);
+    }
+
+    /* Sparkline draw animation */
+    @keyframes dashMove { from { stroke-dashoffset: 260; } to { stroke-dashoffset: 0; } }
+    .sparkline-path { stroke-dasharray: 260; animation: dashMove 3.4s linear infinite; }
+
+    /* Looping simulated chat conversation */
+    @keyframes demoMsg1 { 0% { opacity: 0; transform: translateY(6px); } 6% { opacity: 1; transform: translateY(0); } 94% { opacity: 1; } 100% { opacity: 0; transform: translateY(6px); } }
+    @keyframes demoMsg2 { 0%,18% { opacity: 0; transform: translateY(6px); } 24% { opacity: 1; transform: translateY(0); } 94% { opacity: 1; } 100% { opacity: 0; } }
+    @keyframes demoTyping { 0%,36% { opacity: 0; } 42%,58% { opacity: 1; } 64%,100% { opacity: 0; } }
+    @keyframes demoMsg3 { 0%,58% { opacity: 0; transform: translateY(6px); } 64% { opacity: 1; transform: translateY(0); } 94% { opacity: 1; } 100% { opacity: 0; } }
+    @keyframes demoBadge { 0%,76% { opacity: 0; transform: scale(0.92); } 82% { opacity: 1; transform: scale(1); } 94% { opacity: 1; } 100% { opacity: 0; } }
+
+    .demo-msg1 { animation: demoMsg1 12s ease-in-out infinite; }
+    .demo-msg2 { animation: demoMsg2 12s ease-in-out infinite; }
+    .demo-typing { animation: demoTyping 12s ease-in-out infinite; }
+    .demo-msg3 { animation: demoMsg3 12s ease-in-out infinite; }
+    .demo-badge { animation: demoBadge 12s ease-in-out infinite; }
+
+    @keyframes typingBounce { 0%,80%,100% { transform: translateY(0); opacity: 0.4; } 40% { transform: translateY(-4px); opacity: 1; } }
+    .typing-dot { animation: typingBounce 1.2s ease-in-out infinite; }
+
+    /* Infinite Marquee Track */
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .marquee-track { display: flex; align-items: center; gap: 36px; width: max-content; animation: marquee 26s linear infinite; }
+    .marquee-track:hover { animation-play-state: paused; }
+
+    /* Card styling */
+    .card-elevated {
+      background: #FFFFFF;
+      border: 1px solid #E7E5DF;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03), 0 6px 16px rgba(15, 23, 42, 0.02);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .card-elevated:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 34px -10px rgba(15, 23, 42, 0.07);
+      border-color: #D8D5CD;
+    }
+
+    /* Range slider */
+    input[type=range] {
+      -webkit-appearance: none;
+      background: #E7E5DF;
+      border-radius: 9999px;
+      height: 6px;
+      cursor: pointer;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 20px;
+      width: 20px;
+      border-radius: 50%;
+      background: #087F6A;
+      border: 3px solid #FFFFFF;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      cursor: pointer;
+      transition: transform 0.15s ease;
+    }
+    input[type=range]::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+    input[type=range]:focus {
+      outline: 2px solid #087F6A;
+      outline-offset: 2px;
+    }
+
+    /* FAQ Details chevron */
+    details > summary { list-style: none; cursor: pointer; }
+    details > summary::-webkit-details-marker { display: none; }
+    details[open] .faq-chevron { transform: rotate(180deg); }
+
+    /* Add-on toggle button styling */
+    .addon-card.selected {
+      border-color: #087F6A;
+      background-color: #F0FDF4;
+    }
+    .addon-card.selected .check-circle {
+      background-color: #087F6A;
+      border-color: #087F6A;
+      color: #FFFFFF;
+    }
+
+    /* Language Switcher Styling */
+    .lang-pill-btn {
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #64748B;
+      transition: all 0.15s ease;
+      cursor: pointer;
+    }
+    .lang-pill-btn.active {
+      background-color: #FFFFFF;
+      color: #0F172A;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.1);
+    }
+  </style>
+</head>
+<body class="selection:bg-emerald-100 selection:text-emerald-900">
+
+  <!-- ==================== STICKY NAVIGATION ==================== -->
+  <header class="sticky top-0 z-50 bg-[#FAF9F5]/92 backdrop-blur-md border-b border-divider">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <div class="flex items-center gap-8">
+        <a href="/" class="flex items-center gap-3 group cursor-pointer" aria-label="GPTify OS">
+          <div class="w-10 h-10 rounded-xl bg-white border border-divider flex items-center justify-center p-2 shadow-2xs group-hover:border-emerald-400 group-hover:shadow-xs transition-all duration-200">
+            <svg class="w-full h-full" viewBox="0 0 100 100" fill="none">
+              <path fill="#087F6A" d="M51.4 9 A41 41 0 1 0 88 65.4 V42 H47 V58 H73.7 A25 25 0 1 1 50.9 25 Z"/>
+              <path fill="#B7F34A" d="M61 9 H88 V36 H78 V19 H61 Z"/>
+            </svg>
+          </div>
+          <div class="flex flex-col">
+            <div class="flex items-center gap-1.5">
+              <span class="text-xl font-bold tracking-tight text-slateDark" style="font-family:'Poppins', sans-serif;">GPTify</span>
+              <span class="bg-[#087F6A] text-white font-bold text-[10px] tracking-wider uppercase px-2 py-0.5 rounded-md" style="font-family:'Poppins', sans-serif;">OS</span>
+            </div>
+            <span class="text-[9px] font-mono tracking-widest text-slateMuted uppercase font-bold" data-t="navTagline">SERVICE BUSINESS AI OS</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden lg:flex items-center gap-1 text-sm font-semibold text-slate-700 pl-4 border-l border-divider" aria-label="Navigation">
+          <a href="#services" class="px-3.5 py-1.5 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors duration-150 cursor-pointer" data-t="navEngines">5 Core Engines</a>
+          <a href="#flywheel" class="px-3.5 py-1.5 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors duration-150 cursor-pointer" data-t="navFlywheel">The Connected Loop</a>
+          <a href="#solutions" class="px-3.5 py-1.5 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors duration-150 cursor-pointer" data-t="navSolutions">Industry Solutions</a>
+          <a href="#calculator" class="px-3.5 py-1.5 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors duration-150 cursor-pointer" data-t="navCalculator">Loss Calculator</a>
+          <a href="#configurator" class="px-3.5 py-1.5 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors duration-150 cursor-pointer" data-t="navConfigurator">Fleet Configurator</a>
+          <a href="#faq" class="px-3.5 py-1.5 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors duration-150 cursor-pointer" data-t="navFaq">FAQ</a>
+        </nav>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <!-- 3-Language Switcher (EN / UZ / RU) -->
+        <div class="flex items-center bg-[#EAE8E1] border border-divider rounded-full p-1 text-xs font-mono font-bold">
+          <button type="button" onclick="setLang('en')" id="btn-lang-en" class="lang-pill-btn active">EN</button>
+          <button type="button" onclick="setLang('uz')" id="btn-lang-uz" class="lang-pill-btn">UZ</button>
+          <button type="button" onclick="setLang('ru')" id="btn-lang-ru" class="lang-pill-btn">RU</button>
+        </div>
+
+        <button type="button" id="navBookBtn" onclick="openDemoModal()" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emeraldBrand hover:bg-emeraldDark text-white text-xs sm:text-sm font-bold shadow-sm transition-all duration-200 cursor-pointer">
+          <span data-t="navBook">Book a Demo</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== HERO SECTION WITH LIVE COMMAND CENTER ==================== -->
+  <section class="pt-14 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-divider">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Left Column: Editorial Headline & Value Proposition -->
+      <div class="lg:col-span-6">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-divider text-xs font-bold text-slateDark mb-6 shadow-2xs">
+          <span class="w-2 h-2 rounded-full bg-emeraldBrand badge-live-pulse" aria-hidden="true"></span>
+          <span data-t="heroBadge">AI Operating System for Service Businesses</span>
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-slateDark tracking-tight leading-[1.12] mb-6" data-t="heroH1">
+          The AI Operating System <br>
+          <span class="font-serif italic font-normal text-emeraldBrand text-[1.12em] tracking-normal">for Service Businesses.</span>
+        </h1>
+
+        <p class="text-base sm:text-lg text-slate-600 leading-relaxed mb-8 max-w-xl" data-t="heroSub">
+          Connect customer conversations, CRM, scheduling, meetings, outreach and business data through a unified layer of AI agents. Zero manual data entry — your entire business workflow runs seamlessly 24/7.
+        </p>
+
+        <!-- CTA & Strategy Session Details -->
+        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-8">
+          <button type="button" id="heroCtaPrimary" onclick="openDemoModal()" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-slateDark hover:bg-slate-800 text-white font-bold text-sm text-center shadow-md transition-all duration-200 flex items-center justify-center gap-2.5 cursor-pointer">
+            <span data-t="heroCtaPrimary">Book a Live Demo</span>
+            <svg class="w-4 h-4 text-limeSpark" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+          </button>
+          <div class="text-xs text-slateMuted">
+            <span class="font-bold text-slateDark block" data-t="heroCtaNote">Free · 30 Minutes · Zero Obligation</span>
+            <span data-t="heroCtaSub">Custom architecture blueprint for your business model</span>
+          </div>
+        </div>
+
+        <!-- Quick Proof Badges -->
+        <div class="flex flex-wrap items-center gap-y-3 gap-x-6 text-xs font-semibold text-slate-700 pt-6 border-t border-divider">
+          <span class="flex items-center gap-1.5">
+            <svg class="w-4 h-4 text-emeraldBrand flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+            <span data-t="proof1">5 Specialized Engines: Ailo, ILDAM, Bandla, Mirzo & Izlo</span>
+          </span>
+          <span class="flex items-center gap-1.5">
+            <svg class="w-4 h-4 text-emeraldBrand flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+            <span data-t="proof2">Clinics · Education · Automotive · Professional Services</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Right Column: Simulated Live Command Center Window (Interactive Software Mockup) -->
+      <div class="lg:col-span-6 relative">
+        
+        <!-- Floating Chip 1 -->
+        <div class="float-a absolute -top-4 right-2 sm:right-6 z-20 bg-white border border-divider rounded-xl px-3.5 py-2 shadow-lg flex items-center gap-2 text-xs font-bold text-slateDark">
+          <span class="w-2 h-2 rounded-full bg-emeraldBrand badge-live-pulse"></span>
+          <span data-t="heroFloat1">Ailo: 47 Inquiries Triaged in 8s</span>
+        </div>
+
+        <!-- Floating Chip 2 -->
+        <div class="float-b absolute -bottom-4 left-2 sm:left-4 z-20 bg-white border border-divider rounded-xl px-3.5 py-2 shadow-lg flex items-center gap-2 text-xs font-bold text-slateDark">
+          <svg class="w-4 h-4 text-indigoBrand" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"/></svg>
+          <span data-t="heroFloat2">Izlo: 14 Outbound Accounts Reached</span>
+        </div>
+
+        <!-- Simulated Window -->
+        <div class="relative bg-white border border-divider rounded-2xl overflow-hidden shadow-xl">
+          <div class="fake-cursor hidden sm:block"></div>
+
+          <!-- Window Top Bar -->
+          <div class="flex items-center justify-between px-4 py-3 bg-[#F8FAFC] border-b border-divider text-xs">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-[#FF5F57]"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-[#28C840]"></span>
+              <span class="font-mono text-[11px] text-slate-500 ml-2">os.gptify.co/command-center</span>
+            </div>
+            <div class="flex items-center gap-1.5 text-emerald-800 font-mono text-[10px] font-bold bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">
+              <span class="w-1.5 h-1.5 rounded-full bg-emeraldBrand"></span>
+              <span data-t="dashStatus">5/5 FLEET LIVE</span>
+            </div>
+          </div>
+
+          <!-- Window Body -->
+          <div class="p-5 sm:p-6 bg-white space-y-5">
+            
+            <!-- Real-time Metrics Grid -->
+            <div class="grid grid-cols-3 gap-3">
+              <div class="p-3 rounded-xl bg-subtle/80 border border-divider">
+                <div class="flex items-center justify-between text-[10px] font-mono text-slateMuted font-bold">
+                  <span data-t="kpi1Label">LEADS</span>
+                  <span class="text-emeraldBrand">+18%</span>
+                </div>
+                <div class="text-xl font-mono font-black text-slateDark mt-1">47</div>
+                <svg viewBox="0 0 100 24" class="w-full h-5 mt-1">
+                  <path d="M0,18 L15,16 L30,19 L45,12 L60,14 L75,7 L90,9 L100,2" fill="none" stroke="#087F6A" stroke-width="2" stroke-linecap="round" class="sparkline-path"/>
+                </svg>
+              </div>
+
+              <div class="p-3 rounded-xl bg-subtle/80 border border-divider">
+                <div class="flex items-center justify-between text-[10px] font-mono text-slateMuted font-bold">
+                  <span data-t="kpi2Label">ENGINES</span>
+                  <span class="text-emeraldBrand" data-t="kpi2Active">Active</span>
+                </div>
+                <div class="text-xl font-mono font-black text-slateDark mt-1">5/5</div>
+                <div class="flex items-end gap-1 h-5 mt-1 pt-1">
+                  <span class="w-1.5 bg-emeraldBrand rounded-xs h-3"></span>
+                  <span class="w-1.5 bg-amberBrand rounded-xs h-4"></span>
+                  <span class="w-1.5 bg-purpleBrand rounded-xs h-5"></span>
+                  <span class="w-1.5 bg-skyBrand rounded-xs h-4"></span>
+                  <span class="w-1.5 bg-indigoBrand rounded-xs h-5"></span>
+                </div>
+              </div>
+
+              <div class="p-3 rounded-xl bg-subtle/80 border border-divider">
+                <div class="flex items-center justify-between text-[10px] font-mono text-slateMuted font-bold">
+                  <span data-t="kpi3Label">TIME SAVED</span>
+                  <span class="text-emeraldBrand font-bold" data-t="kpi3Sub">This Week</span>
+                </div>
+                <div class="text-xl font-mono font-black text-slateDark mt-1">52.5h</div>
+                <div class="text-[10px] font-mono text-slate-500 mt-1" data-t="kpi3Value">~$480 saved</div>
+              </div>
+            </div>
+
+            <!-- Live Operations Telemetry Stream (All 5 Engines) -->
+            <div>
+              <div class="flex items-center justify-between mb-2.5 text-[11px] font-mono text-slate-500 font-bold uppercase tracking-wider">
+                <span data-t="telemetryTitle">Autonomous Event Telemetry</span>
+                <span class="text-emeraldBrand flex items-center gap-1 font-bold">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emeraldBrand"></span>
+                  <span data-t="telemetrySync">Synchronized</span>
+                </span>
+              </div>
+
+              <div class="space-y-2 text-xs">
+                <!-- Stream 1: Ailo -->
+                <div class="flex items-center justify-between p-2 rounded-xl bg-emerald-50/60 border border-emerald-100">
+                  <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+                    <span class="font-bold text-slateDark">Ailo:</span>
+                    <span class="text-slate-600 truncate max-w-[180px] sm:max-w-[250px]" data-t="tel1">WhatsApp inquiry qualified in 8s; routed to Bandla</span>
+                  </div>
+                  <span class="font-mono text-[10px] text-slate-400">00:08</span>
+                </div>
+
+                <!-- Stream 2: Izlo -->
+                <div class="flex items-center justify-between p-2 rounded-xl bg-indigo-50/60 border border-indigo-100">
+                  <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-indigo-600"></span>
+                    <span class="font-bold text-slateDark">Izlo:</span>
+                    <span class="text-slate-600 truncate max-w-[180px] sm:max-w-[250px]" data-t="tel2">14 B2B accounts prospected via Email & LinkedIn; 3 replies</span>
+                  </div>
+                  <span class="font-mono text-[10px] text-slate-400">10:42</span>
+                </div>
+
+                <!-- Stream 3: ILDAM -->
+                <div class="flex items-center justify-between p-2 rounded-xl bg-amber-50/60 border border-amber-100">
+                  <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-amber-600"></span>
+                    <span class="font-bold text-slateDark">ILDAM:</span>
+                    <span class="text-slate-600 truncate max-w-[180px] sm:max-w-[250px]" data-t="tel3">Deal moved to Proposal stage; advance invoice scheduled</span>
+                  </div>
+                  <span class="font-mono text-[10px] text-slate-400">11:15</span>
+                </div>
+
+                <!-- Stream 4: Bandla -->
+                <div class="flex items-center justify-between p-2 rounded-xl bg-purple-50/60 border border-purple-100">
+                  <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-purple-600"></span>
+                    <span class="font-bold text-slateDark">Bandla:</span>
+                    <span class="text-slate-600 truncate max-w-[180px] sm:max-w-[250px]" data-t="tel4">Consultation confirmed for Thu 14:00; invites synced</span>
+                  </div>
+                  <span class="font-mono text-[10px] text-slate-400">11:30</span>
+                </div>
+
+                <!-- Stream 5: Mirzo -->
+                <div class="flex items-center justify-between p-2 rounded-xl bg-sky-50/60 border border-sky-100">
+                  <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-sky-600"></span>
+                    <span class="font-bold text-slateDark">Mirzo:</span>
+                    <span class="text-slate-600 truncate max-w-[180px] sm:max-w-[250px]" data-t="tel5">42-min meeting summarized; 4 action items sent to Telegram</span>
+                  </div>
+                  <span class="font-mono text-[10px] text-slate-400">11:58</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== INFINITE MARQUEE STRIP ==================== -->
+  <section class="py-10 border-b border-divider bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 mb-5 text-center">
+      <span class="text-xs font-mono font-bold uppercase tracking-widest text-slateMuted" data-t="marqueeTitle">
+        Natively Integrates With Your Existing Enterprise Software
+      </span>
+    </div>
+
+    <div class="relative w-full overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_12%,black_88%,transparent)]">
+      <div class="marquee-track font-mono text-xs font-bold text-slate-600">
+        <!-- Set 1 -->
+        <div class="flex items-center gap-2.5 bg-subtle px-4 py-2 rounded-xl border border-divider">
+          <svg class="w-4 h-4 text-sky-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+          <span>Telegram Channels & Bots</span>
+        </div>
+        <div class="flex items-center gap-2.5 bg-subtle px-4 py-2 rounded-xl border border-divider">
+          <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+          <span>WhatsApp Business API</span>
+        </div>
+        <div class="flex items-center gap-2.5 bg-subtle px-4 py-2 rounded-xl border border-divider">
+          <svg class="w-4 h-4 text-pink-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          <span>Instagram Direct</span>
+        </div>
+        <div class="flex items-center gap-2.5 bg-subtle px-4 py-2 rounded-xl border border-divider">
+          <svg class="w-4 h-4 text-blue-700" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          <span>LinkedIn InMail & Outreach</span>
+        </div>
+        <div class="flex items-center gap-2.5 bg-subtle px-4 py-2 rounded-xl border border-divider">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>
+          <span>Ailo AI Agent</span>
+        </div>
+        <div class="flex items-center gap-2.5 bg-subtle px-4 py-2 rounded-xl border border-divider">
+          <span class="w-2.5 h-2.5 rounded-full bg-amber-600"></span>
+          <span>ILDAM B2B CRM</span>
+        </div>
+        <div class="flex items-center gap-2.5 bg-subtle px-4 py-2 rounded-xl border border-divider">
+          <span class="w-2.5 h-2.5 rounded-full bg-purple-600"></span>
+          <span>Bandla Scheduling</span>
+        </div>
+        <div class="flex items-center gap-2.5 bg-subtle px-4 py-2 rounded-xl border border-divider">
+          <span class="w-2.5 h-2.5 rounded-full bg-sky-600"></span>
+          <span>Mirzo Private Scribe</span>
+        </div>
+        <div class="flex items-center gap-2.5 bg-subtle px-4 py-2 rounded-xl border border-divider">
+          <span class="w-2.5 h-2.5 rounded-full bg-indigo-600"></span>
+          <span>Izlo Outbound</span>
+        </div>
+        <div class="flex items-center gap-2.5 bg-subtle px-4 py-2 rounded-xl border border-divider">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+          <span>Google Calendar & 1C ERP</span>
+        </div>
+
+        <!-- Duplicated Set for Seamless Infinite Loop -->
+        <div class="flex items-center gap-2.5 bg-subtle px-4 py-2 rounded-xl border border-divider">
+          <svg class="w-4 h-4 text-sky-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+          <span>Telegram Channels & Bots</span>
+        </div>
+        <div class="flex items-center gap-2.5 bg-subtle px-4 py-2 rounded-xl border border-divider">
+          <svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+          <span>WhatsApp Business API</span>
+        </div>
+        <div class="flex items-center gap-2.5 bg-subtle px-4 py-2 rounded-xl border border-divider">
+          <svg class="w-4 h-4 text-pink-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          <span>Instagram Direct</span>
+        </div>
+        <div class="flex items-center gap-2.5 bg-subtle px-4 py-2 rounded-xl border border-divider">
+          <svg class="w-4 h-4 text-blue-700" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          <span>LinkedIn InMail & Outreach</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== LOOPING LIVE CHAT DEMO ==================== -->
+  <section id="demo" class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto border-b border-divider">
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <span class="text-xs font-mono font-bold uppercase tracking-wider text-emeraldBrand" data-t="demoEyebrow">Real-Time Autonomous Coordination</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slateDark mt-2 tracking-tight" data-t="demoTitle">
+        How Ailo, Bandla, and ILDAM Coordinate Instantly
+      </h2>
+      <p class="text-slate-600 text-sm sm:text-base mt-2" data-t="demoSub">
+        Not a static button bot — dynamic qualification, real-time calendar booking, and automatic CRM synchronization.
+      </p>
+    </div>
+
+    <!-- Chat Window Mockup -->
+    <div class="bg-white rounded-2xl border border-divider shadow-xl overflow-hidden max-w-xl mx-auto">
+      <div class="flex items-center justify-between px-4 py-3 bg-[#F8FAFC] border-b border-divider">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-800 font-bold text-xs flex items-center justify-center">
+            A
+          </div>
+          <div>
+            <div class="text-xs font-bold text-slateDark flex items-center gap-1.5">
+              <span>Ailo Customer Agent</span>
+              <span class="w-1.5 h-1.5 rounded-full bg-emeraldBrand"></span>
+            </div>
+            <div class="text-[10px] text-slate-400" data-t="chatChannel">Omnichannel: Telegram · WhatsApp · Instagram</div>
+          </div>
+        </div>
+        <span class="text-[10px] font-mono text-emeraldBrand font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+          8s Response
+        </span>
+      </div>
+
+      <!-- Messages Stream -->
+      <div class="p-6 bg-[#FAFAFB] min-h-[300px] flex flex-col justify-end gap-3.5 text-xs sm:text-sm">
+        
+        <!-- User Inquiry -->
+        <div class="demo-msg1 self-start bg-white border border-divider text-slate-800 p-3.5 rounded-2xl rounded-tl-xs max-w-[85%] shadow-xs" data-t="chatMsg1">
+          Hello! We run a medical clinic with 8 doctors. We need to automate patient inquiries, appointments, and record management. Can you handle this?
+        </div>
+
+        <!-- AI Instant Qualified Reply -->
+        <div class="demo-msg2 self-end bg-slateDark text-white p-3.5 rounded-2xl rounded-tr-xs max-w-[85%] shadow-md" data-t="chatMsg2">
+          Hello! Absolutely. Under GPTify OS, I qualify patient needs 24/7 across WhatsApp and Telegram, Bandla syncs your doctors' live schedules, and ILDAM manages patient history. Would you like a doctor consultation or a live system walkthrough?
+        </div>
+
+        <!-- Typing Indicator -->
+        <div class="demo-typing self-start bg-white border border-divider p-3 rounded-2xl rounded-tl-xs flex items-center gap-1.5 shadow-xs w-16">
+          <span class="w-1.5 h-1.5 rounded-full bg-slate-400 typing-dot"></span>
+          <span class="w-1.5 h-1.5 rounded-full bg-slate-400 typing-dot" style="animation-delay: 0.15s"></span>
+          <span class="w-1.5 h-1.5 rounded-full bg-slate-400 typing-dot" style="animation-delay: 0.3s"></span>
+        </div>
+
+        <!-- User Reply -->
+        <div class="demo-msg3 self-start bg-white border border-divider text-slate-800 p-3.5 rounded-2xl rounded-tl-xs max-w-[85%] shadow-xs" data-t="chatMsg3">
+          We want to book a live walkthrough for tomorrow at 3:00 PM for our clinic management team.
+        </div>
+
+        <!-- Success Verification Pill -->
+        <div class="demo-badge self-center bg-emeraldLight border border-emerald-300 text-emerald-800 px-4 py-2 rounded-full text-xs font-bold flex items-center gap-2 shadow-xs">
+          <svg class="w-4 h-4 text-emeraldBrand" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+          <span data-t="chatBadge">Slot reserved via Bandla · Deal & record created in ILDAM CRM</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== THE CONNECTED PRODUCT FLYWHEEL ==================== -->
+  <section id="flywheel" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-divider">
+    <div class="max-w-3xl mb-14">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-mono font-bold text-emeraldBrand mb-3">
+        <span class="w-1.5 h-1.5 rounded-full bg-emeraldBrand"></span>
+        <span data-t="flywheelBadge">THE CONNECTED PRODUCT FLYWHEEL</span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slateDark tracking-tight" data-t="flywheelTitle">
+        One Continuous Loop. Zero Manual Friction.
+      </h2>
+      <p class="text-slate-600 text-base mt-3 leading-relaxed" data-t="flywheelSub">
+        Each specialized engine does one job with excellence — and hands off to the next automatically. One agent acts, the next agent continues. Nothing drops through the cracks.
+      </p>
+    </div>
+
+    <!-- 5-Step Continuous Flow Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-4 relative">
+      
+      <!-- Step 1: Izlo -->
+      <div class="card-elevated p-6 rounded-2xl flex flex-col justify-between border-t-4 border-t-indigoBrand">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-mono font-bold text-indigoBrand bg-indigo-50 px-2 py-0.5 rounded">01 · FIND</span>
+            <span class="text-xs font-bold text-slate-400">Step 1</span>
+          </div>
+          <h3 class="text-lg font-black text-slateDark mb-1">Izlo</h3>
+          <span class="text-[11px] font-bold text-indigoBrand block mb-3" data-t="flyStep1Role">AI Outbound Agent</span>
+          <p class="text-xs text-slate-600 leading-relaxed" data-t="flyStep1Desc">
+            Discovers high-value prospective clients and initiates personalized outreach across Email, LinkedIn, Telegram, and WhatsApp.
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-divider text-[10px] font-mono text-slate-500 font-bold" data-t="flyStep1Handoff">
+          ↳ Hands warm leads to Ailo
+        </div>
+      </div>
+
+      <!-- Step 2: Ailo -->
+      <div class="card-elevated p-6 rounded-2xl flex flex-col justify-between border-t-4 border-t-emeraldBrand">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-mono font-bold text-emeraldBrand bg-emerald-50 px-2 py-0.5 rounded">02 · ENGAGE</span>
+            <span class="text-xs font-bold text-slate-400">Step 2</span>
+          </div>
+          <h3 class="text-lg font-black text-slateDark mb-1">Ailo</h3>
+          <span class="text-[11px] font-bold text-emeraldBrand block mb-3" data-t="flyStep2Role">AI Customer Agent</span>
+          <p class="text-xs text-slate-600 leading-relaxed" data-t="flyStep2Desc">
+            Engages inbound inquiries within 8 seconds, answers complex FAQs, qualifies budget and intent, and resolves initial objections.
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-divider text-[10px] font-mono text-slate-500 font-bold" data-t="flyStep2Handoff">
+          ↳ Syncs contact to ILDAM
+        </div>
+      </div>
+
+      <!-- Step 3: ILDAM -->
+      <div class="card-elevated p-6 rounded-2xl flex flex-col justify-between border-t-4 border-t-amberBrand">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-mono font-bold text-amberBrand bg-amber-50 px-2 py-0.5 rounded">03 · MANAGE</span>
+            <span class="text-xs font-bold text-slate-400">Step 3</span>
+          </div>
+          <h3 class="text-lg font-black text-slateDark mb-1">ILDAM</h3>
+          <span class="text-[11px] font-bold text-amberBrand block mb-3" data-t="flyStep3Role">B2B Agile CRM</span>
+          <p class="text-xs text-slate-600 leading-relaxed" data-t="flyStep3Desc">
+            Centralizes customer 360 data, tracks deal stages on Kanban, and enforces cash flow through automated payment milestones.
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-divider text-[10px] font-mono text-slate-500 font-bold" data-t="flyStep3Handoff">
+          ↳ Triggers booking in Bandla
+        </div>
+      </div>
+
+      <!-- Step 4: Bandla -->
+      <div class="card-elevated p-6 rounded-2xl flex flex-col justify-between border-t-4 border-t-purpleBrand">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-mono font-bold text-purpleBrand bg-purple-50 px-2 py-0.5 rounded">04 · SCHEDULE</span>
+            <span class="text-xs font-bold text-slate-400">Step 4</span>
+          </div>
+          <h3 class="text-lg font-black text-slateDark mb-1">Bandla</h3>
+          <span class="text-[11px] font-bold text-purpleBrand block mb-3" data-t="flyStep4Role">Smart Scheduling Engine</span>
+          <p class="text-xs text-slate-600 leading-relaxed" data-t="flyStep4Desc">
+            Locks appointment times based on live staff availability, syncs calendar invites, and sends proactive SMS/Telegram reminders.
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-divider text-[10px] font-mono text-slate-500 font-bold" data-t="flyStep4Handoff">
+          ↳ Prepares session for Mirzo
+        </div>
+      </div>
+
+      <!-- Step 5: Mirzo -->
+      <div class="card-elevated p-6 rounded-2xl flex flex-col justify-between border-t-4 border-t-skyBrand">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-mono font-bold text-skyBrand bg-sky-50 px-2 py-0.5 rounded">05 · CAPTURE</span>
+            <span class="text-xs font-bold text-slate-400">Step 5</span>
+          </div>
+          <h3 class="text-lg font-black text-slateDark mb-1">Mirzo</h3>
+          <span class="text-[11px] font-bold text-skyBrand block mb-3" data-t="flyStep5Role">Private AI Scribe</span>
+          <p class="text-xs text-slate-600 leading-relaxed" data-t="flyStep5Desc">
+            Extracts decisions and action items from client meetings with zero bot presence in the call. Syncs notes back to ILDAM and Telegram.
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-divider text-[10px] font-mono text-slate-500 font-bold" data-t="flyStep5Handoff">
+          ↳ Updates ILDAM pipeline
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Flywheel Anchor Banner -->
+    <div class="mt-8 p-6 rounded-2xl bg-white border border-divider flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-emeraldLight text-emeraldBrand flex items-center justify-center font-bold text-lg flex-shrink-0">
+          ⚡
+        </div>
+        <div>
+          <span class="font-black text-slateDark text-sm block" data-t="flyBannerTitle">Connected by GPTify OS: Unified Data Layer & Automation</span>
+          <span class="text-xs text-slate-600" data-t="flyBannerSub">Customer data and deal context flow automatically across every tool. No repetitive manual copy-pasting ever.</span>
+        </div>
+      </div>
+      <button type="button" onclick="openDemoModal()" class="px-5 py-2.5 rounded-xl bg-slateDark hover:bg-slate-800 text-white font-bold text-xs whitespace-nowrap cursor-pointer transition">
+        <span data-t="flyBannerBtn">See the Connected Loop Live</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ==================== THE 5 CORE ENGINES ==================== -->
+  <section id="services" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-divider">
+    <div class="max-w-3xl mb-14">
+      <span class="text-xs font-mono font-bold uppercase tracking-wider text-emeraldBrand" data-t="pillarsEyebrow">Core Architecture</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slateDark mt-3 tracking-tight" data-t="pillarsTitle">
+        The 5 Core Operating Engines
+      </h2>
+      <p class="text-slate-600 text-base mt-3" data-t="pillarsSub">
+        Deploy individual modules or roll out the complete unified operating system.
+      </p>
+    </div>
+
+    <!-- 5 Product Cards Grid (3 top, 2 bottom) -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+      
+      <!-- Card 1: AILO -->
+      <div class="card-elevated p-8 rounded-3xl flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-2.5">
+              <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-800 font-extrabold flex items-center justify-center text-sm font-mono">
+                01
+              </div>
+              <div>
+                <h3 class="text-xl font-extrabold text-slateDark">Ailo</h3>
+                <span class="text-xs text-emeraldBrand font-mono font-bold" data-t="ailoRole">Your AI Customer Agent</span>
+              </div>
+            </div>
+            <a href="https://ailo.gptify.uz" target="_blank" rel="noopener noreferrer" class="text-xs font-mono font-bold text-emeraldBrand hover:underline flex items-center gap-1 cursor-pointer">
+              ailo.gptify.uz ↗
+            </a>
+          </div>
+
+          <p class="text-slate-600 text-sm leading-relaxed mb-6" data-t="ailoDesc">
+            Responds to inbound inquiries across WhatsApp, Instagram Direct, and Telegram within <strong>8 seconds</strong>. Qualifies budget and need, resolves objections, and routes sales-ready leads to CRM.
+          </p>
+
+          <div class="space-y-2.5 text-xs text-slate-700 mb-8">
+            <div class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-emeraldBrand flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span data-t="ailoB1"><strong>Official Meta Graph API:</strong> Fully verified, zero account ban risk.</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-emeraldBrand flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span data-t="ailoB2"><strong>Multilingual Context:</strong> Native audio and text comprehension.</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-emeraldBrand flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span data-t="ailoB3"><strong>Natural Human Flow:</strong> Dynamic intelligence instead of rigid button trees.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-6 border-t border-divider flex items-center gap-3">
+          <a href="https://ailo.gptify.uz" target="_blank" rel="noopener noreferrer" class="flex-1 py-3 px-4 rounded-xl bg-slateDark hover:bg-slate-800 text-white text-xs font-bold text-center transition duration-150 cursor-pointer inline-flex items-center justify-center gap-1.5">
+            <span data-t="ailoCta">Visit ailo.gptify.uz</span>
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 2: ILDAM CRM -->
+      <div class="card-elevated p-8 rounded-3xl flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-2.5">
+              <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-800 font-extrabold flex items-center justify-center text-sm font-mono">
+                02
+              </div>
+              <div>
+                <h3 class="text-xl font-extrabold text-slateDark">ILDAM</h3>
+                <span class="text-xs text-amberBrand font-mono font-bold" data-t="ildamRole">CRM That Keeps You Moving</span>
+              </div>
+            </div>
+            <a href="https://ildam.gptify.uz" target="_blank" rel="noopener noreferrer" class="text-xs font-mono font-bold text-amberBrand hover:underline flex items-center gap-1 cursor-pointer">
+              ildam.gptify.uz ↗
+            </a>
+          </div>
+
+          <p class="text-slate-600 text-sm leading-relaxed mb-6" data-t="ildamDesc">
+            Agile B2B pipeline management without enterprise bloat. Centralizes customer databases, tracks deal stages on Kanban, and enforces cash flow through automated payment milestones.
+          </p>
+
+          <div class="space-y-2.5 text-xs text-slate-700 mb-8">
+            <div class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-amberBrand flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span data-t="ildamB1"><strong>Visual Kanban Pipeline:</strong> Drag-and-drop deal management with automated stage transitions.</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-amberBrand flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span data-t="ildamB2"><strong>Milestone Cash Flow:</strong> Automated alerts for deposit invoices, progress billings, and deadlines.</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-amberBrand flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span data-t="ildamB3"><strong>Seamless Agent Sync:</strong> Automatically ingests qualified leads from Ailo and prospects from Izlo.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-6 border-t border-divider flex items-center gap-3">
+          <a href="https://ildam.gptify.uz" target="_blank" rel="noopener noreferrer" class="flex-1 py-3 px-4 rounded-xl bg-slateDark hover:bg-slate-800 text-white text-xs font-bold text-center transition duration-150 cursor-pointer inline-flex items-center justify-center gap-1.5">
+            <span data-t="ildamCta">Visit ildam.gptify.uz</span>
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 3: BANDLA -->
+      <div class="card-elevated p-8 rounded-3xl flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-2.5">
+              <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-800 font-extrabold flex items-center justify-center text-sm font-mono">
+                03
+              </div>
+              <div>
+                <h3 class="text-xl font-extrabold text-slateDark">Bandla</h3>
+                <span class="text-xs text-purpleBrand font-mono font-bold" data-t="bandlaRole">Scheduling Built for Business</span>
+              </div>
+            </div>
+            <span class="text-xs font-mono font-bold text-purpleBrand">
+              Booking Engine
+            </span>
+          </div>
+
+          <p class="text-slate-600 text-sm leading-relaxed mb-6" data-t="bandlaDesc">
+            Eliminates scheduling friction for service businesses. Connects directly with doctor, teacher, or team availability, locks slots instantly, and enforces attendance with automatic reminders.
+          </p>
+
+          <div class="space-y-2.5 text-xs text-slate-700 mb-8">
+            <div class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-purpleBrand flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span data-t="bandlaB1"><strong>Zero Double-Booking:</strong> Live synchronization with Google Calendar, Outlook, and internal shifts.</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-purpleBrand flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span data-t="bandlaB2"><strong>Automated No-Show Shield:</strong> Multi-channel Telegram and SMS reminders eliminate missed appointments.</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-purpleBrand flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span data-t="bandlaB3"><strong>Ailo & CRM Integration:</strong> Ailo reserves timeslots directly in the chat without external redirects.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-6 border-t border-divider flex items-center gap-3">
+          <button type="button" onclick="openDemoModal()" class="flex-1 py-3 px-4 rounded-xl bg-slateDark hover:bg-slate-800 text-white text-xs font-bold text-center transition duration-150 cursor-pointer inline-flex items-center justify-center gap-1.5">
+            <span data-t="bandlaCta">Explore Bandla Integration</span>
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Row (2 Cards: Mirzo & Izlo) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      
+      <!-- Card 4: MIRZO -->
+      <div class="card-elevated p-8 rounded-3xl flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-2.5">
+              <div class="w-10 h-10 rounded-xl bg-sky-100 text-sky-800 font-extrabold flex items-center justify-center text-sm font-mono">
+                04
+              </div>
+              <div>
+                <h3 class="text-xl font-extrabold text-slateDark">Mirzo</h3>
+                <span class="text-xs text-skyBrand font-mono font-bold" data-t="mirzoRole">Your Private AI Scribe</span>
+              </div>
+            </div>
+            <a href="https://meet.gptify.uz" target="_blank" rel="noopener noreferrer" class="text-xs font-mono font-bold text-skyBrand hover:underline flex items-center gap-1 cursor-pointer">
+              meet.gptify.uz ↗
+            </a>
+          </div>
+
+          <p class="text-slate-600 text-sm leading-relaxed mb-6" data-t="mirzoDesc">
+            Private AI meeting notes. <strong>No bots in the call.</strong> Zero awkward avatars. Captures decisions, action items, and deadlines from Zoom, Teams, and Google Meet directly to Telegram and ILDAM CRM.
+          </p>
+
+          <div class="space-y-2.5 text-xs text-slate-700 mb-8">
+            <div class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-skyBrand flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span data-t="mirzoB1"><strong>Zero-Bot Presence:</strong> 100% confidential. No bot joins or disturbs your client conversations.</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-skyBrand flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span data-t="mirzoB2"><strong>Precise Action Protocols:</strong> Filters conversational noise into structured owner/deadline briefs.</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-skyBrand flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span data-t="mirzoB3"><strong>Instant Multi-Channel Dispatch:</strong> Summary and assigned tasks delivered within 60 seconds.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-6 border-t border-divider flex items-center gap-3">
+          <a href="https://meet.gptify.uz" target="_blank" rel="noopener noreferrer" class="flex-1 py-3 px-4 rounded-xl bg-slateDark hover:bg-slate-800 text-white text-xs font-bold text-center transition duration-150 cursor-pointer inline-flex items-center justify-center gap-1.5">
+            <span data-t="mirzoCta">Visit meet.gptify.uz</span>
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Card 5: IZLO -->
+      <div class="card-elevated p-8 rounded-3xl flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-2.5">
+              <div class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-800 font-extrabold flex items-center justify-center text-sm font-mono">
+                05
+              </div>
+              <div>
+                <h3 class="text-xl font-extrabold text-slateDark">Izlo</h3>
+                <span class="text-xs text-indigoBrand font-mono font-bold" data-t="izloRole">Your AI Outbound Agent</span>
+              </div>
+            </div>
+            <span class="text-xs font-mono font-bold text-indigoBrand">
+              Find. Connect. Convert.
+            </span>
+          </div>
+
+          <p class="text-slate-600 text-sm leading-relaxed mb-6" data-t="izloDesc">
+            Eliminates cold prospecting fatigue. Autonomously discovers target accounts, sends hyper-personalized outreach via <strong>Email, LinkedIn, Telegram, and WhatsApp</strong>, and qualifies replies in seconds.
+          </p>
+
+          <div class="space-y-2.5 text-xs text-slate-700 mb-8">
+            <div class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-indigoBrand flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span data-t="izloB1"><strong>Autonomous Account Discovery:</strong> Identifies decision-makers matching your ideal customer profile.</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-indigoBrand flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span data-t="izloB2"><strong>Contextual Reply Qualification:</strong> Analyzes responses, handles skepticism, and schedules warm demos.</span>
+            </div>
+            <div class="flex items-start gap-2">
+              <svg class="w-4 h-4 text-indigoBrand flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span data-t="izloB3"><strong>Automated Deal Handoff:</strong> Sales-ready accounts flow straight into ILDAM CRM for your sales closers.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-6 border-t border-divider flex items-center gap-3">
+          <button type="button" onclick="openDemoModal()" class="flex-1 py-3 px-4 rounded-xl bg-slateDark hover:bg-slate-800 text-white text-xs font-bold text-center transition duration-150 cursor-pointer inline-flex items-center justify-center gap-1.5">
+            <span data-t="izloCta">Request Izlo Outbound Fleet</span>
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== INDUSTRY SOLUTIONS ==================== -->
+  <section id="solutions" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-divider">
+    <div class="max-w-3xl mb-14">
+      <span class="text-xs font-mono font-bold uppercase tracking-wider text-emeraldBrand" data-t="solutionsEyebrow">Packaged Solutions</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slateDark mt-3 tracking-tight" data-t="solutionsTitle">
+        Engineered for High-Touch Service Businesses
+      </h2>
+      <p class="text-slate-600 text-base mt-3 leading-relaxed" data-t="solutionsSub">
+        Pre-packaged operational configurations tailored to the exact workflow requirements of your industry.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      
+      <!-- Package 1: Clinics -->
+      <div class="card-elevated p-8 rounded-3xl flex flex-col justify-between">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-mono font-bold uppercase mb-4">
+            <span>Healthcare & Dental</span>
+          </div>
+          <h3 class="text-2xl font-black text-slateDark mb-2" data-t="sol1Title">GPTify OS for Clinics</h3>
+          <p class="text-xs text-slate-500 font-mono font-semibold mb-4" data-t="sol1Engines">Ailo + ILDAM + Bandla + Mirzo + Automation</p>
+          <p class="text-slate-600 text-sm leading-relaxed mb-6" data-t="sol1Desc">
+            Eliminate receptionist phone logjams and patient no-shows. Ailo answers patient queries in 8 seconds across WhatsApp and Telegram, Bandla books doctor appointment slots, ILDAM keeps medical consultation history, and Mirzo transcribes clinical consultations with zero bots.
+          </p>
+          <ul class="space-y-2 text-xs text-slate-700 mb-6">
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-emeraldBrand" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span data-t="sol1F1">24/7 Patient triage & emergency routing</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-emeraldBrand" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span data-t="sol1F2">Live doctor availability & automated SMS reminders</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-emeraldBrand" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span data-t="sol1F3">Confidential treatment notes & prescription history</span>
+            </li>
+          </ul>
+        </div>
+        <button type="button" onclick="openDemoModal()" class="w-full py-3 px-4 rounded-xl bg-slateDark hover:bg-slate-800 text-white text-xs font-bold text-center cursor-pointer transition">
+          <span data-t="sol1Cta">Explore Clinic Architecture</span>
+        </button>
+      </div>
+
+      <!-- Package 2: Education -->
+      <div class="card-elevated p-8 rounded-3xl flex flex-col justify-between">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 text-purple-800 text-xs font-mono font-bold uppercase mb-4">
+            <span>Training & Academies</span>
+          </div>
+          <h3 class="text-2xl font-black text-slateDark mb-2" data-t="sol2Title">GPTify OS for Education</h3>
+          <p class="text-xs text-slate-500 font-mono font-semibold mb-4" data-t="sol2Engines">Ailo + ILDAM + Bandla + Mirzo</p>
+          <p class="text-slate-600 text-sm leading-relaxed mb-6" data-t="sol2Desc">
+            Convert social media inquiries into enrolled students. Ailo qualifies course interests, Bandla schedules free trial lessons and level evaluations, ILDAM tracks tuition milestones, and Mirzo produces academic review protocols for teachers.
+          </p>
+          <ul class="space-y-2 text-xs text-slate-700 mb-6">
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-purpleBrand" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span data-t="sol2F1">Instant course details & tuition fee consultation</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-purpleBrand" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span data-t="sol2F2">Trial lesson placement and calendar sync</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-purpleBrand" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span data-t="sol2F3">Automated payment reminders for installment tuition</span>
+            </li>
+          </ul>
+        </div>
+        <button type="button" onclick="openDemoModal()" class="w-full py-3 px-4 rounded-xl bg-slateDark hover:bg-slate-800 text-white text-xs font-bold text-center cursor-pointer transition">
+          <span data-t="sol2Cta">Explore Education Architecture</span>
+        </button>
+      </div>
+
+      <!-- Package 3: Automotive -->
+      <div class="card-elevated p-8 rounded-3xl flex flex-col justify-between">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 text-amber-800 text-xs font-mono font-bold uppercase mb-4">
+            <span>Dealerships & Service Hubs</span>
+          </div>
+          <h3 class="text-2xl font-black text-slateDark mb-2" data-t="sol3Title">GPTify OS for Automotive</h3>
+          <p class="text-xs text-slate-500 font-mono font-semibold mb-4" data-t="sol3Engines">Ailo + ILDAM + Bandla + Izlo</p>
+          <p class="text-slate-600 text-sm leading-relaxed mb-6" data-t="sol3Desc">
+            Maximize service bay capacity and vehicle sales. Ailo handles trade-in and maintenance inquiries, Bandla manages test-drive and bay appointments, ILDAM manages vehicle orders and spare part invoices, while Izlo conducts corporate fleet outreach.
+          </p>
+          <ul class="space-y-2 text-xs text-slate-700 mb-6">
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-amberBrand" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span data-t="sol3F1">Automated test drive and maintenance booking</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-amberBrand" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span data-t="sol3F2">B2B commercial fleet outreach with Izlo</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-amberBrand" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span data-t="sol3F3">Service milestone follow-ups for oil/tire maintenance</span>
+            </li>
+          </ul>
+        </div>
+        <button type="button" onclick="openDemoModal()" class="w-full py-3 px-4 rounded-xl bg-slateDark hover:bg-slate-800 text-white text-xs font-bold text-center cursor-pointer transition">
+          <span data-t="sol3Cta">Explore Automotive Architecture</span>
+        </button>
+      </div>
+
+      <!-- Package 4: Professional Services -->
+      <div class="card-elevated p-8 rounded-3xl flex flex-col justify-between">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 text-indigo-800 text-xs font-mono font-bold uppercase mb-4">
+            <span>Consultancy & B2B Services</span>
+          </div>
+          <h3 class="text-2xl font-black text-slateDark mb-2" data-t="sol4Title">GPTify OS for Professional Services</h3>
+          <p class="text-xs text-slate-500 font-mono font-semibold mb-4" data-t="sol4Engines">Izlo + Ailo + ILDAM + Bandla + Mirzo</p>
+          <p class="text-slate-600 text-sm leading-relaxed mb-6" data-t="sol4Desc">
+            Run an end-to-end client engine. Izlo discovers and prospects ideal corporate clients, Ailo handles website and social leads, Bandla books consultations, ILDAM enforces retainer milestones, and Mirzo records partner meetings with zero-bot discretion.
+          </p>
+          <ul class="space-y-2 text-xs text-slate-700 mb-6">
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-indigoBrand" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span data-t="sol4F1">Multi-channel prospecting across Email and LinkedIn</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-indigoBrand" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span data-t="sol4F2">Client proposal pipeline and retainer invoicing</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-indigoBrand" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              <span data-t="sol4F3">Confidential partner call summaries sent to Telegram</span>
+            </li>
+          </ul>
+        </div>
+        <button type="button" onclick="openDemoModal()" class="w-full py-3 px-4 rounded-xl bg-slateDark hover:bg-slate-800 text-white text-xs font-bold text-center cursor-pointer transition">
+          <span data-t="sol4Cta">Explore B2B Services Architecture</span>
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== INTERACTIVE RECOVERABLE LOSS CALCULATOR ==================== -->
+  <section id="calculator" class="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-b border-divider">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <span class="text-xs font-mono font-bold uppercase tracking-wider text-emeraldBrand" data-t="calcEyebrow">Interactive ROI Calculator</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slateDark mt-3 tracking-tight" data-t="calcTitle">
+        How Much Capital Are You Leaving on the Table?
+      </h2>
+      <p class="text-slate-600 text-sm sm:text-base mt-2" data-t="calcSub">
+        Adjust your team parameters. See the exact recoverable losses currently draining your service business.
+      </p>
+    </div>
+
+    <div class="card-elevated p-8 sm:p-10 rounded-3xl bg-white">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        
+        <!-- Controls Side -->
+        <div class="space-y-6">
+          <div>
+            <div class="flex justify-between items-center text-xs font-bold text-slateDark mb-2">
+              <span data-t="calcTeam">Number of team members:</span>
+              <span class="text-sm font-mono text-emeraldBrand font-black" id="valTeamSize">5 members</span>
+            </div>
+            <input type="range" id="teamSize" min="1" max="50" value="5" class="w-full">
+            <div class="flex justify-between text-[10px] text-slateMuted mt-1 font-mono">
+              <span id="rangeTeamMin">1 member</span>
+              <span id="rangeTeamMid">25 members</span>
+              <span id="rangeTeamMax">50 members</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex justify-between items-center text-xs font-bold text-slateDark mb-2">
+              <span data-t="calcHours">Weekly repetitive manual hours per employee:</span>
+              <span class="text-sm font-mono text-emeraldBrand font-black" id="valHoursSpent">15 hrs/week</span>
+            </div>
+            <input type="range" id="hoursSpent" min="5" max="35" value="15" class="w-full">
+            <div class="flex justify-between text-[10px] text-slateMuted mt-1 font-mono">
+              <span id="rangeHoursMin">5 hrs</span>
+              <span id="rangeHoursMid">20 hrs</span>
+              <span id="rangeHoursMax">35 hrs</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex justify-between items-center text-xs font-bold text-slateDark mb-2">
+              <span data-t="calcSalary">Average monthly salary per employee:</span>
+              <span class="text-sm font-mono text-emeraldBrand font-black" id="valSalary">$400</span>
+            </div>
+            <input type="range" id="salary" min="3000000" max="15000000" step="500000" value="5000000" class="w-full">
+            <div class="flex justify-between text-[10px] text-slateMuted mt-1 font-mono">
+              <span id="rangeSalaryMin">$300</span>
+              <span id="rangeSalaryMid">$800</span>
+              <span id="rangeSalaryMax">$1,500</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Result Card Side -->
+        <div class="bg-subtle p-6 sm:p-8 rounded-2xl border border-divider text-center flex flex-col justify-between">
+          <div>
+            <span class="text-[11px] font-mono uppercase tracking-wider text-slateMuted font-bold block mb-1" data-t="calcResultTitle">
+              Estimated Annual Recoverable Capital
+            </span>
+            <div class="text-3xl sm:text-4xl font-black text-emeraldBrand tracking-tight my-2" id="calcSavingsUzs">
+              ~$5,200
+            </div>
+            <p class="text-xs text-slate-600 mt-1" id="calcMonthlyUzs">
+              This translates to ~$430 in monthly bottom-line efficiency
+            </p>
+          </div>
+
+          <div class="my-6 pt-6 border-t border-divider grid grid-cols-2 gap-4 text-left">
+            <div>
+              <span class="text-[10px] font-mono text-slateMuted block" data-t="calcSavedYear">Time recovered / year:</span>
+              <span class="text-base font-extrabold text-slateDark" id="calcHoursYear">2,700 hrs</span>
+            </div>
+            <div>
+              <span class="text-[10px] font-mono text-slateMuted block" data-t="calcSavedWeek">Hours recovered / week:</span>
+              <span class="text-base font-extrabold text-slateDark" id="calcHoursWeek">52.5 hrs</span>
+            </div>
+          </div>
+
+          <button type="button" onclick="openDemoModal()" class="w-full py-3.5 px-4 rounded-xl bg-emeraldBrand hover:bg-emeraldDark text-white text-xs font-bold text-center shadow-sm transition duration-150 cursor-pointer inline-flex items-center justify-center gap-1.5">
+            <span data-t="calcCta">Eliminate These Operating Losses</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== MODULAR FLEET CONFIGURATOR ==================== -->
+  <section id="configurator" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-divider">
+    <div class="max-w-3xl mb-12">
+      <span class="text-xs font-mono font-bold uppercase tracking-wider text-emeraldBrand" data-t="cfgEyebrow">Modular Architecture</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slateDark mt-3 tracking-tight" data-t="cfgTitle">
+        GPTify OS Configurator: Assemble Your Custom Fleet
+      </h2>
+      <p class="text-slate-600 text-base mt-2" data-t="cfgSub">
+        The unified 5-engine core installs as standard. Activate specialized add-on modules tailored to your operations.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- Core Pipeline Box -->
+      <div class="lg:col-span-4 bg-white border-2 border-emeraldBrand rounded-3xl p-7 shadow-sm">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-mono font-bold uppercase tracking-wider mb-4" data-t="cfgCoreBadge">
+          5-Engine Base Core
+        </div>
+        <h3 class="text-2xl font-black text-slateDark">Unified Core</h3>
+        <p class="text-xs text-slate-600 mt-2 mb-6" data-t="cfgCoreDesc">
+          The essential interconnected pipeline for autonomous service business operations.
+        </p>
+
+        <ul class="space-y-3 text-xs text-slate-700 pt-4 border-t border-divider">
+          <li class="flex items-start gap-2">
+            <svg class="w-4 h-4 text-emeraldBrand flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+            <span data-t="cfgCore1"><strong>Ailo Customer Agent:</strong> 8-second WhatsApp, Meta & Telegram triage</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="w-4 h-4 text-amberBrand flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+            <span data-t="cfgCore2"><strong>ILDAM CRM:</strong> Agile deal stages, Kanban & cash flow tracking</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="w-4 h-4 text-purpleBrand flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+            <span data-t="cfgCore3"><strong>Bandla Scheduling:</strong> Calendar booking & automated reminder shield</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="w-4 h-4 text-skyBrand flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+            <span data-t="cfgCore4"><strong>Mirzo Private Scribe:</strong> Bot-free confidential meeting notes & action items</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <svg class="w-4 h-4 text-indigoBrand flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+            <span data-t="cfgCore5"><strong>Izlo Outbound Agent:</strong> Autonomous B2B prospecting across Email & LinkedIn</span>
+          </li>
+        </ul>
+
+        <div class="mt-8 pt-6 border-t border-divider">
+          <button type="button" onclick="openDemoModal()" class="w-full py-3 px-4 rounded-xl bg-slateDark hover:bg-slate-800 text-white text-xs font-bold text-center block transition cursor-pointer" data-t="cfgQuoteBtn">
+            Request Custom Architecture Demo
+          </button>
+        </div>
+      </div>
+
+      <!-- Add-on Agents Grid -->
+      <div class="lg:col-span-8 bg-white border border-divider rounded-3xl p-7 shadow-sm">
+        <div class="flex items-center justify-between mb-6 pb-4 border-b border-divider">
+          <div>
+            <h4 class="font-extrabold text-slateDark text-base" data-t="cfgAddonsTitle">Specialized Add-on Modules</h4>
+            <span class="text-xs text-slateMuted" data-t="cfgAddonsSub">Select optional modules for your operational stack</span>
+          </div>
+          <span class="text-xs font-mono font-bold text-emeraldBrand bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+            <span data-t="cfgSelectedPrefix">Selected:</span> <span id="selectedAddonsCount">2</span> <span data-t="cfgSelectedSuffix">units</span>
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          
+          <!-- Add-on 1: Enterprise Knowledge Base (RAG) -->
+          <div class="addon-card selected p-4 rounded-2xl border border-divider cursor-pointer transition hover:border-emerald-400" onclick="toggleAddonCard(this)">
+            <div class="flex items-center justify-between mb-2">
+              <svg class="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg>
+              <div class="check-circle w-5 h-5 rounded-full border border-divider flex items-center justify-center text-[10px]">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              </div>
+            </div>
+            <div class="font-bold text-slateDark text-xs mb-1" data-t="add1Title">Enterprise Knowledge Base (RAG)</div>
+            <p class="text-[11px] text-slate-500 leading-normal" data-t="add1Desc">Internal AI search assistant indexing company SOPs, clinical protocols, and price lists.</p>
+          </div>
+
+          <!-- Add-on 2: Content & Video Studio -->
+          <div class="addon-card selected p-4 rounded-2xl border border-divider cursor-pointer transition hover:border-emerald-400" onclick="toggleAddonCard(this)">
+            <div class="flex items-center justify-between mb-2">
+              <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 01-2.25 2.25M16.5 7.5V18a2.25 2.25 0 002.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 002.25 2.25h13.5M6 7.5h3v3H6v-3z"/></svg>
+              <div class="check-circle w-5 h-5 rounded-full border border-divider flex items-center justify-center text-[10px]">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              </div>
+            </div>
+            <div class="font-bold text-slateDark text-xs mb-1" data-t="add2Title">Content & Video Studio</div>
+            <p class="text-[11px] text-slate-500 leading-normal" data-t="add2Desc">Translates company expertise into reels, carousels, and educational thought leadership.</p>
+          </div>
+
+          <!-- Add-on 3: Voice AI Receptionist -->
+          <div class="addon-card p-4 rounded-2xl border border-divider cursor-pointer transition hover:border-emerald-400" onclick="toggleAddonCard(this)">
+            <div class="flex items-center justify-between mb-2">
+              <svg class="w-5 h-5 text-sky-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+              <div class="check-circle w-5 h-5 rounded-full border border-divider flex items-center justify-center text-[10px]">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              </div>
+            </div>
+            <div class="font-bold text-slateDark text-xs mb-1" data-t="add3Title">Voice AI Receptionist</div>
+            <p class="text-[11px] text-slate-500 leading-normal" data-t="add3Desc">Inbound telephony call answering, service consultation, and Bandla booking.</p>
+          </div>
+
+          <!-- Add-on 4: 1C / ERP Bridge -->
+          <div class="addon-card p-4 rounded-2xl border border-divider cursor-pointer transition hover:border-emerald-400" onclick="toggleAddonCard(this)">
+            <div class="flex items-center justify-between mb-2">
+              <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 5.625c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"/></svg>
+              <div class="check-circle w-5 h-5 rounded-full border border-divider flex items-center justify-center text-[10px]">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              </div>
+            </div>
+            <div class="font-bold text-slateDark text-xs mb-1" data-t="add4Title">1C / ERP Bridge</div>
+            <p class="text-[11px] text-slate-500 leading-normal" data-t="add4Desc">Real-time bi-directional synchronization with accounting, billing, and inventory.</p>
+          </div>
+
+          <!-- Add-on 5: Auto-Heal & Fallback -->
+          <div class="addon-card p-4 rounded-2xl border border-divider cursor-pointer transition hover:border-emerald-400" onclick="toggleAddonCard(this)">
+            <div class="flex items-center justify-between mb-2">
+              <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+              <div class="check-circle w-5 h-5 rounded-full border border-divider flex items-center justify-center text-[10px]">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              </div>
+            </div>
+            <div class="font-bold text-slateDark text-xs mb-1" data-t="add5Title">Auto-Heal & Fallback</div>
+            <p class="text-[11px] text-slate-500 leading-normal" data-t="add5Desc">Automatic retry and failover protocols when third-party messaging APIs hiccup.</p>
+          </div>
+
+          <!-- Add-on 6: Urgent Escalation Agent -->
+          <div class="addon-card p-4 rounded-2xl border border-divider cursor-pointer transition hover:border-emerald-400" onclick="toggleAddonCard(this)">
+            <div class="flex items-center justify-between mb-2">
+              <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m0-10.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.75c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.75h-.152c-3.196 0-6.1-1.249-8.25-3.286zm0 13.036h.008v.008H12v-.008z"/></svg>
+              <div class="check-circle w-5 h-5 rounded-full border border-divider flex items-center justify-center text-[10px]">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              </div>
+            </div>
+            <div class="font-bold text-slateDark text-xs mb-1" data-t="add6Title">Urgent Escalation Agent</div>
+            <p class="text-[11px] text-slate-500 leading-normal" data-t="add6Desc">Instant manager notification when VIP clients require urgent human intervention.</p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== THE 3-STEP CONSULTING PROCESS ==================== -->
+  <section id="process" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-divider">
+    <div class="max-w-3xl mb-14">
+      <span class="text-xs font-mono font-bold uppercase tracking-wider text-emeraldBrand" data-t="procEyebrow">Pragmatic Methodology</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slateDark mt-3 tracking-tight" data-t="procTitle">
+        3-Stage Implementation Roadmap
+      </h2>
+      <p class="text-slate-600 text-base mt-3" data-t="procSub">
+        We audit and streamline real-world service operations before deploying code.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <div class="card-elevated p-8 rounded-3xl">
+        <div class="text-3xl font-mono font-black text-slateDark mb-4">01</div>
+        <h3 class="text-xl font-extrabold text-slateDark mb-2" data-t="p1Title">01 Discover (Audit)</h3>
+        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4" data-t="p1Desc">
+          Map existing workflows: uncover where time is squandered, where inquiries drop off, and where scheduling bottlenecks choke revenue.
+        </p>
+        <ul class="text-xs text-slateMuted space-y-1.5 font-medium">
+          <li data-t="p1B1">• Complete service operational audit</li>
+          <li data-t="p1B2">• Drop-off and no-show analysis</li>
+          <li data-t="p1B3">• Recoverable loss computation</li>
+        </ul>
+      </div>
+
+      <div class="card-elevated p-8 rounded-3xl">
+        <div class="text-3xl font-mono font-black text-slateDark mb-4">02</div>
+        <h3 class="text-xl font-extrabold text-slateDark mb-2" data-t="p2Title">02 Design (Architecture)</h3>
+        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4" data-t="p2Desc">
+          Refine processes before automating. Ensure every trigger, handoff, and reminder serves an unambiguous operational objective.
+        </p>
+        <ul class="text-xs text-slateMuted space-y-1.5 font-medium">
+          <li data-t="p2B1">• Conveyor architecture blueprint</li>
+          <li data-t="p2B2">• Clear team Standard Operating Procedures (SOP)</li>
+          <li data-t="p2B3">• Role handoffs & escalation thresholds</li>
+        </ul>
+      </div>
+
+      <div class="card-elevated p-8 rounded-3xl">
+        <div class="text-3xl font-mono font-black text-slateDark mb-4">03</div>
+        <h3 class="text-xl font-extrabold text-slateDark mb-2" data-t="p3Title">03 Build (Deploy & Handoff)</h3>
+        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4" data-t="p3Desc">
+          Implement the engines: connect Ailo, ILDAM, Bandla, Mirzo, and Izlo. Conduct end-to-end stress testing and train your staff.
+        </p>
+        <ul class="text-xs text-slateMuted space-y-1.5 font-medium">
+          <li data-t="p3B1">• Turnkey enterprise integration</li>
+          <li data-t="p3B2">• Live staff onboarding & training</li>
+          <li data-t="p3B3">• Video playbooks & SLA monitoring</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== FAQ ACCORDION ==================== -->
+  <section id="faq" class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto border-b border-divider">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <span class="text-xs font-mono font-bold uppercase tracking-wider text-emeraldBrand" data-t="faqEyebrow">Answers & Transparency</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slateDark mt-3 tracking-tight" data-t="faqTitle">
+        Frequently Asked Questions
+      </h2>
+    </div>
+
+    <div class="space-y-4">
+      
+      <details class="group bg-white border border-divider rounded-2xl p-5 shadow-xs" open>
+        <summary class="flex items-center justify-between text-base font-bold text-slateDark">
+          <span data-t="faqQ1">How do the 5 engines (Ailo, ILDAM, Bandla, Mirzo, Izlo) work together?</span>
+          <svg class="faq-chevron w-5 h-5 text-slate-400 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+        </summary>
+        <div class="pt-3 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-divider mt-3" data-t="faqA1">
+          They form one continuous loop: Izlo discovers and prospects accounts, Ailo engages incoming inquiries in 8 seconds, ILDAM tracks the relationship and payment milestones, Bandla locks calendar appointments, and Mirzo records meeting action items without bots. Data flows between them seamlessly so no human enters data twice.
+        </div>
+      </details>
+
+      <details class="group bg-white border border-divider rounded-2xl p-5 shadow-xs">
+        <summary class="flex items-center justify-between text-base font-bold text-slateDark">
+          <span data-t="faqQ2">How does Mirzo record meetings without a bot joining the call?</span>
+          <svg class="faq-chevron w-5 h-5 text-slate-400 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+        </summary>
+        <div class="pt-3 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-divider mt-3" data-t="faqA2">
+          Unlike ordinary AI notetakers that force an awkward "Bot Assistant" into your Zoom or Google Meet room, Mirzo operates with zero-bot presence. Audio is processed via private executive audio streams or post-call recordings, delivering structured action items directly to your Telegram or ILDAM CRM in 60 seconds with 100% confidentiality.
+        </div>
+      </details>
+
+      <details class="group bg-white border border-divider rounded-2xl p-5 shadow-xs">
+        <summary class="flex items-center justify-between text-base font-bold text-slateDark">
+          <span data-t="faqQ3">Can Bandla integrate with our existing calendars and prevent double-booking?</span>
+          <svg class="faq-chevron w-5 h-5 text-slate-400 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+        </summary>
+        <div class="pt-3 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-divider mt-3" data-t="faqA3">
+          Yes. Bandla connects directly with Google Calendar, Outlook, and your internal staff shifts. When Ailo qualifies a patient or client, Bandla checks real-time availability and confirms the slot. It automatically sends reminder alerts to slash no-shows.
+        </div>
+      </details>
+
+      <details class="group bg-white border border-divider rounded-2xl p-5 shadow-xs">
+        <summary class="flex items-center justify-between text-base font-bold text-slateDark">
+          <span data-t="faqQ4">How is our customer database and operational data protected?</span>
+          <svg class="faq-chevron w-5 h-5 text-slate-400 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+        </summary>
+        <div class="pt-3 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-divider mt-3" data-t="faqA4">
+          All infrastructure runs on your dedicated cloud accounts or private enterprise servers. We avoid unverified third-party scrapers: we use official Meta Graph APIs, end-to-end encrypted databases, and strict access controls. Your client data remains 100% your enterprise property.
+        </div>
+      </details>
+
+      <details class="group bg-white border border-divider rounded-2xl p-5 shadow-xs">
+        <summary class="flex items-center justify-between text-base font-bold text-slateDark">
+          <span data-t="faqQ5">How long does deployment and team onboarding take?</span>
+          <svg class="faq-chevron w-5 h-5 text-slate-400 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"/></svg>
+        </summary>
+        <div class="pt-3 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-divider mt-3" data-t="faqA5">
+          Core deployment installs within 48 hours to 5 business days. Following setup, we run live interactive team training sessions, deliver step-by-step video manuals, and provide dedicated monitoring during the initial 14-day operational ramp.
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- ==================== FOUNDER NOTE & STRATEGY CALL CTA ==================== -->
+  <section class="py-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+    <div class="bg-white rounded-3xl border border-divider p-8 sm:p-12 shadow-sm text-center relative overflow-hidden">
+      <div class="max-w-2xl mx-auto">
+        <div class="w-16 h-16 rounded-2xl bg-slateDark text-white font-black text-2xl flex items-center justify-center mx-auto mb-6">
+          G
+        </div>
+
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slateDark tracking-tight mb-4" data-t="founderCtaTitle">
+          30-Minute Complimentary Operations Audit
+        </h2>
+
+        <p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-8" data-t="founderCtaSub">
+          During this session, we map where your service business is losing hours and revenue, delivering a pragmatic action plan with zero sales pressure.
+        </p>
+
+        <!-- Guarantee -->
+        <div class="p-4 rounded-xl bg-emerald-50 border border-emerald-100 text-xs text-emerald-900 font-medium mb-8 max-w-lg mx-auto flex items-center gap-2.5 text-left">
+          <svg class="w-5 h-5 text-emerald-600 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+          <div data-t="founderGuarantee">
+            <strong>Our Guarantee:</strong> If we fail to identify at least $2,000+ in annual recoverable operational savings during the call, we will candidly say so and respect your time.
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <button type="button" onclick="openDemoModal()" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-emeraldBrand hover:bg-emeraldDark text-white font-bold text-sm shadow-md transition duration-150 flex items-center justify-center gap-2.5 cursor-pointer">
+            <span data-t="founderCtaPrimary">Book a 30-Min Demo Call</span>
+            <svg class="w-4 h-4 text-limeSpark" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+          </button>
+          <a href="https://t.me/GPTify_uz_bot?start=os_demo" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-6 py-4 rounded-xl border border-divider hover:bg-subtle text-slateDark font-semibold text-sm transition duration-150 cursor-pointer" data-t="founderCtaTelegram">
+            Message on Telegram
+          </a>
+        </div>
+
+        <!-- Founder Signature Block -->
+        <div class="mt-10 pt-6 border-t border-divider text-center">
+          <div class="text-sm font-bold text-slateDark">Shukhrat Iskandarov</div>
+          <div class="text-xs text-slateMuted mt-0.5" data-t="founderRole">Founder at GPTify.co & Co-Founder at Cubeo.ai</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-white border-t border-divider py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-white border border-divider flex items-center justify-center p-1.5 shadow-2xs">
+          <svg class="w-full h-full" viewBox="0 0 100 100" fill="none">
+            <path fill="#087F6A" d="M51.4 9 A41 41 0 1 0 88 65.4 V42 H47 V58 H73.7 A25 25 0 1 1 50.9 25 Z"/>
+            <path fill="#B7F34A" d="M61 9 H88 V36 H78 V19 H61 Z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="flex items-center gap-1.5">
+            <span class="font-bold text-slateDark text-sm" style="font-family:'Poppins', sans-serif;">GPTify</span>
+            <span class="bg-[#087F6A] text-white font-bold text-[9px] tracking-wider uppercase px-1.5 py-0.5 rounded" style="font-family:'Poppins', sans-serif;">OS</span>
+          </div>
+          <span class="text-xs text-slateMuted block" data-t="footerDesc">The AI operating system for service businesses.</span>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-4 text-xs font-semibold text-slate-600">
+        <a href="https://ailo.gptify.uz" target="_blank" rel="noopener noreferrer" class="hover:text-emeraldBrand cursor-pointer">ailo.gptify.uz</a>
+        <span>•</span>
+        <a href="https://ildam.gptify.uz" target="_blank" rel="noopener noreferrer" class="hover:text-amberBrand cursor-pointer">ildam.gptify.uz</a>
+        <span>•</span>
+        <button type="button" onclick="openDemoModal()" class="hover:text-purpleBrand font-semibold cursor-pointer">Bandla</button>
+        <span>•</span>
+        <a href="https://meet.gptify.uz" target="_blank" rel="noopener noreferrer" class="hover:text-skyBrand cursor-pointer">meet.gptify.uz</a>
+        <span>•</span>
+        <button type="button" onclick="openDemoModal()" class="hover:text-indigoBrand font-semibold cursor-pointer">Izlo</button>
+      </div>
+
+      <div class="text-xs text-slateMuted">
+        © 2026 GPTify Technologies MChJ. <span data-t="footerRights">All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== LEAD CAPTURE DEMO MODAL ==================== -->
+  <div id="demoModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 sm:p-6 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <!-- Backdrop with blur -->
+    <div class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" onclick="closeDemoModal()"></div>
+
+    <!-- Modal Card -->
+    <div class="relative bg-white rounded-3xl border border-divider shadow-2xl max-w-lg w-full p-6 sm:p-8 z-10 my-auto text-left transition-all transform scale-100">
+      
+      <!-- Close Button -->
+      <button type="button" onclick="closeDemoModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-subtle hover:bg-slate-200 text-slate-500 hover:text-slate-800 flex items-center justify-center transition cursor-pointer" aria-label="Close">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <!-- Form Container -->
+      <div id="leadFormContainer">
+        <!-- Header -->
+        <div class="mb-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-[10px] font-mono font-bold text-emerald-800 uppercase tracking-wider mb-2.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-emeraldBrand badge-live-pulse"></span>
+            <span data-t="modalBadge">LIVE DEMO & AUDIT</span>
+          </div>
+          <h3 id="modalTitle" class="text-2xl sm:text-3xl font-black text-slateDark tracking-tight" data-t="modalTitle">
+            Book a Live Demo & System Audit
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed" data-t="modalSub">
+            See GPTify OS running live on your workflow. We will contact you within 15 minutes.
+          </p>
+        </div>
+
+        <!-- Form -->
+        <form id="demoLeadForm" onsubmit="submitDemoLead(event)" class="space-y-4">
+          <!-- Full Name -->
+          <div>
+            <label for="leadName" class="block text-xs font-bold text-slateDark mb-1.5" data-t="lblModalName">
+              Your Full Name
+            </label>
+            <input type="text" id="leadName" required placeholder="e.g. Alexander Vance" class="w-full px-4 py-3 rounded-xl border border-divider bg-subtle/50 text-slateDark text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-emeraldBrand focus:bg-white transition">
+          </div>
+
+          <!-- Company Name -->
+          <div>
+            <label for="leadCompany" class="block text-xs font-bold text-slateDark mb-1.5" data-t="lblModalCompany">
+              Company Name & Industry
+            </label>
+            <input type="text" id="leadCompany" required placeholder="e.g. Apex Clinic (Healthcare)" class="w-full px-4 py-3 rounded-xl border border-divider bg-subtle/50 text-slateDark text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-emeraldBrand focus:bg-white transition">
+          </div>
+
+          <!-- Phone or Telegram -->
+          <div>
+            <label for="leadContact" class="block text-xs font-bold text-slateDark mb-1.5" data-t="lblModalContact">
+              Phone Number or Telegram (@username)
+            </label>
+            <input type="text" id="leadContact" required placeholder="+1 555 123 4567 or @username" class="w-full px-4 py-3 rounded-xl border border-divider bg-subtle/50 text-slateDark text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-emeraldBrand focus:bg-white transition">
+          </div>
+
+          <!-- Channels Checklist -->
+          <div>
+            <label class="block text-xs font-bold text-slateDark mb-2" data-t="lblModalChannels">
+              Channels to Connect:
+            </label>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-subtle/60 border border-divider cursor-pointer hover:bg-emerald-50/50">
+                <input type="checkbox" name="channels" value="Telegram" checked class="accent-emerald-600 rounded">
+                <span class="text-slate-700 font-medium">Telegram</span>
+              </label>
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-subtle/60 border border-divider cursor-pointer hover:bg-emerald-50/50">
+                <input type="checkbox" name="channels" value="WhatsApp" checked class="accent-emerald-600 rounded">
+                <span class="text-slate-700 font-medium">WhatsApp</span>
+              </label>
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-subtle/60 border border-divider cursor-pointer hover:bg-emerald-50/50">
+                <input type="checkbox" name="channels" value="Instagram Direct" checked class="accent-emerald-600 rounded">
+                <span class="text-slate-700 font-medium">Instagram</span>
+              </label>
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-subtle/60 border border-divider cursor-pointer hover:bg-emerald-50/50">
+                <input type="checkbox" name="channels" value="Corporate Email" class="accent-emerald-600 rounded">
+                <span class="text-slate-700 font-medium">Email</span>
+              </label>
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-subtle/60 border border-divider cursor-pointer hover:bg-emerald-50/50">
+                <input type="checkbox" name="channels" value="LinkedIn Outreach" class="accent-emerald-600 rounded">
+                <span class="text-slate-700 font-medium">LinkedIn</span>
+              </label>
+              <label class="flex items-center gap-2 p-2 rounded-lg bg-subtle/60 border border-divider cursor-pointer hover:bg-emerald-50/50">
+                <input type="checkbox" name="channels" value="CRM & Calendar" checked class="accent-emerald-600 rounded">
+                <span class="text-slate-700 font-medium">CRM / Bandla</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Team Size Dropdown / Selection -->
+          <div>
+            <label for="leadTeamSize" class="block text-xs font-bold text-slateDark mb-1.5" data-t="lblModalTeam">
+              Team Size:
+            </label>
+            <select id="leadTeamSize" class="w-full px-4 py-3 rounded-xl border border-divider bg-subtle/50 text-slateDark text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-emeraldBrand focus:bg-white transition cursor-pointer">
+              <option value="1-5 employees">1-5 employees</option>
+              <option value="6-20 employees" selected>6-20 employees</option>
+              <option value="20-50 employees">20-50 employees</option>
+              <option value="50+ employees (Enterprise)">50+ employees (Enterprise)</option>
+            </select>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="pt-2">
+            <button type="submit" id="btnSubmitLead" class="w-full py-3.5 px-6 rounded-xl bg-emeraldBrand hover:bg-emeraldDark text-white font-bold text-sm shadow-md transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer">
+              <span id="btnSubmitText" data-t="modalSubmitBtn">Confirm & Book Demo</span>
+              <svg id="btnSubmitIcon" class="w-4 h-4 text-limeSpark" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+              <!-- Spinner (hidden by default) -->
+              <svg id="btnSubmitSpinner" class="hidden animate-spin w-4 h-4 text-white" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+            </button>
+          </div>
+
+          <div class="text-center text-[10px] text-slateMuted mt-2" data-t="modalFooterNote">
+            Zero spam · 100% confidential · Turnkey deployed in 48h
+          </div>
+        </form>
+      </div>
+
+      <!-- Success Confirmation State (shown after submission) -->
+      <div id="leadSuccessContainer" class="hidden text-center py-8 px-2 space-y-5">
+        <div class="w-16 h-16 rounded-full bg-emerald-50 text-emeraldBrand flex items-center justify-center mx-auto shadow-xs border border-emerald-100">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+        </div>
+
+        <div class="space-y-2">
+          <h3 class="text-2xl font-black text-slateDark" data-t="successTitle">
+            Thank You! Request Received
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-600 max-w-sm mx-auto leading-relaxed" data-t="successDesc">
+            Thank you for reaching out. We have received your details and will get back to you shortly (typically within 15 minutes).
+          </p>
+        </div>
+
+        <div class="pt-4 max-w-xs mx-auto">
+          <button type="button" onclick="closeDemoModal()" class="w-full py-3 px-6 rounded-xl bg-slateDark hover:bg-slate-800 text-white font-bold text-xs sm:text-sm shadow-sm transition cursor-pointer" data-t="modalCloseBtn">
+            Close Window
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== MULTILINGUAL TRANSLATION DICTIONARY & SCRIPTS ==================== -->
+  <script>
+    const TRANSLATIONS = {
+      en: {
+        navTagline: "SERVICE BUSINESS AI OS",
+        navEngines: "5 Core Engines",
+        navFlywheel: "The Connected Loop",
+        navSolutions: "Industry Solutions",
+        navCalculator: "Loss Calculator",
+        navConfigurator: "Fleet Configurator",
+        navFaq: "FAQ",
+        navBook: "Book a Demo",
+
+        heroBadge: "AI Operating System for Service Businesses",
+        heroH1: "The AI Operating System <br><span class=\\"font-serif italic font-normal text-emeraldBrand text-[1.12em] tracking-normal\\">for Service Businesses.</span>",
+        heroSub: "Connect customer conversations, CRM, scheduling, meetings, outreach and business data through a unified layer of AI agents. Zero manual data entry — your entire business workflow runs seamlessly 24/7.",
+        heroCtaPrimary: "Book a Live Demo",
+        heroCtaNote: "Free · 30 Minutes · Zero Obligation",
+        heroCtaSub: "Custom architecture blueprint for your business model",
+        proof1: "5 Specialized Engines: Ailo, ILDAM, Bandla, Mirzo & Izlo",
+        proof2: "Clinics · Education · Automotive · Professional Services",
+
+        heroFloat1: "Ailo: 47 Inquiries Triaged in 8s",
+        heroFloat2: "Izlo: 14 Outbound Accounts Reached",
+        dashStatus: "5/5 FLEET LIVE",
+        kpi1Label: "LEADS",
+        kpi2Label: "ENGINES",
+        kpi2Active: "Active",
+        kpi3Label: "TIME SAVED",
+        kpi3Sub: "This Week",
+        kpi3Value: "~$480 saved",
+        telemetryTitle: "Autonomous Event Telemetry",
+        telemetrySync: "Synchronized",
+        tel1: "WhatsApp inquiry qualified in 8s; routed to Bandla",
+        tel2: "14 B2B accounts prospected via Email & LinkedIn; 3 replies",
+        tel3: "Deal moved to Proposal stage; advance invoice scheduled",
+        tel4: "Consultation confirmed for Thu 14:00; invites synced",
+        tel5: "42-min meeting summarized; 4 action items sent to Telegram",
+
+        marqueeTitle: "Natively Integrates With Your Existing Enterprise Software",
+
+        demoEyebrow: "Real-Time Autonomous Coordination",
+        demoTitle: "How Ailo, Bandla, and ILDAM Coordinate Instantly",
+        demoSub: "Not a static button bot — dynamic qualification, real-time calendar booking, and automatic CRM synchronization.",
+        chatChannel: "Omnichannel: Telegram · WhatsApp · Instagram",
+        chatMsg1: "Hello! We run a medical clinic with 8 doctors. We need to automate patient inquiries, appointments, and record management. Can you handle this?",
+        chatMsg2: "Hello! Absolutely. Under GPTify OS, I qualify patient needs 24/7 across WhatsApp and Telegram, Bandla syncs your doctors' live schedules, and ILDAM manages patient history. Would you like a doctor consultation or a live system walkthrough?",
+        chatMsg3: "We want to book a live walkthrough for tomorrow at 3:00 PM for our clinic management team.",
+        chatBadge: "Slot reserved via Bandla · Deal & record created in ILDAM CRM",
+
+        flywheelBadge: "THE CONNECTED PRODUCT FLYWHEEL",
+        flywheelTitle: "One Continuous Loop. Zero Manual Friction.",
+        flywheelSub: "Each specialized engine does one job with excellence — and hands off to the next automatically. One agent acts, the next agent continues. Nothing drops through the cracks.",
+        flyStep1Role: "AI Outbound Agent",
+        flyStep1Desc: "Discovers high-value prospective clients and initiates personalized outreach across Email, LinkedIn, Telegram, and WhatsApp.",
+        flyStep1Handoff: "↳ Hands warm leads to Ailo",
+        flyStep2Role: "AI Customer Agent",
+        flyStep2Desc: "Engages inbound inquiries within 8 seconds, answers complex FAQs, qualifies budget and intent, and resolves initial objections.",
+        flyStep2Handoff: "↳ Syncs contact to ILDAM",
+        flyStep3Role: "B2B Agile CRM",
+        flyStep3Desc: "Centralizes customer 360 data, tracks deal stages on Kanban, and enforces cash flow through automated payment milestones.",
+        flyStep3Handoff: "↳ Triggers booking in Bandla",
+        flyStep4Role: "Smart Scheduling Engine",
+        flyStep4Desc: "Locks appointment times based on live staff availability, syncs calendar invites, and sends proactive SMS/Telegram reminders.",
+        flyStep4Handoff: "↳ Prepares session for Mirzo",
+        flyStep5Role: "Private AI Scribe",
+        flyStep5Desc: "Extracts decisions and action items from client meetings with zero bot presence in the call. Syncs notes back to ILDAM and Telegram.",
+        flyStep5Handoff: "↳ Updates ILDAM pipeline",
+        flyBannerTitle: "Connected by GPTify OS: Unified Data Layer & Automation",
+        flyBannerSub: "Customer data and deal context flow automatically across every tool. No repetitive manual copy-pasting ever.",
+        flyBannerBtn: "See the Connected Loop Live",
+
+        pillarsEyebrow: "Core Architecture",
+        pillarsTitle: "The 5 Core Operating Engines",
+        pillarsSub: "Deploy individual modules or roll out the complete unified operating system.",
+        ailoRole: "Your AI Customer Agent",
+        ailoDesc: "Responds to inbound inquiries across WhatsApp, Instagram Direct, and Telegram within <strong>8 seconds</strong>. Qualifies budget and need, resolves objections, and routes sales-ready leads to CRM.",
+        ailoB1: "<strong>Official Meta Graph API:</strong> Fully verified, zero account ban risk.",
+        ailoB2: "<strong>Multilingual Context:</strong> Native audio and text comprehension.",
+        ailoB3: "<strong>Natural Human Flow:</strong> Dynamic intelligence instead of rigid button trees.",
+        ailoCta: "Visit ailo.gptify.uz",
+
+        ildamRole: "CRM That Keeps You Moving",
+        ildamDesc: "Agile B2B pipeline management without enterprise bloat. Centralizes customer databases, tracks deal stages on Kanban, and enforces cash flow through automated payment milestones.",
+        ildamB1: "<strong>Visual Kanban Pipeline:</strong> Drag-and-drop deal management with automated stage transitions.",
+        ildamB2: "<strong>Milestone Cash Flow:</strong> Automated alerts for deposit invoices, progress billings, and deadlines.",
+        ildamB3: "<strong>Seamless Agent Sync:</strong> Automatically ingests qualified leads from Ailo and prospects from Izlo.",
+        ildamCta: "Visit ildam.gptify.uz",
+
+        bandlaRole: "Scheduling Built for Business",
+        bandlaDesc: "Eliminates scheduling friction for service businesses. Connects directly with doctor, teacher, or team availability, locks slots instantly, and enforces attendance with automatic reminders.",
+        bandlaB1: "<strong>Zero Double-Booking:</strong> Live synchronization with Google Calendar, Outlook, and internal shifts.",
+        bandlaB2: "<strong>Automated No-Show Shield:</strong> Multi-channel Telegram and SMS reminders eliminate missed appointments.",
+        bandlaB3: "<strong>Ailo & CRM Integration:</strong> Ailo reserves timeslots directly in the chat without external redirects.",
+        bandlaCta: "Explore Bandla Integration",
+
+        mirzoRole: "Your Private AI Scribe",
+        mirzoDesc: "Private AI meeting notes. <strong>No bots in the call.</strong> Zero awkward avatars. Captures decisions, action items, and deadlines from Zoom, Teams, and Google Meet directly to Telegram and ILDAM CRM.",
+        mirzoB1: "<strong>Zero-Bot Presence:</strong> 100% confidential. No bot joins or disturbs your client conversations.",
+        mirzoB2: "<strong>Precise Action Protocols:</strong> Filters conversational noise into structured owner/deadline briefs.",
+        mirzoB3: "<strong>Instant Multi-Channel Dispatch:</strong> Summary and assigned tasks delivered within 60 seconds.",
+        mirzoCta: "Visit meet.gptify.uz",
+
+        izloRole: "Your AI Outbound Agent",
+        izloDesc: "Eliminates cold prospecting fatigue. Autonomously discovers target accounts, sends hyper-personalized outreach via <strong>Email, LinkedIn, Telegram, and WhatsApp</strong>, and qualifies replies in seconds.",
+        izloB1: "<strong>Autonomous Account Discovery:</strong> Identifies decision-makers matching your ideal customer profile.",
+        izloB2: "<strong>Contextual Reply Qualification:</strong> Analyzes responses, handles skepticism, and schedules warm demos.",
+        izloB3: "<strong>Automated Deal Handoff:</strong> Sales-ready accounts flow straight into ILDAM CRM for your sales closers.",
+        izloCta: "Request Izlo Outbound Fleet",
+
+        solutionsEyebrow: "Packaged Solutions",
+        solutionsTitle: "Engineered for High-Touch Service Businesses",
+        solutionsSub: "Pre-packaged operational configurations tailored to the exact workflow requirements of your industry.",
+        sol1Title: "GPTify OS for Clinics",
+        sol1Engines: "Ailo + ILDAM + Bandla + Mirzo + Automation",
+        sol1Desc: "Eliminate receptionist phone logjams and patient no-shows. Ailo answers patient queries in 8 seconds across WhatsApp and Telegram, Bandla books doctor appointment slots, ILDAM keeps medical consultation history, and Mirzo transcribes clinical consultations with zero bots.",
+        sol1F1: "24/7 Patient triage & emergency routing",
+        sol1F2: "Live doctor availability & automated SMS reminders",
+        sol1F3: "Confidential treatment notes & prescription history",
+        sol1Cta: "Explore Clinic Architecture",
+
+        sol2Title: "GPTify OS for Education",
+        sol2Engines: "Ailo + ILDAM + Bandla + Mirzo",
+        sol2Desc: "Convert social media inquiries into enrolled students. Ailo qualifies course interests, Bandla schedules free trial lessons and level evaluations, ILDAM tracks tuition milestones, and Mirzo produces academic review protocols for teachers.",
+        sol2F1: "Instant course details & tuition fee consultation",
+        sol2F2: "Trial lesson placement and calendar sync",
+        sol2F3: "Automated payment reminders for installment tuition",
+        sol2Cta: "Explore Education Architecture",
+
+        sol3Title: "GPTify OS for Automotive",
+        sol3Engines: "Ailo + ILDAM + Bandla + Izlo",
+        sol3Desc: "Maximize service bay capacity and vehicle sales. Ailo handles trade-in and maintenance inquiries, Bandla manages test-drive and bay appointments, ILDAM manages vehicle orders and spare part invoices, while Izlo conducts corporate fleet outreach.",
+        sol3F1: "Automated test drive and maintenance booking",
+        sol3F2: "B2B commercial fleet outreach with Izlo",
+        sol3F3: "Service milestone follow-ups for oil/tire maintenance",
+        sol3Cta: "Explore Automotive Architecture",
+
+        sol4Title: "GPTify OS for Professional Services",
+        sol4Engines: "Izlo + Ailo + ILDAM + Bandla + Mirzo",
+        sol4Desc: "Run an end-to-end client engine. Izlo discovers and prospects ideal corporate clients, Ailo handles website and social leads, Bandla books consultations, ILDAM enforces retainer milestones, and Mirzo records partner meetings with zero-bot discretion.",
+        sol4F1: "Multi-channel prospecting across Email and LinkedIn",
+        sol4F2: "Client proposal pipeline and retainer invoicing",
+        sol4F3: "Confidential partner call summaries sent to Telegram",
+        sol4Cta: "Explore B2B Services Architecture",
+
+        calcEyebrow: "Interactive ROI Calculator",
+        calcTitle: "How Much Capital Are You Leaving on the Table?",
+        calcSub: "Adjust your team parameters. See the exact recoverable losses currently draining your service business.",
+        calcTeam: "Number of team members:",
+        calcHours: "Weekly repetitive manual hours per employee:",
+        calcSalary: "Average monthly salary per employee:",
+        calcResultTitle: "Estimated Annual Recoverable Capital",
+        calcSavedYear: "Time recovered / year:",
+        calcSavedWeek: "Hours recovered / week:",
+        calcCta: "Eliminate These Operating Losses",
+
+        cfgEyebrow: "Modular Architecture",
+        cfgTitle: "GPTify OS Configurator: Assemble Your Custom Fleet",
+        cfgSub: "The unified 5-engine core installs as standard. Activate optional modules tailored to your operations.",
+        cfgCoreBadge: "5-Engine Base Core",
+        cfgCoreDesc: "The essential interconnected pipeline for autonomous service business operations.",
+        cfgCore1: "<strong>Ailo Customer Agent:</strong> 8-second WhatsApp, Meta & Telegram triage",
+        cfgCore2: "<strong>ILDAM CRM:</strong> Agile deal stages, Kanban & cash flow tracking",
+        cfgCore3: "<strong>Bandla Scheduling:</strong> Calendar booking & automated reminder shield",
+        cfgCore4: "<strong>Mirzo Private Scribe:</strong> Bot-free confidential meeting notes & action items",
+        cfgCore5: "<strong>Izlo Outbound Agent:</strong> Autonomous B2B prospecting across Email & LinkedIn",
+        cfgQuoteBtn: "Request Custom Architecture Demo",
+        cfgAddonsTitle: "Specialized Add-on Modules",
+        cfgAddonsSub: "Select optional modules for your operational stack",
+        cfgSelectedPrefix: "Selected:",
+        cfgSelectedSuffix: "units",
+        add1Title: "Enterprise Knowledge Base (RAG)",
+        add1Desc: "Internal AI search assistant indexing company SOPs, clinical protocols, and price lists.",
+        add2Title: "Content & Video Studio",
+        add2Desc: "Translates company expertise into reels, carousels, and educational thought leadership.",
+        add3Title: "Voice AI Receptionist",
+        add3Desc: "Inbound telephony call answering, service consultation, and Bandla booking.",
+        add4Title: "1C / ERP Bridge",
+        add4Desc: "Real-time bi-directional synchronization with accounting, billing, and inventory.",
+        add5Title: "Auto-Heal & Fallback",
+        add5Desc: "Automatic retry and failover protocols when third-party messaging APIs hiccup.",
+        add6Title: "Urgent Escalation Agent",
+        add6Desc: "Instant manager notification when VIP clients require urgent human intervention.",
+
+        procEyebrow: "Pragmatic Methodology",
+        procTitle: "3-Stage Implementation Roadmap",
+        procSub: "We audit and streamline real-world service operations before deploying code.",
+        p1Title: "01 Discover (Audit)",
+        p1Desc: "Map existing workflows: uncover where time is squandered, where inquiries drop off, and where scheduling bottlenecks choke revenue.",
+        p1B1: "• Complete service operational audit",
+        p1B2: "• Drop-off and no-show analysis",
+        p1B3: "• Recoverable loss computation",
+        p2Title: "02 Design (Architecture)",
+        p2Desc: "Refine processes before automating. Ensure every trigger, handoff, and reminder serves an unambiguous operational objective.",
+        p2B1: "• Conveyor architecture blueprint",
+        p2B2: "• Clear team Standard Operating Procedures (SOP)",
+        p2B3: "• Role handoffs & escalation thresholds",
+        p3Title: "03 Build (Deploy & Handoff)",
+        p3Desc: "Implement the engines: connect Ailo, ILDAM, Bandla, Mirzo, and Izlo. Conduct end-to-end stress testing and train your staff.",
+        p3B1: "• Turnkey enterprise integration",
+        p3B2: "• Live staff onboarding & training",
+        p3B3: "• Video playbooks & SLA monitoring",
+
+        faqEyebrow: "Answers & Transparency",
+        faqTitle: "Frequently Asked Questions",
+        faqQ1: "How do the 5 engines (Ailo, ILDAM, Bandla, Mirzo, Izlo) work together?",
+        faqA1: "They form one continuous loop: Izlo discovers and prospects accounts, Ailo engages incoming inquiries in 8 seconds, ILDAM tracks the relationship and payment milestones, Bandla locks calendar appointments, and Mirzo records meeting action items without bots. Data flows between them seamlessly so no human enters data twice.",
+        faqQ2: "How does Mirzo record meetings without a bot joining the call?",
+        faqA2: "Unlike ordinary AI notetakers that force an awkward \\"Bot Assistant\\" into your Zoom or Google Meet room, Mirzo operates with zero-bot presence. Audio is processed via private executive audio streams or post-call recordings, delivering structured action items directly to your Telegram or ILDAM CRM in 60 seconds with 100% confidentiality.",
+        faqQ3: "Can Bandla integrate with our existing calendars and prevent double-booking?",
+        faqA3: "Yes. Bandla connects directly with Google Calendar, Outlook, and your internal staff shifts. When Ailo qualifies a patient or client, Bandla checks real-time availability and confirms the slot. It automatically sends reminder alerts to slash no-shows.",
+        faqQ4: "How is our customer database and operational data protected?",
+        faqA4: "All infrastructure runs on your dedicated cloud accounts or private enterprise servers. We avoid unverified third-party scrapers: we use official Meta Graph APIs, end-to-end encrypted databases, and strict access controls. Your client data remains 100% your enterprise property.",
+        faqQ5: "How long does deployment and team onboarding take?",
+        faqA5: "Core deployment installs within 48 hours to 5 business days. Following setup, we run live interactive team training sessions, deliver step-by-step video manuals, and provide dedicated monitoring during the initial 14-day operational ramp.",
+
+        founderCtaTitle: "30-Minute Complimentary Operations Audit",
+        founderCtaSub: "During this session, we map where your service business is losing hours and revenue, delivering a pragmatic action plan with zero sales pressure.",
+        founderGuarantee: "<strong>Our Guarantee:</strong> If we fail to identify at least $2,000+ in annual recoverable operational savings during the call, we will candidly say so and respect your time.",
+        founderCtaPrimary: "Book a 30-Min Demo Call",
+        founderCtaTelegram: "Message on Telegram",
+        founderRole: "Founder at GPTify.co & Co-Founder at Cubeo.ai",
+
+        modalBadge: "LIVE DEMO & AUDIT",
+        modalTitle: "Book a Live Demo & System Audit",
+        modalSub: "See GPTify OS running live on your workflow. We will contact you within 15 minutes.",
+        lblModalName: "Your Full Name",
+        lblModalCompany: "Company Name & Industry",
+        lblModalContact: "Phone Number or Telegram (@username)",
+        lblModalChannels: "Channels to Connect:",
+        lblModalTeam: "Team Size:",
+        modalSubmitBtn: "Confirm & Book Demo",
+        modalFooterNote: "Zero spam · 100% confidential · Turnkey deployed in 48h",
+        successTitle: "Thank You! Request Received",
+        successDesc: "Thank you for reaching out. We have received your details and our team will get back to you shortly (typically within 15 minutes).",
+        modalCloseBtn: "Close Window",
+
+        footerDesc: "The AI operating system for service businesses.",
+        footerRights: "All rights reserved."
+      },
+
+      uz: {
+        navTagline: "XIZMAT KO'RSATISH BIZNESLARI UCHUN AI OS",
+        navEngines: "5 Asosiy Dvigatel",
+        navFlywheel: "Yagona Konveyer",
+        navSolutions: "Sohaviy Yechimlar",
+        navCalculator: "Kalkulyator",
+        navConfigurator: "Flot Konstruktori",
+        navFaq: "Savollar",
+        navBook: "Demo Belgilash",
+
+        heroBadge: "Xizmat ko'rsatish korxonalari uchun AI operatsion tizimi",
+        heroH1: "Xizmat ko'rsatish bizneslari uchun <br><span class=\\"font-serif italic font-normal text-emeraldBrand text-[1.12em] tracking-normal\\">AI operatsion tizimi.</span>",
+        heroSub: "Mijozlar bilan muloqot, CRM, uchrashuvlarni belgilash, majlislar bayonnomasi, mijoz qidirish va avtomatlashtirishni yagona AI qatlami orqali bog'lang. Qo'lda ma'lumot kiritishga chek qo'ying — barcha jarayonlaringiz 24/7 uzluksiz ishlaydi.",
+        heroCtaPrimary: "Jonli Demo Belgilash",
+        heroCtaNote: "Bepul · 30 daqiqa · Majburiyatsiz",
+        heroCtaSub: "Biznesingiz modeli uchun moslashtirilgan tizim arxitekturasi",
+        proof1: "5 Ta Ixtisoslashgan Dvigatel: Ailo, ILDAM, Bandla, Mirzo va Izlo",
+        proof2: "Klinikalar · O'quv markazlari · Avtomobil servis · B2B xizmatlar",
+
+        heroFloat1: "Ailo: 47 ta murojaat 8s da saralandi",
+        heroFloat2: "Izlo: 14 ta korxona bilan aloqa o'rnatildi",
+        dashStatus: "5/5 FLOT FAOL",
+        kpi1Label: "LIDLAR",
+        kpi2Label: "AGENTLAR",
+        kpi2Active: "Faol",
+        kpi3Label: "TEJALGAN VAQT",
+        kpi3Sub: "Bu hafta",
+        kpi3Value: "~5,600,000 so'm",
+        telemetryTitle: "Avtonom Oqim Jurnali",
+        telemetrySync: "Sinxronlashgan",
+        tel1: "WhatsApp murojaati 8s da saralanib, Bandla orqali joy band qilindi",
+        tel2: "Email va LinkedIn orqali 14 ta korxonaga taklif yuborildi; 3 ta javob",
+        tel3: "Bitim taklif bosqichiga o'tkazildi; to'lov eslatmasi rejalashtirildi",
+        tel4: "Payshanba 14:00 ga qabul tasdiqlandi; kalendarlar sinxronlandi",
+        tel5: "42 daqiqalik uchrashuv tahlil qilinib, 4 ta vazifa Telegramga yuborildi",
+
+        marqueeTitle: "Sizning Mavjud Dasturlaringizga To'g'ridan-To'g'ri Bog'lanadi",
+
+        demoEyebrow: "Real Vaqtda Avtonom Hamkorlik",
+        demoTitle: "Ailo, Bandla va ILDAM Qanday Sinxron Ishlaydi?",
+        demoSub: "Quruq tugmali bot emas — 8 soniyada samimiy muloqot, taqvimdan bo'sh vaqtni band qilish va CRMga avtomatik biriktirish.",
+        chatChannel: "Omnikanal: Telegram · WhatsApp · Instagram",
+        chatMsg1: "Assalomu alaykum! Bizda 8 nafar shifokor ishlaydigan klinika bor. Bemorlar murojaati, qabulga yozish va kartochkalar nazoratini avtomatlashtirmoqchimiz. Buni qanday qurasizlar?",
+        chatMsg2: "Vaalaykum assalom! Albatta. GPTify OS doirasida Ailo bemorlarni WhatsApp va Telegramda 24/7 qabul qiladi, Bandla shifokorlar jadvalini tekshirib qabulga yozadi, ILDAM esa murojaatlar tarixini yuritadi. Shifokor qabuli kerakmi yoki demo ko'rmoqchimisiz?",
+        chatMsg3: "Ertaga soat 15:00 ga klinika rahbariyati uchun jonli demo ko'rsatsangiz yaxshi bo'lardi.",
+        chatBadge: "Bandla orqali vaqt band qilindi · Bemor ILDAM CRMga kiritildi",
+
+        flywheelBadge: "YAGONA KONVEYER VA FLYWHEEL",
+        flywheelTitle: "Yagona Uzluksiz Zanjir. Qo'l Mehnatisiz.",
+        flywheelSub: "Har bir ixtisoslashgan dvigatel o'z vazifasini a'lo darajada bajaradi va navbatdagi bosqichga avtomatik uzatadi. Bitta agent boshlaydi, keyingisi davom ettiradi. Hech narsa yo'qolmaydi.",
+        flyStep1Role: "AI Outbound Agenti",
+        flyStep1Desc: "Maqsadli mijozlarni topadi, Email, LinkedIn, Telegram va WhatsApp orqali shaxsiylashtirilgan takliflar yuboradi.",
+        flyStep1Handoff: "↳ Tayyor lidni Ailoga uzatadi",
+        flyStep2Role: "AI Mijoz Agenti",
+        flyStep2Desc: "Kiruvchi murojaatlarga 8 soniyada javob beradi, savollarga oydinlik kiritadi va ehtiyojni aniqlaydi.",
+        flyStep2Handoff: "↳ Kontaktni ILDAMga yozadi",
+        flyStep3Role: "Agile B2B CRM",
+        flyStep3Desc: "Mijoz ma'lumotlarini markazlashtiradi, Kanban voronkasini boshqaradi va to'lov bosqichlarini nazorat qiladi.",
+        flyStep3Handoff: "↳ Bandlani ishga tushiradi",
+        flyStep4Role: "Aqlli Qabul Tizimi",
+        flyStep4Desc: "Xodimlar jadvalidan kelib chiqib uchrashuv vaqtini belgilaydi, SMS/Telegram eslatmalar bilan qatnashuvni ta'minlaydi.",
+        flyStep4Handoff: "↳ Uchrashuvni Mirzoga tayyorlaydi",
+        flyStep5Role: "Maxfiy AI Kotib",
+        flyStep5Desc: "Qo'ng'iroqda begona botlarsiz majlis qarorlari va topshiriqlarni qayd etib, ILDAM va Telegramga yuboradi.",
+        flyStep5Handoff: "↳ ILDAM voronkasini yangilaydi",
+        flyBannerTitle: "GPTify OS bilan Birlashgan: Yagona Ma'lumot Qatlami va Avtomatlashtirish",
+        flyBannerSub: "Mijoz ma'lumotlari barcha dasturlar bo'ylab o'zi yuradi. Hech qachon bir ma'lumotni qayta qo'lda ko'chirmaysiz.",
+        flyBannerBtn: "Ushbu Zanjirni Jonli Ko'rish",
+
+        pillarsEyebrow: "Tizim Arxitekturasi",
+        pillarsTitle: "5 Ta Asosiy Operatsion Dvigatel",
+        pillarsSub: "Har bir modulni alohida yo'lga qo'yish yoki yagona yaxlit operatsion tizim sifatida ishlatish mumkin.",
+        ailoRole: "AI Mijoz Agenti",
+        ailoDesc: "WhatsApp, Instagram Direct va Telegram'ga kelgan murojaatlarga <strong>8 soniyada</strong> insondek javob beradi. Ehtiyojni aniqlaydi, e'tirozlarni yopadi va buyurtmaga tayyor lidlarni CRMga yo'naltiradi.",
+        ailoB1: "<strong>Meta Rasmiy Graph API:</strong> Bloklanish xavfisiz, to'liq qonuniy integratsiya.",
+        ailoB2: "<strong>Ko'p Tillilik va Kontekst:</strong> O'zbek, rus va ingliz tillarida audio va matnni to'liq tushunish.",
+        ailoB3: "<strong>Insoniy Muloqot:</strong> Quruq tugmalar emas, professional savdo intellekti.",
+        ailoCta: "ailo.gptify.uz saytiga o'tish",
+
+        ildamRole: "Tezkor B2B CRM",
+        ildamDesc: "Ortiqcha murakkabliklarsiz, chaqqon va samarali CRM. Mijozlar bazasi, bosqichma-bosqich Kanban voronkasi va to'lovlarni avtomatik nazorat qiladi.",
+        ildamB1: "<strong>Vizual Kanban Voronkasi:</strong> Bitimlarni surib boshqarish va avtomatik holat almashinuvi.",
+        ildamB2: "<strong>To'lov Bosqichlari Nazorati:</strong> Avans, oraliq hisob-faktura va to'lov muddatlarini eslatish.",
+        ildamB3: "<strong>Avtonom Sinxronizatsiya:</strong> Ailo va Izlo orqali kelgan barcha lidlarni bir zumda bazaga kiritish.",
+        ildamCta: "ildam.gptify.uz saytiga o'tish",
+
+        bandlaRole: "Biznes Uchun Qabul Tizimi",
+        bandlaDesc: "Xizmat ko'rsatish sohalarida uchrashuv belgilash chalkashliklarini yo'qotadi. Shifokor, ustoz yoki xodimlar taqvimi bilan to'g'ridan-to'g'ri bog'lanib, bo'sh vaqtlarni band qiladi.",
+        bandlaB1: "<strong>Chalkashliksiz Band Qilish:</strong> Google Calendar, Outlook va ichki navbatchilik jadvallari bilan jonli sinxron.",
+        bandlaB2: "<strong>Kelmay Qolishdan Himoya:</strong> Telegram va SMS orqali o'z vaqtida eslatmalar yuborish.",
+        bandlaB3: "<strong>Ailo va CRM bilan Bog'liqlik:</strong> Bemor yoki mijoz chatning o'zidayoq vaqtni band qiladi.",
+        bandlaCta: "Bandla Imkoniyatlarini Ko'rish",
+
+        mirzoRole: "Maxfiy AI Kotib",
+        mirzoDesc: "Maxfiy uchrashuv intellekti. <strong>Qo'ng'iroqda begona botlarsiz.</strong> Zoom, Google Meet va Teams suhbatlaridagi qarorlar va vazifalarni Telegram hamda ILDAM CRMga uzatadi.",
+        mirzoB1: "<strong>Zero-Bot Maxfiylik:</strong> Ekrandan begona bot ko'rinmaydi, audio oqimi to'liq shifrlangan.",
+        mirzoB2: "<strong>Aniq Topshiriqlar Bayonnomasi:</strong> Suhbatdagi suvlarni chiqarib tashlab, aniq mas'ullar va muddatlarni belgilaydi.",
+        mirzoB3: "<strong>60 Soniyada Yetkazish:</strong> Uchrashuv tugashi bilanoq kim nima qilishi kerakligi tayyor bo'ladi.",
+        mirzoCta: "meet.gptify.uz saytiga o'tish",
+
+        izloRole: "AI Outbound Agenti",
+        izloDesc: "Sovuq qo'ng'iroqlar va qo'lda xabar yozish o'rniga ishlovchi avtonom agent. Korxonalarni qidiradi, <strong>Email, LinkedIn, Telegram va WhatsApp</strong> orqali takliflar yuboradi va javoblarni saralaydi.",
+        izloB1: "<strong>Avtonom Korxonalar Qidiruvi:</strong> Sizning talablaringizga mos qaror qabul qiluvchilarni aniqlash.",
+        izloB2: "<strong>Jonli Muloqot va Saralash:</strong> Qiziqish bildirgan mijozlar bilan muloqot qilib, tayyor uchrashuv belgilash.",
+        izloB3: "<strong>CRMga Avtomatik Yo'naltirish:</strong> Issiq mijozlarni ILDAM CRMga to'g'ridan-to'g'ri o'tkazish.",
+        izloCta: "Izlo Flotini So'rash",
+
+        solutionsEyebrow: "Sohaviy Yechimlar",
+        solutionsTitle: "Xizmat Ko'rsatish Sohalari Uchun Maxsus",
+        solutionsSub: "Har bir biznes sohasi o'ziga xos ishlaydi. Quyidagi tayyor paketlar sohangiz talablariga moslab ishlab chiqilgan.",
+        sol1Title: "Klinikalar va Tibbiyot Markazlari",
+        sol1Engines: "Ailo + ILDAM + Bandla + Mirzo + Avtomatlashtirish",
+        sol1Desc: "Qabulxonadagi qo'ng'iroqlar tiqilinchini va bemorlar kelmay qolishini yo'qoting. Ailo bemorlarga 8 soniyada javob beradi, Bandla shifokorlar vaqtiga qarab yozadi, ILDAM bemorlar tarixini saqlaydi, Mirzo esa shifokor konsultatsiyalarini botlarsiz yozib oladi.",
+        sol1F1: "24/7 Bemorlarni qabul qilish va saralash",
+        sol1F2: "Shifokor jadvali bo'yicha band qilish va SMS eslatmalar",
+        sol1F3: "Maxfiy davolanish tarixi va retseptlar nazorati",
+        sol1Cta: "Klinika Arxitekturasini Ko'rish",
+
+        sol2Title: "O'quv Markazlari va Akademiyalar",
+        sol2Engines: "Ailo + ILDAM + Bandla + Mirzo",
+        sol2Desc: "Ijtimoiy tarmoqlardan kelgan har bir so'rovni o'quvchiga aylantiring. Ailo kurslar bo'yicha to'liq ma'lumot beradi, Bandla sinov darslariga yozadi, ILDAM to'lovlarni nazorat qiladi, Mirzo esa o'qituvchilar majlislarini qayd etadi.",
+        sol2F1: "Kurslar va narxlar bo'yicha 8s da ma'lumot",
+        sol2F2: "Bepul sinov darslariga avtomatik yozish",
+        sol2F3: "Oylik to'lovlar va qarzdorliklarni eslatish zanjiri",
+        sol2Cta: "Ta'lim Arxitekturasini Ko'rish",
+
+        sol3Title: "Avtosalonlar va Texnik Xizmat",
+        sol3Engines: "Ailo + ILDAM + Bandla + Izlo",
+        sol3Desc: "Servis zallarini to'liq band qiling va avtomobil savdosini oshiring. Ailo ta'mirlash va trade-in so'rovlarini qabul qiladi, Bandla test-drayv va ustaxonaga yozadi, ILDAM ehtiyot qismlar hisobini yuritadi, Izlo esa korporativ parklarga taklif yuboradi.",
+        sol3F1: "Test-drayv va servisga avtomatik navbat",
+        sol3F2: "Izlo orqali korporativ avtoparklarga B2B chiqish",
+        sol3F3: "Moy almashtirish va texnik ko'rik eslatmalari",
+        sol3Cta: "Avto Arxitekturasini Ko'rish",
+
+        sol4Title: "B2B va Konsalting Kompaniyalari",
+        sol4Engines: "Izlo + Ailo + ILDAM + Bandla + Mirzo",
+        sol4Desc: "B2B xizmatlar uchun to'liq savdo va loyiha zanjiri. Izlo maqsadli korxonalarga chiqadi, Ailo kiruvchi so'rovlarni saralaydi, Bandla strategik uchrashuvlarni belgilaydi, ILDAM shartnomalarni boshqaradi, Mirzo esa majlislarni qayd etadi.",
+        sol4F1: "Email va LinkedIn orqali faol B2B prospekting",
+        sol4F2: "Tijoriy takliflar va to'lov bosqichlari nazorati",
+        sol4F3: "Hamkorlar bilan uchrashuv bayonnomasi Telegramda",
+        sol4Cta: "B2B Arxitekturasini Ko'rish",
+
+        calcEyebrow: "Interaktiv Kalkulyator",
+        calcTitle: "Stol ustida qancha pul qoldiryapsiz?",
+        calcSub: "Jamoangiz parametrlarini kiriting. Samarasizlik hozirning o'zida biznesingizga qanchaga tushayotganini aniqlang.",
+        calcTeam: "Jamoangizdagi xodimlar soni:",
+        calcHours: "Har bir xodimning takroriy qo'l mehnati:",
+        calcSalary: "O'rtacha oylik maosh (1 xodim):",
+        calcResultTitle: "Yillik Qaytarilishi Mumkin Bo'lgan Mablag'",
+        calcSavedYear: "Tejaladigan vaqt / yil:",
+        calcSavedWeek: "Qaytarilgan soat / hafta:",
+        calcCta: "Ushbu yo'qotishlarni bartaraf etish",
+
+        cfgEyebrow: "Moslashuvchan Modullar",
+        cfgTitle: "GPTify OS Konstruktori: O'zingizga Kerakli Flotni Tanlang",
+        cfgSub: "5 dvigatelli asosiy operatsion o'zak standart o'rnatiladi. Qo'shimcha agentlarni esa ehtiyojingizga qarab faollashtiring.",
+        cfgCoreBadge: "5 Dvigatelli Asosiy O'zak",
+        cfgCoreDesc: "Xizmat ko'rsatish bizneslarining avtonom ishlashi uchun zarur bo'lgan minimal markaziy konveyer.",
+        cfgCore1: "<strong>Ailo Mijoz Agenti:</strong> 8 soniyalik WhatsApp, Meta va Telegram aloqasi",
+        cfgCore2: "<strong>ILDAM CRM:</strong> Voronka, Kanban va to'lovlar nazorati",
+        cfgCore3: "<strong>Bandla Qabul Tizimi:</strong> Qabulga yozish va eslatmalar qalqoni",
+        cfgCore4: "<strong>Mirzo Maxfiy Kotib:</strong> Botlarsiz majlislar bayonnomasi va vazifalar",
+        cfgCore5: "<strong>Izlo Outbound Agenti:</strong> Email va LinkedIn orqali avtonom mijoz topish",
+        cfgQuoteBtn: "Moslashtirilgan Demo Olish",
+        cfgAddonsTitle: "Qo'shimcha Ixtisoslashgan Modullar",
+        cfgAddonsSub: "Kerakli modullarni belgilang",
+        cfgSelectedPrefix: "Tanlandi:",
+        cfgSelectedSuffix: "ta",
+        add1Title: "Korporativ Bilimlar Bazasi (RAG)",
+        add1Desc: "Kompaniya hujjatlari, klinik protokollar va narxlar bo'yicha xodimlar uchun tezkor qidiruv yordamchisi.",
+        add2Title: "Kontent & Video Studio",
+        add2Desc: "Kompaniya ekspertizasidan avtomatik Reels, karusel va postlar konveyeri.",
+        add3Title: "Ovozli AI Qabulxona",
+        add3Desc: "Kiruvchi qo'ng'iroqlarni o'zbek tilida qabul qilish, maslahat berish va Bandla orqali yozish.",
+        add4Title: "1C / ERP Ko'prik",
+        add4Desc: "Buxgalteriya va hisob-kitob bilan real vaqtda avtomatik sinxronizatsiya.",
+        add5Title: "Auto-Heal & Qutqaruv",
+        add5Desc: "API yoki internet uzilganda avtomatik qayta urinish va xatolarni tuzatish.",
+        add6Title: "Shoshilinch Eskalatsiya",
+        add6Desc: "Mijoz norozi bo'lganida darhol asoschi yoki boshqaruvchiga qo'ng'iroq qilish.",
+
+        procEyebrow: "Amaliy Metodologiya",
+        procTitle: "3 Bosqichli Yo'l Xaritasi",
+        procSub: "Biz avval xizmat jarayonlaringiz qanday ishlayotganini tushunamiz, keyin esa mustahkam tizim quramiz.",
+        p1Title: "01 Discover (Audit)",
+        p1Desc: "Biznesingizning mavjud jarayonlarini xaritaga tushiramiz: qayerda vaqt yo'qotilyapti, qaysi so'rovlar tushib qolyapti va navbatlar qayerda tiqilyapti.",
+        p1B1: "• To'liq operatsion audit",
+        p1B2: "• Tor bo'g'inlarni (bottlenecks) aniqlash",
+        p1B3: "• Qaytariladigan yo'qotishlar hisob-kitobi",
+        p2Title: "02 Design (Loyiha)",
+        p2Desc: "Texnologiyani ulamasdan oldin jarayonning o'zini to'g'rilaymiz. Har bir qadam aniq biznes maqsadiga xizmat qiladi.",
+        p2B1: "• Konveyer arxitekturasi xaritasi",
+        p2B2: "• Jamoa uchun tushunarli SOP qo'llanmalar",
+        p2B3: "• Aniq mas'ullar va eskalatsiya zanjiri",
+        p3Title: "03 Build (Qurish & Handoff)",
+        p3Desc: "Rejani amalga oshiramiz: Ailo, ILDAM, Bandla, Mirzo va Izlo tizimlarini ulab, sinovdan o'tkazamiz va jamoangizga topshiramiz.",
+        p3B1: "• To'liq kalit ostida integratsiya",
+        p3B2: "• Jamoa bilan jonli onboarding darsi",
+        p3B3: "• Video yo'riqnomalar va kafolatli nazorat",
+
+        faqEyebrow: "Savol-Javoblar",
+        faqTitle: "Ko'p So'raladigan Savollar",
+        faqQ1: "5 ta dvigatel (Ailo, ILDAM, Bandla, Mirzo, Izlo) bir-biri bilan qanday ishlaydi?",
+        faqA1: "Ular yagona uzluksiz zanjir hosil qiladi: Izlo maqsadli mijozlarni topadi, Ailo kiruvchi murojaatlarga 8 soniyada javob beradi, ILDAM mijozlar tarixi va to'lovlarni nazorat qiladi, Bandla taqvim bo'yicha qabulga yozadi, Mirzo esa uchrashuvlarni botlarsiz qayd etadi. Ma'lumotlar avtomatik uzatiladi, qo'lda ko'chirish shart emas.",
+        faqQ2: "Mirzo uchrashuvlarni suhbatga bot kirmasdan qanday yozib oladi?",
+        faqA2: "Oddiy ilovalardek ekranda begona bot-avatar ko'rinmaydi. Audio oqimi maxfiy kanal orqali yoki qo'ng'iroqdan so'ng xavfsiz qayta ishlanadi va 60 soniyada vazifalar bayonnomasi Telegramga hamda ILDAM CRMga yetkaziladi. 100% maxfiylik ta'minlanadi.",
+        faqQ3: "Bandla mavjud taqvimlarimiz bilan bog'lanib, bir vaqtga ikki kishi tushib qolishini oldini oladimi?",
+        faqA3: "Ha, albatta. Bandla to'g'ridan-to'g'ri Google Calendar, Outlook va ichki navbatchilik jadvallari bilan bog'lanadi. Ailo bemor yoki mijoz bilan muloqot qilganda faqat real bo'sh vaqtlarni taklif qiladi va avtomatik eslatmalar bilan qatnashuvni ta'minlaydi.",
+        faqQ4: "Ma'lumotlarimiz va mijozlar bazasi xavfsizligi qanday ta'minlanadi?",
+        faqA4: "Barcha infratuzilma sizning korporativ serverlaringiz yoki rasmiy bulutli hisobingizga ulanadi. Biz uchinchi tomon shubhali botlaridan foydalanmaymiz: Meta rasmiy Graph API, shifrlangan ma'lumotlar bazasi va Meet uchun Zero-Bot maxfiy protokoli ishlatiladi.",
+        faqQ5: "Tizimni o'rnatish va jamoani o'rgatish qancha vaqt oladi?",
+        faqA5: "Standart o'zak o'rnatilishi 48 soatdan 5 ish kunigacha davom etadi. Shundan so'ng biz jamoangiz bilan jonli onboarding darslari o'tkazamiz, qadam-baqadam video qo'llanmalarni topshiramiz va dastlabki 14 kun davomida to'liq nazoratda ushlab turamiz.",
+
+        founderCtaTitle: "30 Daqiqalik Bepul Operatsion Audit",
+        founderCtaSub: "Ushbu suhbat davomida biz biznesingiz qayerda vaqt va mablag' yo'qotayotganini aniqlaymiz. Sizga aniq amaliy qadamlar rejasini taqdim etamiz. Hech qanday bosimsiz, ochiq va professional suhbat.",
+        founderGuarantee: "<strong>Bizning kafolat:</strong> Agar suhbat davomida biznesingizda yiliga kamida $2,000+ tejamkorlik nuqtalarini topa olmasak, buni ochiq aytamiz va vaqtingizni behuda olmaymiz.",
+        founderCtaPrimary: "30 Daqiqalik Demo Belgilash",
+        founderCtaTelegram: "Telegram orqali yozish",
+        founderRole: "Founder at GPTify.co & Co-Founder at Cubeo.ai",
+
+        modalBadge: "JONLI DEMO & AUDIT",
+        modalTitle: "Jonli Demo va Tizim Auditini Belgilash",
+        modalSub: "GPTify OS korxonangiz ish jarayonida qanday ishlashini jonli ko'ring. 15 daqiqada siz bilan bog'lanamiz.",
+        lblModalName: "Ism va Familiyangiz",
+        lblModalCompany: "Kompaniya nomi va faoliyat sohasi",
+        lblModalContact: "Telefon raqam yoki Telegram (@username)",
+        lblModalChannels: "Ulanishi kerak bo'lgan kanallar:",
+        lblModalTeam: "Jamoangiz hajmi:",
+        modalSubmitBtn: "Demoni Tasdiqlash",
+        modalFooterNote: "Spamsiz · 100% maxfiy · 48 soat ichida kalit ostida ulanadi",
+        successTitle: "Rahmat! So'rovingiz Qabul Qilindi",
+        successDesc: "GPTify OS tizimiga qiziqish bildirganingiz uchun rahmat. Ma'lumotlaringiz qabul qilindi, mutaxassisimiz tez orada (odatda 15 daqiqa ichida) siz bilan bog'lanadi.",
+        modalCloseBtn: "Oynani yopish",
+
+        footerDesc: "Xizmat ko'rsatish bizneslari uchun AI operatsion tizimi.",
+        footerRights: "Barcha huquqlar himoyalangan."
+      },
+
+      ru: {
+        navTagline: "AI OS ДЛЯ СФЕРЫ УСЛУГ",
+        navEngines: "5 Двигателей Системы",
+        navFlywheel: "Единый Конвейер",
+        navSolutions: "Отраслевые Решения",
+        navCalculator: "Калькулятор Потерь",
+        navConfigurator: "Конструктор Флота",
+        navFaq: "Вопросы и Ответы",
+        navBook: "Запросить Демо",
+
+        heroBadge: "AI Операционная Система для Сферы Услуг",
+        heroH1: "AI операционная система <br><span class=\\"font-serif italic font-normal text-emeraldBrand text-[1.12em] tracking-normal\\">для бизнеса в сфере услуг.</span>",
+        heroSub: "Объедините диалоги с клиентами, CRM, запись на прием, протоколы встреч, поиск клиентов и автоматизацию через единый уровень AI агентов. Никакого ручного ввода данных — весь операционный цикл работает 24/7.",
+        heroCtaPrimary: "Запросить Демо",
+        heroCtaNote: "Бесплатно · 30 Минут · Без Обязательств",
+        heroCtaSub: "Индивидуальный план архитектуры для вашей бизнес-модели",
+        proof1: "5 Специализированных Двигателей: Ailo, ILDAM, Bandla, Mirzo и Izlo",
+        proof2: "Клиники · Образование · Автосервис и Дилеры · B2B Услуги",
+
+        heroFloat1: "Ailo: 47 обращений обработано за 8с",
+        heroFloat2: "Izlo: 14 B2B компаний на связи",
+        dashStatus: "5/5 ФЛОТ АКТИВЕН",
+        kpi1Label: "ЛИДЫ",
+        kpi2Label: "ДВИГАТЕЛИ",
+        kpi2Active: "Активно",
+        kpi3Label: "СЭКОНОМЛЕНО",
+        kpi3Sub: "За неделю",
+        kpi3Value: "~5,600,000 сум",
+        telemetryTitle: "Журнал Автономных Событий",
+        telemetrySync: "Синхронизировано",
+        tel1: "Лид в WhatsApp квалифицирован за 8с; запись передана в Bandla",
+        tel2: "14 B2B компаний получили предложения (Email и LinkedIn); 3 ответа",
+        tel3: "В ILDAM CRM сделка перешла на этап договора; выставлен счет",
+        tel4: "Запись на четверг 14:00 подтверждена; календари синхронизированы",
+        tel5: "Итоги 42-минутного звонка сформированы; 4 задачи отправлены в Telegram",
+
+        marqueeTitle: "Бесшовная Интеграция с Вашими Корпоративными Программами",
+
+        demoEyebrow: "Автономная Координация в Реальном Времени",
+        demoTitle: "Как Ailo, Bandla и ILDAM Работают Синхронно",
+        demoSub: "Не шаблонный бот — мгновенный диалог, онлайн-бронирование времени и автоматическая фиксация в CRM.",
+        chatChannel: "Омниканал: Telegram · WhatsApp · Instagram",
+        chatMsg1: "Здравствуйте! У нас медицинская клиника, 8 врачей. Хотим автоматизировать запись пациентов, ответы на вопросы и карточки в CRM. Как вы это настраиваете?",
+        chatMsg2: "Здравствуйте! В рамках GPTify OS агент Ailo отвечает пациентам за 8 секунд в WhatsApp и Telegram, Bandla проверяет графики врачей и бронирует приемы, а ILDAM ведет историю пациентов. Забронировать прием или провести демо?",
+        chatMsg3: "Нам нужно демо для руководства клиники на завтра в 15:00.",
+        chatBadge: "Слот забронирован в Bandla · Пациент внесен в ILDAM CRM",
+
+        flywheelBadge: "ЕДИНЫЙ КОНВЕЙЕР И МАХОВИК ПРОДАЖ",
+        flywheelTitle: "Единый Замкнутый Цикл. Без Ручной Рутины.",
+        flywheelSub: "Каждый специализированный двигатель решает свою задачу и передает данные следующему. Ни одна заявка и ни одна договоренность не теряются.",
+        flyStep1Role: "AI Агент Поиска Клиентов",
+        flyStep1Desc: "Находит целевые компании и инициирует точечные контакты через Email, LinkedIn, Telegram и WhatsApp.",
+        flyStep1Handoff: "↳ Передает лида в Ailo",
+        flyStep2Role: "AI Агент Общения с Клиентами",
+        flyStep2Desc: "Отвечает за 8 секунд, закрывает вопросы, выявляет бюджет и отсекает нецелевой трафик.",
+        flyStep2Handoff: "↳ Заносит контакт в ILDAM",
+        flyStep3Role: "Agile B2B CRM",
+        flyStep3Desc: "Ведет карточки клиентов, этапы воронки и контролирует своевременную оплату счетов.",
+        flyStep3Handoff: "↳ Запускает запись в Bandla",
+        flyStep4Role: "Двигатель Онлайн-Записи",
+        flyStep4Desc: "Фиксирует точное время в календаре врачей/специалистов и отправляет напоминания.",
+        flyStep4Handoff: "↳ Готовит сессию для Mirzo",
+        flyStep5Role: "Приватный AI Секретарь",
+        flyStep5Desc: "Фиксирует протоколы встреч без посторонних ботов в звонке и отправляет задачи в Telegram.",
+        flyStep5Handoff: "↳ Обновляет статус в ILDAM",
+        flyBannerTitle: "Связано на Платформе GPTify OS: Единый Слой Данных и Автоматизация",
+        flyBannerSub: "Контекст сделки и данные клиентов переходят автоматически. Никакого ручного копирования.",
+        flyBannerBtn: "Увидеть Единый Конвейер в Действии",
+
+        pillarsEyebrow: "Архитектура Системы",
+        pillarsTitle: "5 Центральных Операционных Двигателей",
+        pillarsSub: "Внедряйте модули по отдельности или запускайте единую операционную систему.",
+        ailoRole: "Ваш AI Агент Общения с Клиентами",
+        ailoDesc: "Отвечает на все входящие запросы в WhatsApp, Instagram Direct и Telegram за <strong>8 секунд</strong>. Выявляет бюджет, закрывает возражения и передает готовых лидов прямо в CRM.",
+        ailoB1: "<strong>Официальный Meta Graph API:</strong> Безопасно, законно, без риска блокировки.",
+        ailoB2: "<strong>Мультиязычность и Контекст:</strong> 100% понимание текста, голоса и сокращений.",
+        ailoB3: "<strong>Человечный Диалог:</strong> Умные продажи вместо примитивных кнопок.",
+        ailoCta: "Перейти на ailo.gptify.uz",
+
+        ildamRole: "CRM, Которая Движет Ваш Бизнес",
+        ildamDesc: "Быстрое и прозрачное управление B2B сделками без громоздких настроек. Наглядная воронка лидов, история коммуникаций, статусы договоров и автоматический контроль этапов оплаты.",
+        ildamB1: "<strong>Наглядная Воронка Сделок:</strong> Поэтапный Kanban-пайплайн с автоматической сменой статусов.",
+        ildamB2: "<strong>Контроль Этапов Оплаты:</strong> Автоматические напоминания об авансах, счетах и сроках платежей.",
+        ildamB3: "<strong>Бесшовная Синхронизация:</strong> Мгновенно принимает заявки от Ailo и прогретые лиды из Izlo.",
+        ildamCta: "Перейти на ildam.gptify.uz",
+
+        bandlaRole: "Система Записи для Бизнеса",
+        bandlaDesc: "Устраняет хаос в расписании специалистов. Подключается к графикам врачей, мастеров или преподавателей, мгновенно бронирует время и отправляет напоминания.",
+        bandlaB1: "<strong>Защита от Накладок:</strong> Синхронизация с Google Calendar, Outlook и графиками смен.",
+        bandlaB2: "<strong>Защита от Неявок:</strong> SMS и Telegram напоминания сводят пропущенные визиты к минимуму.",
+        bandlaB3: "<strong>Связка с Ailo и CRM:</strong> Пациент или клиент выбирает удобный слот прямо в переписке.",
+        bandlaCta: "Узнать Больше о Bandla",
+
+        mirzoRole: "Ваш Приватный AI Секретарь",
+        mirzoDesc: "Приватные протоколы встреч. <strong>Без посторонних ботов в звонке.</strong> Фиксирует решения и задачи из Zoom, Google Meet и Teams прямо в Telegram и ILDAM CRM.",
+        mirzoB1: "<strong>Zero-Bot Конфиденциальность:</strong> В звонке нет постороннего бота-аватара.",
+        mirzoB2: "<strong>Четкий Протокол Задач:</strong> Выделение конкретных поручений, ответственных и дедлайнов.",
+        mirzoB3: "<strong>Доставка за 60 Секунд:</strong> Итоги совещания отправляются в Telegram сразу после звонка.",
+        mirzoCta: "Перейти на meet.gptify.uz",
+
+        izloRole: "Ваш AI Агент Поиска Клиентов",
+        izloDesc: "Заменяет рутину холодных рассылок и звонков. Автоматически находит целевые B2B компании, отправляет персонализированные предложения через <strong>Email, LinkedIn, Telegram и WhatsApp</strong>.",
+        izloB1: "<strong>Поиск ЛПР:</strong> Находит лиц, принимающих решения, точно под ваш профиль клиента.",
+        izloB2: "<strong>Квалификация Ответов:</strong> Обрабатывает возражения и договаривается о времени созвона.",
+        izloB3: "<strong>Прямая Передача в CRM:</strong> Готовые теплые контакты автоматически передаются в ILDAM CRM.",
+        izloCta: "Запросить Флот Izlo",
+
+        solutionsEyebrow: "Отраслевые Решения",
+        solutionsTitle: "Создано для Бизнеса с Высоким Потоком Клиентов",
+        solutionsSub: "Готовые пакетные решения, настроенные под регламенты вашей конкретной отрасли.",
+        sol1Title: "GPTify OS для Клиник и Медцентров",
+        sol1Engines: "Ailo + ILDAM + Bandla + Mirzo + Автоматизация",
+        sol1Desc: "Разгрузите регистратуру и сведите к нулю неявки пациентов. Ailo отвечает за 8 секунд в WhatsApp и Telegram, Bandla ведет запись к врачам, ILDAM хранит историю приемов, а Mirzo фиксирует врачебные консилиумы без ботов.",
+        sol1F1: "Круглосуточный прием и маршрутизация пациентов",
+        sol1F2: "Запись по графику врачей и SMS напоминания",
+        sol1F3: "Конфиденциальная история лечения и протоколы",
+        sol1Cta: "Изучить Решение для Клиник",
+
+        sol2Title: "GPTify OS для Образования и Курсов",
+        sol2Engines: "Ailo + ILDAM + Bandla + Mirzo",
+        sol2Desc: "Конвертируйте заявки из соцсетей в зачисленных студентов. Ailo консультирует по программам, Bandla записывает на пробные уроки, ILDAM ведет график оплат, а Mirzo протоколирует педсоветы.",
+        sol2F1: "Мгновенная консультация по стоимости и расписанию",
+        sol2F2: "Автоматическая запись на пробные уроки",
+        sol2F3: "Контроль оплаты обучения и напоминания о взносах",
+        sol2Cta: "Изучить Решение для Курсов",
+
+        sol3Title: "GPTify OS для Автодилеров и Сервисов",
+        sol3Engines: "Ailo + ILDAM + Bandla + Izlo",
+        sol3Desc: "Обеспечьте полную загрузку сервисных постов и рост продаж авто. Ailo обрабатывает заявки на ТО и trade-in, Bandla записывает на тест-драйв и подъемники, ILDAM ведет заказ-наряды, а Izlo привлекает корпоративные автопарки.",
+        sol3F1: "Онлайн-запись на ТО и тест-драйв за 1 минуту",
+        sol3F2: "Привлечение коммерческих парков через Izlo",
+        sol3F3: "Напоминания о регламентном техобслуживании",
+        sol3Cta: "Изучить Решение для Автобизнеса",
+
+        sol4Title: "GPTify OS для B2B и Консалтинга",
+        sol4Engines: "Izlo + Ailo + ILDAM + Bandla + Mirzo",
+        sol4Desc: "Полный замкнутый цикл для профессиональных услуг. Izlo находит корпоративных заказчиков, Ailo обрабатывает входящие, Bandla бронирует созвоны, ILDAM контролирует этапы договора, а Mirzo ведет протоколы переговоров без ботов.",
+        sol4F1: "Многоканальный аутрич через Email и LinkedIn",
+        sol4F2: "Контроль воронки предложений и этапов оплаты",
+        sol4F3: "Протоколы переговоров с клиентами прямо в Telegram",
+        sol4Cta: "Изучить Решение для B2B Услуг",
+
+        calcEyebrow: "Интерактивный Калькулятор",
+        calcTitle: "Сколько Денег Вы Теряете из-за Рутины?",
+        calcSub: "Введите параметры вашей команды. Узнайте точный объем потерь, который можно устранить уже в этом месяце.",
+        calcTeam: "Количество сотрудников в команде:",
+        calcHours: "Часов ручной механической работы в неделю на сотрудника:",
+        calcSalary: "Средняя зарплата сотрудника в месяц:",
+        calcResultTitle: "Годовая Сумма к Возврату",
+        calcSavedYear: "Экономия времени / год:",
+        calcSavedWeek: "Возвращенные часы / неделю:",
+        calcCta: "Устранить Эти Операционные Потери",
+
+        cfgEyebrow: "Модульная Архитектура",
+        cfgTitle: "Конструктор GPTify OS: Соберите Нужный Флот",
+        cfgSub: "Базовое ядро из 5 двигателей внедряется как стандарт. Подключайте специализированные модули под ваши задачи.",
+        cfgCoreBadge: "Базовое Ядро из 5 Двигателей",
+        cfgCoreDesc: "Минимальный центральный конвейер, необходимый для автономной работы сферы услуг.",
+        cfgCore1: "<strong>Ailo Customer Agent:</strong> 8-секундная обработка WhatsApp, Meta и Telegram",
+        cfgCore2: "<strong>ILDAM CRM:</strong> Воронка лидов, Kanban и контроль оплат",
+        cfgCore3: "<strong>Bandla Scheduling:</strong> Онлайн-запись и защита от неявок",
+        cfgCore4: "<strong>Mirzo Private Scribe:</strong> Протоколы встреч без посторонних ботов",
+        cfgCore5: "<strong>Izlo Outbound Agent:</strong> Автономный B2B поиск через Email и LinkedIn",
+        cfgQuoteBtn: "Запросить Персональное Демо",
+        cfgAddonsTitle: "Специализированные Дополнительные Модули",
+        cfgAddonsSub: "Отметьте необходимые модули",
+        cfgSelectedPrefix: "Выбрано:",
+        cfgSelectedSuffix: "модулей",
+        add1Title: "База Знаний Компании (RAG)",
+        add1Desc: "Внутренний AI поиск по регламентам (SOP), клиническим протоколам и прайс-листам.",
+        add2Title: "Контент и Видео Студия",
+        add2Desc: "Превращение экспертизы компании в Reels, карусели и экспертные публикации.",
+        add3Title: "Голосовая AI Приемная",
+        add3Desc: "Прием телефонных звонков, консультация по услугам и запись через Bandla.",
+        add4Title: "Мост с 1C / ERP",
+        add4Desc: "Двусторонняя синхронизация с бухгалтерией, биллингом и складом.",
+        add5Title: "Auto-Heal и Восстановление",
+        add5Desc: "Автоматический перезапуск сценариев при сбоях сторонних API мессенджеров.",
+        add6Title: "Экстренная Эскалация",
+        add6Desc: "Срочное уведомление руководству при возникновении негатива от VIP-клиента.",
+
+        procEyebrow: "Практическая Методология",
+        procTitle: "3 Этапа Реализации",
+        procSub: "Сначала мы наводим порядок в логике процессов, и только затем разворачиваем код.",
+        p1Title: "01 Discover (Аудит)",
+        p1Desc: "Составляем карту текущих операций: где теряются часы, где отваливаются заявки и где возникают очереди.",
+        p1B1: "• Полный операционный аудит",
+        p1B2: "• Анализ потерь и причин неявок",
+        p1B3: "• Расчет устранимых финансовых потерь",
+        p2Title: "02 Design (Архитектура)",
+        p2Desc: "Корректируем сам процесс до автоматизации. Каждый шаг, триггер и передача задачи должны быть строго обоснованы.",
+        p2B1: "• Карта архитектуры конвейера",
+        p2B2: "• Понятные регламенты (SOP) для сотрудников",
+        p2B3: "• Четкое закрепление зон ответственности",
+        p3Title: "03 Build (Внедрение и Запуск)",
+        p3Desc: "Интегрируем модули Ailo, ILDAM, Bandla, Mirzo и Izlo. Проводим стресс-тестирование и обучаем команду.",
+        p3B1: "• Полная интеграция под ключ",
+        p3B2: "• Живые обучающие сессии для сотрудников",
+        p3B3: "• Видеоинструкции и регламент контроля SLA",
+
+        faqEyebrow: "Вопросы и Ответы",
+        faqTitle: "Часто Задаваемые Вопросы",
+        faqQ1: "Как 5 двигателей (Ailo, ILDAM, Bandla, Mirzo, Izlo) работают вместе?",
+        faqA1: "Они формируют единый непрерывный конвейер: Izlo находит клиентов, Ailo отвечает входящим за 8 секунд, ILDAM ведет сделку и этапы оплаты, Bandla бронирует визит в календаре, а Mirzo фиксирует итоги встреч без ботов. Данные перетекают автоматически без повторного ввода.",
+        faqQ2: "Как Mirzo записывает встречи без подключения бота к звонку?",
+        faqA2: "В отличие от обычных сервисов, в звонке не появляется посторонний бот. Аудио обрабатывается через защищенные корпоративные потоки, формируя структурированный список задач в Telegram и CRM за 60 секунд со 100% конфиденциальностью.",
+        faqQ3: "Может ли Bandla подключиться к нашим календарям и исключить накладки?",
+        faqA3: "Да. Bandla синхронизируется с Google Calendar, Outlook и графиками смен сотрудников. При диалоге с клиентом Ailo предлагает только реально свободные слоты и автоматически отправляет напоминания.",
+        faqQ4: "Как защищены клиентская база и внутренние данные?",
+        faqA4: "Вся инфраструктура разворачивается на ваших корпоративных серверах или официальных облачных аккаунтах. Используются официальные Meta Graph API, шифрование баз данных и строгие права доступа. База остается 100% вашей собственностью.",
+        faqQ5: "Сколько времени занимает запуск и обучение сотрудников?",
+        faqA5: "Базовый комплекс внедряется за срок от 48 часов до 5 рабочих дней. Затем мы проводим живое обучение персонала, передаем видеоуроки и сопровождаем работу первые 14 дней.",
+
+        founderCtaTitle: "30-Минутный Бесплатный Операционный Аудит",
+        founderCtaSub: "В ходе диалога мы найдем, где ваш бизнес теряет время и прибыль, и составим пошаговый план действий без навязчивых продаж.",
+        founderGuarantee: "<strong>Наша гарантия:</strong> Если мы не сможем найти точки экономии как минимум на $2,000+ в год, мы честно скажем об этом и не станем отнимать ваше время.",
+        founderCtaPrimary: "Забронировать 30-Мин Демо",
+        founderCtaTelegram: "Написать в Telegram",
+        founderRole: "Основатель GPTify.co & Сооснователь Cubeo.ai",
+
+        modalBadge: "ЖИВОЕ ДЕМО И АУДИТ",
+        modalTitle: "Запросить Живое Демо и Аудит Системы",
+        modalSub: "Узнайте, как GPTify OS автоматизирует ваши процессы. Мы свяжемся с вами в течение 15 минут.",
+        lblModalName: "Ваше Имя и Фамилия",
+        lblModalCompany: "Название компании и сфера деятельности",
+        lblModalContact: "Номер телефона или Telegram (@username)",
+        lblModalChannels: "Необходимые каналы связи:",
+        lblModalTeam: "Размер вашей команды:",
+        modalSubmitBtn: "Подтвердить и Получить Демо",
+        modalFooterNote: "Без спама · 100% конфиденциально · Запуск под ключ за 48 часов",
+        successTitle: "Спасибо! Заявка Принята",
+        successDesc: "Благодарим за интерес к GPTify OS. Ваши данные получены, наш специалист свяжется с вами в ближайшее время (обычно в течение 15 минут).",
+        modalCloseBtn: "Закрыть окно",
+
+        footerDesc: "AI операционная система для сферы услуг.",
+        footerRights: "Все права защищены."
+      }
+    };
+
+    let currentLang = 'en';
+
+    function setLang(lang) {
+      if (!TRANSLATIONS[lang]) return;
+      currentLang = lang;
+      localStorage.setItem('gptify_lang', lang);
+
+      // Update button classes
+      ['en', 'uz', 'ru'].forEach(l => {
+        const btn = document.getElementById('btn-lang-' + l);
+        if (btn) {
+          if (l === lang) {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
+        }
+      });
+
+      // Update document language & title
+      document.documentElement.lang = lang;
+      if (lang === 'en') {
+        document.title = "GPTify OS — The AI Operating System for Service Businesses | GPTify";
+      } else if (lang === 'ru') {
+        document.title = "GPTify OS — AI операционная система для сферы услуг | GPTify";
+      } else {
+        document.title = "GPTify OS — Xizmat Ko'rsatish Bizneslari Uchun AI Operatsion Tizimi | GPTify";
+      }
+
+      // Update all data-t elements
+      const elements = document.querySelectorAll('[data-t]');
+      elements.forEach(el => {
+        const key = el.getAttribute('data-t');
+        if (TRANSLATIONS[lang] && TRANSLATIONS[lang][key]) {
+          el.innerHTML = TRANSLATIONS[lang][key];
+        }
+      });
+
+      // Update modal input placeholders and select options
+      const nameInput = document.getElementById('leadName');
+      const companyInput = document.getElementById('leadCompany');
+      const contactInput = document.getElementById('leadContact');
+      const teamSelect = document.getElementById('leadTeamSize');
+
+      if (nameInput) {
+        nameInput.placeholder = lang === 'en' ? 'e.g. Alexander Vance' : (lang === 'ru' ? 'Например: Рустам Ахмедов' : 'Masalan: Jasur Rustamov');
+      }
+      if (companyInput) {
+        companyInput.placeholder = lang === 'en' ? 'e.g. Apex Clinic (Healthcare)' : (lang === 'ru' ? 'Например: Клиника Apex (Медицина)' : 'Masalan: Apex Klinikasi (Tibbiyot)');
+      }
+      if (contactInput) {
+        contactInput.placeholder = lang === 'en' ? '+1 555 123 4567 or @username' : (lang === 'ru' ? '+998 90 123 45 67 или @username' : '+998 90 123 45 67 yoki @username');
+      }
+      if (teamSelect) {
+        const teamOpts = lang === 'en' ? ['1-5 employees', '6-20 employees', '20-50 employees', '50+ employees (Enterprise)'] :
+                         (lang === 'ru' ? ['1-5 сотрудников', '6-20 сотрудников', '20-50 сотрудников', '50+ сотрудников (Enterprise)'] :
+                         ['1-5 xodim', '6-20 xodim', '20-50 xodim', '50+ xodim (Enterprise)']);
+        for (let i = 0; i < teamSelect.options.length; i++) {
+          if (teamOpts[i]) {
+            teamSelect.options[i].text = teamOpts[i];
+            teamSelect.options[i].value = teamOpts[i];
+          }
+        }
+      }
+
+      // Update calculator labels & currency based on language
+      updateCalculatorCurrency();
+      updateCalculator();
+    }
+
+    function updateCalculatorCurrency() {
+      const minSalary = document.getElementById('rangeSalaryMin');
+      const midSalary = document.getElementById('rangeSalaryMid');
+      const maxSalary = document.getElementById('rangeSalaryMax');
+      const minTeam = document.getElementById('rangeTeamMin');
+      const midTeam = document.getElementById('rangeTeamMid');
+      const maxTeam = document.getElementById('rangeTeamMax');
+      const minHours = document.getElementById('rangeHoursMin');
+      const midHours = document.getElementById('rangeHoursMid');
+      const maxHours = document.getElementById('rangeHoursMax');
+
+      if (currentLang === 'en') {
+        minTeam.textContent = '1 member';
+        midTeam.textContent = '25 members';
+        maxTeam.textContent = '50 members';
+        minHours.textContent = '5 hrs';
+        midHours.textContent = '20 hrs';
+        maxHours.textContent = '35 hrs';
+        minSalary.textContent = '$300';
+        midSalary.textContent = '$800';
+        maxSalary.textContent = '$1,500';
+      } else if (currentLang === 'ru') {
+        minTeam.textContent = '1 чел';
+        midTeam.textContent = '25 чел';
+        maxTeam.textContent = '50 чел';
+        minHours.textContent = '5 ч';
+        midHours.textContent = '20 ч';
+        maxHours.textContent = '35 ч';
+        minSalary.textContent = '3 млн';
+        midSalary.textContent = '8 млн';
+        maxSalary.textContent = '15 млн';
+      } else {
+        minTeam.textContent = '1 kishi';
+        midTeam.textContent = '25 kishi';
+        maxTeam.textContent = '50 kishi';
+        minHours.textContent = '5 soat';
+        midHours.textContent = '20 soat';
+        maxHours.textContent = '35 soat';
+        minSalary.textContent = '3 mln';
+        midSalary.textContent = '8 mln';
+        maxSalary.textContent = '15 mln';
+      }
+    }
+
+    // Calculator Logic
+    const teamSizeInput = document.getElementById('teamSize');
+    const hoursSpentInput = document.getElementById('hoursSpent');
+    const salaryInput = document.getElementById('salary');
+
+    const valTeamSize = document.getElementById('valTeamSize');
+    const valHoursSpent = document.getElementById('valHoursSpent');
+    const valSalary = document.getElementById('valSalary');
+
+    const calcSavingsUzs = document.getElementById('calcSavingsUzs');
+    const calcMonthlyUzs = document.getElementById('calcMonthlyUzs');
+    const calcHoursYear = document.getElementById('calcHoursYear');
+    const calcHoursWeek = document.getElementById('calcHoursWeek');
+
+    function updateCalculator() {
+      const team = parseInt(teamSizeInput.value, 10);
+      const hours = parseInt(hoursSpentInput.value, 10);
+      const salary = parseInt(salaryInput.value, 10);
+
+      const teamUnit = currentLang === 'en' ? ' members' : (currentLang === 'ru' ? ' чел' : ' kishi');
+      const hoursUnit = currentLang === 'en' ? ' hrs/week' : (currentLang === 'ru' ? ' ч/неделю' : ' soat/hafta');
+      const salaryUnit = currentLang === 'en' ? ' USD' : (currentLang === 'ru' ? ' сум' : ' so\\'m');
+
+      // Convert salary to USD if English
+      const displaySalary = currentLang === 'en' ? Math.round(salary / 12800) : salary;
+
+      valTeamSize.textContent = team + teamUnit;
+      valHoursSpent.textContent = hours + hoursUnit;
+      valSalary.textContent = (currentLang === 'en' ? '$' : '') + displaySalary.toLocaleString() + (currentLang === 'en' ? '' : salaryUnit);
+
+      // Hourly rate calculation: Salary / (4 weeks * 40 hours) = Salary / 160
+      const hourlyRate = displaySalary / 160;
+      
+      // 70% automation rate for repetitive mechanical workflows
+      const weeklyHoursTotal = team * hours;
+      const weeklyHoursSaved = weeklyHoursTotal * 0.7;
+      const yearlyHoursSaved = weeklyHoursSaved * 50; // 50 working weeks
+
+      const yearlyMoneySaved = Math.round(yearlyHoursSaved * hourlyRate);
+      const monthlyMoneySaved = Math.round(yearlyMoneySaved / 12);
+
+      if (currentLang === 'en') {
+        calcSavingsUzs.textContent = '~$' + yearlyMoneySaved.toLocaleString();
+        calcMonthlyUzs.textContent = 'This translates to ~$' + monthlyMoneySaved.toLocaleString() + ' in monthly bottom-line efficiency';
+        calcHoursYear.textContent = Math.round(yearlyHoursSaved).toLocaleString() + ' hrs';
+        calcHoursWeek.textContent = weeklyHoursSaved.toFixed(1) + ' hrs';
+      } else if (currentLang === 'ru') {
+        calcSavingsUzs.textContent = '~' + yearlyMoneySaved.toLocaleString('ru-RU') + ' сум';
+        calcMonthlyUzs.textContent = 'Это ~' + monthlyMoneySaved.toLocaleString('ru-RU') + ' сум ежемесячной экономии фонда';
+        calcHoursYear.textContent = Math.round(yearlyHoursSaved).toLocaleString('ru-RU') + ' ч';
+        calcHoursWeek.textContent = weeklyHoursSaved.toFixed(1) + ' ч';
+      } else {
+        calcSavingsUzs.textContent = '~' + yearlyMoneySaved.toLocaleString('uz-UZ') + ' so\\'m';
+        calcMonthlyUzs.textContent = 'Bu oyiga ~' + monthlyMoneySaved.toLocaleString('uz-UZ') + ' so\\'m qo\\'shimcha tejamkorlik degani';
+        calcHoursYear.textContent = Math.round(yearlyHoursSaved).toLocaleString('uz-UZ') + ' soat';
+        calcHoursWeek.textContent = weeklyHoursSaved.toFixed(1) + ' soat';
+      }
+    }
+
+    teamSizeInput.addEventListener('input', updateCalculator);
+    hoursSpentInput.addEventListener('input', updateCalculator);
+    salaryInput.addEventListener('input', updateCalculator);
+
+    // Addon cards selection toggle
+    function toggleAddonCard(card) {
+      card.classList.toggle('selected');
+      const count = document.querySelectorAll('.addon-card.selected').length;
+      document.getElementById('selectedAddonsCount').textContent = count;
+    }
+
+    // ==================== LEAD CAPTURE DEMO MODAL LOGIC ====================
+    const BOT_TOKEN = '8652296582:AAGr4AShAy8dHKBil5pM3R07t4m8upOjNhM';
+    const CHAT_IDS = ['327216340', '5077641672'];
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str).replace(/[&<>"']/g, function(m) {
+        switch (m) {
+          case '&': return '&amp;';
+          case '<': return '&lt;';
+          case '>': return '&gt;';
+          case '"': return '&quot;';
+          case "'": return '&#039;';
+          default: return m;
+        }
+      });
+    }
+
+    function openDemoModal() {
+      const modal = document.getElementById('demoModal');
+      if (!modal) return;
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => {
+        const input = document.getElementById('leadName');
+        if (input) input.focus();
+      }, 50);
+    }
+
+    function closeDemoModal() {
+      const modal = document.getElementById('demoModal');
+      if (!modal) return;
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeDemoModal();
+      }
+    });
+
+    const demoModalBackdrop = document.getElementById('demoModal');
+    if (demoModalBackdrop) {
+      demoModalBackdrop.addEventListener('click', (e) => {
+        if (e.target === demoModalBackdrop) {
+          closeDemoModal();
+        }
+      });
+    }
+
+    async function sendLeadToTelegram(leadData) {
+      const text = `⚡ <b>YANGI LEAD: GPTify OS Demo So'rovi</b> ⚡\\n` +
+        `━━━━━━━━━━━━━━━━━━\\n` +
+        `👤 <b>Ism:</b> ${escapeHtml(leadData.name)}\\n` +
+        `🏢 <b>Kompaniya / Soha:</b> ${escapeHtml(leadData.company)}\\n` +
+        `📞 <b>Aloqa:</b> ${escapeHtml(leadData.contact)}\\n` +
+        `👥 <b>Jamoa hajmi:</b> ${escapeHtml(leadData.teamSize)}\\n` +
+        `🔌 <b>Ulanadigan kanallar:</b> ${escapeHtml(leadData.channels.join(', '))}\\n` +
+        `🌐 <b>Til:</b> ${leadData.lang.toUpperCase()} | <b>Manba:</b> os.gptify.co\\n` +
+        `⏰ <b>Vaqt:</b> ${leadData.timestamp}\\n` +
+        `━━━━━━━━━━━━━━━━━━`;
+
+      const promises = CHAT_IDS.map(chatId => {
+        const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+        return fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            chat_id: chatId,
+            text: text,
+            parse_mode: 'HTML'
+          })
+        }).catch(err => {
+          console.warn('Telegram send failed for chat ' + chatId, err);
+          return null;
+        });
+      });
+
+      try {
+        await Promise.all(promises);
+      } catch (err) {
+        console.warn('Telegram dispatch error', err);
+      }
+    }
+
+    async function submitDemoLead(event) {
+      event.preventDefault();
+
+      const btnSubmit = document.getElementById('btnSubmitLead');
+      const btnIcon = document.getElementById('btnSubmitIcon');
+      const btnSpinner = document.getElementById('btnSubmitSpinner');
+
+      const name = document.getElementById('leadName').value.trim();
+      const company = document.getElementById('leadCompany').value.trim();
+      const contact = document.getElementById('leadContact').value.trim();
+      const teamSize = document.getElementById('leadTeamSize').value;
+
+      const checkedChannels = Array.from(document.querySelectorAll('input[name="channels"]:checked'))
+        .map(el => el.value);
+
+      if (!name || !company || !contact) {
+        alert(currentLang === 'ru' ? 'Пожалуйста, заполните все обязательные поля.' :
+             (currentLang === 'uz' ? 'Iltimos, barcha majburiy maydonlarni to\\'ldiring.' :
+              'Please fill in all required fields.'));
+        return;
+      }
+
+      // UI Loading state
+      if (btnSubmit) btnSubmit.disabled = true;
+      if (btnSpinner) btnSpinner.classList.remove('hidden');
+      if (btnIcon) btnIcon.classList.add('hidden');
+
+      const leadData = {
+        name: name,
+        company: company,
+        contact: contact,
+        teamSize: teamSize,
+        channels: checkedChannels.length > 0 ? checkedChannels : ['None selected'],
+        lang: currentLang,
+        timestamp: new Date().toLocaleString()
+      };
+
+      // Backup locally
+      try {
+        const stored = JSON.parse(localStorage.getItem('gptify_leads') || '[]');
+        stored.push(leadData);
+        localStorage.setItem('gptify_leads', JSON.stringify(stored));
+      } catch (e) {
+        console.warn('LocalStorage error', e);
+      }
+
+      // Send to Telegram Bot
+      try {
+        await sendLeadToTelegram(leadData);
+      } catch (e) {
+        console.warn('Send lead error', e);
+      }
+
+      // Switch to success view inside modal
+      const formContainer = document.getElementById('leadFormContainer');
+      const successContainer = document.getElementById('leadSuccessContainer');
+      if (formContainer && successContainer) {
+        formContainer.classList.add('hidden');
+        successContainer.classList.remove('hidden');
+      }
+
+      // Reset loading state
+      if (btnSubmit) btnSubmit.disabled = false;
+      if (btnSpinner) btnSpinner.classList.add('hidden');
+      if (btnIcon) btnIcon.classList.remove('hidden');
+    }
+
+    // Language resolution: English is the default primary language
+    window.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlLang = urlParams.get('lang');
+      const savedLang = localStorage.getItem('gptify_lang');
+
+      let initialLang = 'en'; // Strict primary default (for international credibility, grants & global traffic)
+      if (urlLang && ['en', 'uz', 'ru'].includes(urlLang)) {
+        initialLang = urlLang;
+      } else if (savedLang && ['en', 'uz', 'ru'].includes(savedLang)) {
+        initialLang = savedLang;
+      }
+
+      setLang(initialLang);
+    });
+  </script>
+
+</body>
+</html>
+"""
+
+def main():
+    target_path = os.path.join(os.path.dirname(__file__), 'index.html')
+    with open(target_path, 'w', encoding='utf-8') as f:
+        f.write(HTML_CONTENT)
+    print(f"Successfully generated {target_path} ({len(HTML_CONTENT)} bytes)")
+
+if __name__ == '__main__':
+    main()
