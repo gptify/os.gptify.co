@@ -1009,8 +1009,9 @@ HTML_CONTENT = """<!DOCTYPE html>
       <!-- Package 1: Clinics -->
       <div class="card-elevated p-8 rounded-3xl flex flex-col justify-between">
         <div>
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-mono font-bold uppercase mb-4">
-            <span>Healthcare & Dental</span>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-[11px] font-mono font-bold uppercase mb-4">
+            <span class="w-1.5 h-1.5 rounded-full bg-emeraldBrand"></span>
+            <span>Vertical Deployment #01 · MedPro²⁴</span>
           </div>
           <h3 class="text-2xl font-black text-slateDark mb-2" data-t="sol1Title">GPTify OS for Clinics</h3>
           <p class="text-xs text-slate-500 font-mono font-semibold mb-4" data-t="sol1Engines">Ailo + ILDAM + Bandla + Mirzo + Automation</p>
@@ -1040,8 +1041,9 @@ HTML_CONTENT = """<!DOCTYPE html>
       <!-- Package 2: Education -->
       <div class="card-elevated p-8 rounded-3xl flex flex-col justify-between">
         <div>
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 text-purple-800 text-xs font-mono font-bold uppercase mb-4">
-            <span>Training & Academies</span>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 border border-purple-200 text-purple-800 text-[11px] font-mono font-bold uppercase mb-4">
+            <span class="w-1.5 h-1.5 rounded-full bg-purpleBrand"></span>
+            <span>Vertical Deployment #02 · EduPro²⁴</span>
           </div>
           <h3 class="text-2xl font-black text-slateDark mb-2" data-t="sol2Title">GPTify OS for Education</h3>
           <p class="text-xs text-slate-500 font-mono font-semibold mb-4" data-t="sol2Engines">Ailo + ILDAM + Bandla + Mirzo</p>
@@ -1071,8 +1073,9 @@ HTML_CONTENT = """<!DOCTYPE html>
       <!-- Package 3: Automotive -->
       <div class="card-elevated p-8 rounded-3xl flex flex-col justify-between">
         <div>
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 text-amber-800 text-xs font-mono font-bold uppercase mb-4">
-            <span>Dealerships & Service Hubs</span>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-800 text-[11px] font-mono font-bold uppercase mb-4">
+            <span class="w-1.5 h-1.5 rounded-full bg-amberBrand"></span>
+            <span>Vertical Deployment #03 · AutoPro²⁴</span>
           </div>
           <h3 class="text-2xl font-black text-slateDark mb-2" data-t="sol3Title">GPTify OS for Automotive</h3>
           <p class="text-xs text-slate-500 font-mono font-semibold mb-4" data-t="sol3Engines">Ailo + ILDAM + Bandla + Izlai</p>
@@ -1102,8 +1105,9 @@ HTML_CONTENT = """<!DOCTYPE html>
       <!-- Package 4: Professional Services -->
       <div class="card-elevated p-8 rounded-3xl flex flex-col justify-between">
         <div>
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 text-indigo-800 text-xs font-mono font-bold uppercase mb-4">
-            <span>Consultancy & B2B Services</span>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-800 text-[11px] font-mono font-bold uppercase mb-4">
+            <span class="w-1.5 h-1.5 rounded-full bg-indigoBrand"></span>
+            <span>Vertical Deployment #04 · AdvisoryPro²⁴</span>
           </div>
           <h3 class="text-2xl font-black text-slateDark mb-2" data-t="sol4Title">GPTify OS for Professional Services</h3>
           <p class="text-xs text-slate-500 font-mono font-semibold mb-4" data-t="sol4Engines">Izlai + Ailo + ILDAM + Bandla + Mirzo</p>
@@ -2052,40 +2056,40 @@ console.log(`Autonomous execution verified: ${event.executionId}`);</code></pre>
         izlaiB3: "<strong>Automated Deal Handoff:</strong> Sales-ready accounts flow straight into ILDAM CRM for your sales closers.",
         izlaiCta: "Visit izlai.gptify.uz",
 
-        solutionsEyebrow: "Packaged Solutions",
-        solutionsTitle: "Engineered for High-Touch Service Businesses",
-        solutionsSub: "Pre-packaged operational configurations tailored to the exact workflow requirements of your industry.",
-        sol1Title: "GPTify OS for Clinics",
-        sol1Engines: "Ailo + ILDAM + Bandla + Mirzo + Automation",
-        sol1Desc: "Eliminate receptionist phone logjams and patient no-shows. Ailo answers patient queries in 8 seconds across WhatsApp and Telegram, Bandla books doctor appointment slots, ILDAM keeps medical consultation history, and Mirzo transcribes clinical consultations with zero bots.",
+        solutionsEyebrow: "VERTICAL DEPLOYMENTS (HUB & SPOKE)",
+        solutionsTitle: "Built on GPTify OS Core — Dedicated Vertical Fleets",
+        solutionsSub: "The unified multi-agent operating system powers pre-configured, production-ready vertical fleets tailored to the exact operational and clinical workflows of each industry.",
+        sol1Title: "MedPro²⁴ — Healthcare & Dental Fleet",
+        sol1Engines: "Powered by GPTify OS Core: Ailo + ILDAM + Bandla + Mirzo",
+        sol1Desc: "Eliminate receptionist phone logjams and patient no-shows. Ailo qualifies patient inquiries in seconds across Instagram DM and Telegram, Bandla reserves doctor chair slots, ILDAM manages dental and clinical charts, and Mirzo creates clinical notes with zero-bot discretion.",
         sol1F1: "24/7 Patient triage & emergency routing",
-        sol1F2: "Live doctor availability & automated SMS reminders",
-        sol1F3: "Confidential treatment notes & prescription history",
-        sol1Cta: "Explore Clinic Architecture",
+        sol1F2: "Live doctor availability & automated Telegram/SMS reminders",
+        sol1F3: "32-tooth interactive charts & confidential prescription history",
+        sol1Cta: "Explore MedPro²⁴ Fleet Architecture",
 
-        sol2Title: "GPTify OS for Education",
-        sol2Engines: "Ailo + ILDAM + Bandla + Mirzo",
-        sol2Desc: "Convert social media inquiries into enrolled students. Ailo qualifies course interests, Bandla schedules free trial lessons and level evaluations, ILDAM tracks tuition milestones, and Mirzo produces academic review protocols for teachers.",
-        sol2F1: "Instant course details & tuition fee consultation",
-        sol2F2: "Trial lesson placement and calendar sync",
-        sol2F3: "Automated payment reminders for installment tuition",
-        sol2Cta: "Explore Education Architecture",
+        sol2Title: "EduPro²⁴ — Academy & Education Fleet",
+        sol2Engines: "Powered by GPTify OS Core: Ailo + ILDAM + Bandla + Mirzo",
+        sol2Desc: "Convert social media inquiries into enrolled students. Ailo qualifies course interests, Bandla schedules free trial lessons and level evaluations, ILDAM tracks student tuition milestones, and Telegram Mini Apps provide transparent parent attendance tracking.",
+        sol2F1: "Instant course curriculum & tuition fee consultation",
+        sol2F2: "Trial lesson placement and teacher calendar sync",
+        sol2F3: "Automated payment reminders and parent Telegram Mini App",
+        sol2Cta: "Explore EduPro²⁴ Fleet Architecture",
 
-        sol3Title: "GPTify OS for Automotive",
-        sol3Engines: "Ailo + ILDAM + Bandla + Izlai",
-        sol3Desc: "Maximize service bay capacity and vehicle sales. Ailo handles trade-in and maintenance inquiries, Bandla manages test-drive and bay appointments, ILDAM manages vehicle orders and spare part invoices, while Izlai conducts corporate fleet outreach.",
-        sol3F1: "Automated test drive and maintenance booking",
+        sol3Title: "AutoPro²⁴ — Automotive & Workshop Fleet",
+        sol3Engines: "Powered by GPTify OS Core: Ailo + ILDAM + Bandla + Izlai",
+        sol3Desc: "Maximize service bay capacity and vehicle sales. Ailo handles trade-in and maintenance inquiries, Bandla manages service bay appointments, ILDAM manages work orders and spare part invoices, while Izlai conducts corporate fleet outreach.",
+        sol3F1: "Automated service bay and maintenance booking",
         sol3F2: "B2B commercial fleet outreach with Izlai",
-        sol3F3: "Service milestone follow-ups for oil/tire maintenance",
-        sol3Cta: "Explore Automotive Architecture",
+        sol3F3: "Photo-based inspection reports and Telegram client status alerts",
+        sol3Cta: "Explore AutoPro²⁴ Fleet Architecture",
 
-        sol4Title: "GPTify OS for Professional Services",
-        sol4Engines: "Izlai + Ailo + ILDAM + Bandla + Mirzo",
-        sol4Desc: "Run an end-to-end client engine. Izlai discovers and prospects ideal corporate clients, Ailo handles website and social leads, Bandla books consultations, ILDAM enforces retainer milestones, and Mirzo records partner meetings with zero-bot discretion.",
+        sol4Title: "AdvisoryPro²⁴ — Corporate & B2B Advisory Fleet",
+        sol4Engines: "Powered by GPTify OS Core: Izlai + Ailo + ILDAM + Bandla + Mirzo",
+        sol4Desc: "Run an end-to-end client acquisition and delivery engine. Izlai discovers and prospects ideal corporate clients, Ailo qualifies inbound leads, Bandla books consultations, ILDAM enforces retainer milestones, and Mirzo transcribes partner meetings.",
         sol4F1: "Multi-channel prospecting across Email and LinkedIn",
         sol4F2: "Client proposal pipeline and retainer invoicing",
         sol4F3: "Confidential partner call summaries sent to Telegram",
-        sol4Cta: "Explore B2B Services Architecture",
+        sol4Cta: "Explore AdvisoryPro²⁴ Fleet Architecture",
 
         navArchitecture: "Architecture",
         archBadge: "ENTERPRISE CLOUD & AI FOUNDATION",
@@ -2308,40 +2312,40 @@ console.log(`Autonomous execution verified: ${event.executionId}`);</code></pre>
         izlaiB3: "<strong>CRMga Avtomatik Yo'naltirish:</strong> Issiq mijozlarni ILDAM CRMga to'g'ridan-to'g'ri o'tkazish.",
         izlaiCta: "izlai.gptify.uz saytiga o'tish",
 
-        solutionsEyebrow: "Sohaviy Yechimlar",
-        solutionsTitle: "Xizmat Ko'rsatish Sohalari Uchun Maxsus",
-        solutionsSub: "Har bir biznes sohasi o'ziga xos ishlaydi. Quyidagi tayyor paketlar sohangiz talablariga moslab ishlab chiqilgan.",
-        sol1Title: "Klinikalar va Tibbiyot Markazlari",
-        sol1Engines: "Ailo + ILDAM + Bandla + Mirzo + Avtomatlashtirish",
-        sol1Desc: "Qabulxonadagi qo'ng'iroqlar tiqilinchini va bemorlar kelmay qolishini yo'qoting. Ailo bemorlarga 8 soniyada javob beradi, Bandla shifokorlar vaqtiga qarab yozadi, ILDAM bemorlar tarixini saqlaydi, Mirzo esa shifokor konsultatsiyalarini botlarsiz yozib oladi.",
-        sol1F1: "24/7 Bemorlarni qabul qilish va saralash",
-        sol1F2: "Shifokor jadvali bo'yicha band qilish va SMS eslatmalar",
-        sol1F3: "Maxfiy davolanish tarixi va retseptlar nazorati",
-        sol1Cta: "Klinika Arxitekturasini Ko'rish",
+        solutionsEyebrow: "VERTIKAL TIZIMLAR (HUB & SPOKE)",
+        solutionsTitle: "GPTify OS Yadrosi Asosida — Maxsus Sohaviy Flotlar",
+        solutionsSub: "Yagona ko'p agentli sun'iy intellekt yadrosi har bir sohaning amaliy qoidalari, reglamentlari va klinik jarayonlariga moslashtirilgan maxsus vertikal tizimlarni ta'minlaydi.",
+        sol1Title: "MedPro²⁴ — Tibbiyot va Stomatologiya Floti",
+        sol1Engines: "GPTify OS Yadrosi Asosida: Ailo + ILDAM + Bandla + Mirzo",
+        sol1Desc: "Resepshn qo'ng'iroqlar tiqilinchini va bemorlar kelmay qolishini yo'qoting. Ailo Instagram DM va Telegramda bemorlarni bir zumda saralaydi, Bandla shifokorlar vaqtiga qarab yozadi, ILDAM 32-tish kartasini yuritadi, Mirzo esa konsultatsiyalarni qayd etadi.",
+        sol1F1: "24/7 Bemorlarni avtomatik qabul qilish va saralash",
+        sol1F2: "Shifokor jadvali bo'yicha band qilish va Telegram Mini App navbat",
+        sol1F3: "Interaktiv 32-tish xaritasi va elektron retseptlar tarixi",
+        sol1Cta: "MedPro²⁴ Arxitekturasini Ko'rish",
 
-        sol2Title: "O'quv Markazlari va Akademiyalar",
-        sol2Engines: "Ailo + ILDAM + Bandla + Mirzo",
-        sol2Desc: "Ijtimoiy tarmoqlardan kelgan har bir so'rovni o'quvchiga aylantiring. Ailo kurslar bo'yicha to'liq ma'lumot beradi, Bandla sinov darslariga yozadi, ILDAM to'lovlarni nazorat qiladi, Mirzo esa o'qituvchilar majlislarini qayd etadi.",
-        sol2F1: "Kurslar va narxlar bo'yicha 8s da ma'lumot",
-        sol2F2: "Bepul sinov darslariga avtomatik yozish",
-        sol2F3: "Oylik to'lovlar va qarzdorliklarni eslatish zanjiri",
-        sol2Cta: "Ta'lim Arxitekturasini Ko'rish",
+        sol2Title: "EduPro²⁴ — O'quv Markazlari va Akademiyalar Floti",
+        sol2Engines: "GPTify OS Yadrosi Asosida: Ailo + ILDAM + Bandla + Mirzo",
+        sol2Desc: "Ijtimoiy tarmoqlardan kelgan har bir so'rovni o'quvchiga aylantiring. Ailo kurslar bo'yicha to'liq ma'lumot beradi, Bandla sinov darslariga yozadi, ILDAM to'lovlarni nazorat qiladi, Telegram Mini App esa ota-onalar portalini ta'minlaydi.",
+        sol2F1: "Kurslar va narxlar bo'yicha Instagram/Telegramda 8s da ma'lumot",
+        sol2F2: "Sinov darslariga avtomatik yozish va xonalar balansi",
+        sol2F3: "Ota-onalar uchun 0 MB Telegram Mini App va to'lov nazorati",
+        sol2Cta: "EduPro²⁴ Arxitekturasini Ko'rish",
 
-        sol3Title: "Avtosalonlar va Texnik Xizmat",
-        sol3Engines: "Ailo + ILDAM + Bandla + Izlai",
-        sol3Desc: "Servis zallarini to'liq band qiling va avtomobil savdosini oshiring. Ailo ta'mirlash va trade-in so'rovlarini qabul qiladi, Bandla test-drayv va ustaxonaga yozadi, ILDAM ehtiyot qismlar hisobini yuritadi, Izlai esa korporativ parklarga taklif yuboradi.",
-        sol3F1: "Test-drayv va servisga avtomatik navbat",
+        sol3Title: "AutoPro²⁴ — Avtoservis va Deteyling Floti",
+        sol3Engines: "GPTify OS Yadrosi Asosida: Ailo + ILDAM + Bandla + Izlai",
+        sol3Desc: "Servis zallarini to'liq band qiling va mijozlar ishonchini oshiring. Ailo ta'mirlash so'rovlarini qabul qiladi, Bandla usta va ko'targichlarga yozadi, ILDAM ehtiyot qismlar hisobini yuritadi, Telegram bot esa buyurtma holatini mijozga yetkazadi.",
+        sol3F1: "Usta va ko'targichlar bo'yicha servisga avtomatik navbat",
         sol3F2: "Izlai orqali korporativ avtoparklarga B2B chiqish",
-        sol3F3: "Moy almashtirish va texnik ko'rik eslatmalari",
-        sol3Cta: "Avto Arxitekturasini Ko'rish",
+        sol3F3: "Foto-hisobot va mashina tayyorligi bo'yicha Telegram bildirishnoma",
+        sol3Cta: "AutoPro²⁴ Arxitekturasini Ko'rish",
 
-        sol4Title: "B2B va Konsalting Kompaniyalari",
-        sol4Engines: "Izlai + Ailo + ILDAM + Bandla + Mirzo",
-        sol4Desc: "B2B xizmatlar uchun to'liq savdo va loyiha zanjiri. Izlai maqsadli korxonalarga chiqadi, Ailo kiruvchi so'rovlarni saralaydi, Bandla strategik uchrashuvlarni belgilaydi, ILDAM shartnomalarni boshqaradi, Mirzo esa majlislarni qayd etadi.",
+        sol4Title: "AdvisoryPro²⁴ — B2B va Konsalting Floti",
+        sol4Engines: "GPTify OS Yadrosi Asosida: Izlai + Ailo + ILDAM + Bandla + Mirzo",
+        sol4Desc: "B2B xizmatlar uchun to'liq savdo va loyiha boshqaruvi. Izlai maqsadli korxonalarga chiqadi, Ailo kiruvchi so'rovlarni saralaydi, Bandla strategik uchrashuvlarni belgilaydi, ILDAM shartnomalarni boshqaradi, Mirzo esa majlislarni qayd etadi.",
         sol4F1: "Email va LinkedIn orqali faol B2B prospekting",
         sol4F2: "Tijoriy takliflar va to'lov bosqichlari nazorati",
         sol4F3: "Hamkorlar bilan uchrashuv bayonnomasi Telegramda",
-        sol4Cta: "B2B Arxitekturasini Ko'rish",
+        sol4Cta: "AdvisoryPro²⁴ Arxitekturasini Ko'rish",
 
         navArchitecture: "Arxitektura",
         archBadge: "KORPORATIV BULUT VA AI INFRATUZILMASI",
@@ -2564,40 +2568,40 @@ console.log(`Autonomous execution verified: ${event.executionId}`);</code></pre>
         izlaiB3: "<strong>Прямая Передача в CRM:</strong> Готовые теплые контакты автоматически передаются в ILDAM CRM.",
         izlaiCta: "Перейти на izlai.gptify.uz",
 
-        solutionsEyebrow: "Отраслевые Решения",
-        solutionsTitle: "Создано для Бизнеса с Высоким Потоком Клиентов",
-        solutionsSub: "Готовые пакетные решения, настроенные под регламенты вашей конкретной отрасли.",
-        sol1Title: "GPTify OS для Клиник и Медцентров",
-        sol1Engines: "Ailo + ILDAM + Bandla + Mirzo + Автоматизация",
-        sol1Desc: "Разгрузите регистратуру и сведите к нулю неявки пациентов. Ailo отвечает за 8 секунд в WhatsApp и Telegram, Bandla ведет запись к врачам, ILDAM хранит историю приемов, а Mirzo фиксирует врачебные консилиумы без ботов.",
+        solutionsEyebrow: "ВЕРТИКАЛЬНЫЕ РЕШЕНИЯ (HUB & SPOKE)",
+        solutionsTitle: "На Базе Ядра GPTify OS — Отраслевые Флоты",
+        solutionsSub: "Единое мультиагентное ядро обеспечивает работу вертикальных операционных систем, предварительно настроенных под регламенты и стандарты конкретной отрасли.",
+        sol1Title: "MedPro²⁴ — Медицинский и Стоматологический Флот",
+        sol1Engines: "На Базе Ядра GPTify OS: Ailo + ILDAM + Bandla + Mirzo",
+        sol1Desc: "Устраните очереди в регистратуре и снизьте неявки пациентов. Ailo квалифицирует обращения в Instagram DM и Telegram за секунды, Bandla бронирует приемы к врачам, ILDAM ведет карты пациентов, а Mirzo формирует клинические записи без ботов.",
         sol1F1: "Круглосуточный прием и маршрутизация пациентов",
-        sol1F2: "Запись по графику врачей и SMS напоминания",
-        sol1F3: "Конфиденциальная история лечения и протоколы",
-        sol1Cta: "Изучить Решение для Клиник",
+        sol1F2: "Запись по графику врачей и талоны в Telegram Mini App",
+        sol1F3: "Интерактивная зубная формула и конфиденциальная история",
+        sol1Cta: "Изучить Архитектуру MedPro²⁴",
 
-        sol2Title: "GPTify OS для Образования и Курсов",
-        sol2Engines: "Ailo + ILDAM + Bandla + Mirzo",
-        sol2Desc: "Конвертируйте заявки из соцсетей в зачисленных студентов. Ailo консультирует по программам, Bandla записывает на пробные уроки, ILDAM ведет график оплат, а Mirzo протоколирует педсоветы.",
-        sol2F1: "Мгновенная консультация по стоимости и расписанию",
-        sol2F2: "Автоматическая запись на пробные уроки",
-        sol2F3: "Контроль оплаты обучения и напоминания о взносах",
-        sol2Cta: "Изучить Решение для Курсов",
+        sol2Title: "EduPro²⁴ — Флот для Академий и Учебных Центров",
+        sol2Engines: "На Базе Ядра GPTify OS: Ailo + ILDAM + Bandla + Mirzo",
+        sol2Desc: "Превращайте обращения из соцсетей в зачисленных студентов. Ailo консультирует по курсам, Bandla записывает на пробные уроки, ILDAM ведет учет оплат, а Telegram Mini App дает родителям прозрачный контроль посещаемости.",
+        sol2F1: "Консультация по программам и стоимости в Instagram/Telegram",
+        sol2F2: "Автоматическая запись на пробные уроки и сетка аудиторий",
+        sol2F3: "Родительский портал в Telegram Mini App и контроль взносов",
+        sol2Cta: "Изучить Архитектуру EduPro²⁴",
 
-        sol3Title: "GPTify OS для Автодилеров и Сервисов",
-        sol3Engines: "Ailo + ILDAM + Bandla + Izlai",
-        sol3Desc: "Обеспечьте полную загрузку сервисных постов и рост продаж авто. Ailo обрабатывает заявки на ТО и trade-in, Bandla записывает на тест-драйв и подъемники, ILDAM ведет заказ-наряды, а Izlai привлекает корпоративные автопарки.",
-        sol3F1: "Онлайн-запись на ТО и тест-драйв за 1 минуту",
-        sol3F2: "Привлечение коммерческих парков через Izlai",
-        sol3F3: "Напоминания о регламентном техобслуживании",
-        sol3Cta: "Изучить Решение для Автобизнеса",
+        sol3Title: "AutoPro²⁴ — Флот для Автосервисов и Детейлинга",
+        sol3Engines: "На Базе Ядра GPTify OS: Ailo + ILDAM + Bandla + Izlai",
+        sol3Desc: "Обеспечьте полную загрузку постов и прозрачность для автовладельцев. Ailo принимает заявки на ТО, Bandla ведет запись на подъемники, ILDAM формирует заказ-наряды, а Telegram-бот информирует о статусе готовности автомобиля.",
+        sol3F1: "Онлайн-запись на посты и регламентное ТО",
+        sol3F2: "Привлечение коммерческих корпоративных автопарков через Izlai",
+        sol3F3: "Фотоотчеты дефектовки и уведомления о готовности авто",
+        sol3Cta: "Изучить Архитектуру AutoPro²⁴",
 
-        sol4Title: "GPTify OS для B2B и Консалтинга",
-        sol4Engines: "Izlai + Ailo + ILDAM + Bandla + Mirzo",
-        sol4Desc: "Полный замкнутый цикл для профессиональных услуг. Izlai находит корпоративных заказчиков, Ailo обрабатывает входящие, Bandla бронирует созвоны, ILDAM контролирует этапы договора, а Mirzo ведет протоколы переговоров без ботов.",
+        sol4Title: "AdvisoryPro²⁴ — Флот для B2B и Корпоративных Услуг",
+        sol4Engines: "На Базе Ядра GPTify OS: Izlai + Ailo + ILDAM + Bandla + Mirzo",
+        sol4Desc: "Полный цикл лидогенерации и ведения корпоративных клиентов. Izlai находит ЛПРов, Ailo квалифицирует входящие лиды, Bandla бронирует созвоны, ILDAM контролирует этапы договора, а Mirzo протоколирует переговоры.",
         sol4F1: "Многоканальный аутрич через Email и LinkedIn",
-        sol4F2: "Контроль воронки предложений и этапов оплаты",
+        sol4F2: "Контроль воронки коммерческих предложений и инвойсов",
         sol4F3: "Протоколы переговоров с клиентами прямо в Telegram",
-        sol4Cta: "Изучить Решение для B2B Услуг",
+        sol4Cta: "Изучить Архитектуру AdvisoryPro²⁴",
 
         navArchitecture: "Архитектура",
         archBadge: "КОРПОРАТИВНАЯ ОБЛАЧНАЯ И AI ИНФРАСТРУКТУРА",
