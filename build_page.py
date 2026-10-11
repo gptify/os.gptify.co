@@ -242,6 +242,7 @@ HTML_CONTENT = """<!DOCTYPE html>
           <a href="#services" class="px-2.5 py-1 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors duration-150 cursor-pointer whitespace-nowrap" data-t="navEngines">5 Engines</a>
           <a href="#flywheel" class="px-2.5 py-1 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors duration-150 cursor-pointer whitespace-nowrap" data-t="navFlywheel">Connected Loop</a>
           <a href="#solutions" class="px-2.5 py-1 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors duration-150 cursor-pointer whitespace-nowrap" data-t="navSolutions">Solutions</a>
+          <a href="#architecture" class="px-2.5 py-1 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors duration-150 cursor-pointer whitespace-nowrap" data-t="navArchitecture">Architecture</a>
           <a href="#calculator" class="px-2.5 py-1 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors duration-150 cursor-pointer whitespace-nowrap" data-t="navCalculator">Calculator</a>
           <a href="#configurator" class="px-2.5 py-1 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors duration-150 cursor-pointer whitespace-nowrap" data-t="navConfigurator">Configurator</a>
           <a href="#faq" class="px-2.5 py-1 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors duration-150 cursor-pointer whitespace-nowrap" data-t="navFaq">FAQ</a>
@@ -1115,6 +1116,255 @@ HTML_CONTENT = """<!DOCTYPE html>
     </div>
   </section>
 
+
+  <!-- ==================== CLOUD ARCHITECTURE, ENTERPRISE AI & DEVELOPER PLATFORM ==================== -->
+  <section id="architecture" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-divider">
+    <div class="text-center max-w-3xl mx-auto mb-14">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-divider text-[11px] font-bold text-slateDark mb-3.5 shadow-2xs">
+        <span class="w-2 h-2 rounded-full bg-emeraldBrand badge-live-pulse" aria-hidden="true"></span>
+        <span data-t="archBadge">ENTERPRISE CLOUD & AI FOUNDATION</span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slateDark tracking-tight" data-t="archTitle">
+        Engineered for High-Throughput Inference, Zero Data Leakage, and Seamless Scale.
+      </h2>
+      <p class="text-slate-600 text-sm sm:text-base mt-3 leading-relaxed" data-t="archSub">
+        Built on multi-model LLM routing, isolated tenant data boundaries, and event-driven webhooks. Built for Microsoft Azure, Google Cloud Vertex AI, and high-performance serverless runtimes.
+      </p>
+    </div>
+
+    <!-- 4 Architectural Pillars Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+      
+      <!-- Pillar 1 -->
+      <div class="card-elevated p-6 rounded-2xl bg-white border border-divider flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emeraldBrand mb-4">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5"/></svg>
+          </div>
+          <h3 class="text-base font-bold text-slateDark mb-1.5" data-t="archP1Title">Multi-Model Foundation Routing</h3>
+          <p class="text-xs text-slate-600 leading-relaxed mb-4" data-t="archP1Desc">
+            Dual-routed inference between Google Gemini 2.0 Flash (sub-800ms triage) and Azure OpenAI GPT-4o (complex clinical reasoning). Automatic fallback and local context caching.
+          </p>
+        </div>
+        <div class="pt-3 border-t border-divider flex flex-wrap gap-1.5 text-[10px] font-mono font-semibold text-slate-600">
+          <span class="px-2 py-0.5 rounded bg-subtle border border-divider">Gemini 2.0 Flash</span>
+          <span class="px-2 py-0.5 rounded bg-subtle border border-divider">Azure OpenAI</span>
+          <span class="px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200">&lt;800ms Latency</span>
+        </div>
+      </div>
+
+      <!-- Pillar 2 -->
+      <div class="card-elevated p-6 rounded-2xl bg-white border border-divider flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 rounded-xl bg-sky-50 border border-sky-100 flex items-center justify-center text-skyBrand mb-4">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z"/></svg>
+          </div>
+          <h3 class="text-base font-bold text-slateDark mb-1.5" data-t="archP2Title">Real-Time Audio & Speech (Mirzo)</h3>
+          <p class="text-xs text-slate-600 leading-relaxed mb-4" data-t="archP2Desc">
+            Whisper Large-v3 and Gemini Multimodal audio pipelines transcribing staff voice notes and client calls. Native Uzbek & Russian dialect processing with clinical action synthesis.
+          </p>
+        </div>
+        <div class="pt-3 border-t border-divider flex flex-wrap gap-1.5 text-[10px] font-mono font-semibold text-slate-600">
+          <span class="px-2 py-0.5 rounded bg-subtle border border-divider">Whisper Large-v3</span>
+          <span class="px-2 py-0.5 rounded bg-subtle border border-divider">Gemini Multimodal</span>
+          <span class="px-2 py-0.5 rounded bg-sky-50 text-sky-800 border border-sky-200">UZ/RU Speech</span>
+        </div>
+      </div>
+
+      <!-- Pillar 3 -->
+      <div class="card-elevated p-6 rounded-2xl bg-white border border-divider flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigoBrand mb-4">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg>
+          </div>
+          <h3 class="text-base font-bold text-slateDark mb-1.5" data-t="archP3Title">Zero-Retention Tenant Isolation</h3>
+          <p class="text-xs text-slate-600 leading-relaxed mb-4" data-t="archP3Desc">
+            PostgreSQL with strict Row-Level Security (RLS) and pgvector semantic indexing. Patient records and proprietary business data are fully encrypted (AES-256) and never used to train LLMs.
+          </p>
+        </div>
+        <div class="pt-3 border-t border-divider flex flex-wrap gap-1.5 text-[10px] font-mono font-semibold text-slate-600">
+          <span class="px-2 py-0.5 rounded bg-subtle border border-divider">Postgres RLS</span>
+          <span class="px-2 py-0.5 rounded bg-subtle border border-divider">pgvector RAG</span>
+          <span class="px-2 py-0.5 rounded bg-indigo-50 text-indigo-800 border border-indigo-200">HIPAA Ready</span>
+        </div>
+      </div>
+
+      <!-- Pillar 4 -->
+      <div class="card-elevated p-6 rounded-2xl bg-white border border-divider flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center text-amberBrand mb-4">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"/></svg>
+          </div>
+          <h3 class="text-base font-bold text-slateDark mb-1.5" data-t="archP4Title">Event-Driven Agentic Dispatch</h3>
+          <p class="text-xs text-slate-600 leading-relaxed mb-4" data-t="archP4Desc">
+            Asynchronous event bus orchestrating instantaneous cross-agent handoffs (Ailo → Bandla → ILDAM). Open bidirectional webhooks for Telegram Mini Apps, Click, Payme, 1C, and Modme.
+          </p>
+        </div>
+        <div class="pt-3 border-t border-divider flex flex-wrap gap-1.5 text-[10px] font-mono font-semibold text-slate-600">
+          <span class="px-2 py-0.5 rounded bg-subtle border border-divider">FastAPI Async</span>
+          <span class="px-2 py-0.5 rounded bg-subtle border border-divider">Redis Streams</span>
+          <span class="px-2 py-0.5 rounded bg-amber-50 text-amber-800 border border-amber-200">OpenAPI 3.1</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Interactive Developer API & Telemetry Explorer Card -->
+    <div class="card-elevated rounded-3xl bg-white border border-divider overflow-hidden shadow-lg mb-10">
+      <div class="px-6 py-4 bg-[#F8FAFC] border-b border-divider flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div class="flex items-center gap-3">
+          <span class="w-3 h-3 rounded-full bg-[#FF5F57]"></span>
+          <span class="w-3 h-3 rounded-full bg-[#FFBD2E]"></span>
+          <span class="w-3 h-3 rounded-full bg-[#28C840]"></span>
+          <span class="font-mono text-xs font-bold text-slate-700 ml-2" data-t="apiConsoleTitle">GPTify OS Developer API — Autonomous Dispatch Gateway</span>
+        </div>
+        <!-- Language Tabs for Code Snippet -->
+        <div class="flex items-center gap-1.5 bg-[#EAE8E1] p-1 rounded-xl text-xs font-mono font-bold">
+          <button type="button" onclick="setApiTab('curl')" id="tab-api-curl" class="px-3 py-1 rounded-lg bg-white text-slateDark shadow-2xs cursor-pointer transition">cURL</button>
+          <button type="button" onclick="setApiTab('python')" id="tab-api-python" class="px-3 py-1 rounded-lg text-slateMuted hover:text-slateDark cursor-pointer transition">Python</button>
+          <button type="button" onclick="setApiTab('node')" id="tab-api-node" class="px-3 py-1 rounded-lg text-slateMuted hover:text-slateDark cursor-pointer transition">Node.js</button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 bg-[#0B1120] text-slate-200 font-mono text-xs">
+        
+        <!-- Code Request Panel (Cols 1-7) -->
+        <div class="lg:col-span-7 p-6 border-b lg:border-b-0 lg:border-r border-slate-800 overflow-x-auto">
+          <div class="flex items-center justify-between text-[11px] text-slate-400 font-semibold mb-3">
+            <span class="flex items-center gap-2">
+              <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold">POST</span>
+              <span class="text-slate-300">https://api.gptify.co/v1/fleet/dispatch</span>
+            </span>
+            <span class="text-[10px] text-slate-500">Bearer Token Auth</span>
+          </div>
+
+          <!-- cURL Tab Content -->
+          <pre id="api-snippet-curl" class="text-slate-300 leading-relaxed overflow-x-auto"><code>curl -X POST https://api.gptify.co/v1/fleet/dispatch \
+  -H "Authorization: Bearer sec_live_9f83a21e4c7" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "tenant_id": "clinic_tashkent_medpro",
+    "channel": "telegram",
+    "customer": {
+      "phone": "+998901234567",
+      "telegram_id": 849201948
+    },
+    "input_payload": {
+      "type": "text",
+      "content": "Ertaga soat 15:00 ga stomatolog qabuliga yozilmoqchiman"
+    },
+    "fleet_routing": ["ailo", "bandla", "ildam"]
+  }'</code></pre>
+
+          <!-- Python Tab Content -->
+          <pre id="api-snippet-python" class="text-slate-300 leading-relaxed overflow-x-auto hidden"><code>import httpx
+
+async with httpx.AsyncClient() as client:
+    response = await client.post(
+        "https://api.gptify.co/v1/fleet/dispatch",
+        headers={"Authorization": "Bearer sec_live_9f83a21e4c7"},
+        json={
+            "tenant_id": "clinic_tashkent_medpro",
+            "channel": "telegram",
+            "customer": {"phone": "+998901234567", "telegram_id": 849201948},
+            "input_payload": {"type": "text", "content": "Ertaga soat 15:00 ga stomatolog qabuliga yozilmoqchiman"},
+            "fleet_routing": ["ailo", "bandla", "ildam"]
+        }
+    )
+    result = response.json()
+    print(f"Deal #{result['deal_id']} synced with Bandla booking {result['booking_ref']}")</code></pre>
+
+          <!-- Node.js Tab Content -->
+          <pre id="api-snippet-node" class="text-slate-300 leading-relaxed overflow-x-auto hidden"><code>import { GPTifyOSClient } from '@gptify/sdk';
+
+const client = new GPTifyOSClient({ apiKey: process.env.GPTIFY_SECRET_KEY });
+
+const event = await client.fleet.dispatch({
+  tenantId: 'clinic_tashkent_medpro',
+  channel: 'telegram',
+  customer: { phone: '+998901234567', telegramId: 849201948 },
+  inputPayload: { type: 'text', content: 'Ertaga soat 15:00 ga stomatolog qabuliga yozilmoqchiman' },
+  fleetRouting: ['ailo', 'bandla', 'ildam']
+});
+
+console.log(`Autonomous execution verified: ${event.executionId}`);</code></pre>
+        </div>
+
+        <!-- Telemetry & Response Panel (Cols 8-12) -->
+        <div class="lg:col-span-5 p-6 bg-[#070D18] flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-[11px] mb-3">
+              <span class="flex items-center gap-1.5 text-emerald-400 font-bold">
+                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                <span>200 OK</span>
+                <span class="text-slate-500 font-normal">· 182ms</span>
+              </span>
+              <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px] uppercase font-bold tracking-wider">Multi-Agent Coordination</span>
+            </div>
+
+            <pre class="text-slate-300 text-[11px] leading-relaxed overflow-x-auto"><code>{
+  "status": "success",
+  "execution_id": "exe_8f912e",
+  "engines_triaged": {
+    "ailo": {
+      "intent": "appointment_booking",
+      "doctor_matched": "Dr. Rustamov (Ortodont)",
+      "confidence": 0.982
+    },
+    "bandla": {
+      "slot_reserved": "2026-10-12T15:00:00+05:00",
+      "booking_ref": "BND-4821",
+      "calendar_synced": true
+    },
+    "ildam": {
+      "deal_id": "dl_98421",
+      "stage": "appointment_confirmed",
+      "pipeline": "dental_treatments"
+    }
+  },
+  "tma_pass_dispatched": true
+}</code></pre>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-[10px] text-slate-400">
+            <span>Tenant Data Encryption: <strong class="text-slate-200">AES-256</strong></span>
+            <span class="text-emerald-400 font-bold flex items-center gap-1">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+              Zero Training Retention
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Multi-Cloud & Enterprise Technology Badges -->
+    <div class="card-elevated p-6 rounded-2xl bg-white border border-divider flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex flex-col">
+        <span class="text-xs font-mono font-bold uppercase tracking-wider text-slate-400" data-t="archStackLabel">Foundation Stack & Cloud Programs</span>
+        <span class="text-sm font-bold text-slateDark" data-t="archStackSub">Architected for multi-cloud deployment and startup scale programs.</span>
+      </div>
+      <div class="flex flex-wrap items-center justify-center md:justify-end gap-3 sm:gap-4 text-xs font-bold text-slate-700">
+        <div class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-subtle border border-divider">
+          <svg class="w-4 h-4 text-[#0078D4]" viewBox="0 0 24 24" fill="currentColor"><path d="M11.4 24H0V12.6h11.4V24zM24 24H12.6V12.6H24V24zM11.4 11.4H0V0h11.4v11.4zM24 11.4H12.6V0H24v11.4z"/></svg>
+          <span>Microsoft Azure / OpenAI</span>
+        </div>
+        <div class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-subtle border border-divider">
+          <svg class="w-4 h-4 text-[#4285F4]" viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/></svg>
+          <span>Google Cloud / Gemini</span>
+        </div>
+        <div class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-subtle border border-divider">
+          <svg class="w-4 h-4 text-[#336791]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9v-2h2v2zm0-4H9V7h2v5zm4 4h-2v-6h2v6zm0-8h-2V7h2v1z"/></svg>
+          <span>PostgreSQL + pgvector</span>
+        </div>
+        <div class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-subtle border border-divider">
+          <svg class="w-4 h-4 text-[#F38020]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1010 10A10 10 0 0012 2zm1 14.5h-2v-2h2zm0-4h-2V7h2z"/></svg>
+          <span>Cloudflare Edge & TMA</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ==================== INTERACTIVE RECOVERABLE LOSS CALCULATOR ==================== -->
   <section id="calculator" class="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-b border-divider">
     <div class="text-center max-w-2xl mx-auto mb-12">
@@ -1843,6 +2093,22 @@ HTML_CONTENT = """<!DOCTYPE html>
         sol4F3: "Confidential partner call summaries sent to Telegram",
         sol4Cta: "Explore B2B Services Architecture",
 
+        navArchitecture: "Architecture",
+        archBadge: "ENTERPRISE CLOUD & AI FOUNDATION",
+        archTitle: "Engineered for High-Throughput Inference, Zero Data Leakage, and Seamless Scale.",
+        archSub: "Built on multi-model LLM routing, isolated tenant data boundaries, and event-driven webhooks. Built for Microsoft Azure, Google Cloud Vertex AI, and high-performance serverless runtimes.",
+        archP1Title: "Multi-Model Foundation Routing",
+        archP1Desc: "Dual-routed inference between Google Gemini 2.0 Flash (sub-800ms triage) and Azure OpenAI GPT-4o (complex clinical reasoning). Automatic fallback and local context caching.",
+        archP2Title: "Real-Time Audio & Speech (Mirzo)",
+        archP2Desc: "Whisper Large-v3 and Gemini Multimodal audio pipelines transcribing staff voice notes and client calls. Native Uzbek & Russian dialect processing with clinical action synthesis.",
+        archP3Title: "Zero-Retention Tenant Isolation",
+        archP3Desc: "PostgreSQL with strict Row-Level Security (RLS) and pgvector semantic indexing. Patient records and proprietary business data are fully encrypted (AES-256) and never used to train LLMs.",
+        archP4Title: "Event-Driven Agentic Dispatch",
+        archP4Desc: "Asynchronous event bus orchestrating instantaneous cross-agent handoffs (Ailo → Bandla → ILDAM). Open bidirectional webhooks for Telegram Mini Apps, Click, Payme, 1C, and Modme.",
+        apiConsoleTitle: "GPTify OS Developer API — Autonomous Dispatch Gateway",
+        archStackLabel: "Foundation Stack & Cloud Programs",
+        archStackSub: "Architected for multi-cloud deployment and startup scale programs.",
+
         calcEyebrow: "Interactive ROI Calculator",
         calcTitle: "How Much Capital Are You Leaving on the Table?",
         calcSub: "Adjust your team parameters. See the exact recoverable losses currently draining your service business.",
@@ -2081,6 +2347,22 @@ HTML_CONTENT = """<!DOCTYPE html>
         sol4F2: "Tijoriy takliflar va to'lov bosqichlari nazorati",
         sol4F3: "Hamkorlar bilan uchrashuv bayonnomasi Telegramda",
         sol4Cta: "B2B Arxitekturasini Ko'rish",
+
+        navArchitecture: "Arxitektura",
+        archBadge: "KORPORATIV BULUT VA AI INFRATUZILMASI",
+        archTitle: "Yuqori Tezlikdagi Xulosalar, To'liq Xavfsizlik va Kengayuvchanlik Uchun Ishlab Chiqilgan.",
+        archSub: "Ko'p modelli LLM marshrutlash, har bir korxona uchun ajratilgan ma'lumotlar bazasi va hodisalarga asoslangan vebhuklar. Microsoft Azure, Google Cloud Vertex AI va tezkor serverless infratuzilmasi asosida qurilgan.",
+        archP1Title: "Ko'p Modelli Asosiy Marshrutlash",
+        archP1Desc: "Google Gemini 2.0 Flash (800ms dan tez saralash) va Azure OpenAI GPT-4o (murakkab klinik va shartnoma tahlillari) o'rtasida aqlli taqsimlash. Avtomatik zaxira va tezkor kesh.",
+        archP2Title: "Jonli Ovoz va Nutq Tahlili (Mirzo)",
+        archP2Desc: "Xodimlar ovozli xabarlari va mijozlar qo'ng'iroqlarini qayta ishlovchi Whisper Large-v3 va Gemini Multimodal audiotizimi. O'zbek va rus tillari lahjalarini to'liq tushunish.",
+        archP3Title: "Korxona Ma'lumotlari Alohidaligi",
+        archP3Desc: "Qat'iy Row-Level Security (RLS) bilan himoyalangan PostgreSQL va pgvector qidiruvi. Bemorlar va biznes ma'lumotlari to'liq shifrlangan (AES-256) va LLM modellarni o'qitish uchun hech qachon ishlatilmaydi.",
+        archP4Title: "Hodisaviy Agentlar Taqsimoti",
+        archP4Desc: "Agentlar o'rtasida bir lahzalik ma'lumot uzatuvchi asinxron hodisalar shinasi (Ailo → Bandla → ILDAM). Telegram Mini App, Click, Payme, 1C va Modme uchun ochiq vebhuklar.",
+        apiConsoleTitle: "GPTify OS Developer API — Avtonom Boshqaruv Shlyuzi",
+        archStackLabel: "Asosiy Stek va Bulut Dasturlari",
+        archStackSub: "Ko'p bulutli tarqatish va yirik startap dasturlari uchun moslashtirilgan.",
 
         calcEyebrow: "Interaktiv Kalkulyator",
         calcTitle: "Stol ustida qancha pul qoldiryapsiz?",
@@ -2321,6 +2603,22 @@ HTML_CONTENT = """<!DOCTYPE html>
         sol4F3: "Протоколы переговоров с клиентами прямо в Telegram",
         sol4Cta: "Изучить Решение для B2B Услуг",
 
+        navArchitecture: "Архитектура",
+        archBadge: "КОРПОРАТИВНАЯ ОБЛАЧНАЯ И AI ИНФРАСТРУКТУРА",
+        archTitle: "Разработано для Высоких Нагрузок, Полной Изоляции Данных и Масштабирования.",
+        archSub: "Построено на базе мультимодельной маршрутизации LLM, изолированных сред данных и событийно-ориентированных вебхуков. Интегрировано с Microsoft Azure, Google Cloud Vertex AI и бессерверными средами.",
+        archP1Title: "Мультимодельная Маршрутизация LLM",
+        archP1Desc: "Умное распределение между Google Gemini 2.0 Flash (триаж до 800мс) и Azure OpenAI GPT-4o (клинические сценарии). Автоматическое переключение и локальное кэширование.",
+        archP2Title: "Анализ Речи и Аудиопотоков (Mirzo)",
+        archP2Desc: "Пайплайны Whisper Large-v3 и Gemini Multimodal для транскрибации звонков и голосовых заметок. Поддержка узбекских и русских диалектов с автоматическим выделением задач.",
+        archP3Title: "Изоляция Данных Клиентов",
+        archP3Desc: "PostgreSQL с Row-Level Security (RLS) и векторным поиском pgvector. Данные пациентов и бизнеса зашифрованы (AES-256) и никогда не используются для дообучения нейросетей.",
+        archP4Title: "Событийная Оркестрация Агентов",
+        archP4Desc: "Асинхронная шина событий для моментальной передачи контекста (Ailo → Bandla → ILDAM). Открытые вебхуки для Telegram Mini Apps, Click, Payme, 1C и Modme.",
+        apiConsoleTitle: "GPTify OS Developer API — Шлюз Автономной Диспетчеризации",
+        archStackLabel: "Стек Технологий и Облачные Программы",
+        archStackSub: "Архитектура адаптирована для мультиоблачного развертывания и программ грантов.",
+
         calcEyebrow: "Интерактивный Калькулятор",
         calcTitle: "Сколько Денег Вы Теряете из-за Рутины?",
         calcSub: "Введите параметры вашей команды. Узнайте точный объем потерь, который можно устранить уже в этом месяце.",
@@ -2420,6 +2718,26 @@ HTML_CONTENT = """<!DOCTYPE html>
     };
 
     let currentLang = 'en';
+
+
+    // Developer API tab switcher
+    function setApiTab(tab) {
+      ['curl', 'python', 'node'].forEach(t => {
+        const btn = document.getElementById(`tab-api-${t}`);
+        const snippet = document.getElementById(`api-snippet-${t}`);
+        if (btn && snippet) {
+          if (t === tab) {
+            btn.classList.add('bg-white', 'text-slateDark', 'shadow-2xs');
+            btn.classList.remove('text-slateMuted');
+            snippet.classList.remove('hidden');
+          } else {
+            btn.classList.remove('bg-white', 'text-slateDark', 'shadow-2xs');
+            btn.classList.add('text-slateMuted');
+            snippet.classList.add('hidden');
+          }
+        }
+      });
+    }
 
     function setLang(lang) {
       if (!TRANSLATIONS[lang]) return;
