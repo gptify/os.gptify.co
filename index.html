@@ -315,13 +315,19 @@
         <div class="relative bg-white border border-divider rounded-2xl overflow-hidden shadow-xl">
           <div class="fake-cursor hidden sm:block"></div>
 
-          <!-- Window Top Bar -->
+          <!-- Window Top Bar (Custom Enterprise Command Bar — No Mac Dots) -->
           <div class="flex items-center justify-between px-4 py-2.5 bg-[#F8FAFC] border-b border-divider text-xs">
             <div class="flex items-center gap-2">
-              <span class="w-2.5 h-2.5 rounded-full bg-[#FF5F57]"></span>
-              <span class="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]"></span>
-              <span class="w-2.5 h-2.5 rounded-full bg-[#28C840]"></span>
-              <span class="font-mono text-[10px] text-slate-500 ml-1.5">os.gptify.co/command-center</span>
+              <div class="flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-white border border-divider shadow-2xs">
+                <span class="w-2 h-2 rounded-full bg-emeraldBrand badge-live-pulse"></span>
+                <span class="font-mono text-[10px] font-bold text-slateDark">os.gptify.co</span>
+                <span class="text-slate-300 text-[10px]">/</span>
+                <span class="font-mono text-[10px] text-emeraldBrand font-bold">fleet-control</span>
+              </div>
+              <span class="hidden sm:inline-flex items-center text-[10px] font-mono text-slate-400">
+                <svg class="w-3 h-3 text-emeraldBrand mr-1" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+                TLS 1.3 Verified
+              </span>
             </div>
             <div class="flex items-center gap-1.5 text-emerald-800 font-mono text-[9.5px] font-bold bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">
               <span class="w-1.5 h-1.5 rounded-full bg-emeraldBrand"></span>
@@ -526,55 +532,66 @@
       </p>
     </div>
 
-    <!-- Chat Window Mockup -->
-    <div class="bg-white rounded-2xl border border-divider shadow-xl overflow-hidden max-w-xl mx-auto">
-      <div class="flex items-center justify-between px-4 py-3 bg-[#F8FAFC] border-b border-divider">
-        <div class="flex items-center gap-2.5">
-          <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-800 font-bold text-xs flex items-center justify-center">
-            A
+    <!-- Chat Window Mockup (Instagram Direct Ailo Style) -->
+    <div class="bg-white rounded-3xl border border-divider shadow-xl overflow-hidden max-w-xl mx-auto">
+      <div class="flex items-center justify-between px-5 py-3.5 bg-[#F8FAFC] border-b border-divider">
+        <div class="flex items-center gap-3">
+          <!-- Instagram Avatar with Story Gradient Ring -->
+          <div class="w-9 h-9 rounded-full p-[2px] bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 flex items-center justify-center flex-shrink-0">
+            <div class="w-full h-full rounded-full bg-white flex items-center justify-center text-xs font-black text-slateDark">
+              M
+            </div>
           </div>
           <div>
             <div class="text-xs font-bold text-slateDark flex items-center gap-1.5">
-              <span>Ailo Customer Agent</span>
-              <span class="w-1.5 h-1.5 rounded-full bg-emeraldBrand"></span>
+              <span>MedPro Clinic</span>
+              <svg class="w-3.5 h-3.5 text-sky-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
             </div>
-            <div class="text-[10px] text-slate-400" data-t="chatChannel">Omnichannel: Telegram · WhatsApp · Instagram</div>
+            <div class="text-[10px] text-slate-400 font-medium" data-t="chatChannel">Instagram Direct · @medpro_clinic</div>
           </div>
         </div>
-        <span class="text-[10px] font-mono text-emeraldBrand font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-          8s Response
-        </span>
+        <div class="flex items-center gap-2">
+          <span class="inline-flex items-center gap-1 text-[10px] font-mono text-emeraldBrand font-bold bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
+            <span class="w-1.5 h-1.5 rounded-full bg-emeraldBrand"></span>
+            Ailo 6s Reply
+          </span>
+        </div>
       </div>
 
       <!-- Messages Stream -->
-      <div class="p-6 bg-[#FAFAFB] min-h-[300px] flex flex-col justify-end gap-3.5 text-xs sm:text-sm">
+      <div class="p-5 sm:p-6 bg-[#FAFAFB] min-h-[320px] flex flex-col justify-end gap-3 text-xs sm:text-sm">
         
-        <!-- User Inquiry -->
-        <div class="demo-msg1 self-start bg-white border border-divider text-slate-800 p-3.5 rounded-2xl rounded-tl-xs max-w-[85%] shadow-xs" data-t="chatMsg1">
-          Hello! We run a medical clinic with 8 doctors. We need to automate patient inquiries, appointments, and record management. Can you handle this?
+        <!-- Story Reference Chip -->
+        <div class="self-center bg-white border border-divider px-3 py-1 rounded-full text-[10px] text-slate-500 font-medium shadow-2xs flex items-center gap-1.5 mb-1">
+          <span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span>
+          <span>Replied to your Instagram Story: "Professional Smile Care"</span>
+        </div>
+
+        <!-- User Inquiry (Instagram Customer Texting) -->
+        <div class="demo-msg1 self-start bg-white border border-divider text-slate-800 p-3.5 rounded-2xl rounded-tl-xs max-w-[85%] shadow-xs leading-relaxed" data-t="chatMsg1">
+          Hi! How much is teeth whitening and is Dr. Rustamov available tomorrow around 4 PM? 🦷
         </div>
 
         <!-- AI Instant Qualified Reply -->
-        <div class="demo-msg2 self-end bg-slateDark text-white p-3.5 rounded-2xl rounded-tr-xs max-w-[85%] shadow-md" data-t="chatMsg2">
-          Hello! Absolutely. Under GPTify OS, I qualify patient needs 24/7 across WhatsApp and Telegram, Bandla syncs your doctors' live schedules, and ILDAM manages patient history. Would you like a doctor consultation or a live system walkthrough?
+        <div class="demo-msg2 self-end bg-slateDark text-white p-3.5 rounded-2xl rounded-tr-xs max-w-[85%] shadow-md leading-relaxed" data-t="chatMsg2">
+          Hi! Teeth whitening starts from $45. Dr. Rustamov has an open chair tomorrow at 4:00 PM. Shall I lock in this slot for you? ✅
         </div>
 
-        <!-- Typing Indicator -->
-        <div class="demo-typing self-start bg-white border border-divider p-3 rounded-2xl rounded-tl-xs flex items-center gap-1.5 shadow-xs w-16">
-          <span class="w-1.5 h-1.5 rounded-full bg-slate-400 typing-dot"></span>
-          <span class="w-1.5 h-1.5 rounded-full bg-slate-400 typing-dot" style="animation-delay: 0.15s"></span>
-          <span class="w-1.5 h-1.5 rounded-full bg-slate-400 typing-dot" style="animation-delay: 0.3s"></span>
+        <!-- Real AI Action State (No generic 3 dots!) -->
+        <div class="demo-typing self-start bg-emerald-50 border border-emerald-200 text-emerald-800 px-3.5 py-1.5 rounded-full flex items-center gap-2 text-xs font-semibold shadow-2xs">
+          <span class="w-2 h-2 rounded-full bg-emeraldBrand badge-live-pulse flex-shrink-0"></span>
+          <span data-t="chatTypingStatus">Ailo checking live doctor availability via Bandla...</span>
         </div>
 
         <!-- User Reply -->
-        <div class="demo-msg3 self-start bg-white border border-divider text-slate-800 p-3.5 rounded-2xl rounded-tl-xs max-w-[85%] shadow-xs" data-t="chatMsg3">
-          We want to book a live walkthrough for tomorrow at 3:00 PM for our clinic management team.
+        <div class="demo-msg3 self-start bg-white border border-divider text-slate-800 p-3.5 rounded-2xl rounded-tl-xs max-w-[85%] shadow-xs leading-relaxed" data-t="chatMsg3">
+          Yes please! Book it under Malika (+998 90 123-45-67).
         </div>
 
         <!-- Success Verification Pill -->
         <div class="demo-badge self-center bg-emeraldLight border border-emerald-300 text-emerald-800 px-4 py-2 rounded-full text-xs font-bold flex items-center gap-2 shadow-xs">
-          <svg class="w-4 h-4 text-emeraldBrand" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-          <span data-t="chatBadge">Slot reserved via Bandla · Deal & record created in ILDAM CRM</span>
+          <svg class="w-4 h-4 text-emeraldBrand flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+          <span data-t="chatBadge">Slot locked in Bandla · Deal & record synced in ILDAM CRM · Pass dispatched</span>
         </div>
 
       </div>
@@ -1198,11 +1215,12 @@
     <!-- Interactive Developer API & Telemetry Explorer Card -->
     <div class="card-elevated rounded-3xl bg-white border border-divider overflow-hidden shadow-lg mb-10">
       <div class="px-6 py-4 bg-[#F8FAFC] border-b border-divider flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-        <div class="flex items-center gap-3">
-          <span class="w-3 h-3 rounded-full bg-[#FF5F57]"></span>
-          <span class="w-3 h-3 rounded-full bg-[#FFBD2E]"></span>
-          <span class="w-3 h-3 rounded-full bg-[#28C840]"></span>
-          <span class="font-mono text-xs font-bold text-slate-700 ml-2" data-t="apiConsoleTitle">GPTify OS Developer API — Autonomous Dispatch Gateway</span>
+        <div class="flex items-center gap-2">
+          <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white border border-divider shadow-2xs">
+            <svg class="w-3.5 h-3.5 text-emeraldBrand" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.25 9.75L16.5 12l-2.25 2.25m-4.5 0L7.5 12l2.25-2.25M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z"/></svg>
+            <span class="font-mono text-xs font-bold text-slateDark">api.gptify.co/v1</span>
+          </div>
+          <span class="hidden md:inline-block font-mono text-xs text-slate-500 font-semibold" data-t="apiConsoleTitle">Autonomous Dispatch Gateway</span>
         </div>
         <!-- Language Tabs for Code Snippet -->
         <div class="flex items-center gap-1.5 bg-[#EAE8E1] p-1 rounded-xl text-xs font-mono font-bold">
@@ -1928,7 +1946,7 @@ console.log(`Autonomous execution verified: ${event.executionId}`);</code></pre>
         proof1: "5 Specialized Engines: Ailo, ILDAM, Bandla, Mirzo & Izlai",
         proof2: "Clinics · Education · Automotive · Professional Services",
 
-        heroFloat1: "Ailo: 47 Inquiries Triaged in 8s",
+        heroFloat1: "Ailo: Instagram DM Triaged in 6s",
         heroFloat2: "Izlai: 14 Outbound Accounts Reached",
         dashStatus: "5/5 FLEET LIVE",
         kpi1Label: "LEADS",
@@ -1939,7 +1957,7 @@ console.log(`Autonomous execution verified: ${event.executionId}`);</code></pre>
         kpi3Value: "~$480 saved",
         telemetryTitle: "Autonomous Event Telemetry",
         telemetrySync: "Synchronized",
-        tel1: "WhatsApp inquiry qualified in 8s; routed to Bandla",
+        tel1: "Instagram DM inquiry qualified in 6s; appointment slot held via Bandla",
         tel2: "14 B2B accounts prospected via Email & LinkedIn; 3 replies",
         tel3: "Deal moved to Proposal stage; advance invoice scheduled",
         tel4: "Consultation confirmed for Thu 14:00; invites synced",
@@ -1947,14 +1965,15 @@ console.log(`Autonomous execution verified: ${event.executionId}`);</code></pre>
 
         marqueeTitle: "Natively Integrates With Your Existing Enterprise Software",
 
-        demoEyebrow: "Real-Time Autonomous Coordination",
+        demoEyebrow: "Real-Time Instagram & Telegram Automation",
         demoTitle: "How Ailo, Bandla, and ILDAM Coordinate Instantly",
-        demoSub: "Not a static button bot — dynamic qualification, real-time calendar booking, and automatic CRM synchronization.",
-        chatChannel: "Omnichannel: Telegram · WhatsApp · Instagram",
-        chatMsg1: "Hello! We run a medical clinic with 8 doctors. We need to automate patient inquiries, appointments, and record management. Can you handle this?",
-        chatMsg2: "Hello! Absolutely. Under GPTify OS, I qualify patient needs 24/7 across WhatsApp and Telegram, Bandla syncs your doctors' live schedules, and ILDAM manages patient history. Would you like a doctor consultation or a live system walkthrough?",
-        chatMsg3: "We want to book a live walkthrough for tomorrow at 3:00 PM for our clinic management team.",
-        chatBadge: "Slot reserved via Bandla · Deal & record created in ILDAM CRM",
+        demoSub: "Real customer texting on Instagram Direct — dynamic qualification, calendar booking, and automatic CRM sync in seconds.",
+        chatChannel: "Instagram Direct · @medpro_clinic",
+        chatMsg1: "Hi! How much is teeth whitening and is Dr. Rustamov available tomorrow around 4 PM? 🦷",
+        chatTypingStatus: "Ailo checking live doctor availability via Bandla...",
+        chatMsg2: "Hi! Teeth whitening starts from $45. Dr. Rustamov has an open chair tomorrow at 4:00 PM. Shall I lock in this slot for you? ✅",
+        chatMsg3: "Yes please! Book it under Malika (+998 90 123-45-67).",
+        chatBadge: "Slot locked in Bandla · Deal & record synced in ILDAM CRM · Pass dispatched",
 
         flywheelBadge: "THE CONNECTED PRODUCT FLYWHEEL",
         flywheelTitle: "One Continuous Loop. Zero Manual Friction.",
@@ -2183,7 +2202,7 @@ console.log(`Autonomous execution verified: ${event.executionId}`);</code></pre>
         proof1: "5 Ta Ixtisoslashgan Dvigatel: Ailo, ILDAM, Bandla, Mirzo va Izlai",
         proof2: "Klinikalar · O'quv markazlari · Avtomobil servis · B2B xizmatlar",
 
-        heroFloat1: "Ailo: 47 ta murojaat 8s da saralandi",
+        heroFloat1: "Ailo: Instagram DM 6s da saralandi",
         heroFloat2: "Izlai: 14 ta korxona bilan aloqa o'rnatildi",
         dashStatus: "5/5 FLOT FAOL",
         kpi1Label: "LIDLAR",
@@ -2194,7 +2213,7 @@ console.log(`Autonomous execution verified: ${event.executionId}`);</code></pre>
         kpi3Value: "~5,600,000 so'm",
         telemetryTitle: "Avtonom Oqim Jurnali",
         telemetrySync: "Sinxronlashgan",
-        tel1: "WhatsApp murojaati 8s da saralanib, Bandla orqali joy band qilindi",
+        tel1: "Instagram Direct so'rovi 6 soniyada saralandi; Bandlada vaqt band qilindi",
         tel2: "Email va LinkedIn orqali 14 ta korxonaga taklif yuborildi; 3 ta javob",
         tel3: "Bitim taklif bosqichiga o'tkazildi; to'lov eslatmasi rejalashtirildi",
         tel4: "Payshanba 14:00 ga qabul tasdiqlandi; kalendarlar sinxronlandi",
@@ -2202,14 +2221,15 @@ console.log(`Autonomous execution verified: ${event.executionId}`);</code></pre>
 
         marqueeTitle: "Sizning Mavjud Dasturlaringizga To'g'ridan-To'g'ri Bog'lanadi",
 
-        demoEyebrow: "Real Vaqtda Avtonom Hamkorlik",
-        demoTitle: "Ailo, Bandla va ILDAM Qanday Sinxron Ishlaydi?",
-        demoSub: "Quruq tugmali bot emas — 8 soniyada samimiy muloqot, taqvimdan bo'sh vaqtni band qilish va CRMga avtomatik biriktirish.",
-        chatChannel: "Omnikanal: Telegram · WhatsApp · Instagram",
-        chatMsg1: "Assalomu alaykum! Bizda 8 nafar shifokor ishlaydigan klinika bor. Bemorlar murojaati, qabulga yozish va kartochkalar nazoratini avtomatlashtirmoqchimiz. Buni qanday qurasizlar?",
-        chatMsg2: "Vaalaykum assalom! Albatta. GPTify OS doirasida Ailo bemorlarni WhatsApp va Telegramda 24/7 qabul qiladi, Bandla shifokorlar jadvalini tekshirib qabulga yozadi, ILDAM esa murojaatlar tarixini yuritadi. Shifokor qabuli kerakmi yoki demo ko'rmoqchimisiz?",
-        chatMsg3: "Ertaga soat 15:00 ga klinika rahbariyati uchun jonli demo ko'rsatsangiz yaxshi bo'lardi.",
-        chatBadge: "Bandla orqali vaqt band qilindi · Bemor ILDAM CRMga kiritildi",
+        demoEyebrow: "Jonli Instagram va Telegram Avtomatizatsiyasi",
+        demoTitle: "Ailo, Bandla va ILDAM Qanday Birgalikda Ishlaydi?",
+        demoSub: "Instagram Direct orqali haqiqiy mijoz yozishmasi — bir zumda saralash, navbatga yozish va CRM ga tushirish.",
+        chatChannel: "Instagram Direct · @medpro_clinic",
+        chatMsg1: "Salom! Tish oqartirish (bleaching) narxi qancha va ertaga soat 16:00 ga doktor Rustamovga joy bormi? 🦷",
+        chatTypingStatus: "Ailo Bandla orqali shifokor jadvalini tekshirmoqda...",
+        chatMsg2: "Assalomu alaykum! Tish oqartirish 450,000 so'mdan boshlanadi. Ertaga 16:00 da Dr. Rustamov qabuli bo'sh. Joyni siz uchun band qilib qo'yaylikmi? ✅",
+        chatMsg3: "Ha, iltimos! Malika Karimova nomiga yozib qo'ying (+998 90 123-45-67).",
+        chatBadge: "Bandlada 16:00 band qilindi · ILDAM CRM da bemor kartasi ochildi · Telegram tasdiqnoma yuborildi",
 
         flywheelBadge: "YAGONA KONVEYER VA FLYWHEEL",
         flywheelTitle: "Yagona Uzluksiz Zanjir. Qo'l Mehnatisiz.",
@@ -2438,7 +2458,7 @@ console.log(`Autonomous execution verified: ${event.executionId}`);</code></pre>
         proof1: "5 Специализированных Двигателей: Ailo, ILDAM, Bandla, Mirzo и Izlai",
         proof2: "Клиники · Образование · Автосервис и Дилеры · B2B Услуги",
 
-        heroFloat1: "Ailo: 47 обращений обработано за 8с",
+        heroFloat1: "Ailo: Instagram DM обработан за 6с",
         heroFloat2: "Izlai: 14 B2B компаний на связи",
         dashStatus: "5/5 ФЛОТ АКТИВЕН",
         kpi1Label: "ЛИДЫ",
@@ -2449,7 +2469,7 @@ console.log(`Autonomous execution verified: ${event.executionId}`);</code></pre>
         kpi3Value: "~5,600,000 сум",
         telemetryTitle: "Журнал Автономных Событий",
         telemetrySync: "Синхронизировано",
-        tel1: "Лид в WhatsApp квалифицирован за 8с; запись передана в Bandla",
+        tel1: "Запрос из Instagram Direct квалифицирован за 6с; слот забронирован через Bandla",
         tel2: "14 B2B компаний получили предложения (Email и LinkedIn); 3 ответа",
         tel3: "В ILDAM CRM сделка перешла на этап договора; выставлен счет",
         tel4: "Запись на четверг 14:00 подтверждена; календари синхронизированы",
@@ -2457,14 +2477,15 @@ console.log(`Autonomous execution verified: ${event.executionId}`);</code></pre>
 
         marqueeTitle: "Бесшовная Интеграция с Вашими Корпоративными Программами",
 
-        demoEyebrow: "Автономная Координация в Реальном Времени",
-        demoTitle: "Как Ailo, Bandla и ILDAM Работают Синхронно",
-        demoSub: "Не шаблонный бот — мгновенный диалог, онлайн-бронирование времени и автоматическая фиксация в CRM.",
-        chatChannel: "Омниканал: Telegram · WhatsApp · Instagram",
-        chatMsg1: "Здравствуйте! У нас медицинская клиника, 8 врачей. Хотим автоматизировать запись пациентов, ответы на вопросы и карточки в CRM. Как вы это настраиваете?",
-        chatMsg2: "Здравствуйте! В рамках GPTify OS агент Ailo отвечает пациентам за 8 секунд в WhatsApp и Telegram, Bandla проверяет графики врачей и бронирует приемы, а ILDAM ведет историю пациентов. Забронировать прием или провести демо?",
-        chatMsg3: "Нам нужно демо для руководства клиники на завтра в 15:00.",
-        chatBadge: "Слот забронирован в Bandla · Пациент внесен в ILDAM CRM",
+        demoEyebrow: "Автоматизация Instagram и Telegram в Реальном Времени",
+        demoTitle: "Как Ailo, Bandla и ILDAM Координируются Мгновенно",
+        demoSub: "Живой диалог в Instagram Direct — динамическая квалификация, бронь в расписании и синхронизация с CRM за секунды.",
+        chatChannel: "Instagram Direct · @medpro_clinic",
+        chatMsg1: "Здравствуйте! Сколько стоит отбеливание зубов и свободен ли доктор Рустамов на завтра около 16:00? 🦷",
+        chatTypingStatus: "Ailo проверяет свободные слоты через Bandla...",
+        chatMsg2: "Здравствуйте! Отбеливание от 450 000 сум. Завтра в 16:00 у доктора Рустамова есть свободный слот. Забронировать его для вас? ✅",
+        chatMsg3: "Да, пожалуйста! Запишите на имя Малики (+998 90 123-45-67).",
+        chatBadge: "Слот забронирован в Bandla · Сделка и карта созданы в ILDAM CRM · Отправлено подтверждение",
 
         flywheelBadge: "ЕДИНЫЙ КОНВЕЙЕР И МАХОВИК ПРОДАЖ",
         flywheelTitle: "Единый Замкнутый Цикл. Без Ручной Рутины.",
