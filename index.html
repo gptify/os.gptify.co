@@ -258,17 +258,14 @@
 
         <!-- Desktop Navigation Links -->
         <nav class="hidden lg:flex items-center gap-1 xl:gap-2 text-xs xl:text-sm font-semibold text-slate-700 pl-3 xl:pl-4 border-l border-divider" aria-label="Navigation">
-          <a href="#services" class="px-2.5 py-1 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors duration-150 cursor-pointer whitespace-nowrap" data-t="navEngines">5 Engines</a>
-          <a href="#flywheel" class="px-2.5 py-1 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors duration-150 cursor-pointer whitespace-nowrap" data-t="navFlywheel">Connected Loop</a>
-          <a href="#solutions" class="px-2.5 py-1 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors duration-150 cursor-pointer whitespace-nowrap" data-t="navSolutions">Solutions</a>
-          <a href="#architecture" class="px-2.5 py-1 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors duration-150 cursor-pointer whitespace-nowrap" data-t="navArchitecture">Architecture</a>
-          <a href="#calculator" class="px-2.5 py-1 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors duration-150 cursor-pointer whitespace-nowrap" data-t="navCalculator">Calculator</a>
-          <a href="#configurator" class="px-2.5 py-1 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors duration-150 cursor-pointer whitespace-nowrap" data-t="navConfigurator">Configurator</a>
-          <a href="#faq" class="px-2.5 py-1 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors duration-150 cursor-pointer whitespace-nowrap" data-t="navFaq">FAQ</a>
+          <a href="#services" class="px-3 py-1.5 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors duration-150 cursor-pointer whitespace-nowrap" data-t="navEngines">5 Engines</a>
+          <a href="#solutions" class="px-3 py-1.5 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors duration-150 cursor-pointer whitespace-nowrap" data-t="navSolutions">Solutions</a>
+          <a href="#architecture" class="px-3 py-1.5 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors duration-150 cursor-pointer whitespace-nowrap" data-t="navArchitecture">Architecture</a>
+          <a href="#faq" class="px-3 py-1.5 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors duration-150 cursor-pointer whitespace-nowrap" data-t="navFaq">FAQ</a>
         </nav>
       </div>
 
-      <div class="flex items-center gap-2.5 sm:gap-3 flex-shrink-0">
+      <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
         <!-- 3-Language Switcher (EN / UZ / RU) -->
         <div class="flex items-center bg-[#EAE8E1] border border-divider rounded-full p-0.5 text-xs font-mono font-bold">
           <button type="button" onclick="setLang('en')" id="btn-lang-en" class="lang-pill-btn active">EN</button>
@@ -276,11 +273,31 @@
           <button type="button" onclick="setLang('ru')" id="btn-lang-ru" class="lang-pill-btn">RU</button>
         </div>
 
-        <button type="button" id="navBookBtn" onclick="openDemoModal()" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-emeraldBrand hover:bg-emeraldDark text-white text-xs font-bold shadow-sm transition-all duration-200 cursor-pointer whitespace-nowrap">
+        <button type="button" id="navBookBtn" onclick="openDemoModal()" class="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-emeraldBrand hover:bg-emeraldDark text-white text-xs font-bold shadow-sm transition-all duration-200 cursor-pointer whitespace-nowrap">
           <span data-t="navBook">Book a Demo</span>
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </button>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button type="button" id="mobileMenuBtn" onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-xl bg-white border border-divider text-slateDark hover:bg-subtle transition-colors cursor-pointer" aria-label="Toggle Navigation Menu" aria-expanded="false">
+          <svg id="hamburgerIcon" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></svg>
+          <svg id="closeIcon" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
       </div>
+    </div>
+
+    <!-- Mobile Navigation Dropdown -->
+    <div id="mobileMenuDropdown" class="hidden lg:hidden border-t border-divider bg-[#FAF9F5]/98 backdrop-blur-md px-4 py-4 shadow-lg">
+      <nav class="flex flex-col gap-2 font-semibold text-slate-700 text-sm">
+        <a href="#services" onclick="closeMobileMenu()" class="px-3 py-2 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors" data-t="navEngines">5 Engines</a>
+        <a href="#solutions" onclick="closeMobileMenu()" class="px-3 py-2 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors" data-t="navSolutions">Solutions</a>
+        <a href="#architecture" onclick="closeMobileMenu()" class="px-3 py-2 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors" data-t="navArchitecture">Architecture</a>
+        <a href="#faq" onclick="closeMobileMenu()" class="px-3 py-2 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors" data-t="navFaq">FAQ</a>
+        <button type="button" onclick="closeMobileMenu(); openDemoModal()" class="w-full mt-2 inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-emeraldBrand hover:bg-emeraldDark text-white text-xs font-bold shadow-sm transition-all">
+          <span data-t="navBook">Book a Demo</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </button>
+      </nav>
     </div>
   </header>
 
@@ -3108,6 +3125,36 @@ console.log(`Autonomous execution verified: ${event.executionId}`);</code></pre>
       if (btnSubmit) btnSubmit.disabled = false;
       if (btnSpinner) btnSpinner.classList.add('hidden');
       if (btnIcon) btnIcon.classList.remove('hidden');
+    }
+
+    // Mobile Menu Controls
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenuDropdown');
+      const btn = document.getElementById('mobileMenuBtn');
+      const ham = document.getElementById('hamburgerIcon');
+      const close = document.getElementById('closeIcon');
+      if (!menu || !btn) return;
+      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+
+      if (isExpanded) {
+        closeMobileMenu();
+      } else {
+        menu.classList.remove('hidden');
+        if (ham) ham.classList.add('hidden');
+        if (close) close.classList.remove('hidden');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    }
+
+    function closeMobileMenu() {
+      const menu = document.getElementById('mobileMenuDropdown');
+      const btn = document.getElementById('mobileMenuBtn');
+      const ham = document.getElementById('hamburgerIcon');
+      const close = document.getElementById('closeIcon');
+      if (menu) menu.classList.add('hidden');
+      if (ham) ham.classList.remove('hidden');
+      if (close) close.classList.add('hidden');
+      if (btn) btn.setAttribute('aria-expanded', 'false');
     }
 
     // Language resolution: English is the default primary language
