@@ -19,22 +19,29 @@ HTML_CONTENT = """<!DOCTYPE html>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GPTify OS — The AI Operating System for Service Businesses | GPTify</title>
   <meta name="description" content="GPTify OS is an AI operating system for service businesses that connects customer conversations, CRM, scheduling, meetings, prospecting and automation through a unified layer of AI agents.">
-  <link rel="canonical" href="https://gptify.si">
-  <link rel="icon" type="image/svg+xml" href="gptify-mark.svg">
+  <link rel="canonical" href="https://gptify.si/">
+  <link rel="alternate" hreflang="x-default" href="https://gptify.si/">
+  <link rel="alternate" hreflang="en" href="https://gptify.si/">
+  <link rel="alternate" hreflang="uz" href="https://gptify.si/uz/">
+  <link rel="alternate" hreflang="ru" href="https://gptify.si/ru/">
+  <link rel="icon" type="image/svg+xml" href="/gptify-mark.svg">
 
   <!-- Open Graph / Facebook / LinkedIn / Telegram -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://gptify.si">
+  <meta property="og:url" content="https://gptify.si/">
   <meta property="og:title" content="GPTify OS — The AI Operating System for Service Businesses">
   <meta property="og:description" content="Connect customer conversations, CRM, scheduling, meetings, prospecting and automation through a unified layer of AI agents.">
-  <meta property="og:image" content="https://gptify.si/gptify-logo.svg">
+  <meta property="og:image" content="https://gptify.si/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
 
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://gptify.si">
+  <meta name="twitter:url" content="https://gptify.si/">
   <meta name="twitter:title" content="GPTify OS — The AI Operating System for Service Businesses">
   <meta name="twitter:description" content="Connect customer conversations, CRM, scheduling, meetings, prospecting and automation through a unified layer of AI agents.">
-  <meta name="twitter:image" content="https://gptify.si/gptify-logo.svg">
+  <meta name="twitter:image" content="https://gptify.si/og-image.png">
 
   <!-- JSON-LD Structured Data for Google -->
   <script type="application/ld+json">
@@ -60,39 +67,8 @@ HTML_CONTENT = """<!DOCTYPE html>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
-            serif: ['"Instrument Serif"', 'Georgia', 'serif'],
-            mono: ['"JetBrains Mono"', 'monospace'],
-            poppins: ['"Poppins"', 'sans-serif'],
-          },
-          colors: {
-            paper: '#FAF9F5',
-            surface: '#FFFFFF',
-            subtle: '#F4F2EC',
-            divider: '#E7E5DF',
-            dividerDark: '#D8D5CD',
-            slateDark: '#0F172A',
-            slateMuted: '#64748B',
-            emeraldBrand: '#087F6A',
-            emeraldDark: '#066352',
-            emeraldLight: '#ECFDF5',
-            limeSpark: '#B7F34A',
-            amberBrand: '#D97706',
-            skyBrand: '#0284C7',
-            purpleBrand: '#7C3AED',
-            indigoBrand: '#4F46E5',
-          }
-        }
-      }
-    }
-  </script>
+  <!-- Compiled & Minified Tailwind CSS -->
+  <link rel="stylesheet" href="/style.min.css">
 
   <style>
     :root {
@@ -282,9 +258,9 @@ HTML_CONTENT = """<!DOCTYPE html>
       <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
         <!-- 3-Language Switcher (EN / UZ / RU) -->
         <div class="flex items-center bg-[#EAE8E1] border border-divider rounded-full p-0.5 text-xs font-mono font-bold">
-          <button type="button" onclick="setLang('en')" id="btn-lang-en" class="lang-pill-btn active">EN</button>
-          <button type="button" onclick="setLang('uz')" id="btn-lang-uz" class="lang-pill-btn">UZ</button>
-          <button type="button" onclick="setLang('ru')" id="btn-lang-ru" class="lang-pill-btn">RU</button>
+          <a href="/" id="btn-lang-en" class="lang-pill-btn active">EN</a>
+          <a href="/uz/" id="btn-lang-uz" class="lang-pill-btn">UZ</a>
+          <a href="/ru/" id="btn-lang-ru" class="lang-pill-btn">RU</a>
         </div>
 
         <button type="button" id="navBookBtn" onclick="openDemoModal()" class="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-emeraldBrand hover:bg-emeraldDark text-white text-xs font-bold shadow-sm transition-all duration-200 cursor-pointer whitespace-nowrap">
@@ -311,6 +287,14 @@ HTML_CONTENT = """<!DOCTYPE html>
           <span data-t="navBook">Book a Demo</span>
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </button>
+        <div class="flex items-center justify-between pt-2 border-t border-divider text-xs">
+          <span class="text-slate-500 font-mono font-bold">Language</span>
+          <div class="flex items-center bg-[#EAE8E1] border border-divider rounded-full p-0.5 text-xs font-mono font-bold">
+            <a href="/" id="mobile-btn-lang-en" class="lang-pill-btn active">EN</a>
+            <a href="/uz/" id="mobile-btn-lang-uz" class="lang-pill-btn">UZ</a>
+            <a href="/ru/" id="mobile-btn-lang-ru" class="lang-pill-btn">RU</a>
+          </div>
+        </div>
       </nav>
     </div>
   </header>
@@ -393,9 +377,12 @@ HTML_CONTENT = """<!DOCTYPE html>
                 TLS 1.3 Verified
               </span>
             </div>
-            <div class="flex items-center gap-1.5 text-emerald-800 font-mono text-[9.5px] font-bold bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">
-              <span class="w-1.5 h-1.5 rounded-full bg-emeraldBrand"></span>
-              <span data-t="dashStatus">5/5 FLEET LIVE</span>
+            <div class="flex items-center gap-2">
+              <span class="px-1.5 py-0.5 rounded bg-slate-200 text-slate-600 font-mono text-[9px] uppercase font-bold tracking-wider">Sample Data</span>
+              <div class="flex items-center gap-1.5 text-emerald-800 font-mono text-[9.5px] font-bold bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">
+                <span class="w-1.5 h-1.5 rounded-full bg-emeraldBrand"></span>
+                <span data-t="dashStatus">5/5 FLEET LIVE</span>
+              </div>
             </div>
           </div>
 
@@ -436,7 +423,7 @@ HTML_CONTENT = """<!DOCTYPE html>
                   <span class="text-emeraldBrand font-bold" data-t="kpi3Sub">This Week</span>
                 </div>
                 <div class="text-lg font-mono font-black text-slateDark mt-0.5">52.5h</div>
-                <div class="text-[9.5px] font-mono text-slate-500 mt-0.5" data-t="kpi3Value">~$480 saved</div>
+                <div class="text-[9.5px] font-mono text-slate-500 mt-0.5" data-t="kpi3Value">Hours recovered</div>
               </div>
             </div>
 
@@ -592,7 +579,7 @@ HTML_CONTENT = """<!DOCTYPE html>
         How Ailo, Bandla, and ILDAM Coordinate Instantly
       </h2>
       <p class="text-slate-600 text-sm sm:text-base mt-2" data-t="demoSub">
-        Not a static button bot — dynamic qualification, real-time calendar booking, and automatic CRM synchronization.
+        Example conversation on Instagram Direct — dynamic qualification, calendar booking, and automatic CRM sync in seconds.
       </p>
     </div>
 
@@ -1304,6 +1291,7 @@ HTML_CONTENT = """<!DOCTYPE html>
         <div class="lg:col-span-7 p-6 border-b lg:border-b-0 lg:border-r border-slate-800 overflow-x-auto">
           <div class="flex items-center justify-between text-[11px] text-slate-400 font-semibold mb-3">
             <span class="flex items-center gap-2">
+              <span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-mono text-[10px] font-bold uppercase tracking-wider">Example Request</span>
               <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold">POST</span>
               <span class="text-slate-300">https://api.gptify.co/v1/fleet/dispatch</span>
             </span>
@@ -1312,7 +1300,7 @@ HTML_CONTENT = """<!DOCTYPE html>
 
           <!-- cURL Tab Content -->
           <pre id="api-snippet-curl" class="text-slate-300 leading-relaxed overflow-x-auto"><code>curl -X POST https://api.gptify.co/v1/fleet/dispatch \
-  -H "Authorization: Bearer sec_live_9f83a21e4c7" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
     "tenant_id": "clinic_tashkent_medpro",
@@ -1334,7 +1322,7 @@ HTML_CONTENT = """<!DOCTYPE html>
 async with httpx.AsyncClient() as client:
     response = await client.post(
         "https://api.gptify.co/v1/fleet/dispatch",
-        headers={"Authorization": "Bearer sec_live_9f83a21e4c7"},
+        headers={"Authorization": "Bearer YOUR_API_KEY"},
         json={
             "tenant_id": "clinic_tashkent_medpro",
             "channel": "telegram",
@@ -1846,11 +1834,15 @@ console.log(`Autonomous execution verified: ${event.executionId}`);</code></pre>
 
       <!-- Compliance & Legal Links (Microsoft, Google & Meta Compliance) -->
       <div class="flex flex-wrap items-center gap-3 text-xs font-semibold text-slate-500">
-        <a href="privacy.html" class="hover:text-emeraldBrand transition cursor-pointer" data-t="footerPrivacy">Privacy Policy</a>
+        <a href="/privacy.html" class="hover:text-emeraldBrand transition cursor-pointer" data-t="footerPrivacy">Privacy Policy</a>
         <span>•</span>
-        <a href="terms.html" class="hover:text-emeraldBrand transition cursor-pointer" data-t="footerTerms">Terms of Service</a>
+        <a href="/terms.html" class="hover:text-emeraldBrand transition cursor-pointer" data-t="footerTerms">Terms of Service</a>
         <span>•</span>
-        <a href="privacy.html#security" class="hover:text-emeraldBrand transition cursor-pointer" data-t="footerSecurity">Security & Compliance</a>
+        <a href="/privacy.html#security" class="hover:text-emeraldBrand transition cursor-pointer" data-t="footerSecurity">Security & Compliance</a>
+        <span>•</span>
+        <a href="mailto:contact@gptify.co" class="hover:text-emeraldBrand transition">contact@gptify.co</a>
+        <span>•</span>
+        <a href="https://gptify.uz" target="_blank" rel="noopener noreferrer" class="hover:text-emeraldBrand transition">gptify.uz</a>
       </div>
 
       <div class="text-xs text-slateMuted">
@@ -2036,7 +2028,7 @@ console.log(`Autonomous execution verified: ${event.executionId}`);</code></pre>
         kpi2Active: "Active",
         kpi3Label: "TIME SAVED",
         kpi3Sub: "This Week",
-        kpi3Value: "~$480 saved",
+        kpi3Value: "Hours recovered",
         telemetryTitle: "Autonomous Event Telemetry",
         telemetrySync: "Synchronized",
         tel1: "Instagram DM inquiry qualified in 6s; appointment slot held via Bandla",
@@ -2049,7 +2041,7 @@ console.log(`Autonomous execution verified: ${event.executionId}`);</code></pre>
 
         demoEyebrow: "Real-Time Instagram & Telegram Automation",
         demoTitle: "How Ailo, Bandla, and ILDAM Coordinate Instantly",
-        demoSub: "Real customer texting on Instagram Direct — dynamic qualification, calendar booking, and automatic CRM sync in seconds.",
+        demoSub: "Example conversation on Instagram Direct — dynamic qualification, calendar booking, and automatic CRM sync in seconds.",
         chatChannel: "Instagram Direct · @medpro_clinic",
         chatMsg1: "Hi! How much is teeth whitening and is Dr. Rustamov available tomorrow around 4 PM? 🦷",
         chatTypingStatus: "Ailo checking live doctor availability via Bandla...",
@@ -2295,7 +2287,7 @@ console.log(`Autonomous execution verified: ${event.executionId}`);</code></pre>
         kpi2Active: "Faol",
         kpi3Label: "TEJALGAN VAQT",
         kpi3Sub: "Bu hafta",
-        kpi3Value: "~5,600,000 so'm",
+        kpi3Value: "Tejalgan vaqt",
         telemetryTitle: "Avtonom Oqim Jurnali",
         telemetrySync: "Sinxronlashgan",
         tel1: "Instagram Direct so'rovi 6 soniyada saralandi; Bandlada vaqt band qilindi",
@@ -2308,7 +2300,7 @@ console.log(`Autonomous execution verified: ${event.executionId}`);</code></pre>
 
         demoEyebrow: "Jonli Instagram va Telegram Avtomatizatsiyasi",
         demoTitle: "Ailo, Bandla va ILDAM Qanday Birgalikda Ishlaydi?",
-        demoSub: "Instagram Direct orqali haqiqiy mijoz yozishmasi — bir zumda saralash, navbatga yozish va CRM ga tushirish.",
+        demoSub: "Instagram Direct orqali namunaviy muloqot — dinamik saralash, navbatga yozish va CRM ga tushirish.",
         chatChannel: "Instagram Direct · @medpro_clinic",
         chatMsg1: "Salom! Tish oqartirish (bleaching) narxi qancha va ertaga soat 16:00 ga doktor Rustamovga joy bormi? 🦷",
         chatTypingStatus: "Ailo Bandla orqali shifokor jadvalini tekshirmoqda...",
@@ -2554,7 +2546,7 @@ console.log(`Autonomous execution verified: ${event.executionId}`);</code></pre>
         kpi2Active: "Активно",
         kpi3Label: "СЭКОНОМЛЕНО",
         kpi3Sub: "За неделю",
-        kpi3Value: "~5,600,000 сум",
+        kpi3Value: "Сэкономлено времени",
         telemetryTitle: "Журнал Автономных Событий",
         telemetrySync: "Синхронизировано",
         tel1: "Запрос из Instagram Direct квалифицирован за 6с; слот забронирован через Bandla",
@@ -2567,7 +2559,7 @@ console.log(`Autonomous execution verified: ${event.executionId}`);</code></pre>
 
         demoEyebrow: "Автоматизация Instagram и Telegram в Реальном Времени",
         demoTitle: "Как Ailo, Bandla и ILDAM Координируются Мгновенно",
-        demoSub: "Живой диалог в Instagram Direct — динамическая квалификация, бронь в расписании и синхронизация с CRM за секунды.",
+        demoSub: "Пример диалога в Instagram Direct — динамическая квалификация, бронь в расписании и синхронизация с CRM за секунды.",
         chatChannel: "Instagram Direct · @medpro_clinic",
         chatMsg1: "Здравствуйте! Сколько стоит отбеливание зубов и свободен ли доктор Рустамов на завтра около 16:00? 🦷",
         chatTypingStatus: "Ailo проверяет свободные слоты через Bandla...",
@@ -2992,8 +2984,7 @@ console.log(`Autonomous execution verified: ${event.executionId}`);</code></pre>
     }
 
     // ==================== LEAD CAPTURE DEMO MODAL LOGIC ====================
-    const BOT_TOKEN = '8652296582:AAGr4AShAy8dHKBil5pM3R07t4m8upOjNhM';
-    const CHAT_IDS = ['327216340', '5077641672'];
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzM3GZEDsWDc-3SUI4sySAWnJFn6ZolQaYkwo7W4VWG-79J3WVLYeQL7qs5jgAtkK_C_g/exec';
 
     function escapeHtml(str) {
       if (!str) return '';
@@ -3044,38 +3035,30 @@ console.log(`Autonomous execution verified: ${event.executionId}`);</code></pre>
       });
     }
 
-    async function sendLeadToTelegram(leadData) {
-      const text = `⚡ <b>YANGI LEAD: GPTify OS Demo So'rovi</b> ⚡\\n` +
-        `━━━━━━━━━━━━━━━━━━\\n` +
-        `👤 <b>Ism:</b> ${escapeHtml(leadData.name)}\\n` +
-        `🏢 <b>Kompaniya / Soha:</b> ${escapeHtml(leadData.company)}\\n` +
-        `📞 <b>Aloqa:</b> ${escapeHtml(leadData.contact)}\\n` +
-        `👥 <b>Jamoa hajmi:</b> ${escapeHtml(leadData.teamSize)}\\n` +
-        `🔌 <b>Ulanadigan kanallar:</b> ${escapeHtml(leadData.channels.join(', '))}\\n` +
-        `🌐 <b>Til:</b> ${leadData.lang.toUpperCase()} | <b>Manba:</b> gptify.si\\n` +
-        `⏰ <b>Vaqt:</b> ${leadData.timestamp}\\n` +
-        `━━━━━━━━━━━━━━━━━━`;
-
-      const promises = CHAT_IDS.map(chatId => {
-        const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-        return fetch(url, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            chat_id: chatId,
-            text: text,
-            parse_mode: 'HTML'
-          })
-        }).catch(err => {
-          console.warn('Telegram send failed for chat ' + chatId, err);
-          return null;
-        });
-      });
+    async function sendLeadToBackend(leadData) {
+      const payload = {
+        source: 'gptify.si',
+        full_name: leadData.name,
+        company: leadData.company,
+        phone: leadData.contact,
+        contact: leadData.contact,
+        category: 'GPTify OS Demo Request',
+        course_name: `GPTify OS Demo | Kompaniya: ${leadData.company} | Jamoa: ${leadData.teamSize} | Kanallar: ${leadData.channels.join(', ')}`,
+        team_size: leadData.teamSize,
+        channels: leadData.channels.join(', '),
+        lang: leadData.lang,
+        created_at: new Date().toISOString()
+      };
 
       try {
-        await Promise.all(promises);
+        await fetch(SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
       } catch (err) {
-        console.warn('Telegram dispatch error', err);
+        console.warn('Lead submission error', err);
       }
     }
 
@@ -3125,9 +3108,9 @@ console.log(`Autonomous execution verified: ${event.executionId}`);</code></pre>
         console.warn('LocalStorage error', e);
       }
 
-      // Send to Telegram Bot
+      // Send to backend endpoint
       try {
-        await sendLeadToTelegram(leadData);
+        await sendLeadToBackend(leadData);
       } catch (e) {
         console.warn('Send lead error', e);
       }
@@ -3176,20 +3159,16 @@ console.log(`Autonomous execution verified: ${event.executionId}`);</code></pre>
       if (btn) btn.setAttribute('aria-expanded', 'false');
     }
 
-    // Language resolution: English is the default primary language
+    // Language resolution
     window.addEventListener('DOMContentLoaded', () => {
-      const urlParams = new URLSearchParams(window.location.search);
-      const urlLang = urlParams.get('lang');
-      const savedLang = localStorage.getItem('gptify_lang');
-
-      let initialLang = 'en'; // Strict primary default (for international credibility, grants & global traffic)
-      if (urlLang && ['en', 'uz', 'ru'].includes(urlLang)) {
-        initialLang = urlLang;
-      } else if (savedLang && ['en', 'uz', 'ru'].includes(savedLang)) {
-        initialLang = savedLang;
+      const path = window.location.pathname;
+      if (path.startsWith('/uz')) {
+        currentLang = 'uz';
+      } else if (path.startsWith('/ru')) {
+        currentLang = 'ru';
+      } else {
+        currentLang = 'en';
       }
-
-      setLang(initialLang);
     });
   </script>
 
@@ -3198,10 +3177,107 @@ console.log(`Autonomous execution verified: ${event.executionId}`);</code></pre>
 """
 
 def main():
-    target_path = os.path.join(os.path.dirname(__file__), 'index.html')
-    with open(target_path, 'w', encoding='utf-8') as f:
-        f.write(HTML_CONTENT)
-    print(f"Successfully generated {target_path} ({len(HTML_CONTENT)} bytes)")
+    import json
+    from bs4 import BeautifulSoup
+
+    base_dir = os.path.dirname(__file__)
+    trans_path = os.path.join(base_dir, 'translations.json')
+    with open(trans_path, 'r', encoding='utf-8') as f:
+        translations = json.load(f)
+
+    pages = [
+        {
+            'lang': 'en',
+            'rel_path': 'index.html',
+            'canonical': 'https://gptify.si/',
+            'title': "GPTify OS — The AI Operating System for Service Businesses | GPTify",
+            'desc': "GPTify OS is an AI operating system for service businesses that connects customer conversations, CRM, scheduling, meetings, prospecting and automation through a unified layer of AI agents."
+        },
+        {
+            'lang': 'uz',
+            'rel_path': os.path.join('uz', 'index.html'),
+            'canonical': 'https://gptify.si/uz/',
+            'title': "GPTify OS — Xizmat Ko'rsatish Bizneslari Uchun AI Operatsion Tizimi | GPTify",
+            'desc': "GPTify OS — xizmat ko'rsatish bizneslari uchun AI operatsion tizimi. Mijozlar bilan muloqot, CRM, uchrashuvlar, savdo va avtomatlashtirishni yagona AI agentlar qatlamida birlashtiradi."
+        },
+        {
+            'lang': 'ru',
+            'rel_path': os.path.join('ru', 'index.html'),
+            'canonical': 'https://gptify.si/ru/',
+            'title': "GPTify OS — AI операционная система для сферы услуг | GPTify",
+            'desc': "GPTify OS — это AI операционная система для сферы услуг, объединяющая коммуникации с клиентами, CRM, планирование, встречи, продажи и автоматизацию через единый слой ИИ-агентов."
+        }
+    ]
+
+    for p in pages:
+        lang = p['lang']
+        soup = BeautifulSoup(HTML_CONTENT, 'html.parser')
+
+        if soup.html:
+            soup.html['lang'] = lang
+
+        title_tag = soup.find('title')
+        if title_tag:
+            title_tag.string = p['title']
+
+        meta_desc = soup.find('meta', attrs={'name': 'description'})
+        if meta_desc:
+            meta_desc['content'] = p['desc']
+
+        for prop in ['og:title', 'twitter:title']:
+            tag = soup.find('meta', attrs={'property': prop}) or soup.find('meta', attrs={'name': prop})
+            if tag:
+                tag['content'] = p['title']
+
+        for prop in ['og:description', 'twitter:description']:
+            tag = soup.find('meta', attrs={'property': prop}) or soup.find('meta', attrs={'name': prop})
+            if tag:
+                tag['content'] = p['desc']
+
+        canonical_tag = soup.find('link', attrs={'rel': 'canonical'})
+        if canonical_tag:
+            canonical_tag['href'] = p['canonical']
+
+        for l in ['en', 'uz', 'ru']:
+            for prefix in ['btn-lang-', 'mobile-btn-lang-']:
+                btn = soup.find(id=f'{prefix}{l}')
+                if btn:
+                    btn['class'] = 'lang-pill-btn active' if l == lang else 'lang-pill-btn'
+
+        if lang in translations:
+            lang_dict = translations[lang]
+            for el in soup.find_all(attrs={'data-t': True}):
+                key = el['data-t']
+                if key in lang_dict:
+                    val = lang_dict[key]
+                    fragment = BeautifulSoup(val, 'html.parser')
+                    el.clear()
+                    for child in list(fragment.contents):
+                        el.append(child)
+
+            name_input = soup.find(id='leadName')
+            company_input = soup.find(id='leadCompany')
+            contact_input = soup.find(id='leadContact')
+            if name_input:
+                name_input['placeholder'] = 'e.g. Alexander Vance' if lang == 'en' else ('Masalan: Jasur Rustamov' if lang == 'uz' else 'Например: Рустам Ахмедов')
+            if company_input:
+                company_input['placeholder'] = 'e.g. Apex Clinic (Healthcare)' if lang == 'en' else ('Masalan: Apex Klinikasi (Tibbiyot)' if lang == 'uz' else 'Например: Клиника Apex (Медицина)')
+            if contact_input:
+                contact_input['placeholder'] = '+1 555 123 4567, @username or email' if lang == 'en' else ('+998 90 123 45 67 yoki @username' if lang == 'uz' else '+998 90 123 45 67 или @username')
+
+            team_select = soup.find(id='leadTeamSize')
+            if team_select:
+                opts = ['1-5 employees', '6-20 employees', '20-50 employees', '50+ employees (Enterprise)'] if lang == 'en' else (
+                       ['1-5 xodim', '6-20 xodim', '20-50 xodim', '50+ xodim (Enterprise)'] if lang == 'uz' else 
+                       ['1-5 сотрудников', '6-20 сотрудников', '20-50 сотрудников', '50+ сотрудников (Enterprise)'])
+                for opt_tag, text in zip(team_select.find_all('option'), opts):
+                    opt_tag.string = text
+
+        target_file = os.path.join(base_dir, p['rel_path'])
+        os.makedirs(os.path.dirname(target_file), exist_ok=True)
+        with open(target_file, 'w', encoding='utf-8') as f:
+            f.write(str(soup))
+        print(f"Successfully generated {target_file} ({len(str(soup))} bytes)")
 
 if __name__ == '__main__':
     main()
