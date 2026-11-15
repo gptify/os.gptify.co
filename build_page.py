@@ -1865,104 +1865,106 @@ console.log(`Autonomous execution verified: ${event.executionId}`);</code></pre>
     <div class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" onclick="closeDemoModal()"></div>
 
     <!-- Modal Card -->
-    <div class="relative bg-white rounded-3xl border border-divider shadow-2xl max-w-lg w-full p-6 sm:p-8 z-10 my-auto text-left transition-all transform scale-100">
+    <div class="relative bg-white rounded-2xl sm:rounded-3xl border border-divider shadow-2xl max-w-lg w-full p-5 sm:p-6 z-10 my-auto text-left transition-all max-h-[92vh] overflow-y-auto">
       
       <!-- Close Button -->
-      <button type="button" onclick="closeDemoModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-subtle hover:bg-slate-200 text-slate-500 hover:text-slate-800 flex items-center justify-center transition cursor-pointer" aria-label="Close">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      <button type="button" onclick="closeDemoModal()" class="absolute top-4 right-4 w-7 h-7 rounded-full bg-subtle hover:bg-slate-200 text-slate-500 hover:text-slate-800 flex items-center justify-center transition cursor-pointer" aria-label="Close">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
 
       <!-- Form Container -->
       <div id="leadFormContainer">
         <!-- Header -->
-        <div class="mb-6">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-[10px] font-mono font-bold text-emerald-800 uppercase tracking-wider mb-2.5">
+        <div class="mb-4 pr-6">
+          <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200 text-[9px] font-mono font-bold text-emerald-800 uppercase tracking-wider mb-1.5">
             <span class="w-1.5 h-1.5 rounded-full bg-emeraldBrand badge-live-pulse"></span>
             <span data-t="modalBadge">LIVE DEMO & AUDIT</span>
           </div>
-          <h3 id="modalTitle" class="text-2xl sm:text-3xl font-black text-slateDark tracking-tight" data-t="modalTitle">
+          <h3 id="modalTitle" class="text-xl sm:text-2xl font-black text-slateDark tracking-tight" data-t="modalTitle">
             Book a Live Demo & System Audit
           </h3>
-          <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed" data-t="modalSub">
-            See GPTify OS running live on your workflow. We will contact you within 15 minutes.
+          <p class="text-xs text-slate-600 mt-1 leading-relaxed" data-t="modalSub">
+            See GPTify OS running live on your workflow. We will contact you to schedule your session.
           </p>
         </div>
 
         <!-- Form -->
-        <form id="demoLeadForm" onsubmit="submitDemoLead(event)" class="space-y-4">
-          <!-- Full Name -->
-          <div>
-            <label for="leadName" class="block text-xs font-bold text-slateDark mb-1.5" data-t="lblModalName">
-              Your Full Name
-            </label>
-            <input type="text" id="leadName" required placeholder="e.g. Alexander Vance" class="w-full px-4 py-3 rounded-xl border border-divider bg-subtle/50 text-slateDark text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-emeraldBrand focus:bg-white transition">
-          </div>
+        <form id="demoLeadForm" onsubmit="submitDemoLead(event)" class="space-y-3">
+          <!-- Row 1: Full Name & Company Name -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            <div>
+              <label for="leadName" class="block text-xs font-bold text-slateDark mb-1" data-t="lblModalName">
+                Your Full Name
+              </label>
+              <input type="text" id="leadName" required placeholder="e.g. Alexander Vance" class="w-full px-3 py-2 rounded-xl border border-divider bg-subtle/50 text-slateDark text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-emeraldBrand focus:bg-white transition">
+            </div>
 
-          <!-- Company Name -->
-          <div>
-            <label for="leadCompany" class="block text-xs font-bold text-slateDark mb-1.5" data-t="lblModalCompany">
-              Company Name & Industry
-            </label>
-            <input type="text" id="leadCompany" required placeholder="e.g. Apex Clinic (Healthcare)" class="w-full px-4 py-3 rounded-xl border border-divider bg-subtle/50 text-slateDark text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-emeraldBrand focus:bg-white transition">
-          </div>
-
-          <!-- Phone or Telegram -->
-          <div>
-            <label for="leadContact" class="block text-xs font-bold text-slateDark mb-1.5" data-t="lblModalContact">
-              Phone Number or Telegram (@username)
-            </label>
-            <input type="text" id="leadContact" required placeholder="+1 555 123 4567 or @username" class="w-full px-4 py-3 rounded-xl border border-divider bg-subtle/50 text-slateDark text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-emeraldBrand focus:bg-white transition">
-          </div>
-
-          <!-- Channels Checklist -->
-          <div>
-            <label class="block text-xs font-bold text-slateDark mb-2" data-t="lblModalChannels">
-              Channels to Connect:
-            </label>
-            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
-              <label class="flex items-center gap-2 p-2 rounded-lg bg-subtle/60 border border-divider cursor-pointer hover:bg-emerald-50/50">
-                <input type="checkbox" name="channels" value="Telegram" checked class="accent-emerald-600 rounded">
-                <span class="text-slate-700 font-medium">Telegram</span>
+            <div>
+              <label for="leadCompany" class="block text-xs font-bold text-slateDark mb-1" data-t="lblModalCompany">
+                Company & Industry
               </label>
-              <label class="flex items-center gap-2 p-2 rounded-lg bg-subtle/60 border border-divider cursor-pointer hover:bg-emerald-50/50">
-                <input type="checkbox" name="channels" value="WhatsApp" checked class="accent-emerald-600 rounded">
-                <span class="text-slate-700 font-medium">WhatsApp</span>
-              </label>
-              <label class="flex items-center gap-2 p-2 rounded-lg bg-subtle/60 border border-divider cursor-pointer hover:bg-emerald-50/50">
-                <input type="checkbox" name="channels" value="Instagram Direct" checked class="accent-emerald-600 rounded">
-                <span class="text-slate-700 font-medium">Instagram</span>
-              </label>
-              <label class="flex items-center gap-2 p-2 rounded-lg bg-subtle/60 border border-divider cursor-pointer hover:bg-emerald-50/50">
-                <input type="checkbox" name="channels" value="Corporate Email" class="accent-emerald-600 rounded">
-                <span class="text-slate-700 font-medium">Email</span>
-              </label>
-              <label class="flex items-center gap-2 p-2 rounded-lg bg-subtle/60 border border-divider cursor-pointer hover:bg-emerald-50/50">
-                <input type="checkbox" name="channels" value="LinkedIn Outreach" class="accent-emerald-600 rounded">
-                <span class="text-slate-700 font-medium">LinkedIn</span>
-              </label>
-              <label class="flex items-center gap-2 p-2 rounded-lg bg-subtle/60 border border-divider cursor-pointer hover:bg-emerald-50/50">
-                <input type="checkbox" name="channels" value="CRM & Calendar" checked class="accent-emerald-600 rounded">
-                <span class="text-slate-700 font-medium">CRM / Bandla</span>
-              </label>
+              <input type="text" id="leadCompany" required placeholder="e.g. Apex Clinic (Healthcare)" class="w-full px-3 py-2 rounded-xl border border-divider bg-subtle/50 text-slateDark text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-emeraldBrand focus:bg-white transition">
             </div>
           </div>
 
-          <!-- Team Size Dropdown / Selection -->
+          <!-- Row 2: Phone or Telegram -->
           <div>
-            <label for="leadTeamSize" class="block text-xs font-bold text-slateDark mb-1.5" data-t="lblModalTeam">
-              Team Size:
+            <label for="leadContact" class="block text-xs font-bold text-slateDark mb-1" data-t="lblModalContact">
+              Phone Number or Telegram (@username)
             </label>
-            <select id="leadTeamSize" class="w-full px-4 py-3 rounded-xl border border-divider bg-subtle/50 text-slateDark text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-emeraldBrand focus:bg-white transition cursor-pointer">
-              <option value="1-5 employees">1-5 employees</option>
-              <option value="6-20 employees" selected>6-20 employees</option>
-              <option value="20-50 employees">20-50 employees</option>
-              <option value="50+ employees (Enterprise)">50+ employees (Enterprise)</option>
-            </select>
+            <input type="text" id="leadContact" required placeholder="+1 555 123 4567, @username or email" class="w-full px-3 py-2 rounded-xl border border-divider bg-subtle/50 text-slateDark text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-emeraldBrand focus:bg-white transition">
+          </div>
+
+          <!-- Row 3: Team Size & Channels to Connect -->
+          <div class="grid grid-cols-1 sm:grid-cols-12 gap-2.5">
+            <div class="sm:col-span-5">
+              <label for="leadTeamSize" class="block text-xs font-bold text-slateDark mb-1" data-t="lblModalTeam">
+                Team Size:
+              </label>
+              <select id="leadTeamSize" class="w-full px-3 py-2 rounded-xl border border-divider bg-subtle/50 text-slateDark text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-emeraldBrand focus:bg-white transition cursor-pointer">
+                <option value="1-5 employees">1-5 employees</option>
+                <option value="6-20 employees" selected>6-20 employees</option>
+                <option value="20-50 employees">20-50 employees</option>
+                <option value="50+ employees (Enterprise)">50+ employees</option>
+              </select>
+            </div>
+
+            <div class="sm:col-span-7">
+              <label class="block text-xs font-bold text-slateDark mb-1" data-t="lblModalChannels">
+                Channels to Connect:
+              </label>
+              <div class="grid grid-cols-3 gap-1.5 text-[11px]">
+                <label class="flex items-center gap-1.5 p-1.5 rounded-lg bg-subtle/60 border border-divider cursor-pointer hover:bg-emerald-50/50">
+                  <input type="checkbox" name="channels" value="Telegram" checked class="accent-emerald-600 rounded w-3.5 h-3.5">
+                  <span class="text-slate-700 font-medium truncate">Telegram</span>
+                </label>
+                <label class="flex items-center gap-1.5 p-1.5 rounded-lg bg-subtle/60 border border-divider cursor-pointer hover:bg-emerald-50/50">
+                  <input type="checkbox" name="channels" value="WhatsApp" checked class="accent-emerald-600 rounded w-3.5 h-3.5">
+                  <span class="text-slate-700 font-medium truncate">WhatsApp</span>
+                </label>
+                <label class="flex items-center gap-1.5 p-1.5 rounded-lg bg-subtle/60 border border-divider cursor-pointer hover:bg-emerald-50/50">
+                  <input type="checkbox" name="channels" value="Instagram Direct" checked class="accent-emerald-600 rounded w-3.5 h-3.5">
+                  <span class="text-slate-700 font-medium truncate">Instagram</span>
+                </label>
+                <label class="flex items-center gap-1.5 p-1.5 rounded-lg bg-subtle/60 border border-divider cursor-pointer hover:bg-emerald-50/50">
+                  <input type="checkbox" name="channels" value="Corporate Email" class="accent-emerald-600 rounded w-3.5 h-3.5">
+                  <span class="text-slate-700 font-medium truncate">Email</span>
+                </label>
+                <label class="flex items-center gap-1.5 p-1.5 rounded-lg bg-subtle/60 border border-divider cursor-pointer hover:bg-emerald-50/50">
+                  <input type="checkbox" name="channels" value="LinkedIn Outreach" class="accent-emerald-600 rounded w-3.5 h-3.5">
+                  <span class="text-slate-700 font-medium truncate">LinkedIn</span>
+                </label>
+                <label class="flex items-center gap-1.5 p-1.5 rounded-lg bg-subtle/60 border border-divider cursor-pointer hover:bg-emerald-50/50">
+                  <input type="checkbox" name="channels" value="CRM & Calendar" checked class="accent-emerald-600 rounded w-3.5 h-3.5">
+                  <span class="text-slate-700 font-medium truncate">CRM</span>
+                </label>
+              </div>
+            </div>
           </div>
 
           <!-- Submit Button -->
-          <div class="pt-2">
-            <button type="submit" id="btnSubmitLead" class="w-full py-3.5 px-6 rounded-xl bg-emeraldBrand hover:bg-emeraldDark text-white font-bold text-sm shadow-md transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer">
+          <div class="pt-1.5">
+            <button type="submit" id="btnSubmitLead" class="w-full py-2.5 px-6 rounded-xl bg-emeraldBrand hover:bg-emeraldDark text-white font-bold text-xs sm:text-sm shadow-md transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer">
               <span id="btnSubmitText" data-t="modalSubmitBtn">Confirm & Book Demo</span>
               <svg id="btnSubmitIcon" class="w-4 h-4 text-limeSpark" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
               <!-- Spinner (hidden by default) -->
@@ -1973,7 +1975,7 @@ console.log(`Autonomous execution verified: ${event.executionId}`);</code></pre>
             </button>
           </div>
 
-          <div class="text-center text-[10px] text-slateMuted mt-2" data-t="modalFooterNote">
+          <div class="text-center text-[10px] text-slateMuted mt-1" data-t="modalFooterNote">
             Zero spam · 100% confidential · Turnkey deployed in 48h
           </div>
         </form>
@@ -1990,7 +1992,7 @@ console.log(`Autonomous execution verified: ${event.executionId}`);</code></pre>
             Thank You! Request Received
           </h3>
           <p class="text-xs sm:text-sm text-slate-600 max-w-sm mx-auto leading-relaxed" data-t="successDesc">
-            Thank you for reaching out. We have received your details and will get back to you shortly (typically within 15 minutes).
+            Thank you for reaching out. We have received your details and our team will get back to you shortly.
           </p>
         </div>
 
@@ -2247,16 +2249,16 @@ console.log(`Autonomous execution verified: ${event.executionId}`);</code></pre>
 
         modalBadge: "LIVE DEMO & AUDIT",
         modalTitle: "Book a Live Demo & System Audit",
-        modalSub: "See GPTify OS running live on your workflow. We will contact you within 15 minutes.",
+        modalSub: "See GPTify OS running live on your workflow. We will contact you to schedule your session.",
         lblModalName: "Your Full Name",
-        lblModalCompany: "Company Name & Industry",
+        lblModalCompany: "Company & Industry",
         lblModalContact: "Phone Number or Telegram (@username)",
         lblModalChannels: "Channels to Connect:",
         lblModalTeam: "Team Size:",
         modalSubmitBtn: "Confirm & Book Demo",
         modalFooterNote: "Zero spam · 100% confidential · Turnkey deployed in 48h",
         successTitle: "Thank You! Request Received",
-        successDesc: "Thank you for reaching out. We have received your details and our team will get back to you shortly (typically within 15 minutes).",
+        successDesc: "Thank you for reaching out. We have received your details and our team will get back to you shortly.",
         modalCloseBtn: "Close Window",
 
         footerDesc: "The AI operating system for service businesses.",
@@ -2506,16 +2508,16 @@ console.log(`Autonomous execution verified: ${event.executionId}`);</code></pre>
 
         modalBadge: "JONLI DEMO & AUDIT",
         modalTitle: "Jonli Demo va Tizim Auditini Belgilash",
-        modalSub: "GPTify OS korxonangiz ish jarayonida qanday ishlashini jonli ko'ring. 15 daqiqada siz bilan bog'lanamiz.",
+        modalSub: "GPTify OS korxonangiz ish jarayonida qanday ishlashini jonli ko'ring. Tez orada siz bilan bog'lanamiz.",
         lblModalName: "Ism va Familiyangiz",
-        lblModalCompany: "Kompaniya nomi va faoliyat sohasi",
+        lblModalCompany: "Kompaniya va soha",
         lblModalContact: "Telefon raqam yoki Telegram (@username)",
-        lblModalChannels: "Ulanishi kerak bo'lgan kanallar:",
-        lblModalTeam: "Jamoangiz hajmi:",
+        lblModalChannels: "Ulanadigan kanallar:",
+        lblModalTeam: "Jamoa hajmi:",
         modalSubmitBtn: "Demoni Tasdiqlash",
         modalFooterNote: "Spamsiz · 100% maxfiy · 48 soat ichida kalit ostida ulanadi",
         successTitle: "Rahmat! So'rovingiz Qabul Qilindi",
-        successDesc: "GPTify OS tizimiga qiziqish bildirganingiz uchun rahmat. Ma'lumotlaringiz qabul qilindi, mutaxassisimiz tez orada (odatda 15 daqiqa ichida) siz bilan bog'lanadi.",
+        successDesc: "GPTify OS tizimiga qiziqish bildirganingiz uchun rahmat. Ma'lumotlaringiz qabul qilindi, mutaxassisimiz tez orada siz bilan bog'lanadi.",
         modalCloseBtn: "Oynani yopish",
 
         footerDesc: "Xizmat ko'rsatish bizneslari uchun AI operatsion tizimi.",
@@ -2765,16 +2767,16 @@ console.log(`Autonomous execution verified: ${event.executionId}`);</code></pre>
 
         modalBadge: "ЖИВОЕ ДЕМО И АУДИТ",
         modalTitle: "Запросить Живое Демо и Аудит Системы",
-        modalSub: "Узнайте, как GPTify OS автоматизирует ваши процессы. Мы свяжемся с вами в течение 15 минут.",
+        modalSub: "Узнайте, как GPTify OS автоматизирует ваши процессы. Мы свяжемся с вами для согласования времени.",
         lblModalName: "Ваше Имя и Фамилия",
-        lblModalCompany: "Название компании и сфера деятельности",
+        lblModalCompany: "Компания и сфера",
         lblModalContact: "Номер телефона или Telegram (@username)",
-        lblModalChannels: "Необходимые каналы связи:",
-        lblModalTeam: "Размер вашей команды:",
+        lblModalChannels: "Каналы связи:",
+        lblModalTeam: "Размер команды:",
         modalSubmitBtn: "Подтвердить и Получить Демо",
         modalFooterNote: "Без спама · 100% конфиденциально · Запуск под ключ за 48 часов",
         successTitle: "Спасибо! Заявка Принята",
-        successDesc: "Благодарим за интерес к GPTify OS. Ваши данные получены, наш специалист свяжется с вами в ближайшее время (обычно в течение 15 минут).",
+        successDesc: "Благодарим за интерес к GPTify OS. Ваши данные получены, наш специалист свяжется с вами в ближайшее время.",
         modalCloseBtn: "Закрыть окно",
 
         footerDesc: "AI операционная система для сферы услуг.",
