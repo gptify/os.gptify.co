@@ -12,9 +12,6 @@ def run_tests():
         'deploy_os/index.html',
         'deploy_os/uz/index.html',
         'deploy_os/ru/index.html',
-        'deploy_os/architecture.html',
-        'deploy_os/uz/architecture.html',
-        'deploy_os/ru/architecture.html',
         'deploy_os/404.html',
         'deploy_os/privacy.html',
         'deploy_os/terms.html',
@@ -160,19 +157,15 @@ def run_tests():
             }''')
             print(f"[PASS] Language switchers dimensions: {lang_btns}")
 
-            # --- Check /architecture.html ---
-            page_arch = browser.new_page(viewport={'width': 375, 'height': 667})
-            page_arch.goto('http://127.0.0.1:8766/architecture.html')
-            page_arch.wait_for_load_state('networkidle')
-            arch_code_scroll = page_arch.evaluate('''() => {
-                const pre = document.querySelector('pre') || document.querySelector('#apiCodeBlock') || document.querySelector('.overflow-x-auto');
-                const badge = document.querySelector('[data-t="archApiBadge"]');
-                return {
-                    hasScroll: pre ? window.getComputedStyle(pre).overflowX : null,
-                    badgeRect: badge ? badge.getBoundingClientRect() : null
-                };
+            # Verify navbar links (Only 5 Engines, Solutions, FAQ)
+            nav_links = page.evaluate('''() => {
+                const links = Array.from(document.querySelectorAll('header nav[aria-label="Navigation"] a'));
+                return links.map(a => a.innerText.trim());
             }''')
-            print(f"[PASS] Architecture page mobile code block check: {arch_code_scroll}")
+            print(f"[PASS] Desktop nav links: {nav_links}")
+            assert 'Architecture' not in nav_links, "Architecture should not be in nav"
+            assert 'Calculator' not in nav_links, "Calculator should not be in nav"
+            assert nav_links == ['5 Engines', 'Solutions', 'FAQ'], f"Unexpected nav links: {nav_links}"
 
             browser.close()
     finally:

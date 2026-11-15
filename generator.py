@@ -244,12 +244,10 @@ def get_nav_html(lang, is_arch=False):
           </div>
         </a>
 
-        <!-- Desktop Navigation Links -->
+        <!-- Desktop Navigation Links (Buyer-focused: 5 Engines, Solutions, FAQ) -->
         <nav class="hidden lg:flex items-center gap-1 xl:gap-2 text-sm font-semibold text-slate-700 pl-3 xl:pl-4 border-l border-divider" aria-label="Navigation">
           <a href="{home_prefix}#services" class="px-3 py-1.5 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors duration-150 cursor-pointer whitespace-nowrap" data-t="navEngines">5 Engines</a>
           <a href="{home_prefix}#solutions" class="px-3 py-1.5 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors duration-150 cursor-pointer whitespace-nowrap" data-t="navSolutions">Solutions</a>
-          <a href="{arch_link}" class="px-3 py-1.5 rounded-lg {'text-emeraldBrand font-bold bg-emerald-50/60' if is_arch else 'hover:text-emeraldBrand hover:bg-subtle'} transition-colors duration-150 cursor-pointer whitespace-nowrap" data-t="navArchitecture">Architecture</a>
-          <a href="{home_prefix}#calculator" class="px-3 py-1.5 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors duration-150 cursor-pointer whitespace-nowrap" data-t="navCalculator">Calculator</a>
           <a href="{home_prefix}#faq" class="px-3 py-1.5 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors duration-150 cursor-pointer whitespace-nowrap" data-t="navFaq">FAQ</a>
         </nav>
       </div>
@@ -280,8 +278,6 @@ def get_nav_html(lang, is_arch=False):
       <nav class="flex flex-col gap-2 font-semibold text-slate-700 text-sm">
         <a href="{home_prefix}#services" onclick="closeMobileMenu()" class="px-3 py-2.5 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors" data-t="navEngines">5 Engines</a>
         <a href="{home_prefix}#solutions" onclick="closeMobileMenu()" class="px-3 py-2.5 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors" data-t="navSolutions">Solutions</a>
-        <a href="{arch_link}" onclick="closeMobileMenu()" class="px-3 py-2.5 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors" data-t="navArchitecture">Architecture</a>
-        <a href="{home_prefix}#calculator" onclick="closeMobileMenu()" class="px-3 py-2.5 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors" data-t="navCalculator">Calculator</a>
         <a href="{home_prefix}#faq" onclick="closeMobileMenu()" class="px-3 py-2.5 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors" data-t="navFaq">FAQ</a>
         <div class="flex items-center justify-between pt-3 border-t border-divider text-xs">
           <span class="text-slate-500 font-mono font-bold">Language</span>
@@ -334,8 +330,6 @@ def get_footer_html(lang):
         <a href="{home_prefix}#services" class="hover:text-skyBrand cursor-pointer">Mirzo</a>
         <span>•</span>
         <a href="{home_prefix}#services" class="hover:text-indigoBrand cursor-pointer">Izlai</a>
-        <span>•</span>
-        <a href="{arch_link}" class="hover:text-emeraldBrand text-slateDark font-bold cursor-pointer">Architecture & API</a>
       </div>
 
       <!-- Compliance & Legal Links -->
@@ -1925,42 +1919,17 @@ def build_all_pages():
             'canonical': 'https://gptify.si/ru/',
             'title': "GPTify OS — AI операционная система для сферы услуг | GPTify",
             'desc': "GPTify OS — это AI операционная система для сферы услуг, объединяющая коммуникации с клиентами, CRM, планирование, встречи, продажи и автоматизацию через единый слой ИИ-агентов."
-        },
-        # Dedicated Architecture Page
-        {
-            'type': 'arch',
-            'lang': 'en',
-            'rel_path': 'architecture.html',
-            'canonical': 'https://gptify.si/architecture.html',
-            'title': "Enterprise Cloud & AI Architecture — Developer Platform | GPTify OS",
-            'desc': "Enterprise infrastructure, LLM multi-model routing, isolated tenant boundaries, and live API dispatch specs for GPTify OS."
-        },
-        {
-            'type': 'arch',
-            'lang': 'uz',
-            'rel_path': os.path.join('uz', 'architecture.html'),
-            'canonical': 'https://gptify.si/uz/architecture.html',
-            'title': "Bulutli Arxitektura va Dasturchilar Platformasi | GPTify OS",
-            'desc': "GPTify OS korporativ infratuzilmasi, ko'p modelli LLM marshrutlash, izolyatsiyalangan ma'lumotlar chegaralari va jonli API spetsifikatsiyalari."
-        },
-        {
-            'type': 'arch',
-            'lang': 'ru',
-            'rel_path': os.path.join('ru', 'architecture.html'),
-            'canonical': 'https://gptify.si/ru/architecture.html',
-            'title': "Облачная Архитектура и Платформа для Разработчиков | GPTify OS",
-            'desc': "Корпоративная инфраструктура, маршрутизация мультимодельных LLM, изолированные границы клиентских данных и спецификации API GPTify OS."
         }
     ]
 
     for p in pages:
         lang = p['lang']
-        is_arch = (p['type'] == 'arch')
+        is_arch = False
         
         # Assemble HTML structure
-        head_html = get_head_html(p['title'], p['desc'], p['canonical'], lang, is_arch=is_arch)
-        nav_html = get_nav_html(lang, is_arch=is_arch)
-        body_html = get_architecture_body(lang) if is_arch else get_homepage_body(lang)
+        head_html = get_head_html(p['title'], p['desc'], p['canonical'], lang, is_arch=False)
+        nav_html = get_nav_html(lang, is_arch=False)
+        body_html = get_homepage_body(lang)
         footer_html = get_footer_html(lang)
         modal_html = get_modal_html(lang)
         scripts_html = get_scripts_html(lang)
@@ -2019,16 +1988,6 @@ def build_all_pages():
     <lastmod>2026-11-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://gptify.si/architecture.html</loc>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://gptify.si/architecture.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://gptify.si/architecture.html"/>
-    <xhtml:link rel="alternate" hreflang="uz" href="https://gptify.si/uz/architecture.html"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://gptify.si/ru/architecture.html"/>
-    <lastmod>2026-11-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://gptify.si/privacy.html</loc>
