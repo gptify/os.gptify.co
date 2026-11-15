@@ -1,7 +1,9 @@
 module.exports = {
   content: [
-    './deploy_os/**/*.html',
-    './deploy_os/**/*.py'
+    './**/*.html',
+    './**/*.py',
+    '../*.html',
+    '../*.py'
   ],
   theme: {
     extend: {
