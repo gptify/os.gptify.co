@@ -674,20 +674,27 @@ def get_scripts_html(lang):
       if (btnIcon) btnIcon.classList.remove('hidden');
     }}
 
-    // API tabs on architecture page
-    function switchApiTab(tab) {{
-      ['curl', 'python', 'node', 'response'].forEach(t => {{
-        const btn = document.getElementById('tab-btn-' + t);
-        const snippet = document.getElementById('api-snippet-' + t);
-        if (btn && snippet) {{
-          if (t === tab) {{
-            btn.classList.add('bg-white', 'text-slateDark', 'shadow-2xs');
-            btn.classList.remove('text-slateMuted');
-            snippet.classList.remove('hidden');
+    function switchIndustryTab(industry) {{
+      const industries = ['clinics', 'education', 'auto', 'advisory'];
+      industries.forEach(ind => {{
+        const panel = document.getElementById('panel-' + ind);
+        const btn = document.getElementById('tab-btn-' + ind);
+        if (panel) {{
+          if (ind === industry) {{
+            panel.classList.remove('hidden');
           }} else {{
-            btn.classList.remove('bg-white', 'text-slateDark', 'shadow-2xs');
-            btn.classList.add('text-slateMuted');
-            snippet.classList.add('hidden');
+            panel.classList.add('hidden');
+          }}
+        }}
+        if (btn) {{
+          if (ind === industry) {{
+            btn.classList.remove('bg-white', 'text-slate-700', 'border-divider');
+            btn.classList.add('bg-slateDark', 'text-white', 'shadow-sm');
+            btn.setAttribute('aria-selected', 'true');
+          }} else {{
+            btn.classList.remove('bg-slateDark', 'text-white', 'shadow-sm');
+            btn.classList.add('bg-white', 'text-slate-700', 'border-divider');
+            btn.setAttribute('aria-selected', 'false');
           }}
         }}
       }});
@@ -1022,11 +1029,59 @@ def get_homepage_body(lang):
       </p>
     </div>
 
+    <!-- The Connected Loop Visual Flow Banner -->
+    <div class="mb-8 p-4 sm:p-5 rounded-2xl bg-white border border-divider shadow-2xs">
+      <div class="flex items-center justify-between mb-3">
+        <span class="text-xs font-mono font-bold uppercase tracking-wider text-slateDark flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-emeraldBrand badge-live-pulse"></span>
+          <span data-t="loopTitle">One Continuous Loop. Five Specialized Engines.</span>
+        </span>
+        <span class="text-xs font-mono text-slateMuted hidden sm:inline" data-t="loopSub">From first message until deal is closed</span>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 text-xs font-mono font-bold">
+        <div class="flex items-center justify-between p-2.5 rounded-xl bg-indigo-50/80 border border-indigo-200/80 text-indigo-950">
+          <div class="flex items-center gap-1.5 min-w-0">
+            <span class="w-5 h-5 rounded-md bg-indigo-600 text-white flex items-center justify-center text-xs font-bold shrink-0">01</span>
+            <span class="truncate">Izlai (Find)</span>
+          </div>
+          <span class="text-indigo-400 font-bold shrink-0 hidden sm:inline ml-1">&rarr;</span>
+        </div>
+        <div class="flex items-center justify-between p-2.5 rounded-xl bg-emerald-50/80 border border-emerald-200/80 text-emerald-950">
+          <div class="flex items-center gap-1.5 min-w-0">
+            <span class="w-5 h-5 rounded-md bg-emeraldBrand text-white flex items-center justify-center text-xs font-bold shrink-0">02</span>
+            <span class="truncate">Ailo (Engage)</span>
+          </div>
+          <span class="text-emerald-400 font-bold shrink-0 hidden sm:inline ml-1">&rarr;</span>
+        </div>
+        <div class="flex items-center justify-between p-2.5 rounded-xl bg-amber-50/80 border border-amber-200/80 text-amber-950">
+          <div class="flex items-center gap-1.5 min-w-0">
+            <span class="w-5 h-5 rounded-md bg-amber-600 text-white flex items-center justify-center text-xs font-bold shrink-0">03</span>
+            <span class="truncate">ILDAM (Track)</span>
+          </div>
+          <span class="text-amber-400 font-bold shrink-0 hidden sm:inline ml-1">&rarr;</span>
+        </div>
+        <div class="flex items-center justify-between p-2.5 rounded-xl bg-purple-50/80 border border-purple-200/80 text-purple-950">
+          <div class="flex items-center gap-1.5 min-w-0">
+            <span class="w-5 h-5 rounded-md bg-purple-600 text-white flex items-center justify-center text-xs font-bold shrink-0">04</span>
+            <span class="truncate">Bandla (Book)</span>
+          </div>
+          <span class="text-purple-400 font-bold shrink-0 hidden sm:inline ml-1">&rarr;</span>
+        </div>
+        <div class="col-span-2 sm:col-span-1 flex items-center justify-between p-2.5 rounded-xl bg-sky-50/80 border border-sky-200/80 text-sky-950">
+          <div class="flex items-center gap-1.5 min-w-0">
+            <span class="w-5 h-5 rounded-md bg-sky-600 text-white flex items-center justify-center text-xs font-bold shrink-0">05</span>
+            <span class="truncate">Mirzo (Scribe)</span>
+          </div>
+          <span class="text-sky-600 font-bold shrink-0 text-xs">✓</span>
+        </div>
+      </div>
+    </div>
+
     <!-- 5 Product Cards Grid (3 top, 2 bottom) -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 mb-6 sm:mb-8">
       
       <!-- Card 1: AILO -->
-      <div class="card-elevated p-6 sm:p-7 rounded-3xl flex flex-col justify-between">
+      <div class="card-elevated p-6 sm:p-7 rounded-3xl flex flex-col justify-between border-t-4 border-t-emeraldBrand">
         <div>
           <div class="flex items-center justify-between mb-4">
             <div class="flex items-center gap-2.5">
@@ -1076,7 +1131,7 @@ def get_homepage_body(lang):
       </div>
 
       <!-- Card 2: ILDAM CRM -->
-      <div class="card-elevated p-6 sm:p-7 rounded-3xl flex flex-col justify-between">
+      <div class="card-elevated p-6 sm:p-7 rounded-3xl flex flex-col justify-between border-t-4 border-t-amberBrand">
         <div>
           <div class="flex items-center justify-between mb-4">
             <div class="flex items-center gap-2.5">
@@ -1126,7 +1181,7 @@ def get_homepage_body(lang):
       </div>
 
       <!-- Card 3: BANDLA (Requirement E.8: subtitle and tag fit on one line each at 1280px) -->
-      <div class="card-elevated p-6 sm:p-7 rounded-3xl flex flex-col justify-between">
+      <div class="card-elevated p-6 sm:p-7 rounded-3xl flex flex-col justify-between border-t-4 border-t-purpleBrand">
         <div>
           <div class="flex items-start justify-between gap-2 mb-4">
             <div class="flex items-center gap-2.5 min-w-0">
@@ -1181,7 +1236,7 @@ def get_homepage_body(lang):
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
       
       <!-- Card 4: MIRZO -->
-      <div class="card-elevated p-6 sm:p-7 rounded-3xl flex flex-col justify-between">
+      <div class="card-elevated p-6 sm:p-7 rounded-3xl flex flex-col justify-between border-t-4 border-t-skyBrand">
         <div>
           <div class="flex items-center justify-between mb-4">
             <div class="flex items-center gap-2.5">
@@ -1231,7 +1286,7 @@ def get_homepage_body(lang):
       </div>
 
       <!-- Card 5: IZLAI -->
-      <div class="card-elevated p-6 sm:p-7 rounded-3xl flex flex-col justify-between">
+      <div class="card-elevated p-6 sm:p-7 rounded-3xl flex flex-col justify-between border-t-4 border-t-indigoBrand">
         <div>
           <div class="flex items-center justify-between mb-4">
             <div class="flex items-center gap-2.5">
@@ -1295,135 +1350,359 @@ def get_homepage_body(lang):
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+    <!-- 4 Industry Interactive Tab Switchers -->
+    <div class="flex flex-wrap items-center gap-2.5 mb-6" role="tablist" aria-label="Industry Solutions">
+      <button type="button" id="tab-btn-clinics" onclick="switchIndustryTab('clinics')" class="industry-tab-btn px-4 py-2.5 rounded-xl bg-slateDark text-white font-bold text-xs sm:text-sm shadow-sm transition-all duration-150 cursor-pointer min-h-[44px] flex items-center gap-2" role="tab" aria-selected="true" aria-controls="panel-clinics">
+        <span class="w-2 h-2 rounded-full bg-emeraldBrand"></span>
+        <span data-t="tabClinics">Clinics & Medical</span>
+      </button>
+      <button type="button" id="tab-btn-education" onclick="switchIndustryTab('education')" class="industry-tab-btn px-4 py-2.5 rounded-xl bg-white border border-divider hover:bg-subtle text-slate-700 font-bold text-xs sm:text-sm transition-all duration-150 cursor-pointer min-h-[44px] flex items-center gap-2" role="tab" aria-selected="false" aria-controls="panel-education">
+        <span class="w-2 h-2 rounded-full bg-purpleBrand"></span>
+        <span data-t="tabEducation">Education & Academies</span>
+      </button>
+      <button type="button" id="tab-btn-auto" onclick="switchIndustryTab('auto')" class="industry-tab-btn px-4 py-2.5 rounded-xl bg-white border border-divider hover:bg-subtle text-slate-700 font-bold text-xs sm:text-sm transition-all duration-150 cursor-pointer min-h-[44px] flex items-center gap-2" role="tab" aria-selected="false" aria-controls="panel-auto">
+        <span class="w-2 h-2 rounded-full bg-amberBrand"></span>
+        <span data-t="tabAuto">Auto Services & Workshops</span>
+      </button>
+      <button type="button" id="tab-btn-advisory" onclick="switchIndustryTab('advisory')" class="industry-tab-btn px-4 py-2.5 rounded-xl bg-white border border-divider hover:bg-subtle text-slate-700 font-bold text-xs sm:text-sm transition-all duration-150 cursor-pointer min-h-[44px] flex items-center gap-2" role="tab" aria-selected="false" aria-controls="panel-advisory">
+        <span class="w-2 h-2 rounded-full bg-indigoBrand"></span>
+        <span data-t="tabAdvisory">Professional & B2B</span>
+      </button>
+    </div>
+
+    <!-- Master Interactive Dashboard Container -->
+    <div class="card-elevated rounded-3xl bg-white border border-divider shadow-md overflow-hidden">
       
-      <!-- Package 1: Clinics -->
-      <div class="card-elevated p-6 sm:p-8 rounded-3xl flex flex-col justify-between">
-        <div>
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-mono font-bold uppercase mb-4">
-            <span class="w-1.5 h-1.5 rounded-full bg-emeraldBrand"></span>
-            <span data-t="sol1Tag">For clinics & healthcare</span>
+      <!-- Dashboard Top Window Header -->
+      <div class="px-5 py-3.5 bg-subtle/80 border-b border-divider flex flex-wrap items-center justify-between gap-3">
+        <div class="flex items-center gap-3">
+          <div class="flex items-center gap-1.5">
+            <span class="w-3 h-3 rounded-full bg-rose-400"></span>
+            <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+            <span class="w-3 h-3 rounded-full bg-emerald-400"></span>
           </div>
-          <h3 class="text-2xl font-black text-slateDark mb-2" data-t="sol1Title">GPTify OS for Clinics</h3>
-          <p class="text-xs text-slate-500 font-mono font-semibold mb-3">Ailo + ILDAM + Bandla + Mirzo</p>
-          <p class="text-slate-600 text-sm leading-relaxed mb-5" data-t="sol1Desc">
-            Eliminate receptionist phone logjams and patient no-shows. Ailo answers patient queries in 8 seconds across WhatsApp and Telegram, Bandla books doctor appointment slots, ILDAM keeps medical consultation history, and Mirzo transcribes clinical consultations with zero bots.
-          </p>
-          <ul class="space-y-2 text-xs sm:text-sm text-slate-700 mb-6">
-            <li class="flex items-center gap-2">
-              <svg class="w-4 h-4 text-emeraldBrand shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-              <span data-t="sol1F1">24/7 Patient triage & emergency routing</span>
-            </li>
-            <li class="flex items-center gap-2">
-              <svg class="w-4 h-4 text-emeraldBrand shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-              <span data-t="sol1F2">Live doctor availability & automated SMS reminders</span>
-            </li>
-            <li class="flex items-center gap-2">
-              <svg class="w-4 h-4 text-emeraldBrand shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-              <span data-t="sol1F3">Confidential treatment notes & prescription history</span>
-            </li>
-          </ul>
+          <span class="text-xs font-mono font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-emeraldBrand badge-live-pulse"></span>
+            <span data-t="dashStatus">Live Operating Mode</span>
+          </span>
         </div>
-        <button type="button" onclick="openDemoModal('MedPro Clinics')" class="w-full py-3 px-4 rounded-xl bg-slateDark hover:bg-slate-800 text-white text-sm font-bold text-center cursor-pointer transition min-h-[44px]">
-          <span data-t="btnBookDemo">Book a Demo</span>
-        </button>
+        <div class="text-xs font-mono font-semibold text-slate-500 flex items-center gap-2">
+          <span data-t="dashChannels">Connected Channels:</span>
+          <span class="px-2 py-0.5 rounded bg-white border border-divider text-slate-800 font-bold">Instagram Direct</span>
+          <span class="px-2 py-0.5 rounded bg-white border border-divider text-slate-800 font-bold">Telegram</span>
+          <span class="px-2 py-0.5 rounded bg-white border border-divider text-slate-800 font-bold">1C ERP</span>
+        </div>
       </div>
 
-      <!-- Package 2: Education -->
-      <div class="card-elevated p-6 sm:p-8 rounded-3xl flex flex-col justify-between">
-        <div>
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-50 border border-purple-200 text-purple-800 text-xs font-mono font-bold uppercase mb-4">
-            <span class="w-1.5 h-1.5 rounded-full bg-purpleBrand"></span>
-            <span data-t="sol2Tag">For academies & schools</span>
+      <!-- PANEL 1: CLINICS & HEALTHCARE -->
+      <div id="panel-clinics" class="industry-panel p-6 sm:p-8" role="tabpanel" aria-labelledby="tab-btn-clinics">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
+          
+          <!-- Left: Real Conversation & Booking Flow Simulation -->
+          <div class="lg:col-span-7 bg-subtle/50 rounded-2xl p-5 border border-divider">
+            <div class="flex items-center justify-between pb-3 mb-4 border-b border-divider text-xs font-mono">
+              <span class="font-bold text-emeraldBrand">● MedPro Fleet · Patient Flow</span>
+              <span class="text-slate-500">Instagram Direct · 14:22</span>
+            </div>
+            
+            <div class="space-y-3 text-xs sm:text-sm">
+              <div class="flex items-start gap-2.5">
+                <div class="w-8 h-8 rounded-full bg-slate-200 text-slate-700 font-bold flex items-center justify-center shrink-0 text-xs">P</div>
+                <div class="p-3.5 rounded-2xl rounded-tl-sm bg-white border border-divider shadow-2xs max-w-md text-slate-800">
+                  Assalomu alaykum! Tish oqartirish qancha turadi va ertaga soat 16:00 ga yozilsa bo'ladimi?
+                </div>
+              </div>
+              
+              <div class="flex items-start gap-2.5 justify-end">
+                <div class="p-3.5 rounded-2xl rounded-tr-sm bg-emerald-600 text-white shadow-2xs max-w-md">
+                  Va alaykum assalom! Tish oqartirish narxi 450,000 so'mdan boshlanadi. Ertaga soat 16:00 da Dr. Rustamov qabuliga vaqtincha band qildim. Tasdiqlaysizmi?
+                </div>
+                <div class="w-8 h-8 rounded-full bg-emerald-800 text-white font-bold flex items-center justify-center shrink-0 text-xs">AI</div>
+              </div>
+
+              <div class="p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-xs font-mono text-emerald-900 flex items-center justify-between">
+                <span>↳ Bandla: 15-daqiqalik slot band qilindi · 1C: Bemor kartasi tekshirildi</span>
+                <span class="font-bold text-emerald-700">0.8s</span>
+              </div>
+            </div>
           </div>
-          <h3 class="text-2xl font-black text-slateDark mb-2" data-t="sol2Title">GPTify OS for Education</h3>
-          <p class="text-xs text-slate-500 font-mono font-semibold mb-3">Ailo + ILDAM + Bandla + Mirzo</p>
-          <p class="text-slate-600 text-sm leading-relaxed mb-5" data-t="sol2Desc">
-            Convert social media inquiries into enrolled students. Ailo qualifies course interests, Bandla schedules free trial lessons and level evaluations, ILDAM tracks tuition milestones, and Mirzo produces academic review protocols for teachers.
-          </p>
-          <ul class="space-y-2 text-xs sm:text-sm text-slate-700 mb-6">
-            <li class="flex items-center gap-2">
-              <svg class="w-4 h-4 text-purpleBrand shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-              <span data-t="sol2F1">Instant course details & tuition fee consultation</span>
-            </li>
-            <li class="flex items-center gap-2">
-              <svg class="w-4 h-4 text-purpleBrand shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-              <span data-t="sol2F2">Trial lesson placement and calendar sync</span>
-            </li>
-            <li class="flex items-center gap-2">
-              <svg class="w-4 h-4 text-purpleBrand shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-              <span data-t="sol2F3">Automated payment reminders for installment tuition</span>
-            </li>
-          </ul>
+
+          <!-- Right: Key Industry Metrics & Direct Action -->
+          <div class="lg:col-span-5 flex flex-col justify-between h-full space-y-6">
+            <div>
+              <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-mono font-bold uppercase mb-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-emeraldBrand"></span>
+                <span data-t="sol1Tag">For clinics & healthcare</span>
+              </div>
+              <h3 class="text-2xl font-black text-slateDark mb-2" data-t="sol1Title">GPTify OS for Clinics</h3>
+              <p class="text-slate-600 text-sm leading-relaxed mb-5" data-t="sol1Desc">
+                Eliminate receptionist phone logjams and patient no-shows. Ailo answers patient queries in 8 seconds across WhatsApp and Telegram, Bandla books doctor appointment slots, ILDAM keeps medical consultation history, and Mirzo transcribes clinical consultations with zero bots.
+              </p>
+
+              <!-- 3 Impact Badges -->
+              <div class="grid grid-cols-3 gap-2.5 mb-6 text-center">
+                <div class="p-3 rounded-xl bg-subtle border border-divider">
+                  <div class="text-xl sm:text-2xl font-black text-emeraldBrand">-45%</div>
+                  <div class="text-xs font-mono font-bold text-slateMuted mt-0.5">No-Shows</div>
+                </div>
+                <div class="p-3 rounded-xl bg-subtle border border-divider">
+                  <div class="text-xl sm:text-2xl font-black text-slateDark">&lt;8s</div>
+                  <div class="text-xs font-mono font-bold text-slateMuted mt-0.5">Response</div>
+                </div>
+                <div class="p-3 rounded-xl bg-subtle border border-divider">
+                  <div class="text-xl sm:text-2xl font-black text-slateDark">42h</div>
+                  <div class="text-xs font-mono font-bold text-slateMuted mt-0.5">Saved/Mo</div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="text-xs font-mono text-slate-500 mb-3 flex items-center gap-1.5 font-bold">
+                <span data-t="dashPipeline">Connected Workflow:</span>
+                <span class="text-slate-800">Ailo &rarr; Bandla &rarr; ILDAM &rarr; 1C</span>
+              </div>
+              <button type="button" onclick="openDemoModal('MedPro Clinics')" class="w-full py-3.5 px-4 rounded-xl bg-emeraldBrand hover:bg-emeraldDark text-white text-sm font-bold text-center transition cursor-pointer flex items-center justify-center gap-2 min-h-[44px]">
+                <span data-t="dashCtaClinics">Book a Demo for Clinics</span>
+                <svg class="w-4 h-4 text-limeSpark" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+              </button>
+            </div>
+          </div>
+
         </div>
-        <button type="button" onclick="openDemoModal('EduPro Education')" class="w-full py-3 px-4 rounded-xl bg-slateDark hover:bg-slate-800 text-white text-sm font-bold text-center cursor-pointer transition min-h-[44px]">
-          <span data-t="btnBookDemo">Book a Demo</span>
-        </button>
       </div>
 
-      <!-- Package 3: Automotive -->
-      <div class="card-elevated p-6 sm:p-8 rounded-3xl flex flex-col justify-between">
-        <div>
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-800 text-xs font-mono font-bold uppercase mb-4">
-            <span class="w-1.5 h-1.5 rounded-full bg-amberBrand"></span>
-            <span data-t="sol3Tag">For auto services & workshops</span>
+      <!-- PANEL 2: EDUCATION & ACADEMIES -->
+      <div id="panel-education" class="industry-panel p-6 sm:p-8 hidden" role="tabpanel" aria-labelledby="tab-btn-education">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
+          
+          <!-- Left: Real Conversation & Booking Flow Simulation -->
+          <div class="lg:col-span-7 bg-subtle/50 rounded-2xl p-5 border border-divider">
+            <div class="flex items-center justify-between pb-3 mb-4 border-b border-divider text-xs font-mono">
+              <span class="font-bold text-purpleBrand">● EduPro Fleet · Student Admission Flow</span>
+              <span class="text-slate-500">Telegram Bot · 16:05</span>
+            </div>
+            
+            <div class="space-y-3 text-xs sm:text-sm">
+              <div class="flex items-start gap-2.5">
+                <div class="w-8 h-8 rounded-full bg-slate-200 text-slate-700 font-bold flex items-center justify-center shrink-0 text-xs">S</div>
+                <div class="p-3.5 rounded-2xl rounded-tl-sm bg-white border border-divider shadow-2xs max-w-md text-slate-800">
+                  Assalomu alaykum! IELTS kursingiz qachon boshlanadi? Sinov darsi bormi?
+                </div>
+              </div>
+              
+              <div class="flex items-start gap-2.5 justify-end">
+                <div class="p-3.5 rounded-2xl rounded-tr-sm bg-purple-600 text-white shadow-2xs max-w-md">
+                  Va alaykum assalom! Yangi guruh dushanba boshlanadi. Shanba soat 10:00 da bepul sinov darsi va daraja aniqlash testi mavjud. Joyingizni band qilaymi?
+                </div>
+                <div class="w-8 h-8 rounded-full bg-purple-800 text-white font-bold flex items-center justify-center shrink-0 text-xs">AI</div>
+              </div>
+
+              <div class="p-3 rounded-xl bg-purple-50 border border-purple-200 text-xs font-mono text-purple-900 flex items-center justify-between">
+                <span>↳ Bandla: Sinov darsiga 1 ta o'rin ajratildi · ILDAM: 'Sinov darsi' bosqichiga kiritildi</span>
+                <span class="font-bold text-purple-700">0.9s</span>
+              </div>
+            </div>
           </div>
-          <h3 class="text-2xl font-black text-slateDark mb-2" data-t="sol3Title">GPTify OS for Automotive</h3>
-          <p class="text-xs text-slate-500 font-mono font-semibold mb-3">Ailo + ILDAM + Bandla + Izlai</p>
-          <p class="text-slate-600 text-sm leading-relaxed mb-5" data-t="sol3Desc">
-            Maximize service bay capacity and vehicle sales. Ailo handles trade-in and maintenance inquiries, Bandla manages test-drive and bay appointments, ILDAM manages vehicle orders and spare part invoices, while Izlai conducts corporate fleet outreach.
-          </p>
-          <ul class="space-y-2 text-xs sm:text-sm text-slate-700 mb-6">
-            <li class="flex items-center gap-2">
-              <svg class="w-4 h-4 text-amberBrand shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-              <span data-t="sol3F1">Automated test drive and maintenance booking</span>
-            </li>
-            <li class="flex items-center gap-2">
-              <svg class="w-4 h-4 text-amberBrand shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-              <span data-t="sol3F2">B2B commercial fleet outreach with Izlai</span>
-            </li>
-            <li class="flex items-center gap-2">
-              <svg class="w-4 h-4 text-amberBrand shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-              <span data-t="sol3F3">Service milestone follow-ups for oil/tire maintenance</span>
-            </li>
-          </ul>
+
+          <!-- Right: Key Industry Metrics & Direct Action -->
+          <div class="lg:col-span-5 flex flex-col justify-between h-full space-y-6">
+            <div>
+              <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-purple-50 border border-purple-200 text-purple-800 text-xs font-mono font-bold uppercase mb-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-purpleBrand"></span>
+                <span data-t="sol2Tag">For academies & schools</span>
+              </div>
+              <h3 class="text-2xl font-black text-slateDark mb-2" data-t="sol2Title">GPTify OS for Education</h3>
+              <p class="text-slate-600 text-sm leading-relaxed mb-5" data-t="sol2Desc">
+                Convert social media inquiries into enrolled students. Ailo qualifies course interests, Bandla schedules free trial lessons and level evaluations, ILDAM tracks tuition milestones, and Mirzo produces academic review protocols for teachers.
+              </p>
+
+              <!-- 3 Impact Badges -->
+              <div class="grid grid-cols-3 gap-2.5 mb-6 text-center">
+                <div class="p-3 rounded-xl bg-subtle border border-divider">
+                  <div class="text-xl sm:text-2xl font-black text-purpleBrand">+38%</div>
+                  <div class="text-xs font-mono font-bold text-slateMuted mt-0.5">Attendance</div>
+                </div>
+                <div class="p-3 rounded-xl bg-subtle border border-divider">
+                  <div class="text-xl sm:text-2xl font-black text-slateDark">100%</div>
+                  <div class="text-xs font-mono font-bold text-slateMuted mt-0.5">Weekend Lead</div>
+                </div>
+                <div class="p-3 rounded-xl bg-subtle border border-divider">
+                  <div class="text-xl sm:text-2xl font-black text-slateDark">55h</div>
+                  <div class="text-xs font-mono font-bold text-slateMuted mt-0.5">Saved/Mo</div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="text-xs font-mono text-slate-500 mb-3 flex items-center gap-1.5 font-bold">
+                <span data-t="dashPipeline">Connected Workflow:</span>
+                <span class="text-slate-800">Ailo &rarr; Bandla &rarr; ILDAM &rarr; Payme</span>
+              </div>
+              <button type="button" onclick="openDemoModal('EduPro Education')" class="w-full py-3.5 px-4 rounded-xl bg-purpleBrand hover:bg-purple-800 text-white text-sm font-bold text-center transition cursor-pointer flex items-center justify-center gap-2 min-h-[44px]">
+                <span data-t="dashCtaEducation">Book a Demo for Academies</span>
+                <svg class="w-4 h-4 text-limeSpark" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+              </button>
+            </div>
+          </div>
+
         </div>
-        <button type="button" onclick="openDemoModal('AutoPro Automotive')" class="w-full py-3 px-4 rounded-xl bg-slateDark hover:bg-slate-800 text-white text-sm font-bold text-center cursor-pointer transition min-h-[44px]">
-          <span data-t="btnBookDemo">Book a Demo</span>
-        </button>
       </div>
 
-      <!-- Package 4: Professional Services -->
-      <div class="card-elevated p-6 sm:p-8 rounded-3xl flex flex-col justify-between">
-        <div>
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-800 text-xs font-mono font-bold uppercase mb-4">
-            <span class="w-1.5 h-1.5 rounded-full bg-indigoBrand"></span>
-            <span data-t="sol4Tag">For consulting & advisory firms</span>
+      <!-- PANEL 3: AUTO SERVICES & WORKSHOPS -->
+      <div id="panel-auto" class="industry-panel p-6 sm:p-8 hidden" role="tabpanel" aria-labelledby="tab-btn-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
+          
+          <!-- Left: Real Conversation & Booking Flow Simulation -->
+          <div class="lg:col-span-7 bg-subtle/50 rounded-2xl p-5 border border-divider">
+            <div class="flex items-center justify-between pb-3 mb-4 border-b border-divider text-xs font-mono">
+              <span class="font-bold text-amberBrand">● AutoPro Fleet · Workshop Bay Scheduling</span>
+              <span class="text-slate-500">Telegram · 11:40</span>
+            </div>
+            
+            <div class="space-y-3 text-xs sm:text-sm">
+              <div class="flex items-start gap-2.5">
+                <div class="w-8 h-8 rounded-full bg-slate-200 text-slate-700 font-bold flex items-center justify-center shrink-0 text-xs">D</div>
+                <div class="p-3.5 rounded-2xl rounded-tl-sm bg-white border border-divider shadow-2xs max-w-md text-slate-800">
+                  Assalomu alaykum! Malibu 2 tormoz kolodkalarini almashtirish qancha bo'ladi va bugun bo'sh joy bormi?
+                </div>
+              </div>
+              
+              <div class="flex items-start gap-2.5 justify-end">
+                <div class="p-3.5 rounded-2xl rounded-tr-sm bg-amber-600 text-white shadow-2xs max-w-md">
+                  Va alaykum assalom! Original kolodkalar bilan almashtirish 380,000 so'm. Bugun soat 15:30 da 2-chi boksda bo'sh joy bor. Joy band qilamizmi?
+                </div>
+                <div class="w-8 h-8 rounded-full bg-amber-800 text-white font-bold flex items-center justify-center shrink-0 text-xs">AI</div>
+              </div>
+
+              <div class="p-3 rounded-xl bg-amber-50 border border-amber-200 text-xs font-mono text-amber-900 flex items-center justify-between">
+                <span>↳ Bandla: 2-chi boks 15:30 ga band qilindi · 1C: Ehtiyot qism zaxirasi tekshirildi</span>
+                <span class="font-bold text-amber-700">0.7s</span>
+              </div>
+            </div>
           </div>
-          <h3 class="text-2xl font-black text-slateDark mb-2" data-t="sol4Title">GPTify OS for Professional Services</h3>
-          <p class="text-xs text-slate-500 font-mono font-semibold mb-3">Izlai + Ailo + ILDAM + Bandla + Mirzo</p>
-          <p class="text-slate-600 text-sm leading-relaxed mb-5" data-t="sol4Desc">
-            Run an end-to-end client engine. Izlai discovers and prospects ideal corporate clients, Ailo handles website and social leads, Bandla books consultations, ILDAM enforces retainer milestones, and Mirzo records partner meetings with zero-bot discretion.
-          </p>
-          <ul class="space-y-2 text-xs sm:text-sm text-slate-700 mb-6">
-            <li class="flex items-center gap-2">
-              <svg class="w-4 h-4 text-indigoBrand shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-              <span data-t="sol4F1">Multi-channel prospecting across Email and LinkedIn</span>
-            </li>
-            <li class="flex items-center gap-2">
-              <svg class="w-4 h-4 text-indigoBrand shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-              <span data-t="sol4F2">Client proposal pipeline and retainer invoicing</span>
-            </li>
-            <li class="flex items-center gap-2">
-              <svg class="w-4 h-4 text-indigoBrand shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-              <span data-t="sol4F3">Confidential partner call summaries sent to Telegram</span>
-            </li>
-          </ul>
+
+          <!-- Right: Key Industry Metrics & Direct Action -->
+          <div class="lg:col-span-5 flex flex-col justify-between h-full space-y-6">
+            <div>
+              <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-amber-50 border border-amber-200 text-amber-800 text-xs font-mono font-bold uppercase mb-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-amberBrand"></span>
+                <span data-t="sol3Tag">For auto services & workshops</span>
+              </div>
+              <h3 class="text-2xl font-black text-slateDark mb-2" data-t="sol3Title">GPTify OS for Automotive</h3>
+              <p class="text-slate-600 text-sm leading-relaxed mb-5" data-t="sol3Desc">
+                Maximize service bay capacity and vehicle sales. Ailo handles trade-in and maintenance inquiries, Bandla manages test-drive and bay appointments, ILDAM manages vehicle orders and spare part invoices, while Izlai conducts corporate fleet outreach.
+              </p>
+
+              <!-- 3 Impact Badges -->
+              <div class="grid grid-cols-3 gap-2.5 mb-6 text-center">
+                <div class="p-3 rounded-xl bg-subtle border border-divider">
+                  <div class="text-xl sm:text-2xl font-black text-amberBrand">+28%</div>
+                  <div class="text-xs font-mono font-bold text-slateMuted mt-0.5">Bay Capacity</div>
+                </div>
+                <div class="p-3 rounded-xl bg-subtle border border-divider">
+                  <div class="text-xl sm:text-2xl font-black text-slateDark">0</div>
+                  <div class="text-xs font-mono font-bold text-slateMuted mt-0.5">Missed Leads</div>
+                </div>
+                <div class="p-3 rounded-xl bg-subtle border border-divider">
+                  <div class="text-xl sm:text-2xl font-black text-slateDark">35h</div>
+                  <div class="text-xs font-mono font-bold text-slateMuted mt-0.5">Saved/Mo</div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="text-xs font-mono text-slate-500 mb-3 flex items-center gap-1.5 font-bold">
+                <span data-t="dashPipeline">Connected Workflow:</span>
+                <span class="text-slate-800">Ailo &rarr; Bandla &rarr; ILDAM &rarr; 1C ERP</span>
+              </div>
+              <button type="button" onclick="openDemoModal('AutoPro Automotive')" class="w-full py-3.5 px-4 rounded-xl bg-amberBrand hover:bg-amber-700 text-white text-sm font-bold text-center transition cursor-pointer flex items-center justify-center gap-2 min-h-[44px]">
+                <span data-t="dashCtaAuto">Book a Demo for Auto Services</span>
+                <svg class="w-4 h-4 text-limeSpark" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+              </button>
+            </div>
+          </div>
+
         </div>
-        <button type="button" onclick="openDemoModal('AdvisoryPro B2B')" class="w-full py-3 px-4 rounded-xl bg-slateDark hover:bg-slate-800 text-white text-sm font-bold text-center cursor-pointer transition min-h-[44px]">
-          <span data-t="btnBookDemo">Book a Demo</span>
-        </button>
       </div>
+
+      <!-- PANEL 4: PROFESSIONAL & B2B ADVISORY -->
+      <div id="panel-advisory" class="industry-panel p-6 sm:p-8 hidden" role="tabpanel" aria-labelledby="tab-btn-advisory">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
+          
+          <!-- Left: Real Conversation & Booking Flow Simulation -->
+          <div class="lg:col-span-7 bg-subtle/50 rounded-2xl p-5 border border-divider">
+            <div class="flex items-center justify-between pb-3 mb-4 border-b border-divider text-xs font-mono">
+              <span class="font-bold text-indigoBrand">● AdvisoryPro Fleet · Inbound Discovery</span>
+              <span class="text-slate-500">Website / LinkedIn · 10:15</span>
+            </div>
+            
+            <div class="space-y-3 text-xs sm:text-sm">
+              <div class="flex items-start gap-2.5">
+                <div class="w-8 h-8 rounded-full bg-slate-200 text-slate-700 font-bold flex items-center justify-center shrink-0 text-xs">C</div>
+                <div class="p-3.5 rounded-2xl rounded-tl-sm bg-white border border-divider shadow-2xs max-w-md text-slate-800">
+                  Salom! Biz 25 kishilik sotuv bo'limimiz uchun CRM va lidlarni avtomatlashtirishni ko'rib chiqmoqchimiz.
+                </div>
+              </div>
+              
+              <div class="flex items-start gap-2.5 justify-end">
+                <div class="p-3.5 rounded-2xl rounded-tr-sm bg-indigo-600 text-white shadow-2xs max-w-md">
+                  Salom! 25 kishilik jamoa uchun ILDAM CRM va Ailo orqali kunlik 300+ lidlarni qayta ishlash mumkin. 30 daqiqalik audit uchun qaysi vaqt qulay?
+                </div>
+                <div class="w-8 h-8 rounded-full bg-indigo-800 text-white font-bold flex items-center justify-center shrink-0 text-xs">AI</div>
+              </div>
+
+              <div class="p-3 rounded-xl bg-indigo-50 border border-indigo-200 text-xs font-mono text-indigo-900 flex items-center justify-between">
+                <span>↳ Bandla: Google Meet havolasi yaratildi · Mirzo: Uchrashuv brifi tayyorlandi</span>
+                <span class="font-bold text-indigo-700">0.8s</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Key Industry Metrics & Direct Action -->
+          <div class="lg:col-span-5 flex flex-col justify-between h-full space-y-6">
+            <div>
+              <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-800 text-xs font-mono font-bold uppercase mb-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-indigoBrand"></span>
+                <span data-t="sol4Tag">For consulting & advisory firms</span>
+              </div>
+              <h3 class="text-2xl font-black text-slateDark mb-2" data-t="sol4Title">GPTify OS for Professional Services</h3>
+              <p class="text-slate-600 text-sm leading-relaxed mb-5" data-t="sol4Desc">
+                Run an end-to-end client engine. Izlai discovers and prospects ideal corporate clients, Ailo handles website and social leads, Bandla books consultations, ILDAM enforces retainer milestones, and Mirzo records partner meetings with zero-bot discretion.
+              </p>
+
+              <!-- 3 Impact Badges -->
+              <div class="grid grid-cols-3 gap-2.5 mb-6 text-center">
+                <div class="p-3 rounded-xl bg-subtle border border-divider">
+                  <div class="text-xl sm:text-2xl font-black text-indigoBrand">3x</div>
+                  <div class="text-xs font-mono font-bold text-slateMuted mt-0.5">Ready Deals</div>
+                </div>
+                <div class="p-3 rounded-xl bg-subtle border border-divider">
+                  <div class="text-xl sm:text-2xl font-black text-slateDark">100%</div>
+                  <div class="text-xs font-mono font-bold text-slateMuted mt-0.5">CRM Accuracy</div>
+                </div>
+                <div class="p-3 rounded-xl bg-subtle border border-divider">
+                  <div class="text-xl sm:text-2xl font-black text-slateDark">50h</div>
+                  <div class="text-xs font-mono font-bold text-slateMuted mt-0.5">Saved/Mo</div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="text-xs font-mono text-slate-500 mb-3 flex items-center gap-1.5 font-bold">
+                <span data-t="dashPipeline">Connected Workflow:</span>
+                <span class="text-slate-800">Izlai &rarr; Ailo &rarr; ILDAM &rarr; Mirzo</span>
+              </div>
+              <button type="button" onclick="openDemoModal('AdvisoryPro B2B')" class="w-full py-3.5 px-4 rounded-xl bg-indigoBrand hover:bg-indigo-700 text-white text-sm font-bold text-center transition cursor-pointer flex items-center justify-center gap-2 min-h-[44px]">
+                <span data-t="dashCtaAdvisory">Book a Demo for Advisory Firms</span>
+                <svg class="w-4 h-4 text-limeSpark" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
 
     </div>
   </section>

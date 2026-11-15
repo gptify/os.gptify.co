@@ -157,6 +157,40 @@ def run_tests():
             }''')
             print(f"[PASS] Language switchers dimensions: {lang_btns}")
 
+            # Verify Industry Dashboard Tab Switching
+            tab_switch_results = page.evaluate('''() => {
+                const results = [];
+                // Test switching to education
+                window.switchIndustryTab('education');
+                results.push({
+                    eduVisible: !document.getElementById('panel-education').classList.contains('hidden'),
+                    clinicsHidden: document.getElementById('panel-clinics').classList.contains('hidden')
+                });
+                // Test switching to auto
+                window.switchIndustryTab('auto');
+                results.push({
+                    autoVisible: !document.getElementById('panel-auto').classList.contains('hidden'),
+                    eduHidden: document.getElementById('panel-education').classList.contains('hidden')
+                });
+                // Test switching to advisory
+                window.switchIndustryTab('advisory');
+                results.push({
+                    advVisible: !document.getElementById('panel-advisory').classList.contains('hidden'),
+                    autoHidden: document.getElementById('panel-auto').classList.contains('hidden')
+                });
+                // Switch back to clinics
+                window.switchIndustryTab('clinics');
+                results.push({
+                    clinicsVisible: !document.getElementById('panel-clinics').classList.contains('hidden'),
+                    advHidden: document.getElementById('panel-advisory').classList.contains('hidden')
+                });
+                return results;
+            }''')
+            print(f"[PASS] Interactive Industry Dashboard tab switching verified: {tab_switch_results}")
+            for r in tab_switch_results:
+                for k, v in r.items():
+                    assert v is True, f"Tab switch failed: {k} is {v}"
+
             # Verify navbar links (Only 5 Engines, Solutions, FAQ)
             nav_links = page.evaluate('''() => {
                 const links = Array.from(document.querySelectorAll('header nav[aria-label="Navigation"] a'));
