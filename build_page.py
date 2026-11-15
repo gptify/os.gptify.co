@@ -817,9 +817,9 @@ HTML_CONTENT = """<!DOCTYPE html>
                 <span class="text-xs text-emeraldBrand font-mono font-bold" data-t="ailoRole">Your AI Customer Agent</span>
               </div>
             </div>
-            <a href="https://ailo.gptify.uz" target="_blank" rel="noopener noreferrer" class="text-xs font-mono font-bold text-emeraldBrand hover:underline flex items-center gap-1 cursor-pointer">
-              ailo.gptify.uz ↗
-            </a>
+            <span class="text-xs font-mono font-bold text-emeraldBrand">
+              Omnichannel AI
+            </span>
           </div>
 
           <p class="text-slate-600 text-sm leading-relaxed mb-6" data-t="ailoDesc">
@@ -843,10 +843,10 @@ HTML_CONTENT = """<!DOCTYPE html>
         </div>
 
         <div class="pt-6 border-t border-divider flex items-center gap-3">
-          <a href="https://ailo.gptify.uz" target="_blank" rel="noopener noreferrer" class="flex-1 py-3 px-4 rounded-xl bg-slateDark hover:bg-slate-800 text-white text-xs font-bold text-center transition duration-150 cursor-pointer inline-flex items-center justify-center gap-1.5">
-            <span data-t="ailoCta">Visit ailo.gptify.uz</span>
+          <button type="button" onclick="openDemoModal()" class="flex-1 py-3 px-4 rounded-xl bg-slateDark hover:bg-slate-800 text-white text-xs font-bold text-center transition duration-150 cursor-pointer inline-flex items-center justify-center gap-1.5">
+            <span data-t="ailoCta">See Ailo in Action</span>
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
-          </a>
+          </button>
         </div>
       </div>
 
@@ -863,9 +863,9 @@ HTML_CONTENT = """<!DOCTYPE html>
                 <span class="text-xs text-amberBrand font-mono font-bold" data-t="ildamRole">CRM That Keeps You Moving</span>
               </div>
             </div>
-            <a href="https://ildam.gptify.uz" target="_blank" rel="noopener noreferrer" class="text-xs font-mono font-bold text-amberBrand hover:underline flex items-center gap-1 cursor-pointer">
-              ildam.gptify.uz ↗
-            </a>
+            <span class="text-xs font-mono font-bold text-amberBrand">
+              CRM Pipeline
+            </span>
           </div>
 
           <p class="text-slate-600 text-sm leading-relaxed mb-6" data-t="ildamDesc">
@@ -889,10 +889,10 @@ HTML_CONTENT = """<!DOCTYPE html>
         </div>
 
         <div class="pt-6 border-t border-divider flex items-center gap-3">
-          <a href="https://ildam.gptify.uz" target="_blank" rel="noopener noreferrer" class="flex-1 py-3 px-4 rounded-xl bg-slateDark hover:bg-slate-800 text-white text-xs font-bold text-center transition duration-150 cursor-pointer inline-flex items-center justify-center gap-1.5">
-            <span data-t="ildamCta">Visit ildam.gptify.uz</span>
+          <button type="button" onclick="openDemoModal()" class="flex-1 py-3 px-4 rounded-xl bg-slateDark hover:bg-slate-800 text-white text-xs font-bold text-center transition duration-150 cursor-pointer inline-flex items-center justify-center gap-1.5">
+            <span data-t="ildamCta">See ILDAM in Action</span>
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
-          </a>
+          </button>
         </div>
       </div>
 
@@ -936,7 +936,7 @@ HTML_CONTENT = """<!DOCTYPE html>
 
         <div class="pt-6 border-t border-divider flex items-center gap-3">
           <button type="button" onclick="openDemoModal()" class="flex-1 py-3 px-4 rounded-xl bg-slateDark hover:bg-slate-800 text-white text-xs font-bold text-center transition duration-150 cursor-pointer inline-flex items-center justify-center gap-1.5">
-            <span data-t="bandlaCta">Explore Bandla Integration</span>
+            <span data-t="bandlaCta">See Bandla in Action</span>
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
           </button>
         </div>
@@ -960,9 +960,9 @@ HTML_CONTENT = """<!DOCTYPE html>
                 <span class="text-xs text-skyBrand font-mono font-bold" data-t="mirzoRole">Your Private AI Scribe</span>
               </div>
             </div>
-            <a href="https://mirzo.gptify.uz" target="_blank" rel="noopener noreferrer" class="text-xs font-mono font-bold text-skyBrand hover:underline flex items-center gap-1 cursor-pointer">
-              mirzo.gptify.uz ↗
-            </a>
+            <span class="text-xs font-mono font-bold text-skyBrand">
+              Voice & Scribe
+            </span>
           </div>
 
           <p class="text-slate-600 text-sm leading-relaxed mb-6" data-t="mirzoDesc">
@@ -986,10 +986,10 @@ HTML_CONTENT = """<!DOCTYPE html>
         </div>
 
         <div class="pt-6 border-t border-divider flex items-center gap-3">
-          <a href="https://mirzo.gptify.uz" target="_blank" rel="noopener noreferrer" class="flex-1 py-3 px-4 rounded-xl bg-slateDark hover:bg-slate-800 text-white text-xs font-bold text-center transition duration-150 cursor-pointer inline-flex items-center justify-center gap-1.5">
-            <span data-t="mirzoCta">Visit mirzo.gptify.uz</span>
+          <button type="button" onclick="openDemoModal()" class="flex-1 py-3 px-4 rounded-xl bg-slateDark hover:bg-slate-800 text-white text-xs font-bold text-center transition duration-150 cursor-pointer inline-flex items-center justify-center gap-1.5">
+            <span data-t="mirzoCta">See Mirzo in Action</span>
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
-          </a>
+          </button>
         </div>
       </div>
 
@@ -1006,9 +1006,9 @@ HTML_CONTENT = """<!DOCTYPE html>
                 <span class="text-xs text-indigoBrand font-mono font-bold" data-t="izlaiRole">Your AI Outbound Agent</span>
               </div>
             </div>
-            <a href="https://izlai.gptify.uz" target="_blank" rel="noopener noreferrer" class="text-xs font-mono font-bold text-indigoBrand hover:underline flex items-center gap-1 cursor-pointer">
-              izlai.gptify.uz ↗
-            </a>
+            <span class="text-xs font-mono font-bold text-indigoBrand">
+              Outbound Engine
+            </span>
           </div>
 
           <p class="text-slate-600 text-sm leading-relaxed mb-6" data-t="izlaiDesc">
@@ -1032,10 +1032,10 @@ HTML_CONTENT = """<!DOCTYPE html>
         </div>
 
         <div class="pt-6 border-t border-divider flex items-center gap-3">
-          <a href="https://izlai.gptify.uz" target="_blank" rel="noopener noreferrer" class="flex-1 py-3 px-4 rounded-xl bg-slateDark hover:bg-slate-800 text-white text-xs font-bold text-center transition duration-150 cursor-pointer inline-flex items-center justify-center gap-1.5">
-            <span data-t="izlaiCta">Visit izlai.gptify.uz</span>
+          <button type="button" onclick="openDemoModal()" class="flex-1 py-3 px-4 rounded-xl bg-slateDark hover:bg-slate-800 text-white text-xs font-bold text-center transition duration-150 cursor-pointer inline-flex items-center justify-center gap-1.5">
+            <span data-t="izlaiCta">See Izlai in Action</span>
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
-          </a>
+          </button>
         </div>
       </div>
 
@@ -1833,15 +1833,15 @@ console.log(`Autonomous execution verified: ${event.executionId}`);</code></pre>
       </div>
 
       <div class="flex flex-wrap items-center gap-4 text-xs font-semibold text-slate-600">
-        <a href="https://ailo.gptify.uz" target="_blank" rel="noopener noreferrer" class="hover:text-emeraldBrand cursor-pointer">ailo.gptify.uz</a>
+        <a href="#services" class="hover:text-emeraldBrand cursor-pointer">Ailo</a>
         <span>•</span>
-        <a href="https://ildam.gptify.uz" target="_blank" rel="noopener noreferrer" class="hover:text-amberBrand cursor-pointer">ildam.gptify.uz</a>
+        <a href="#services" class="hover:text-amberBrand cursor-pointer">ILDAM</a>
         <span>•</span>
-        <button type="button" onclick="openDemoModal()" class="hover:text-purpleBrand font-semibold cursor-pointer">Bandla</button>
+        <a href="#services" class="hover:text-purpleBrand cursor-pointer">Bandla</a>
         <span>•</span>
-        <a href="https://mirzo.gptify.uz" target="_blank" rel="noopener noreferrer" class="hover:text-skyBrand cursor-pointer">mirzo.gptify.uz</a>
+        <a href="#services" class="hover:text-skyBrand cursor-pointer">Mirzo</a>
         <span>•</span>
-        <a href="https://izlai.gptify.uz" target="_blank" rel="noopener noreferrer" class="hover:text-indigoBrand cursor-pointer">izlai.gptify.uz</a>
+        <a href="#services" class="hover:text-indigoBrand cursor-pointer">Izlai</a>
       </div>
 
       <!-- Compliance & Legal Links (Microsoft, Google & Meta Compliance) -->
@@ -2087,35 +2087,35 @@ console.log(`Autonomous execution verified: ${event.executionId}`);</code></pre>
         ailoB1: "<strong>Official Meta Graph API:</strong> Fully verified, zero account ban risk.",
         ailoB2: "<strong>Multilingual Context:</strong> Native audio and text comprehension.",
         ailoB3: "<strong>Natural Human Flow:</strong> Dynamic intelligence instead of rigid button trees.",
-        ailoCta: "Visit ailo.gptify.uz",
+        ailoCta: "See Ailo in Action",
 
         ildamRole: "CRM That Keeps You Moving",
         ildamDesc: "Agile B2B pipeline management without enterprise bloat. Centralizes customer databases, tracks deal stages on Kanban, and enforces cash flow through automated payment milestones.",
         ildamB1: "<strong>Visual Kanban Pipeline:</strong> Drag-and-drop deal management with automated stage transitions.",
         ildamB2: "<strong>Milestone Cash Flow:</strong> Automated alerts for deposit invoices, progress billings, and deadlines.",
         ildamB3: "<strong>Seamless Agent Sync:</strong> Automatically ingests qualified leads from Ailo and prospects from Izlai.",
-        ildamCta: "Visit ildam.gptify.uz",
+        ildamCta: "See ILDAM in Action",
 
         bandlaRole: "Scheduling Built for Business",
         bandlaDesc: "Eliminates scheduling friction for service businesses. Connects directly with doctor, teacher, or team availability, locks slots instantly, and enforces attendance with automatic reminders.",
         bandlaB1: "<strong>Zero Double-Booking:</strong> Live synchronization with Google Calendar, Outlook, and internal shifts.",
         bandlaB2: "<strong>Automated No-Show Shield:</strong> Multi-channel Telegram and SMS reminders eliminate missed appointments.",
         bandlaB3: "<strong>Ailo & CRM Integration:</strong> Ailo reserves timeslots directly in the chat without external redirects.",
-        bandlaCta: "Explore Bandla Integration",
+        bandlaCta: "See Bandla in Action",
 
         mirzoRole: "Your Private AI Scribe",
         mirzoDesc: "Private AI meeting notes. <strong>No bots in the call.</strong> Zero awkward avatars. Captures decisions, action items, and deadlines from Zoom, Teams, and Google Meet directly to Telegram and ILDAM CRM.",
         mirzoB1: "<strong>Zero-Bot Presence:</strong> 100% confidential. No bot joins or disturbs your client conversations.",
         mirzoB2: "<strong>Precise Action Protocols:</strong> Filters conversational noise into structured owner/deadline briefs.",
         mirzoB3: "<strong>Instant Multi-Channel Dispatch:</strong> Summary and assigned tasks delivered within 60 seconds.",
-        mirzoCta: "Visit mirzo.gptify.uz",
+        mirzoCta: "See Mirzo in Action",
 
         izlaiRole: "Your AI Outbound Agent",
         izlaiDesc: "Eliminates cold prospecting fatigue. Autonomously discovers target accounts, sends hyper-personalized outreach via <strong>Email, LinkedIn, Telegram, and WhatsApp</strong>, and qualifies replies in seconds.",
         izlaiB1: "<strong>Autonomous Account Discovery:</strong> Identifies decision-makers matching your ideal customer profile.",
         izlaiB2: "<strong>Contextual Reply Qualification:</strong> Analyzes responses, handles skepticism, and schedules warm demos.",
         izlaiB3: "<strong>Automated Deal Handoff:</strong> Sales-ready accounts flow straight into ILDAM CRM for your sales closers.",
-        izlaiCta: "Visit izlai.gptify.uz",
+        izlaiCta: "See Izlai in Action",
 
         solutionsEyebrow: "VERTICAL DEPLOYMENTS (HUB & SPOKE)",
         solutionsTitle: "Built on GPTify OS Core — Dedicated Vertical Fleets",
@@ -2346,35 +2346,35 @@ console.log(`Autonomous execution verified: ${event.executionId}`);</code></pre>
         ailoB1: "<strong>Meta Rasmiy Graph API:</strong> Bloklanish xavfisiz, to'liq qonuniy integratsiya.",
         ailoB2: "<strong>Ko'p Tillilik va Kontekst:</strong> O'zbek, rus va ingliz tillarida audio va matnni to'liq tushunish.",
         ailoB3: "<strong>Insoniy Muloqot:</strong> Quruq tugmalar emas, professional savdo intellekti.",
-        ailoCta: "ailo.gptify.uz saytiga o'tish",
+        ailoCta: "Ailoni Jonli Ko'rish",
 
         ildamRole: "Tezkor B2B CRM",
         ildamDesc: "Ortiqcha murakkabliklarsiz, chaqqon va samarali CRM. Mijozlar bazasi, bosqichma-bosqich Kanban voronkasi va to'lovlarni avtomatik nazorat qiladi.",
         ildamB1: "<strong>Vizual Kanban Voronkasi:</strong> Bitimlarni surib boshqarish va avtomatik holat almashinuvi.",
         ildamB2: "<strong>To'lov Bosqichlari Nazorati:</strong> Avans, oraliq hisob-faktura va to'lov muddatlarini eslatish.",
         ildamB3: "<strong>Avtonom Sinxronizatsiya:</strong> Ailo va Izlai orqali kelgan barcha lidlarni bir zumda bazaga kiritish.",
-        ildamCta: "ildam.gptify.uz saytiga o'tish",
+        ildamCta: "ILDAMni Jonli Ko'rish",
 
         bandlaRole: "Biznes Uchun Qabul Tizimi",
         bandlaDesc: "Xizmat ko'rsatish sohalarida uchrashuv belgilash chalkashliklarini yo'qotadi. Shifokor, ustoz yoki xodimlar taqvimi bilan to'g'ridan-to'g'ri bog'lanib, bo'sh vaqtlarni band qiladi.",
         bandlaB1: "<strong>Chalkashliksiz Band Qilish:</strong> Google Calendar, Outlook va ichki navbatchilik jadvallari bilan jonli sinxron.",
         bandlaB2: "<strong>Kelmay Qolishdan Himoya:</strong> Telegram va SMS orqali o'z vaqtida eslatmalar yuborish.",
         bandlaB3: "<strong>Ailo va CRM bilan Bog'liqlik:</strong> Bemor yoki mijoz chatning o'zidayoq vaqtni band qiladi.",
-        bandlaCta: "Bandla Imkoniyatlarini Ko'rish",
+        bandlaCta: "Bandlani Jonli Ko'rish",
 
         mirzoRole: "Maxfiy AI Kotib",
         mirzoDesc: "Maxfiy uchrashuv intellekti. <strong>Qo'ng'iroqda begona botlarsiz.</strong> Zoom, Google Meet va Teams suhbatlaridagi qarorlar va vazifalarni Telegram hamda ILDAM CRMga uzatadi.",
         mirzoB1: "<strong>Zero-Bot Maxfiylik:</strong> Ekrandan begona bot ko'rinmaydi, audio oqimi to'liq shifrlangan.",
         mirzoB2: "<strong>Aniq Topshiriqlar Bayonnomasi:</strong> Suhbatdagi suvlarni chiqarib tashlab, aniq mas'ullar va muddatlarni belgilaydi.",
         mirzoB3: "<strong>60 Soniyada Yetkazish:</strong> Uchrashuv tugashi bilanoq kim nima qilishi kerakligi tayyor bo'ladi.",
-        mirzoCta: "mirzo.gptify.uz saytiga o'tish",
+        mirzoCta: "Mirzoni Jonli Ko'rish",
 
         izlaiRole: "AI Outbound Agenti",
         izlaiDesc: "Sovuq qo'ng'iroqlar va qo'lda xabar yozish o'rniga ishlovchi avtonom agent. Korxonalarni qidiradi, <strong>Email, LinkedIn, Telegram va WhatsApp</strong> orqali takliflar yuboradi va javoblarni saralaydi.",
         izlaiB1: "<strong>Avtonom Korxonalar Qidiruvi:</strong> Sizning talablaringizga mos qaror qabul qiluvchilarni aniqlash.",
         izlaiB2: "<strong>Jonli Muloqot va Saralash:</strong> Qiziqish bildirgan mijozlar bilan muloqot qilib, tayyor uchrashuv belgilash.",
         izlaiB3: "<strong>CRMga Avtomatik Yo'naltirish:</strong> Issiq mijozlarni ILDAM CRMga to'g'ridan-to'g'ri o'tkazish.",
-        izlaiCta: "izlai.gptify.uz saytiga o'tish",
+        izlaiCta: "Izlaini Jonli Ko'rish",
 
         solutionsEyebrow: "VERTIKAL TIZIMLAR (HUB & SPOKE)",
         solutionsTitle: "GPTify OS Yadrosi Asosida — Maxsus Sohaviy Flotlar",
@@ -2605,35 +2605,35 @@ console.log(`Autonomous execution verified: ${event.executionId}`);</code></pre>
         ailoB1: "<strong>Официальный Meta Graph API:</strong> Безопасно, законно, без риска блокировки.",
         ailoB2: "<strong>Мультиязычность и Контекст:</strong> 100% понимание текста, голоса и сокращений.",
         ailoB3: "<strong>Человечный Диалог:</strong> Умные продажи вместо примитивных кнопок.",
-        ailoCta: "Перейти на ailo.gptify.uz",
+        ailoCta: "Смотреть Ailo в Деле",
 
         ildamRole: "CRM, Которая Движет Ваш Бизнес",
         ildamDesc: "Быстрое и прозрачное управление B2B сделками без громоздких настроек. Наглядная воронка лидов, история коммуникаций, статусы договоров и автоматический контроль этапов оплаты.",
         ildamB1: "<strong>Наглядная Воронка Сделок:</strong> Поэтапный Kanban-пайплайн с автоматической сменой статусов.",
         ildamB2: "<strong>Контроль Этапов Оплаты:</strong> Автоматические напоминания об авансах, счетах и сроках платежей.",
         ildamB3: "<strong>Бесшовная Синхронизация:</strong> Мгновенно принимает заявки от Ailo и прогретые лиды из Izlai.",
-        ildamCta: "Перейти на ildam.gptify.uz",
+        ildamCta: "Смотреть ILDAM в Деле",
 
         bandlaRole: "Система Записи для Бизнеса",
         bandlaDesc: "Устраняет хаос в расписании специалистов. Подключается к графикам врачей, мастеров или преподавателей, мгновенно бронирует время и отправляет напоминания.",
         bandlaB1: "<strong>Защита от Накладок:</strong> Синхронизация с Google Calendar, Outlook и графиками смен.",
         bandlaB2: "<strong>Защита от Неявок:</strong> SMS и Telegram напоминания сводят пропущенные визиты к минимуму.",
         bandlaB3: "<strong>Связка с Ailo и CRM:</strong> Пациент или клиент выбирает удобный слот прямо в переписке.",
-        bandlaCta: "Узнать Больше о Bandla",
+        bandlaCta: "Смотреть Bandla в Деле",
 
         mirzoRole: "Ваш Приватный AI Секретарь",
         mirzoDesc: "Приватные протоколы встреч. <strong>Без посторонних ботов в звонке.</strong> Фиксирует решения и задачи из Zoom, Google Meet и Teams прямо в Telegram и ILDAM CRM.",
         mirzoB1: "<strong>Zero-Bot Конфиденциальность:</strong> В звонке нет постороннего бота-аватара.",
         mirzoB2: "<strong>Четкий Протокол Задач:</strong> Выделение конкретных поручений, ответственных и дедлайнов.",
         mirzoB3: "<strong>Доставка за 60 Секунд:</strong> Итоги совещания отправляются в Telegram сразу после звонка.",
-        mirzoCta: "Перейти на mirzo.gptify.uz",
+        mirzoCta: "Смотреть Mirzo в Деле",
 
         izlaiRole: "Ваш AI Агент Поиска Клиентов",
         izlaiDesc: "Заменяет рутину холодных рассылок и звонков. Автоматически находит целевые B2B компании, отправляет персонализированные предложения через <strong>Email, LinkedIn, Telegram и WhatsApp</strong>.",
         izlaiB1: "<strong>Поиск ЛПР:</strong> Находит лиц, принимающих решения, точно под ваш профиль клиента.",
         izlaiB2: "<strong>Квалификация Ответов:</strong> Обрабатывает возражения и договаривается о времени созвона.",
         izlaiB3: "<strong>Прямая Передача в CRM:</strong> Готовые теплые контакты автоматически передаются в ILDAM CRM.",
-        izlaiCta: "Перейти на izlai.gptify.uz",
+        izlaiCta: "Смотреть Izlai в Деле",
 
         solutionsEyebrow: "ВЕРТИКАЛЬНЫЕ РЕШЕНИЯ (HUB & SPOKE)",
         solutionsTitle: "На Базе Ядра GPTify OS — Отраслевые Флоты",
