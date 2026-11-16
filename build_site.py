@@ -349,12 +349,11 @@ def generate_header(lang, current_page='home'):
     <span style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: 24px; letter-spacing: -0.01em">GPTify</span>
     <span style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 13px; color: #FFFFFF; background: #087F6A; border-radius: 6px; padding: 3px 8px">{T[lang]['nav_logo_sub']}</span>
   </a>
-  <nav aria-label="Main" style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px">
-    <a href="{tools_href}" style="display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; padding: 0 6px; font-size: 15px; font-weight: 500; color: #172B2A; text-decoration: none">{T[lang]['nav_tools']}</a>
-    <a href="{ind_href}" style="display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; padding: 0 6px; font-size: 15px; font-weight: 500; color: #172B2A; text-decoration: none">{T[lang]['nav_industries']}</a>
-    <a href="{sav_href}" style="display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; padding: 0 6px; font-size: 15px; font-weight: 500; color: #172B2A; text-decoration: none">{T[lang]['nav_savings']}</a>
-    <a href="{faq_href}" style="display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; padding: 0 6px; font-size: 15px; font-weight: 500; color: #172B2A; text-decoration: none">{T[lang]['nav_faq']}</a>
-    <a href="{about_url}" style="display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; padding: 0 6px; font-size: 15px; text-decoration: none; {about_active_style}">{T[lang]['nav_about']}</a>
+  <nav aria-label="Main" style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 14px">
+    <a href="{tools_href}" style="display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; padding: 0 8px; font-size: 15px; font-weight: 500; color: #172B2A; text-decoration: none">{T[lang]['nav_tools']}</a>
+    <a href="{ind_href}" style="display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; padding: 0 8px; font-size: 15px; font-weight: 500; color: #172B2A; text-decoration: none">{T[lang]['nav_industries']}</a>
+    <a href="{faq_href}" style="display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; padding: 0 8px; font-size: 15px; font-weight: 500; color: #172B2A; text-decoration: none">{T[lang]['nav_faq']}</a>
+    <a href="{about_url}" style="display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; padding: 0 8px; font-size: 15px; text-decoration: none; {about_active_style}">{T[lang]['nav_about']}</a>
   </nav>
   <div style="display: flex; align-items: center; gap: 12px; margin-left: auto; flex-shrink: 0">
     <div style="display: flex; align-items: center; gap: 4px" role="navigation" aria-label="Language selection">
