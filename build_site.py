@@ -377,12 +377,6 @@ def generate_footer(lang):
       <span style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: 20px; color: #172B2A">GPTify OS</span>
     </div>
     <div style="font-size: 15px; line-height: 1.5; color: #5F6F6D">{T[lang]['footer_tagline']}</div>
-    <div style="display: flex; flex-direction: column; gap: 2px; font-size: 15px; line-height: 1.5; color: #5F6F6D">
-      <a href="mailto:{T[lang]['footer_email']}" style="display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; font-weight: 600; color: #172B2A">{T[lang]['footer_email']}</a>
-      <a href="https://t.me/GPTify_uz_bot?start=os_demo" style="display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; font-weight: 600; color: #172B2A">{T[lang]['footer_tg']}</a>
-      <span style="display: inline-flex; align-items: center; min-height: 32px">{T[lang]['footer_support']}</span>
-      <span style="display: inline-flex; align-items: center; min-height: 32px">{T[lang]['footer_legal']}</span>
-    </div>
   </div>
   <nav aria-label="Footer" style="display: flex; flex-wrap: wrap; gap: 4px 28px">
     <a href="{about_url}" style="display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; font-size: 15px; font-weight: 500; color: #172B2A">{T[lang]['footer_about']}</a>
@@ -747,6 +741,8 @@ def generate_homepage(lang):
 <html lang="{lang}">
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <script>if(location.protocol==='http:'&&!['localhost','127.0.0.1'].includes(location.hostname)){{location.replace('https://'+location.host+location.pathname+location.search+location.hash);}}</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{T[lang]['page_title']}</title>
   <meta name="description" content="{T[lang]['meta_description']}">
@@ -1191,6 +1187,8 @@ def generate_about_page(lang):
 <html lang="{lang}">
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <script>if(location.protocol==='http:'&&!['localhost','127.0.0.1'].includes(location.hostname)){{location.replace('https://'+location.host+location.pathname+location.search+location.hash);}}</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{T[lang]['about_page_title']}</title>
   <meta name="description" content="{T[lang]['about_meta_desc']}">
@@ -1335,6 +1333,8 @@ def generate_architecture_page(lang):
 <html lang="{lang}">
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <script>if(location.protocol==='http:'&&!['localhost','127.0.0.1'].includes(location.hostname)){{location.replace('https://'+location.host+location.pathname+location.search+location.hash);}}</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{T[lang]['arch_page_title']}</title>
   <meta name="description" content="{T[lang]['arch_meta_desc']}">
@@ -1599,6 +1599,8 @@ def generate_404_page():
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <script>if(location.protocol==='http:'&&!['localhost','127.0.0.1'].includes(location.hostname)){{location.replace('https://'+location.host+location.pathname+location.search+location.hash);}}</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>404 - Page Not Found | GPTify OS</title>
   <link rel="stylesheet" href="/style.min.css">
