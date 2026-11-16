@@ -1,1602 +1,753 @@
-<!DOCTYPE html>
-
-<html class="scroll-smooth" lang="uz">
+<!doctype html>
+<html lang="uz">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>GPTify OS — Xizmat Ko'rsatish Bizneslari Uchun AI Operatsion Tizimi | GPTify</title>
-<meta content="GPTify OS — xizmat ko'rsatish bizneslari uchun AI operatsion tizimi. Mijozlar bilan muloqot, CRM, uchrashuvlar, savdo va avtomatlashtirishni yagona AI agentlar qatlamida birlashtiradi." name="description"/>
-<link href="https://gptify.si/uz/" rel="canonical"/>
-<link href="https://gptify.si/" hreflang="x-default" rel="alternate"/>
-<link href="https://gptify.si/" hreflang="en" rel="alternate"/>
-<link href="https://gptify.si/uz/" hreflang="uz" rel="alternate"/>
-<link href="https://gptify.si/ru/" hreflang="ru" rel="alternate"/>
-<link href="/gptify-mark.svg" rel="icon" type="image/svg+xml"/>
-<!-- Open Graph / Meta -->
-<meta content="website" property="og:type"/>
-<meta content="https://gptify.si/uz/" property="og:url"/>
-<meta content="GPTify OS — Xizmat Ko'rsatish Bizneslari Uchun AI Operatsion Tizimi | GPTify" property="og:title"/>
-<meta content="GPTify OS — xizmat ko'rsatish bizneslari uchun AI operatsion tizimi. Mijozlar bilan muloqot, CRM, uchrashuvlar, savdo va avtomatlashtirishni yagona AI agentlar qatlamida birlashtiradi." property="og:description"/>
-<meta content="https://gptify.si/og-image.png" property="og:image"/>
-<meta content="1200" property="og:image:width"/>
-<meta content="630" property="og:image:height"/>
-<meta content="image/png" property="og:image:type"/>
-<!-- Twitter / X -->
-<meta content="summary_large_image" name="twitter:card"/>
-<meta content="https://gptify.si/uz/" name="twitter:url"/>
-<meta content="GPTify OS — Xizmat Ko'rsatish Bizneslari Uchun AI Operatsion Tizimi | GPTify" name="twitter:title"/>
-<meta content="GPTify OS — xizmat ko'rsatish bizneslari uchun AI operatsion tizimi. Mijozlar bilan muloqot, CRM, uchrashuvlar, savdo va avtomatlashtirishni yagona AI agentlar qatlamida birlashtiradi." name="twitter:description"/>
-<meta content="https://gptify.si/og-image.png" name="twitter:image"/>
-<!-- Fonts & Compiled Tailwind CSS -->
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&amp;family=Poppins:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
-<link href="/style.min.css" rel="stylesheet"/>
-<style>
-    :root {
-      --font-serif: 'Instrument Serif', Georgia, serif;
-      --accent: #087F6A;
-    }
-    body {
-      background-color: #FAF9F5;
-      color: #0F172A;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-      font-size: 14px;
-    }
-
-    /* Global font size guards (Requirement E.1 & E.2) */
-    p, li, label {
-      font-size: max(14px, 0.875rem);
-    }
-    .font-mono, code, pre {
-      font-size: max(12px, 0.75rem);
-    }
-    input[type="text"], input[type="email"], input[type="tel"], select {
-      font-size: 16px !important;
-    }
-
-    /* Tap targets & interactive elements (Requirement E.5) */
-    .lang-pill-btn {
-      min-height: 44px;
-      min-width: 44px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 8px 14px;
-      border-radius: 9999px;
-      font-size: 13px;
-      font-weight: 700;
-      color: #64748B;
-      transition: all 0.15s ease;
-      cursor: pointer;
-    }
-    .lang-pill-btn.active {
-      background-color: #FFFFFF;
-      color: #0F172A;
-      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.1);
-    }
-
-    /* Range slider 28px thumb + hit area */
-    input[type=range] {
-      -webkit-appearance: none;
-      background: #E7E5DF;
-      border-radius: 9999px;
-      height: 8px;
-      padding: 12px 0;
-      cursor: pointer;
-    }
-    input[type=range]::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      height: 28px;
-      width: 28px;
-      border-radius: 50%;
-      background: #087F6A;
-      border: 3px solid #FFFFFF;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-      cursor: pointer;
-      transition: transform 0.15s ease;
-    }
-    input[type=range]::-webkit-slider-thumb:hover {
-      transform: scale(1.15);
-    }
-    input[type=range]::-moz-range-thumb {
-      height: 28px;
-      width: 28px;
-      border-radius: 50%;
-      background: #087F6A;
-      border: 3px solid #FFFFFF;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-      cursor: pointer;
-    }
-
-    /* Pulsing status dots */
-    .badge-live-pulse {
-      box-shadow: 0 0 0 0 rgba(8, 127, 106, 0.7);
-      animation: pulseGreen 2.2s infinite;
-    }
-    @keyframes pulseGreen {
-      0% { box-shadow: 0 0 0 0 rgba(8, 127, 106, 0.7); }
-      70% { box-shadow: 0 0 0 8px rgba(8, 127, 106, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(8, 127, 106, 0); }
-    }
-
-    /* Marquee animation */
-    .marquee-track {
-      display: flex;
-      gap: 1.5rem;
-      width: max-content;
-      animation: marquee 35s linear infinite;
-    }
-    @keyframes marquee {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-    .marquee-track:hover {
-      animation-play-state: paused;
-    }
-
-    /* Card styling */
-    .card-elevated {
-      background: #FFFFFF;
-      border: 1px solid #E7E5DF;
-      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03), 0 6px 16px rgba(15, 23, 42, 0.02);
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .card-elevated:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 34px -10px rgba(15, 23, 42, 0.07);
-      border-color: #D8D5CD;
-    }
-
-    /* FAQ accordion chevron */
-    details > summary { list-style: none; cursor: pointer; }
-    details > summary::-webkit-details-marker { display: none; }
-    details[open] .faq-chevron { transform: rotate(180deg); }
-
-    /* Prefers-reduced-motion media query (Requirement E.7) */
-    @media (prefers-reduced-motion: reduce) {
-      *, ::before, ::after {
-        animation-duration: 0.001ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.001ms !important;
-        scroll-behavior: auto !important;
-      }
-      .marquee-track {
-        animation: none !important;
-      }
-      .badge-live-pulse {
-        animation: none !important;
-      }
-    }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GPTify OS · Xizmat ko‘rsatish bizneslari uchun sun’iy intellekt operatsion tizimi</title>
+  <meta name="description" content="Mijozlar bilan muloqot, CRM, uchrashuvlarni band qilish, yig‘ilishlar va yangi mijozlar bilan aloqani 5 ta sun’iy intellekt vositasi bilan birlashtiring: Ailo, ILDAM, Bandla, Mirzo va Izlai.">
+  <link rel="canonical" href="https://gptify.si/uz/">
+  <link rel="alternate" hreflang="en" href="https://gptify.si/">
+  <link rel="alternate" hreflang="uz" href="https://gptify.si/uz/">
+  <link rel="alternate" hreflang="ru" href="https://gptify.si/ru/">
+  <link rel="alternate" hreflang="x-default" href="https://gptify.si/">
+  <link rel="stylesheet" href="../style.min.css">
+  <link rel="icon" href="../gptify-mark.svg" type="image/svg+xml">
+  <meta property="og:title" content="GPTify OS · Xizmat ko‘rsatish bizneslari uchun sun’iy intellekt operatsion tizimi">
+  <meta property="og:description" content="Mijozlar bilan muloqot, CRM, uchrashuvlarni band qilish, yig‘ilishlar va yangi mijozlar bilan aloqani 5 ta sun’iy intellekt vositasi bilan birlashtiring: Ailo, ILDAM, Bandla, Mirzo va Izlai.">
+  <meta property="og:image" content="https://gptify.si/og-image.png">
+  <meta property="og:url" content="https://gptify.si/uz/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="GPTify OS · Xizmat ko‘rsatish bizneslari uchun sun’iy intellekt operatsion tizimi">
+  <meta name="twitter:description" content="Mijozlar bilan muloqot, CRM, uchrashuvlarni band qilish, yig‘ilishlar va yangi mijozlar bilan aloqani 5 ta sun’iy intellekt vositasi bilan birlashtiring: Ailo, ILDAM, Bandla, Mirzo va Izlai.">
+  <meta name="twitter:image" content="https://gptify.si/og-image.png">
 </head>
-<body class="selection:bg-emerald-100 selection:text-emerald-900">
-<!-- ==================== STICKY NAVIGATION ==================== -->
-<header class="sticky top-0 z-50 bg-[#FAF9F5]/92 backdrop-blur-md border-b border-divider">
-<div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
-<div class="flex items-center gap-4 lg:gap-6">
-<a aria-label="GPTify OS" class="flex items-center gap-2.5 group cursor-pointer flex-shrink-0" href="/uz/">
-<div class="w-9 h-9 rounded-xl bg-white border border-divider flex items-center justify-center p-1.5 shadow-2xs group-hover:border-emerald-400 group-hover:shadow-xs transition-all duration-200">
-<svg class="w-full h-full" fill="none" viewbox="0 0 100 100">
-<path d="M51.4 9 A41 41 0 1 0 88 65.4 V42 H47 V58 H73.7 A25 25 0 1 1 50.9 25 Z" fill="#087F6A"></path>
-<path d="M61 9 H88 V36 H78 V19 H61 Z" fill="#B7F34A"></path>
-</svg>
-</div>
-<div class="flex flex-col">
-<div class="flex items-center gap-1.5">
-<span class="text-lg font-bold tracking-tight text-slateDark" style="font-family:'Poppins', sans-serif;">GPTify</span>
-<span class="bg-[#087F6A] text-white font-bold text-xs tracking-wider uppercase px-1.5 py-0.5 rounded" style="font-family:'Poppins', sans-serif;">OS</span>
-</div>
-<span class="text-xs font-mono tracking-widest text-slateMuted uppercase font-bold" data-t="navTagline">XIZMAT KO'RSATISH BIZNESLARI UCHUN AI OS</span>
-</div>
-</a>
-<!-- Desktop Navigation Links (Buyer-focused: 5 Engines, Solutions, FAQ) -->
-<nav aria-label="Navigation" class="hidden lg:flex items-center gap-1 xl:gap-2 text-sm font-semibold text-slate-700 pl-3 xl:pl-4 border-l border-divider">
-<a class="px-3 py-1.5 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors duration-150 cursor-pointer whitespace-nowrap" data-t="navEngines" href="/uz/#services">5 Tizim</a>
-<a class="px-3 py-1.5 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors duration-150 cursor-pointer whitespace-nowrap" data-t="navSolutions" href="/uz/#solutions">Yechimlar</a>
-<a class="px-3 py-1.5 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors duration-150 cursor-pointer whitespace-nowrap" data-t="navFaq" href="/uz/#faq">FAQ</a>
-</nav>
-</div>
-<div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
-<!-- 3-Language Switcher (EN / UZ / RU) - min 44px tap targets -->
-<div class="flex items-center bg-[#EAE8E1] border border-divider rounded-full p-0.5 text-xs font-mono font-bold">
-<a class="lang-pill-btn" href="/" id="btn-lang-en">EN</a>
-<a class="lang-pill-btn active" href="/uz/" id="btn-lang-uz">UZ</a>
-<a class="lang-pill-btn" href="/ru/" id="btn-lang-ru">RU</a>
-</div>
-<button class="hidden sm:inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-emeraldBrand hover:bg-emeraldDark text-white text-sm font-bold shadow-sm transition-all duration-200 cursor-pointer whitespace-nowrap" id="navBookBtn" onclick="openDemoModal('Navbar')" type="button">
-<span data-t="btnBookDemo">Demoni band qilish</span>
-<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-</button>
-<!-- Mobile Menu Toggle Button -->
-<button aria-expanded="false" aria-label="Toggle Navigation Menu" class="lg:hidden p-2.5 rounded-xl bg-white border border-divider text-slateDark hover:bg-subtle transition-colors cursor-pointer min-h-[44px] min-w-[44px] flex items-center justify-center" id="mobileMenuBtn" onclick="toggleMobileMenu()" type="button">
-<svg class="w-5 h-5" fill="none" id="hamburgerIcon" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<svg class="w-5 h-5 hidden" fill="none" id="closeIcon" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-</button>
-</div>
-</div>
-<!-- Mobile Navigation Dropdown -->
-<div class="hidden lg:hidden border-t border-divider bg-[#FAF9F5]/98 backdrop-blur-md px-4 py-4 shadow-lg" id="mobileMenuDropdown">
-<nav class="flex flex-col gap-2 font-semibold text-slate-700 text-sm">
-<a class="px-3 py-2.5 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors" data-t="navEngines" href="/uz/#services" onclick="closeMobileMenu()">5 Tizim</a>
-<a class="px-3 py-2.5 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors" data-t="navSolutions" href="/uz/#solutions" onclick="closeMobileMenu()">Yechimlar</a>
-<a class="px-3 py-2.5 rounded-lg hover:text-emeraldBrand hover:bg-subtle transition-colors" data-t="navFaq" href="/uz/#faq" onclick="closeMobileMenu()">FAQ</a>
-<div class="flex items-center justify-between pt-3 border-t border-divider text-xs">
-<span class="text-slate-500 font-mono font-bold">Language</span>
-<div class="flex items-center bg-[#EAE8E1] border border-divider rounded-full p-0.5 text-xs font-mono font-bold">
-<a class="lang-pill-btn" href="/">EN</a>
-<a class="lang-pill-btn active" href="/uz/">UZ</a>
-<a class="lang-pill-btn" href="/ru/">RU</a>
-</div>
-</div>
-<button class="w-full mt-3 inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl bg-emeraldBrand hover:bg-emeraldDark text-white text-sm font-bold shadow-sm transition-all min-h-[44px]" onclick="closeMobileMenu(); openDemoModal('Mobile Navbar')" type="button">
-<span data-t="btnBookDemo">Demoni band qilish</span>
-<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-</button>
-</nav>
-</div>
+<body>
+<header style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px; padding: 20px clamp(20px, 5vw, 80px); border-bottom: 1px solid #DCE8E6; background: #FFFFFF; position: sticky; top: 0; z-index: 100;">
+  <a href="#top" aria-label="GPTify OS home" style="display: flex; align-items: center; gap: 12px; min-height: 44px; text-decoration: none; color: #172B2A">
+    <svg aria-hidden="true" width="38" height="38" viewBox="0 0 100 100" fill="none"><path fill="#087F6A" d="M51.4 9 A41 41 0 1 0 88 65.4 V42 H47 V58 H73.7 A25 25 0 1 1 50.9 25 Z"></path><path fill="#B7F34A" d="M61 9 H88 V36 H78 V19 H61 Z"></path></svg>
+    <span style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: 24px; letter-spacing: -0.01em">GPTify</span>
+    <span style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 13px; color: #FFFFFF; background: #087F6A; border-radius: 6px; padding: 3px 8px">OS</span>
+  </a>
+  <nav aria-label="Main" style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 16px">
+    <a href="#tools" style="display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; padding: 0 10px; font-size: 16px; font-weight: 500; color: #172B2A; text-decoration: none">5 ta vosita</a>
+    <a href="#industries" style="display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; padding: 0 10px; font-size: 16px; font-weight: 500; color: #172B2A; text-decoration: none">Sohalar</a>
+    <a href="#savings" style="display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; padding: 0 10px; font-size: 16px; font-weight: 500; color: #172B2A; text-decoration: none">Tejash kalkulyatori</a>
+    <a href="#faq" style="display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; padding: 0 10px; font-size: 16px; font-weight: 500; color: #172B2A; text-decoration: none">Savollar</a>
+    <a href="/uz/about.html" style="display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; padding: 0 10px; font-size: 16px; text-decoration: none; color: #172B2A; font-weight: 500;">Biz haqimizda</a>
+  </nav>
+  <div style="display: flex; align-items: center; gap: 20px">
+    <div style="display: flex; align-items: center; gap: 4px" role="navigation" aria-label="Language selection">
+      <a href="/" aria-current="false" style="display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; font-size: 15px; border-radius: 10px; text-decoration: none; color: #5F6F6D; font-weight: 500;">EN</a>
+      <a href="/uz/" aria-current="true" style="display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; font-size: 15px; border-radius: 10px; text-decoration: none; background: #F3F8F7; font-weight: 600; color: #172B2A;">UZ</a>
+      <a href="/ru/" aria-current="false" style="display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; font-size: 15px; border-radius: 10px; text-decoration: none; color: #5F6F6D; font-weight: 500;">RU</a>
+    </div>
+    <button onclick="openDemoModal('Header Nav')" style="display: inline-flex; align-items: center; justify-content: center; min-height: 48px; min-width: 44px; padding: 0 22px; background: #087F6A; color: #FFFFFF; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 16px; border-radius: 10px; text-decoration: none; border: none; cursor: pointer">Demoni band qilish</button>
+  </div>
 </header>
-<!-- ==================== HERO SECTION WITH LIVE COMMAND CENTER ==================== -->
-<section class="pt-6 sm:pt-8 lg:pt-9 pb-12 lg:pb-14 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-divider">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
-<!-- Left Column: Value Proposition -->
-<div class="lg:col-span-6">
-<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-divider text-xs font-bold text-slateDark mb-3.5 shadow-2xs">
-<span aria-hidden="true" class="w-2 h-2 rounded-full bg-emeraldBrand badge-live-pulse"></span>
-<span data-t="heroBadge">Xizmat ko'rsatish korxonalari uchun AI operatsion tizimi</span>
-</div>
-<h1 class="text-3xl sm:text-4xl lg:text-[40px] xl:text-[46px] font-black text-slateDark tracking-tight leading-[1.12] mb-3.5" data-t="heroH1">Xizmat ko'rsatish bizneslari uchun <br/><span class="font-serif italic font-normal text-emeraldBrand text-[1.12em] tracking-normal">AI operatsion tizimi.</span></h1>
-<p class="text-sm sm:text-base text-slate-600 leading-relaxed mb-5 max-w-lg" data-t="heroSub">Mijozlar bilan muloqot, CRM, uchrashuvlarni belgilash, majlislar bayonnomasi, mijoz qidirish va avtomatlashtirishni yagona AI qatlami orqali bog'lang. Qo'lda ma'lumot kiritishga chek qo'ying — 24/7 uzluksiz ishlaydi.</p>
-<!-- CTA & Strategy Session Details -->
-<div class="flex flex-col sm:flex-row items-start sm:items-center gap-3.5 mb-5">
-<button class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-slateDark hover:bg-slate-800 text-white font-bold text-sm text-center shadow-md transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer min-h-[44px]" id="heroCtaPrimary" onclick="openDemoModal('Hero CTA')" type="button">
-<span data-t="btnBookDemo">Demoni band qilish</span>
-<svg class="w-4 h-4 text-limeSpark" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-</button>
-<div class="text-xs text-slateMuted">
-<span class="font-bold text-slateDark block" data-t="heroCtaNote">Bepul · 30 daqiqa · Majburiyatsiz</span>
-<span data-t="heroCtaSub">Biznesingiz modeli uchun moslashtirilgan tizim arxitekturasi</span>
-</div>
-</div>
-<!-- Quick Proof Badges -->
-<div class="flex flex-wrap items-center gap-3 pt-3 border-t border-divider text-xs text-slate-600 font-medium">
-<span class="flex items-center gap-1.5">
-<svg class="w-4 h-4 text-emeraldBrand" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<span data-t="proof1">5 Ta Ixtisoslashgan Dvigatel: Ailo, ILDAM, Bandla, Mirzo va Izlai</span>
-</span>
-<span class="flex items-center gap-1.5">
-<svg class="w-4 h-4 text-emeraldBrand" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<span data-t="proof2">Klinikalar · O'quv markazlari · Avtomobil servis · B2B xizmatlar</span>
-</span>
-</div>
-<!-- Owner Proof Slot (Requirement D: hidden until content provided) -->
-<div class="hidden my-4 p-4 rounded-2xl bg-white border border-divider shadow-xs" id="hero-proof-slot">
-<!-- Proof content to be provided by owner -->
-</div>
-</div>
-<!-- Right Column: Live Operating Dashboard Mockup -->
-<div class="lg:col-span-6 relative">
-<div class="card-elevated rounded-3xl p-5 sm:p-6 bg-white border border-divider shadow-xl relative overflow-hidden">
-<div class="flex items-center justify-between pb-3.5 mb-3.5 border-b border-divider">
-<div class="flex items-center gap-2">
-<span class="w-2.5 h-2.5 rounded-full bg-red-400"></span>
-<span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
-<span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
-<span class="text-xs font-mono font-bold text-slate-500 ml-1">
-                TLS 1.3 Verified
-              </span>
-</div>
-<div class="flex items-center gap-2">
-<span class="px-2 py-0.5 rounded bg-slate-200 text-slate-600 font-mono text-xs uppercase font-bold tracking-wider">Sample Data</span>
-<div class="flex items-center gap-1.5 text-emerald-800 font-mono text-xs font-bold bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">
-<span class="w-1.5 h-1.5 rounded-full bg-emeraldBrand"></span>
-<span data-t="dashStatus">Jonli ish rejimi</span>
-</div>
-</div>
-</div>
-<!-- KPI Strip -->
-<div class="grid grid-cols-3 gap-2 sm:gap-3 mb-4">
-<div class="p-3 rounded-2xl bg-subtle/70 border border-divider">
-<div class="flex items-center justify-between text-xs font-mono text-slateMuted">
-<span data-t="kpi1Label">LIDLAR</span>
-<span class="text-emeraldBrand font-bold">+18% Today</span>
-</div>
-<div class="text-lg font-mono font-black text-slateDark mt-0.5">42</div>
-<div class="text-xs font-mono text-slate-500 mt-0.5">Automated triage</div>
-</div>
-<div class="p-3 rounded-2xl bg-subtle/70 border border-divider">
-<div class="flex items-center justify-between text-xs font-mono text-slateMuted">
-<span data-t="kpi2Label">AGENTLAR</span>
-<span class="text-emeraldBrand font-bold" data-t="kpi2Active">Faol</span>
-</div>
-<div class="text-lg font-mono font-black text-slateDark mt-0.5">5/5</div>
-<div class="text-xs font-mono text-slate-500 mt-0.5">All synced</div>
-</div>
-<div class="p-3 rounded-2xl bg-subtle/70 border border-divider">
-<div class="flex items-center justify-between text-xs font-mono text-slateMuted">
-<span data-t="kpi3Label">TEJALGAN VAQT</span>
-<span class="text-emeraldBrand font-bold" data-t="kpi3Sub">Bu hafta</span>
-</div>
-<div class="text-lg font-mono font-black text-slateDark mt-0.5">52.5h</div>
-<div class="text-xs font-mono text-slate-500 mt-0.5" data-t="kpi3Value">Tejalgan vaqt</div>
-</div>
-</div>
-<!-- Live Event Feed ("What happened today") -->
-<div class="p-3.5 rounded-2xl bg-[#0F172A] text-slate-300 font-mono text-xs border border-slate-800">
-<div class="flex items-center justify-between pb-2 mb-2.5 border-b border-slate-800">
-<div class="flex items-center gap-1.5 text-xs text-slate-300 font-bold uppercase tracking-wider">
-<span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-<span data-t="telemetryTitle">Bugun nimalar bajarildi</span>
-</div>
-<span class="text-slate-500 text-xs" data-t="telemetrySync">Sinxronlashgan</span>
-</div>
-<div class="space-y-2 text-xs leading-relaxed">
-<div class="flex items-start gap-2">
-<span class="text-emerald-400 shrink-0">16:42:01</span>
-<span data-t="tel1">Instagram Direct so'rovi 6 soniyada saralandi; Bandlada vaqt band qilindi</span>
-</div>
-<div class="flex items-start gap-2">
-<span class="text-indigo-400 shrink-0">16:38:12</span>
-<span data-t="tel2">Email va LinkedIn orqali 14 ta korxonaga taklif yuborildi; 3 ta javob</span>
-</div>
-<div class="flex items-start gap-2">
-<span class="text-amber-400 shrink-0">16:29:45</span>
-<span data-t="tel3">Bitim taklif bosqichiga o'tkazildi; to'lov eslatmasi rejalashtirildi</span>
-</div>
-<div class="flex items-start gap-2">
-<span class="text-purple-400 shrink-0">16:15:20</span>
-<span data-t="tel4">Payshanba 14:00 ga qabul tasdiqlandi; kalendarlar sinxronlandi</span>
-</div>
-<div class="flex items-start gap-2">
-<span class="text-sky-400 shrink-0">15:58:02</span>
-<span data-t="tel5">42 daqiqalik uchrashuv tahlil qilinib, 4 ta vazifa Telegramga yuborildi</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- ==================== THIRD-PARTY INTEGRATIONS MARQUEE STRIP (Requirement E.4) ==================== -->
-<section class="py-8 border-b border-divider bg-white overflow-hidden">
-<div class="max-w-7xl mx-auto px-4 mb-4 text-center">
-<span class="text-xs font-mono font-bold uppercase tracking-widest text-slateMuted" data-t="marqueeTitle">Sizning Mavjud Dasturlaringizga To'g'ridan-To'g'ri Bog'lanadi</span>
-</div>
-<div class="relative w-full overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_12%,black_88%,transparent)]">
-<div class="marquee-track font-mono text-xs font-bold text-slate-700">
-<!-- 8 Third-Party Tools Only -->
-<div class="flex items-center gap-2.5 bg-subtle px-4 py-2 rounded-xl border border-divider">
-<svg class="w-4 h-4 text-sky-500" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"></path></svg>
-<span>Telegram Channels &amp; Bots</span>
-</div>
-<div class="flex items-center gap-2.5 bg-subtle px-4 py-2 rounded-xl border border-divider">
-<svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewbox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"></path></svg>
-<span>WhatsApp Business API</span>
-</div>
-<div class="flex items-center gap-2.5 bg-subtle px-4 py-2 rounded-xl border border-divider">
-<svg class="w-4 h-4 text-pink-600" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
-<span>Instagram Direct</span>
-</div>
-<div class="flex items-center gap-2.5 bg-subtle px-4 py-2 rounded-xl border border-divider">
-<svg class="w-4 h-4 text-blue-700" fill="currentColor" viewbox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
-<span>LinkedIn Outreach</span>
-</div>
-<div class="flex items-center gap-2.5 bg-subtle px-4 py-2 rounded-xl border border-divider">
-<svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<span>Google Calendar</span>
-</div>
-<div class="flex items-center gap-2.5 bg-subtle px-4 py-2 rounded-xl border border-divider">
-<span class="px-1.5 py-0.5 rounded bg-amber-600 text-xs font-black text-white flex items-center justify-center">1C</span>
-<span>1C Enterprise (ERP)</span>
-</div>
-<div class="flex items-center gap-2.5 bg-subtle px-4 py-2 rounded-xl border border-divider">
-<span class="w-3 h-3 rounded-full bg-blue-500"></span>
-<span>Click.uz</span>
-</div>
-<div class="flex items-center gap-2.5 bg-subtle px-4 py-2 rounded-xl border border-divider">
-<span class="w-3 h-3 rounded-full bg-teal-400"></span>
-<span>Payme Business</span>
-</div>
-<!-- Duplicated Set for Smooth Continuous Loop -->
-<div class="flex items-center gap-2.5 bg-subtle px-4 py-2 rounded-xl border border-divider">
-<svg class="w-4 h-4 text-sky-500" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"></path></svg>
-<span>Telegram Channels &amp; Bots</span>
-</div>
-<div class="flex items-center gap-2.5 bg-subtle px-4 py-2 rounded-xl border border-divider">
-<svg class="w-4 h-4 text-emerald-500" fill="currentColor" viewbox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"></path></svg>
-<span>WhatsApp Business API</span>
-</div>
-<div class="flex items-center gap-2.5 bg-subtle px-4 py-2 rounded-xl border border-divider">
-<svg class="w-4 h-4 text-pink-600" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
-<span>Instagram Direct</span>
-</div>
-<div class="flex items-center gap-2.5 bg-subtle px-4 py-2 rounded-xl border border-divider">
-<svg class="w-4 h-4 text-blue-700" fill="currentColor" viewbox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
-<span>LinkedIn Outreach</span>
-</div>
-<div class="flex items-center gap-2.5 bg-subtle px-4 py-2 rounded-xl border border-divider">
-<svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<span>Google Calendar</span>
-</div>
-<div class="flex items-center gap-2.5 bg-subtle px-4 py-2 rounded-xl border border-divider">
-<span class="px-1.5 py-0.5 rounded bg-amber-600 text-xs font-black text-white flex items-center justify-center">1C</span>
-<span>1C Enterprise (ERP)</span>
-</div>
-<div class="flex items-center gap-2.5 bg-subtle px-4 py-2 rounded-xl border border-divider">
-<span class="w-3 h-3 rounded-full bg-blue-500"></span>
-<span>Click.uz</span>
-</div>
-<div class="flex items-center gap-2.5 bg-subtle px-4 py-2 rounded-xl border border-divider">
-<span class="w-3 h-3 rounded-full bg-teal-400"></span>
-<span>Payme Business</span>
-</div>
-</div>
-</div>
-</section>
-<!-- ==================== LOOPING LIVE CHAT DEMO (Section 2) ==================== -->
-<section class="py-12 sm:py-14 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto border-b border-divider" id="demo">
-<div class="text-center max-w-2xl mx-auto mb-8">
-<span class="text-xs font-mono font-bold uppercase tracking-wider text-emeraldBrand" data-t="demoEyebrow">Jonli Instagram va Telegram Avtomatizatsiyasi</span>
-<h2 class="text-3xl sm:text-4xl font-extrabold text-slateDark mt-2 tracking-tight" data-t="demoTitle">Ailo, Bandla va ILDAM Qanday Birgalikda Ishlaydi?</h2>
-<p class="text-slate-600 text-sm sm:text-base mt-2" data-t="demoSub">Instagram Direct orqali namunaviy muloqot — bir zumda saralash, navbatga yozish va CRM ga tushirish.</p>
-</div>
-<!-- Chat Window Mockup -->
-<div class="bg-white rounded-3xl border border-divider shadow-xl overflow-hidden max-w-xl mx-auto">
-<div class="flex items-center justify-between px-5 py-3.5 bg-[#F8FAFC] border-b border-divider">
-<div class="flex items-center gap-3">
-<div class="w-9 h-9 rounded-full p-0.5 bg-gradient-to-tr from-amber-500 via-pink-500 to-purple-600">
-<div class="w-full h-full rounded-full bg-white flex items-center justify-center font-bold text-slateDark text-xs font-mono">
-              MP
-            </div>
-</div>
-<div>
-<div class="flex items-center gap-1.5">
-<span class="text-xs sm:text-sm font-bold text-slateDark">MedPro Clinic</span>
-<svg class="w-3.5 h-3.5 text-sky-500" fill="currentColor" viewbox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>
-</div>
-<span class="text-xs text-slate-500 block" data-t="chatChannel">Instagram Direct · @medpro_clinic</span>
-</div>
-</div>
-<div class="flex items-center gap-2">
-<span class="w-2 h-2 rounded-full bg-emeraldBrand badge-live-pulse"></span>
-<span class="text-xs font-mono text-emeraldBrand font-bold">Ailo Live</span>
-</div>
-</div>
-<!-- Dialogue Body -->
-<div class="p-5 sm:p-6 space-y-4 bg-[#FAF9F5]/40 text-xs sm:text-sm">
-<!-- Customer Message -->
-<div class="flex items-end justify-end gap-2">
-<div class="bg-emeraldBrand text-white p-3.5 rounded-2xl rounded-tr-xs max-w-[82%] shadow-2xs leading-relaxed" data-t="chatMsg1">Salom! Tish oqartirish (bleaching) narxi qancha va ertaga soat 16:00 ga doktor Rustamovga joy bormi? 🦷</div>
-</div>
-<!-- Ailo Thinking -->
-<div class="flex items-center gap-2 text-xs font-mono text-slate-500 italic px-2">
-<span class="w-1.5 h-1.5 rounded-full bg-emeraldBrand animate-pulse"></span>
-<span data-t="chatTypingStatus">Ailo Bandla orqali shifokor jadvalini tekshirmoqda...</span>
-</div>
-<!-- Ailo Response -->
-<div class="flex items-start gap-2.5">
-<div class="w-7 h-7 rounded-full bg-emeraldBrand text-white flex items-center justify-center font-mono font-bold text-xs shrink-0 mt-0.5">
-            A
+
+<!-- Hero Section [top] -->
+<section id="top" style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 32px 64px; padding: 44px clamp(20px, 5vw, 80px) 56px">
+  <div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 22px; padding-top: 8px">
+    <h1 style="margin: 0; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: clamp(36px, 4.2vw, 60px); line-height: 1.06; letter-spacing: -0.02em; color: #172B2A">Xizmat ko‘rsatish bizneslari uchun <span style="color: #087F6A">sun’iy intellekt operatsion tizimi.</span></h1>
+    <p style="margin: 0; max-width: 520px; font-size: 19px; line-height: 1.5; color: #5F6F6D">Har bir mijoz xabariga javob beriladi, har bir uchrashuv band qilinadi va CRM hech kim qo‘lda kiritmasdan doim yangilanib turadi. Tun-u kun.</p>
+    <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px">
+      <button onclick="openDemoModal('Hero Demo')" style="display: inline-flex; align-items: center; gap: 14px; min-height: 58px; min-width: 44px; padding: 0 10px 0 26px; background: #087F6A; color: #FFFFFF; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 18px; border-radius: 10px; border: none; cursor: pointer">
+        <span>Jonli demoni band qilish</span>
+        <span style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 8px; background: #B7F34A">
+          <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#172B2A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"></path><path d="M8 7h9v9"></path></svg>
+        </span>
+      </button>
+      <a href="#industries" style="display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; font-size: 17px; font-weight: 600; color: #087F6A">Sohangiz uchun ko‘ring</a>
+    </div>
+    <div style="font-size: 15px; font-weight: 500; color: #5F6F6D">Bepul · 30 daqiqa · Majburiyatsiz</div>
+  </div>
+
+  <!-- Hero Chat Mockup (10s Animation Loop) -->
+  <div style="flex: 1.15 1 480px; min-width: 0; background: #F3F8F7; border-radius: 24px; padding: clamp(14px, 1.5vw, 20px); display: flex; flex-direction: column; gap: 12px">
+    <div style="background: #FFFFFF; border-radius: 18px; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px">
+      <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px">
+        <div style="display: flex; align-items: center; gap: 12px">
+          <div aria-hidden="true" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: #172B2A; color: #FFFFFF; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: 17px">M</div>
+          <div style="display: flex; flex-direction: column; gap: 2px">
+            <div style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 16px; color: #172B2A">MedPro Clinic</div>
+            <div style="font-size: 13px; font-weight: 500; color: #5F6F6D">Instagram Direct · namunaviy suhbat</div>
           </div>
-<div class="bg-white border border-divider p-3.5 rounded-2xl rounded-tl-xs max-w-[85%] shadow-xs text-slateDark space-y-2 leading-relaxed">
-<p data-t="chatMsg2">Assalomu alaykum! Tish oqartirish 450,000 so'mdan boshlanadi. Ertaga 16:00 da Dr. Rustamov qabuli bo'sh. Joyni siz uchun band qilib qo'yaylikmi? ✅</p>
-<p data-t="chatMsg3">Ha, iltimos! Malika Karimova nomiga yozib qo'ying (+998 90 123-45-67).</p>
-<div class="pt-2 border-t border-divider flex flex-col sm:flex-row gap-2">
-<button class="px-3.5 py-2 rounded-xl bg-emeraldBrand hover:bg-emeraldDark text-white text-xs font-bold transition flex items-center justify-center gap-1.5 cursor-pointer" onclick="openDemoModal('Chat Demo')" type="button">
-<span>Hold My 16:00 Slot</span>
-<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-</button>
-<button class="px-3 py-2 rounded-xl border border-divider hover:bg-subtle text-slate-700 text-xs font-semibold transition text-center" onclick="openDemoModal('Chat Demo')" type="button">
-                See Other Times
-              </button>
-</div>
-</div>
-</div>
-<!-- System Sync Confirmation Pill -->
-<div class="p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-xs font-mono text-emerald-900 flex items-center justify-between">
-<div class="flex items-center gap-2">
-<svg class="w-4 h-4 text-emeraldBrand shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<span data-t="chatSyncStatus">Bandla locked calendar · Deal pushed to ILDAM CRM</span>
-</div>
-<span class="font-bold text-emerald-700 text-xs">0.8s</span>
-</div>
-</div>
-</div>
-</section>
-<!-- ==================== THE 5 CORE ENGINES (Section 3) ==================== -->
-<section class="py-12 sm:py-14 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-divider" id="services">
-<div class="max-w-3xl mb-8">
-<span class="text-xs font-mono font-bold uppercase tracking-wider text-emeraldBrand" data-t="pillarsEyebrow">Asosiy tizim</span>
-<h2 class="text-3xl sm:text-4xl font-extrabold text-slateDark mt-2 tracking-tight" data-t="pillarsTitle">Biznesingizni boshqaruvchi 5 ta asosiy vosita</h2>
-<p class="text-slate-600 text-sm sm:text-base mt-2" data-t="pillarsSub">Alohida vositalardan foydalaning yoki ularni yagona uzluksiz tizimga birlashtiring.</p>
-</div>
-<!-- The Connected Loop Visual Flow Banner -->
-<div class="mb-8 p-4 sm:p-5 rounded-2xl bg-white border border-divider shadow-2xs">
-<div class="flex items-center justify-between mb-3">
-<span class="text-xs font-mono font-bold uppercase tracking-wider text-slateDark flex items-center gap-2">
-<span class="w-2 h-2 rounded-full bg-emeraldBrand badge-live-pulse"></span>
-<span data-t="loopTitle">Yagona Uzluksiz Tizim. Beshta Maxsus Dvigatel.</span>
-</span>
-<span class="text-xs font-mono text-slateMuted hidden sm:inline" data-t="loopSub">Mijoz qidirish yoki birinchi xabardan boshlab, to uchrashuv o'tkazilib, bitim CRM tizimiga kiritilguncha.</span>
-</div>
-<div class="grid grid-cols-2 sm:grid-cols-5 gap-2 text-xs font-mono font-bold">
-<div class="flex items-center justify-between p-2.5 rounded-xl bg-indigo-50/80 border border-indigo-200/80 text-indigo-950">
-<div class="flex items-center gap-1.5 min-w-0">
-<span class="w-5 h-5 rounded-md bg-indigo-600 text-white flex items-center justify-center text-xs font-bold shrink-0">01</span>
-<span class="truncate">Izlai (Find)</span>
-</div>
-<span class="text-indigo-400 font-bold shrink-0 hidden sm:inline ml-1">→</span>
-</div>
-<div class="flex items-center justify-between p-2.5 rounded-xl bg-emerald-50/80 border border-emerald-200/80 text-emerald-950">
-<div class="flex items-center gap-1.5 min-w-0">
-<span class="w-5 h-5 rounded-md bg-emeraldBrand text-white flex items-center justify-center text-xs font-bold shrink-0">02</span>
-<span class="truncate">Ailo (Engage)</span>
-</div>
-<span class="text-emerald-400 font-bold shrink-0 hidden sm:inline ml-1">→</span>
-</div>
-<div class="flex items-center justify-between p-2.5 rounded-xl bg-amber-50/80 border border-amber-200/80 text-amber-950">
-<div class="flex items-center gap-1.5 min-w-0">
-<span class="w-5 h-5 rounded-md bg-amber-600 text-white flex items-center justify-center text-xs font-bold shrink-0">03</span>
-<span class="truncate">ILDAM (Track)</span>
-</div>
-<span class="text-amber-400 font-bold shrink-0 hidden sm:inline ml-1">→</span>
-</div>
-<div class="flex items-center justify-between p-2.5 rounded-xl bg-purple-50/80 border border-purple-200/80 text-purple-950">
-<div class="flex items-center gap-1.5 min-w-0">
-<span class="w-5 h-5 rounded-md bg-purple-600 text-white flex items-center justify-center text-xs font-bold shrink-0">04</span>
-<span class="truncate">Bandla (Book)</span>
-</div>
-<span class="text-purple-400 font-bold shrink-0 hidden sm:inline ml-1">→</span>
-</div>
-<div class="col-span-2 sm:col-span-1 flex items-center justify-between p-2.5 rounded-xl bg-sky-50/80 border border-sky-200/80 text-sky-950">
-<div class="flex items-center gap-1.5 min-w-0">
-<span class="w-5 h-5 rounded-md bg-sky-600 text-white flex items-center justify-center text-xs font-bold shrink-0">05</span>
-<span class="truncate">Mirzo (Scribe)</span>
-</div>
-<span class="text-sky-600 font-bold shrink-0 text-xs">✓</span>
-</div>
-</div>
-</div>
-<!-- 5 Product Cards Grid (3 top, 2 bottom) -->
-<div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 mb-6 sm:mb-8">
-<!-- Card 1: AILO -->
-<div class="card-elevated p-6 sm:p-7 rounded-3xl flex flex-col justify-between border-t-4 border-t-emeraldBrand">
-<div>
-<div class="flex items-center justify-between mb-4">
-<div class="flex items-center gap-2.5">
-<div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-800 font-extrabold flex items-center justify-center text-sm font-mono shrink-0">
-                01
-              </div>
-<div>
-<h3 class="text-xl font-extrabold text-slateDark">Ailo</h3>
-<span class="text-xs text-emeraldBrand font-mono font-bold block" data-t="ailoRole">AI Mijoz Agenti</span>
-</div>
-</div>
-<span class="text-xs font-mono font-bold text-emeraldBrand bg-emerald-50 px-2 py-0.5 rounded whitespace-nowrap">
-              Omnichannel AI
-            </span>
-</div>
-<p class="text-slate-600 text-sm leading-relaxed mb-5" data-t="ailoDesc">WhatsApp, Instagram Direct va Telegram'ga kelgan murojaatlarga <strong>8 soniyada</strong> insondek javob beradi. Ehtiyojni aniqlaydi, e'tirozlarni yopadi va buyurtmaga tayyor lidlarni CRMga yo'naltiradi.</p>
-<div class="space-y-2 text-xs sm:text-sm text-slate-700 mb-6">
-<div class="flex items-start gap-2">
-<svg class="w-4 h-4 text-emeraldBrand shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<span data-t="ailoB1"><strong>Meta Rasmiy Graph API:</strong> Bloklanish xavfisiz, to'liq qonuniy integratsiya.</span>
-</div>
-<div class="flex items-start gap-2">
-<svg class="w-4 h-4 text-emeraldBrand shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<span data-t="ailoB2"><strong>Ko'p Tillilik va Kontekst:</strong> O'zbek, rus va ingliz tillarida audio va matnni to'liq tushunish.</span>
-</div>
-<div class="flex items-start gap-2">
-<svg class="w-4 h-4 text-emeraldBrand shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<span data-t="ailoB3"><strong>Insoniy Muloqot:</strong> Quruq tugmalar emas, professional savdo intellekti.</span>
-</div>
-</div>
-</div>
-<!-- Embedded Flywheel Handoff (Requirement A.3) -->
-<div class="pt-4 border-t border-divider">
-<div class="text-xs font-mono text-emeraldBrand font-bold mb-4" data-t="ailoHandoff">↳ Lid ma'lumotlarini ILDAM ga uzatadi va Bandla orqali joy band qiladi</div>
-<button class="w-full py-3 px-4 rounded-xl bg-slateDark hover:bg-slate-800 text-white text-sm font-bold text-center transition cursor-pointer flex items-center justify-center gap-2 min-h-[44px]" onclick="openDemoModal('Ailo Engine')" type="button">
-<span data-t="btnBookDemo">Demoni band qilish</span>
-<svg class="w-4 h-4 text-limeSpark" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-</button>
-</div>
-</div>
-<!-- Card 2: ILDAM CRM -->
-<div class="card-elevated p-6 sm:p-7 rounded-3xl flex flex-col justify-between border-t-4 border-t-amberBrand">
-<div>
-<div class="flex items-center justify-between mb-4">
-<div class="flex items-center gap-2.5">
-<div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-800 font-extrabold flex items-center justify-center text-sm font-mono shrink-0">
-                02
-              </div>
-<div>
-<h3 class="text-xl font-extrabold text-slateDark">ILDAM</h3>
-<span class="text-xs text-amberBrand font-mono font-bold block" data-t="ildamRole">Tezkor B2B CRM</span>
-</div>
-</div>
-<span class="text-xs font-mono font-bold text-amberBrand bg-amber-50 px-2 py-0.5 rounded whitespace-nowrap">
-              CRM Pipeline
-            </span>
-</div>
-<p class="text-slate-600 text-sm leading-relaxed mb-5" data-t="ildamDesc">Ortiqcha murakkabliklarsiz, chaqqon va samarali CRM. Mijozlar bazasi, bosqichma-bosqich Kanban voronkasi va to'lovlarni avtomatik nazorat qiladi.</p>
-<div class="space-y-2 text-xs sm:text-sm text-slate-700 mb-6">
-<div class="flex items-start gap-2">
-<svg class="w-4 h-4 text-amberBrand shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<span data-t="ildamB1"><strong>Vizual Kanban Voronkasi:</strong> Bitimlarni surib boshqarish va avtomatik holat almashinuvi.</span>
-</div>
-<div class="flex items-start gap-2">
-<svg class="w-4 h-4 text-amberBrand shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<span data-t="ildamB2"><strong>To'lov Bosqichlari Nazorati:</strong> Avans, oraliq hisob-faktura va to'lov muddatlarini eslatish.</span>
-</div>
-<div class="flex items-start gap-2">
-<svg class="w-4 h-4 text-amberBrand shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<span data-t="ildamB3"><strong>Avtonom Sinxronizatsiya:</strong> Ailo va Izlai orqali kelgan barcha lidlarni bir zumda bazaga kiritish.</span>
-</div>
-</div>
-</div>
-<!-- Embedded Flywheel Handoff -->
-<div class="pt-4 border-t border-divider">
-<div class="text-xs font-mono text-amberBrand font-bold mb-4" data-t="ildamHandoff">↳ Bandla orqali uchrashuv belgilaydi va Mirzo ga brif tayyorlaydi</div>
-<button class="w-full py-3 px-4 rounded-xl bg-slateDark hover:bg-slate-800 text-white text-sm font-bold text-center transition cursor-pointer flex items-center justify-center gap-2 min-h-[44px]" onclick="openDemoModal('ILDAM CRM')" type="button">
-<span data-t="btnBookDemo">Demoni band qilish</span>
-<svg class="w-4 h-4 text-limeSpark" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-</button>
-</div>
-</div>
-<!-- Card 3: BANDLA (Requirement E.8: subtitle and tag fit on one line each at 1280px) -->
-<div class="card-elevated p-6 sm:p-7 rounded-3xl flex flex-col justify-between border-t-4 border-t-purpleBrand">
-<div>
-<div class="flex items-start justify-between gap-2 mb-4">
-<div class="flex items-center gap-2.5 min-w-0">
-<div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-800 font-extrabold flex items-center justify-center text-sm font-mono shrink-0">
-                03
-              </div>
-<div class="min-w-0">
-<h3 class="text-xl font-extrabold text-slateDark">Bandla</h3>
-<span class="text-xs text-purpleBrand font-mono font-bold block truncate" data-t="bandlaRole">Biznes Uchun Qabul Tizimi</span>
-</div>
-</div>
-<span class="text-xs font-mono font-bold text-purpleBrand bg-purple-50 px-2 py-0.5 rounded whitespace-nowrap shrink-0">
-              Booking Engine
-            </span>
-</div>
-<p class="text-slate-600 text-sm leading-relaxed mb-5" data-t="bandlaDesc">Xizmat ko'rsatish sohalarida uchrashuv belgilash chalkashliklarini yo'qotadi. Shifokor, ustoz yoki xodimlar taqvimi bilan to'g'ridan-to'g'ri bog'lanib, bo'sh vaqtlarni band qiladi.</p>
-<div class="space-y-2 text-xs sm:text-sm text-slate-700 mb-6">
-<div class="flex items-start gap-2">
-<svg class="w-4 h-4 text-purpleBrand shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<span data-t="bandlaB1"><strong>Chalkashliksiz Band Qilish:</strong> Google Calendar, Outlook va ichki navbatchilik jadvallari bilan jonli sinxron.</span>
-</div>
-<div class="flex items-start gap-2">
-<svg class="w-4 h-4 text-purpleBrand shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<span data-t="bandlaB2"><strong>Kelmay Qolishdan Himoya:</strong> Telegram va SMS orqali o'z vaqtida eslatmalar yuborish.</span>
-</div>
-<div class="flex items-start gap-2">
-<svg class="w-4 h-4 text-purpleBrand shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<span data-t="bandlaB3"><strong>Ailo va CRM bilan Bog'liqlik:</strong> Bemor yoki mijoz chatning o'zidayoq vaqtni band qiladi.</span>
-</div>
-</div>
-</div>
-<!-- Embedded Flywheel Handoff -->
-<div class="pt-4 border-t border-divider">
-<div class="text-xs font-mono text-purpleBrand font-bold mb-4" data-t="bandlaHandoff">↳ Mirzo uchun kun tartibini tayyorlaydi va 1C ga sinxronlaydi</div>
-<button class="w-full py-3 px-4 rounded-xl bg-slateDark hover:bg-slate-800 text-white text-sm font-bold text-center transition cursor-pointer flex items-center justify-center gap-2 min-h-[44px]" onclick="openDemoModal('Bandla Engine')" type="button">
-<span data-t="btnBookDemo">Demoni band qilish</span>
-<svg class="w-4 h-4 text-limeSpark" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-</button>
-</div>
-</div>
-</div>
-<!-- Bottom Row (2 Cards: Mirzo & Izlai) -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
-<!-- Card 4: MIRZO -->
-<div class="card-elevated p-6 sm:p-7 rounded-3xl flex flex-col justify-between border-t-4 border-t-skyBrand">
-<div>
-<div class="flex items-center justify-between mb-4">
-<div class="flex items-center gap-2.5">
-<div class="w-10 h-10 rounded-xl bg-sky-100 text-sky-800 font-extrabold flex items-center justify-center text-sm font-mono shrink-0">
-                04
-              </div>
-<div>
-<h3 class="text-xl font-extrabold text-slateDark">Mirzo</h3>
-<span class="text-xs text-skyBrand font-mono font-bold block" data-t="mirzoRole">Maxfiy AI Kotib</span>
-</div>
-</div>
-<span class="text-xs font-mono font-bold text-skyBrand bg-sky-50 px-2 py-0.5 rounded whitespace-nowrap">
-              Voice &amp; Scribe
-            </span>
-</div>
-<p class="text-slate-600 text-sm leading-relaxed mb-5" data-t="mirzoDesc">Maxfiy uchrashuv intellekti. <strong>Qo'ng'iroqda begona botlarsiz.</strong> Zoom, Google Meet va Teams suhbatlaridagi qarorlar va vazifalarni Telegram hamda ILDAM CRMga uzatadi.</p>
-<div class="space-y-2 text-xs sm:text-sm text-slate-700 mb-6">
-<div class="flex items-start gap-2">
-<svg class="w-4 h-4 text-skyBrand shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<span data-t="mirzoB1"><strong>Zero-Bot Maxfiylik:</strong> Ekrandan begona bot ko'rinmaydi, audio oqimi to'liq shifrlangan.</span>
-</div>
-<div class="flex items-start gap-2">
-<svg class="w-4 h-4 text-skyBrand shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<span data-t="mirzoB2"><strong>Aniq Topshiriqlar Bayonnomasi:</strong> Suhbatdagi suvlarni chiqarib tashlab, aniq mas'ullar va muddatlarni belgilaydi.</span>
-</div>
-<div class="flex items-start gap-2">
-<svg class="w-4 h-4 text-skyBrand shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<span data-t="mirzoB3"><strong>60 Soniyada Yetkazish:</strong> Uchrashuv tugashi bilanoq kim nima qilishi kerakligi tayyor bo'ladi.</span>
-</div>
-</div>
-</div>
-<!-- Embedded Flywheel Handoff -->
-<div class="pt-4 border-t border-divider">
-<div class="text-xs font-mono text-skyBrand font-bold mb-4" data-t="mirzoHandoff">↳ Uchrashuv qarorlari va vazifalarini ILDAM CRM ga kiritadi</div>
-<button class="w-full py-3 px-4 rounded-xl bg-slateDark hover:bg-slate-800 text-white text-sm font-bold text-center transition cursor-pointer flex items-center justify-center gap-2 min-h-[44px]" onclick="openDemoModal('Mirzo Scribe')" type="button">
-<span data-t="btnBookDemo">Demoni band qilish</span>
-<svg class="w-4 h-4 text-limeSpark" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-</button>
-</div>
-</div>
-<!-- Card 5: IZLAI -->
-<div class="card-elevated p-6 sm:p-7 rounded-3xl flex flex-col justify-between border-t-4 border-t-indigoBrand">
-<div>
-<div class="flex items-center justify-between mb-4">
-<div class="flex items-center gap-2.5">
-<div class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-800 font-extrabold flex items-center justify-center text-sm font-mono shrink-0">
-                05
-              </div>
-<div>
-<h3 class="text-xl font-extrabold text-slateDark">Izlai</h3>
-<span class="text-xs text-indigoBrand font-mono font-bold block" data-t="izlaiRole">AI Outbound Agenti</span>
-</div>
-</div>
-<span class="text-xs font-mono font-bold text-indigoBrand bg-indigo-50 px-2 py-0.5 rounded whitespace-nowrap">
-              Outbound Engine
-            </span>
-</div>
-<p class="text-slate-600 text-sm leading-relaxed mb-5" data-t="izlaiDesc">Sovuq qo'ng'iroqlar va qo'lda xabar yozish o'rniga ishlovchi avtonom agent. Korxonalarni qidiradi, <strong>Email, LinkedIn, Telegram va WhatsApp</strong> orqali takliflar yuboradi va javoblarni saralaydi.</p>
-<div class="space-y-2 text-xs sm:text-sm text-slate-700 mb-6">
-<div class="flex items-start gap-2">
-<svg class="w-4 h-4 text-indigoBrand shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<span data-t="izlaiB1"><strong>Avtonom Korxonalar Qidiruvi:</strong> Sizning talablaringizga mos qaror qabul qiluvchilarni aniqlash.</span>
-</div>
-<div class="flex items-start gap-2">
-<svg class="w-4 h-4 text-indigoBrand shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<span data-t="izlaiB2"><strong>Jonli Muloqot va Saralash:</strong> Qiziqish bildirgan mijozlar bilan muloqot qilib, tayyor uchrashuv belgilash.</span>
-</div>
-<div class="flex items-start gap-2">
-<svg class="w-4 h-4 text-indigoBrand shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<span data-t="izlaiB3"><strong>CRMga Avtomatik Yo'naltirish:</strong> Issiq mijozlarni ILDAM CRMga to'g'ridan-to'g'ri o'tkazish.</span>
-</div>
-</div>
-</div>
-<!-- Embedded Flywheel Handoff -->
-<div class="pt-4 border-t border-divider">
-<div class="text-xs font-mono text-indigoBrand font-bold mb-4" data-t="izlaiHandoff">↳ Qiziqish bildirgan issiq mijozlarni Ailo va ILDAM ga topshiradi</div>
-<button class="w-full py-3 px-4 rounded-xl bg-slateDark hover:bg-slate-800 text-white text-sm font-bold text-center transition cursor-pointer flex items-center justify-center gap-2 min-h-[44px]" onclick="openDemoModal('Izlai Outbound')" type="button">
-<span data-t="btnBookDemo">Demoni band qilish</span>
-<svg class="w-4 h-4 text-limeSpark" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-</button>
-</div>
-</div>
-</div>
-</section>
-<!-- ==================== INDUSTRY SOLUTIONS (Section 4) ==================== -->
-<section class="py-12 sm:py-14 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-divider" id="solutions">
-<div class="max-w-3xl mb-8">
-<span class="text-xs font-mono font-bold uppercase tracking-wider text-emeraldBrand" data-t="solutionsEyebrow">Sohangiz uchun tayyor yechimlar</span>
-<h2 class="text-3xl sm:text-4xl font-extrabold text-slateDark mt-2 tracking-tight" data-t="solutionsTitle">Kundalik ish jarayoningizga to'liq moslashtirilgan</h2>
-<p class="text-slate-600 text-sm sm:text-base mt-2 leading-relaxed" data-t="solutionsSub">Sizning sohangizdagi real muloqot, yozilishlar va to'lov jarayonlari uchun oldindan sozlangan tizimlar.</p>
-</div>
-<!-- 4 Industry Interactive Tab Switchers -->
-<div aria-label="Industry Solutions" class="flex flex-wrap items-center gap-2.5 mb-6" role="tablist">
-<button aria-controls="panel-clinics" aria-selected="true" class="industry-tab-btn px-4 py-2.5 rounded-xl bg-slateDark text-white font-bold text-xs sm:text-sm shadow-sm transition-all duration-150 cursor-pointer min-h-[44px] flex items-center gap-2" id="tab-btn-clinics" onclick="switchIndustryTab('clinics')" role="tab" type="button">
-<span class="w-2 h-2 rounded-full bg-emeraldBrand"></span>
-<span data-t="tabClinics">Klinikalar va Tibbiyot</span>
-</button>
-<button aria-controls="panel-education" aria-selected="false" class="industry-tab-btn px-4 py-2.5 rounded-xl bg-white border border-divider hover:bg-subtle text-slate-700 font-bold text-xs sm:text-sm transition-all duration-150 cursor-pointer min-h-[44px] flex items-center gap-2" id="tab-btn-education" onclick="switchIndustryTab('education')" role="tab" type="button">
-<span class="w-2 h-2 rounded-full bg-purpleBrand"></span>
-<span data-t="tabEducation">O'quv Markazlari va Maktablar</span>
-</button>
-<button aria-controls="panel-auto" aria-selected="false" class="industry-tab-btn px-4 py-2.5 rounded-xl bg-white border border-divider hover:bg-subtle text-slate-700 font-bold text-xs sm:text-sm transition-all duration-150 cursor-pointer min-h-[44px] flex items-center gap-2" id="tab-btn-auto" onclick="switchIndustryTab('auto')" role="tab" type="button">
-<span class="w-2 h-2 rounded-full bg-amberBrand"></span>
-<span data-t="tabAuto">Avtoservis va Ustaxonalar</span>
-</button>
-<button aria-controls="panel-advisory" aria-selected="false" class="industry-tab-btn px-4 py-2.5 rounded-xl bg-white border border-divider hover:bg-subtle text-slate-700 font-bold text-xs sm:text-sm transition-all duration-150 cursor-pointer min-h-[44px] flex items-center gap-2" id="tab-btn-advisory" onclick="switchIndustryTab('advisory')" role="tab" type="button">
-<span class="w-2 h-2 rounded-full bg-indigoBrand"></span>
-<span data-t="tabAdvisory">Konsalting va B2B</span>
-</button>
-</div>
-<!-- Master Interactive Dashboard Container -->
-<div class="card-elevated rounded-3xl bg-white border border-divider shadow-md overflow-hidden">
-<!-- Dashboard Top Window Header -->
-<div class="px-5 py-3.5 bg-subtle/80 border-b border-divider flex flex-wrap items-center justify-between gap-3">
-<div class="flex items-center gap-3">
-<div class="flex items-center gap-1.5">
-<span class="w-3 h-3 rounded-full bg-rose-400"></span>
-<span class="w-3 h-3 rounded-full bg-amber-400"></span>
-<span class="w-3 h-3 rounded-full bg-emerald-400"></span>
-</div>
-<span class="text-xs font-mono font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
-<span class="w-2 h-2 rounded-full bg-emeraldBrand badge-live-pulse"></span>
-<span data-t="dashStatus">Jonli ish rejimi</span>
-</span>
-</div>
-<div class="text-xs font-mono font-semibold text-slate-500 flex items-center gap-2">
-<span data-t="dashChannels">Ulangan kanallar:</span>
-<span class="px-2 py-0.5 rounded bg-white border border-divider text-slate-800 font-bold">Instagram Direct</span>
-<span class="px-2 py-0.5 rounded bg-white border border-divider text-slate-800 font-bold">Telegram</span>
-<span class="px-2 py-0.5 rounded bg-white border border-divider text-slate-800 font-bold">1C ERP</span>
-</div>
-</div>
-<!-- PANEL 1: CLINICS & HEALTHCARE -->
-<div aria-labelledby="tab-btn-clinics" class="industry-panel p-6 sm:p-8" id="panel-clinics" role="tabpanel">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
-<!-- Left: Real Conversation & Booking Flow Simulation -->
-<div class="lg:col-span-7 bg-subtle/50 rounded-2xl p-5 border border-divider">
-<div class="flex items-center justify-between pb-3 mb-4 border-b border-divider text-xs font-mono">
-<span class="font-bold text-emeraldBrand">● MedPro Fleet · Patient Flow</span>
-<span class="text-slate-500">Instagram Direct · 14:22</span>
-</div>
-<div class="space-y-3 text-xs sm:text-sm">
-<div class="flex items-start gap-2.5">
-<div class="w-8 h-8 rounded-full bg-slate-200 text-slate-700 font-bold flex items-center justify-center shrink-0 text-xs">P</div>
-<div class="p-3.5 rounded-2xl rounded-tl-sm bg-white border border-divider shadow-2xs max-w-md text-slate-800">
-                  Assalomu alaykum! Tish oqartirish qancha turadi va ertaga soat 16:00 ga yozilsa bo'ladimi?
-                </div>
-</div>
-<div class="flex items-start gap-2.5 justify-end">
-<div class="p-3.5 rounded-2xl rounded-tr-sm bg-emerald-600 text-white shadow-2xs max-w-md">
-                  Va alaykum assalom! Tish oqartirish narxi 450,000 so'mdan boshlanadi. Ertaga soat 16:00 da Dr. Rustamov qabuliga vaqtincha band qildim. Tasdiqlaysizmi?
-                </div>
-<div class="w-8 h-8 rounded-full bg-emerald-800 text-white font-bold flex items-center justify-center shrink-0 text-xs">AI</div>
-</div>
-<div class="p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-xs font-mono text-emerald-900 flex items-center justify-between">
-<span>↳ Bandla: 15-daqiqalik slot band qilindi · 1C: Bemor kartasi tekshirildi</span>
-<span class="font-bold text-emerald-700">0.8s</span>
-</div>
-</div>
-</div>
-<!-- Right: Key Industry Metrics & Direct Action -->
-<div class="lg:col-span-5 flex flex-col justify-between h-full space-y-6">
-<div>
-<div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-mono font-bold uppercase mb-2">
-<span class="w-1.5 h-1.5 rounded-full bg-emeraldBrand"></span>
-<span data-t="sol1Tag">Klinikalar va tibbiyot markazlari uchun</span>
-</div>
-<h3 class="text-2xl font-black text-slateDark mb-2" data-t="sol1Title">MedPro²⁴ — Tibbiyot va Stomatologiya Floti</h3>
-<p class="text-slate-600 text-sm leading-relaxed mb-5" data-t="sol1Desc">Resepshn qo'ng'iroqlar tiqilinchini va bemorlar kelmay qolishini yo'qoting. Ailo Instagram DM va Telegramda bemorlarni bir zumda saralaydi, Bandla shifokorlar vaqtiga qarab yozadi, ILDAM 32-tish kartasini yuritadi, Mirzo esa konsultatsiyalarni qayd etadi.</p>
-<!-- 3 Impact Badges -->
-<div class="grid grid-cols-3 gap-2.5 mb-6 text-center">
-<div class="p-3 rounded-xl bg-subtle border border-divider">
-<div class="text-xl sm:text-2xl font-black text-emeraldBrand">-45%</div>
-<div class="text-xs font-mono font-bold text-slateMuted mt-0.5">No-Shows</div>
-</div>
-<div class="p-3 rounded-xl bg-subtle border border-divider">
-<div class="text-xl sm:text-2xl font-black text-slateDark">&lt;8s</div>
-<div class="text-xs font-mono font-bold text-slateMuted mt-0.5">Response</div>
-</div>
-<div class="p-3 rounded-xl bg-subtle border border-divider">
-<div class="text-xl sm:text-2xl font-black text-slateDark">42h</div>
-<div class="text-xs font-mono font-bold text-slateMuted mt-0.5">Saved/Mo</div>
-</div>
-</div>
-</div>
-<div>
-<div class="text-xs font-mono text-slate-500 mb-3 flex items-center gap-1.5 font-bold">
-<span data-t="dashPipeline">Bog'langan ish jarayoni:</span>
-<span class="text-slate-800">Ailo → Bandla → ILDAM → 1C</span>
-</div>
-<button class="w-full py-3.5 px-4 rounded-xl bg-emeraldBrand hover:bg-emeraldDark text-white text-sm font-bold text-center transition cursor-pointer flex items-center justify-center gap-2 min-h-[44px]" onclick="openDemoModal('MedPro Clinics')" type="button">
-<span data-t="dashCtaClinics">Klinikalar uchun demoni band qilish</span>
-<svg class="w-4 h-4 text-limeSpark" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-</button>
-</div>
-</div>
-</div>
-</div>
-<!-- PANEL 2: EDUCATION & ACADEMIES -->
-<div aria-labelledby="tab-btn-education" class="industry-panel p-6 sm:p-8 hidden" id="panel-education" role="tabpanel">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
-<!-- Left: Real Conversation & Booking Flow Simulation -->
-<div class="lg:col-span-7 bg-subtle/50 rounded-2xl p-5 border border-divider">
-<div class="flex items-center justify-between pb-3 mb-4 border-b border-divider text-xs font-mono">
-<span class="font-bold text-purpleBrand">● EduPro Fleet · Student Admission Flow</span>
-<span class="text-slate-500">Telegram Bot · 16:05</span>
-</div>
-<div class="space-y-3 text-xs sm:text-sm">
-<div class="flex items-start gap-2.5">
-<div class="w-8 h-8 rounded-full bg-slate-200 text-slate-700 font-bold flex items-center justify-center shrink-0 text-xs">S</div>
-<div class="p-3.5 rounded-2xl rounded-tl-sm bg-white border border-divider shadow-2xs max-w-md text-slate-800">
-                  Assalomu alaykum! IELTS kursingiz qachon boshlanadi? Sinov darsi bormi?
-                </div>
-</div>
-<div class="flex items-start gap-2.5 justify-end">
-<div class="p-3.5 rounded-2xl rounded-tr-sm bg-purple-600 text-white shadow-2xs max-w-md">
-                  Va alaykum assalom! Yangi guruh dushanba boshlanadi. Shanba soat 10:00 da bepul sinov darsi va daraja aniqlash testi mavjud. Joyingizni band qilaymi?
-                </div>
-<div class="w-8 h-8 rounded-full bg-purple-800 text-white font-bold flex items-center justify-center shrink-0 text-xs">AI</div>
-</div>
-<div class="p-3 rounded-xl bg-purple-50 border border-purple-200 text-xs font-mono text-purple-900 flex items-center justify-between">
-<span>↳ Bandla: Sinov darsiga 1 ta o'rin ajratildi · ILDAM: 'Sinov darsi' bosqichiga kiritildi</span>
-<span class="font-bold text-purple-700">0.9s</span>
-</div>
-</div>
-</div>
-<!-- Right: Key Industry Metrics & Direct Action -->
-<div class="lg:col-span-5 flex flex-col justify-between h-full space-y-6">
-<div>
-<div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-purple-50 border border-purple-200 text-purple-800 text-xs font-mono font-bold uppercase mb-2">
-<span class="w-1.5 h-1.5 rounded-full bg-purpleBrand"></span>
-<span data-t="sol2Tag">O'quv markazlari va maktablar uchun</span>
-</div>
-<h3 class="text-2xl font-black text-slateDark mb-2" data-t="sol2Title">EduPro²⁴ — O'quv Markazlari va Akademiyalar Floti</h3>
-<p class="text-slate-600 text-sm leading-relaxed mb-5" data-t="sol2Desc">Ijtimoiy tarmoqlardan kelgan har bir so'rovni o'quvchiga aylantiring. Ailo kurslar bo'yicha to'liq ma'lumot beradi, Bandla sinov darslariga yozadi, ILDAM to'lovlarni nazorat qiladi, Telegram Mini App esa ota-onalar portalini ta'minlaydi.</p>
-<!-- 3 Impact Badges -->
-<div class="grid grid-cols-3 gap-2.5 mb-6 text-center">
-<div class="p-3 rounded-xl bg-subtle border border-divider">
-<div class="text-xl sm:text-2xl font-black text-purpleBrand">+38%</div>
-<div class="text-xs font-mono font-bold text-slateMuted mt-0.5">Attendance</div>
-</div>
-<div class="p-3 rounded-xl bg-subtle border border-divider">
-<div class="text-xl sm:text-2xl font-black text-slateDark">100%</div>
-<div class="text-xs font-mono font-bold text-slateMuted mt-0.5">Weekend Lead</div>
-</div>
-<div class="p-3 rounded-xl bg-subtle border border-divider">
-<div class="text-xl sm:text-2xl font-black text-slateDark">55h</div>
-<div class="text-xs font-mono font-bold text-slateMuted mt-0.5">Saved/Mo</div>
-</div>
-</div>
-</div>
-<div>
-<div class="text-xs font-mono text-slate-500 mb-3 flex items-center gap-1.5 font-bold">
-<span data-t="dashPipeline">Bog'langan ish jarayoni:</span>
-<span class="text-slate-800">Ailo → Bandla → ILDAM → Payme</span>
-</div>
-<button class="w-full py-3.5 px-4 rounded-xl bg-purpleBrand hover:bg-purple-800 text-white text-sm font-bold text-center transition cursor-pointer flex items-center justify-center gap-2 min-h-[44px]" onclick="openDemoModal('EduPro Education')" type="button">
-<span data-t="dashCtaEducation">O'quv markazlari uchun demoni band qilish</span>
-<svg class="w-4 h-4 text-limeSpark" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-</button>
-</div>
-</div>
-</div>
-</div>
-<!-- PANEL 3: AUTO SERVICES & WORKSHOPS -->
-<div aria-labelledby="tab-btn-auto" class="industry-panel p-6 sm:p-8 hidden" id="panel-auto" role="tabpanel">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
-<!-- Left: Real Conversation & Booking Flow Simulation -->
-<div class="lg:col-span-7 bg-subtle/50 rounded-2xl p-5 border border-divider">
-<div class="flex items-center justify-between pb-3 mb-4 border-b border-divider text-xs font-mono">
-<span class="font-bold text-amberBrand">● AutoPro Fleet · Workshop Bay Scheduling</span>
-<span class="text-slate-500">Telegram · 11:40</span>
-</div>
-<div class="space-y-3 text-xs sm:text-sm">
-<div class="flex items-start gap-2.5">
-<div class="w-8 h-8 rounded-full bg-slate-200 text-slate-700 font-bold flex items-center justify-center shrink-0 text-xs">D</div>
-<div class="p-3.5 rounded-2xl rounded-tl-sm bg-white border border-divider shadow-2xs max-w-md text-slate-800">
-                  Assalomu alaykum! Malibu 2 tormoz kolodkalarini almashtirish qancha bo'ladi va bugun bo'sh joy bormi?
-                </div>
-</div>
-<div class="flex items-start gap-2.5 justify-end">
-<div class="p-3.5 rounded-2xl rounded-tr-sm bg-amber-600 text-white shadow-2xs max-w-md">
-                  Va alaykum assalom! Original kolodkalar bilan almashtirish 380,000 so'm. Bugun soat 15:30 da 2-chi boksda bo'sh joy bor. Joy band qilamizmi?
-                </div>
-<div class="w-8 h-8 rounded-full bg-amber-800 text-white font-bold flex items-center justify-center shrink-0 text-xs">AI</div>
-</div>
-<div class="p-3 rounded-xl bg-amber-50 border border-amber-200 text-xs font-mono text-amber-900 flex items-center justify-between">
-<span>↳ Bandla: 2-chi boks 15:30 ga band qilindi · 1C: Ehtiyot qism zaxirasi tekshirildi</span>
-<span class="font-bold text-amber-700">0.7s</span>
-</div>
-</div>
-</div>
-<!-- Right: Key Industry Metrics & Direct Action -->
-<div class="lg:col-span-5 flex flex-col justify-between h-full space-y-6">
-<div>
-<div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-amber-50 border border-amber-200 text-amber-800 text-xs font-mono font-bold uppercase mb-2">
-<span class="w-1.5 h-1.5 rounded-full bg-amberBrand"></span>
-<span data-t="sol3Tag">Avtoservis va ustaxonalar uchun</span>
-</div>
-<h3 class="text-2xl font-black text-slateDark mb-2" data-t="sol3Title">AutoPro²⁴ — Avtoservis va Deteyling Floti</h3>
-<p class="text-slate-600 text-sm leading-relaxed mb-5" data-t="sol3Desc">Servis zallarini to'liq band qiling va mijozlar ishonchini oshiring. Ailo ta'mirlash so'rovlarini qabul qiladi, Bandla usta va ko'targichlarga yozadi, ILDAM ehtiyot qismlar hisobini yuritadi, Telegram bot esa buyurtma holatini mijozga yetkazadi.</p>
-<!-- 3 Impact Badges -->
-<div class="grid grid-cols-3 gap-2.5 mb-6 text-center">
-<div class="p-3 rounded-xl bg-subtle border border-divider">
-<div class="text-xl sm:text-2xl font-black text-amberBrand">+28%</div>
-<div class="text-xs font-mono font-bold text-slateMuted mt-0.5">Bay Capacity</div>
-</div>
-<div class="p-3 rounded-xl bg-subtle border border-divider">
-<div class="text-xl sm:text-2xl font-black text-slateDark">0</div>
-<div class="text-xs font-mono font-bold text-slateMuted mt-0.5">Missed Leads</div>
-</div>
-<div class="p-3 rounded-xl bg-subtle border border-divider">
-<div class="text-xl sm:text-2xl font-black text-slateDark">35h</div>
-<div class="text-xs font-mono font-bold text-slateMuted mt-0.5">Saved/Mo</div>
-</div>
-</div>
-</div>
-<div>
-<div class="text-xs font-mono text-slate-500 mb-3 flex items-center gap-1.5 font-bold">
-<span data-t="dashPipeline">Bog'langan ish jarayoni:</span>
-<span class="text-slate-800">Ailo → Bandla → ILDAM → 1C ERP</span>
-</div>
-<button class="w-full py-3.5 px-4 rounded-xl bg-amberBrand hover:bg-amber-700 text-white text-sm font-bold text-center transition cursor-pointer flex items-center justify-center gap-2 min-h-[44px]" onclick="openDemoModal('AutoPro Automotive')" type="button">
-<span data-t="dashCtaAuto">Avtoservis uchun demoni band qilish</span>
-<svg class="w-4 h-4 text-limeSpark" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-</button>
-</div>
-</div>
-</div>
-</div>
-<!-- PANEL 4: PROFESSIONAL & B2B ADVISORY -->
-<div aria-labelledby="tab-btn-advisory" class="industry-panel p-6 sm:p-8 hidden" id="panel-advisory" role="tabpanel">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
-<!-- Left: Real Conversation & Booking Flow Simulation -->
-<div class="lg:col-span-7 bg-subtle/50 rounded-2xl p-5 border border-divider">
-<div class="flex items-center justify-between pb-3 mb-4 border-b border-divider text-xs font-mono">
-<span class="font-bold text-indigoBrand">● AdvisoryPro Fleet · Inbound Discovery</span>
-<span class="text-slate-500">Website / LinkedIn · 10:15</span>
-</div>
-<div class="space-y-3 text-xs sm:text-sm">
-<div class="flex items-start gap-2.5">
-<div class="w-8 h-8 rounded-full bg-slate-200 text-slate-700 font-bold flex items-center justify-center shrink-0 text-xs">C</div>
-<div class="p-3.5 rounded-2xl rounded-tl-sm bg-white border border-divider shadow-2xs max-w-md text-slate-800">
-                  Salom! Biz 25 kishilik sotuv bo'limimiz uchun CRM va lidlarni avtomatlashtirishni ko'rib chiqmoqchimiz.
-                </div>
-</div>
-<div class="flex items-start gap-2.5 justify-end">
-<div class="p-3.5 rounded-2xl rounded-tr-sm bg-indigo-600 text-white shadow-2xs max-w-md">
-                  Salom! 25 kishilik jamoa uchun ILDAM CRM va Ailo orqali kunlik 300+ lidlarni qayta ishlash mumkin. 30 daqiqalik audit uchun qaysi vaqt qulay?
-                </div>
-<div class="w-8 h-8 rounded-full bg-indigo-800 text-white font-bold flex items-center justify-center shrink-0 text-xs">AI</div>
-</div>
-<div class="p-3 rounded-xl bg-indigo-50 border border-indigo-200 text-xs font-mono text-indigo-900 flex items-center justify-between">
-<span>↳ Bandla: Google Meet havolasi yaratildi · Mirzo: Uchrashuv brifi tayyorlandi</span>
-<span class="font-bold text-indigo-700">0.8s</span>
-</div>
-</div>
-</div>
-<!-- Right: Key Industry Metrics & Direct Action -->
-<div class="lg:col-span-5 flex flex-col justify-between h-full space-y-6">
-<div>
-<div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-800 text-xs font-mono font-bold uppercase mb-2">
-<span class="w-1.5 h-1.5 rounded-full bg-indigoBrand"></span>
-<span data-t="sol4Tag">Konsalting va professional xizmatlar uchun</span>
-</div>
-<h3 class="text-2xl font-black text-slateDark mb-2" data-t="sol4Title">AdvisoryPro²⁴ — B2B va Konsalting Floti</h3>
-<p class="text-slate-600 text-sm leading-relaxed mb-5" data-t="sol4Desc">B2B xizmatlar uchun to'liq savdo va loyiha boshqaruvi. Izlai maqsadli korxonalarga chiqadi, Ailo kiruvchi so'rovlarni saralaydi, Bandla strategik uchrashuvlarni belgilaydi, ILDAM shartnomalarni boshqaradi, Mirzo esa majlislarni qayd etadi.</p>
-<!-- 3 Impact Badges -->
-<div class="grid grid-cols-3 gap-2.5 mb-6 text-center">
-<div class="p-3 rounded-xl bg-subtle border border-divider">
-<div class="text-xl sm:text-2xl font-black text-indigoBrand">3x</div>
-<div class="text-xs font-mono font-bold text-slateMuted mt-0.5">Ready Deals</div>
-</div>
-<div class="p-3 rounded-xl bg-subtle border border-divider">
-<div class="text-xl sm:text-2xl font-black text-slateDark">100%</div>
-<div class="text-xs font-mono font-bold text-slateMuted mt-0.5">CRM Accuracy</div>
-</div>
-<div class="p-3 rounded-xl bg-subtle border border-divider">
-<div class="text-xl sm:text-2xl font-black text-slateDark">50h</div>
-<div class="text-xs font-mono font-bold text-slateMuted mt-0.5">Saved/Mo</div>
-</div>
-</div>
-</div>
-<div>
-<div class="text-xs font-mono text-slate-500 mb-3 flex items-center gap-1.5 font-bold">
-<span data-t="dashPipeline">Bog'langan ish jarayoni:</span>
-<span class="text-slate-800">Izlai → Ailo → ILDAM → Mirzo</span>
-</div>
-<button class="w-full py-3.5 px-4 rounded-xl bg-indigoBrand hover:bg-indigo-700 text-white text-sm font-bold text-center transition cursor-pointer flex items-center justify-center gap-2 min-h-[44px]" onclick="openDemoModal('AdvisoryPro B2B')" type="button">
-<span data-t="dashCtaAdvisory">B2B xizmatlar uchun demoni band qilish</span>
-<svg class="w-4 h-4 text-limeSpark" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-</section>
-<!-- ==================== RECOVERABLE LOSS CALCULATOR (Section 5) ==================== -->
-<section class="py-12 sm:py-14 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-b border-divider" id="calculator">
-<div class="text-center max-w-2xl mx-auto mb-8">
-<span class="text-xs font-mono font-bold uppercase tracking-wider text-emeraldBrand">Interactive Calculator</span>
-<h2 class="text-3xl sm:text-4xl font-extrabold text-slateDark mt-2 tracking-tight" data-t="calcTitle">Qancha vaqt va mablag'ni tejab qolishingiz mumkin?</h2>
-<p class="text-slate-600 text-sm sm:text-base mt-2" data-t="calcSub">Xodimlar soni va soatlik xarajatlarni belgilab, avtomatlashtirish orqali tejaladigan yillik mablag'ni hisoblang.</p>
-</div>
-<div class="card-elevated rounded-3xl p-6 sm:p-10 bg-white border border-divider shadow-md">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-<!-- Controls Column -->
-<div class="lg:col-span-7 space-y-6">
-<!-- Slider 1 -->
-<div>
-<div class="flex items-center justify-between text-sm font-bold text-slateDark mb-2">
-<span>Customer-Facing Team Size</span>
-<span class="font-mono text-emeraldBrand font-black text-base" id="calcTeamVal">5 people</span>
-</div>
-<input class="w-full" id="calcTeam" max="50" min="1" oninput="calculateLosses()" type="range" value="5"/>
-<div class="flex justify-between text-xs text-slate-400 font-mono mt-1">
-<span>1</span>
-<span>25</span>
-<span>50+</span>
-</div>
-</div>
-<!-- Slider 2 -->
-<div>
-<div class="flex items-center justify-between text-sm font-bold text-slateDark mb-2">
-<span>Average Fully-Loaded Hourly Cost</span>
-<span class="font-mono text-emeraldBrand font-black text-base" id="calcRateVal">$12/hr</span>
-</div>
-<input class="w-full" id="calcRate" max="50" min="5" oninput="calculateLosses()" type="range" value="12"/>
-<div class="flex justify-between text-xs text-slate-400 font-mono mt-1">
-<span>$5/hr</span>
-<span>$25/hr</span>
-<span>$50/hr</span>
-</div>
-</div>
-<!-- Slider 3 -->
-<div>
-<div class="flex items-center justify-between text-sm font-bold text-slateDark mb-2">
-<span>Hours Spent on Manual Messaging &amp; Booking</span>
-<span class="font-mono text-emeraldBrand font-black text-base" id="calcHoursVal">10 hrs/wk</span>
-</div>
-<input class="w-full" id="calcHours" max="25" min="3" oninput="calculateLosses()" type="range" value="10"/>
-<div class="flex justify-between text-xs text-slate-400 font-mono mt-1">
-<span>3h</span>
-<span>14h</span>
-<span>25h</span>
-</div>
-</div>
-</div>
-<!-- Result Box Column -->
-<div class="lg:col-span-5 bg-subtle/80 rounded-2xl p-6 sm:p-7 border border-divider flex flex-col justify-between text-center">
-<div>
-<span class="text-xs font-mono font-bold uppercase tracking-wider text-slate-500 block mb-2" data-t="calcResLabel">Taxminiy yillik tejamkorlik</span>
-<div class="text-4xl sm:text-5xl font-black font-mono text-emeraldBrand tracking-tight mb-2" id="calcResAnnual">
-              $19,380
-            </div>
-<div class="flex items-center justify-center gap-4 text-xs font-mono text-slate-600 mb-6">
-<div>
-<span class="block text-slate-400">Monthly</span>
-<span class="font-bold text-slate-800 text-sm" id="calcResMonthly">$1,615</span>
-</div>
-<div class="h-6 w-px bg-divider"></div>
-<div>
-<span class="block text-slate-400">Hours Saved</span>
-<span class="font-bold text-slate-800 text-sm" id="calcResHours">190h/mo</span>
-</div>
-</div>
-</div>
-<button class="w-full py-3.5 px-4 rounded-xl bg-slateDark hover:bg-slate-800 text-white text-sm font-bold shadow-md transition cursor-pointer flex items-center justify-center gap-2 min-h-[44px]" onclick="openDemoModal('ROI Calculator')" type="button">
-<span data-t="btnBookDemo">Demoni band qilish</span>
-<svg class="w-4 h-4 text-limeSpark" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-</button>
-</div>
-</div>
-</div>
-</section>
-<!-- ==================== FAQ ACCORDION + FINAL CALL TO ACTION (Section 6) ==================== -->
-<section class="py-12 sm:py-14 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto" id="faq">
-<!-- FAQ Header -->
-<div class="text-center max-w-2xl mx-auto mb-8">
-<span class="text-xs font-mono font-bold uppercase tracking-wider text-emeraldBrand" data-t="faqEyebrow">Savol-Javoblar</span>
-<h2 class="text-3xl sm:text-4xl font-extrabold text-slateDark mt-2 tracking-tight" data-t="faqTitle">Ko'p So'raladigan Savollar</h2>
-</div>
-<!-- FAQ Accordion -->
-<div class="space-y-3.5 mb-8">
-<details class="group bg-white border border-divider rounded-2xl p-5 shadow-xs" open="">
-<summary class="flex items-center justify-between text-base font-bold text-slateDark">
-<span data-t="faqQ1">5 ta dvigatel (Ailo, ILDAM, Bandla, Mirzo, Izlai) bir-biri bilan qanday ishlaydi?</span>
-<svg class="faq-chevron w-5 h-5 text-slate-400 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19.5 8.25l-7.5 7.5-7.5-7.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-</summary>
-<div class="pt-3 text-sm text-slate-600 leading-relaxed border-t border-divider mt-3" data-t="faqA1">Ular yagona uzluksiz zanjir hosil qiladi: Izlai maqsadli mijozlarni topadi, Ailo kiruvchi murojaatlarga 8 soniyada javob beradi, ILDAM mijozlar tarixi va to'lovlarni nazorat qiladi, Bandla taqvim bo'yicha qabulga yozadi, Mirzo esa uchrashuvlarni botlarsiz qayd etadi. Ma'lumotlar avtomatik uzatiladi, qo'lda ko'chirish shart emas.</div>
-</details>
-<details class="group bg-white border border-divider rounded-2xl p-5 shadow-xs">
-<summary class="flex items-center justify-between text-base font-bold text-slateDark">
-<span data-t="faqQ2">Mirzo uchrashuvlarni suhbatga bot kirmasdan qanday yozib oladi?</span>
-<svg class="faq-chevron w-5 h-5 text-slate-400 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19.5 8.25l-7.5 7.5-7.5-7.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-</summary>
-<div class="pt-3 text-sm text-slate-600 leading-relaxed border-t border-divider mt-3" data-t="faqA2">Oddiy ilovalardek ekranda begona bot-avatar ko'rinmaydi. Audio oqimi maxfiy kanal orqali yoki qo'ng'iroqdan so'ng xavfsiz qayta ishlanadi va 60 soniyada vazifalar bayonnomasi Telegramga hamda ILDAM CRMga yetkaziladi. 100% maxfiylik ta'minlanadi.</div>
-</details>
-<details class="group bg-white border border-divider rounded-2xl p-5 shadow-xs">
-<summary class="flex items-center justify-between text-base font-bold text-slateDark">
-<span data-t="faqQ3">Bandla mavjud taqvimlarimiz bilan bog'lanib, bir vaqtga ikki kishi tushib qolishini oldini oladimi?</span>
-<svg class="faq-chevron w-5 h-5 text-slate-400 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19.5 8.25l-7.5 7.5-7.5-7.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-</summary>
-<div class="pt-3 text-sm text-slate-600 leading-relaxed border-t border-divider mt-3" data-t="faqA3">Ha, albatta. Bandla to'g'ridan-to'g'ri Google Calendar, Outlook va ichki navbatchilik jadvallari bilan bog'lanadi. Ailo bemor yoki mijoz bilan muloqot qilganda faqat real bo'sh vaqtlarni taklif qiladi va avtomatik eslatmalar bilan qatnashuvni ta'minlaydi.</div>
-</details>
-<details class="group bg-white border border-divider rounded-2xl p-5 shadow-xs">
-<summary class="flex items-center justify-between text-base font-bold text-slateDark">
-<span data-t="faqQ4">Ma'lumotlarimiz va mijozlar bazasi xavfsizligi qanday ta'minlanadi?</span>
-<svg class="faq-chevron w-5 h-5 text-slate-400 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19.5 8.25l-7.5 7.5-7.5-7.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-</summary>
-<div class="pt-3 text-sm text-slate-600 leading-relaxed border-t border-divider mt-3" data-t="faqA4">Barcha infratuzilma sizning korporativ serverlaringiz yoki rasmiy bulutli hisobingizga ulanadi. Biz uchinchi tomon shubhali botlaridan foydalanmaymiz: Meta rasmiy Graph API, shifrlangan ma'lumotlar bazasi va Meet uchun Zero-Bot maxfiy protokoli ishlatiladi.</div>
-</details>
-<details class="group bg-white border border-divider rounded-2xl p-5 shadow-xs">
-<summary class="flex items-center justify-between text-base font-bold text-slateDark">
-<span data-t="faqQ5">Tizimni o'rnatish va jamoani o'rgatish qancha vaqt oladi?</span>
-<svg class="faq-chevron w-5 h-5 text-slate-400 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M19.5 8.25l-7.5 7.5-7.5-7.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-</summary>
-<div class="pt-3 text-sm text-slate-600 leading-relaxed border-t border-divider mt-3" data-t="faqA5">Standart o'zak o'rnatilishi 48 soatdan 5 ish kunigacha davom etadi. Shundan so'ng biz jamoangiz bilan jonli onboarding darslari o'tkazamiz, qadam-baqadam video qo'llanmalarni topshiramiz va dastlabki 14 kun davomida to'liq nazoratda ushlab turamiz.</div>
-</details>
-</div>
-<!-- Final Strategy Call CTA Card -->
-<div class="bg-white rounded-3xl border border-divider p-6 sm:p-8 shadow-sm text-center relative overflow-hidden">
-<div class="max-w-2xl mx-auto">
-<div class="w-14 h-14 rounded-2xl bg-slateDark text-white font-black text-xl flex items-center justify-center mx-auto mb-5 shadow-sm">
-          G
         </div>
-<!-- Roadmap note folded into final CTA (Requirement A & C) -->
-<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-mono font-bold text-emerald-800 mb-4">
-<span class="w-1.5 h-1.5 rounded-full bg-emeraldBrand"></span>
-<span data-t="ctaHowWeStart">Ishni qanday boshlaymiz: 1. Jarayonlarni tahlil qilish → 2. Tezkor sozlash va ulash → 3. 14 kunda ishga tushirish</span>
-</div>
-<h2 class="text-3xl sm:text-4xl font-extrabold text-slateDark tracking-tight mb-3" data-t="ctaTitle">Mijozlar bilan muloqot va yozilishlarni avtopilotga qo'ying</h2>
-<p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-6" data-t="ctaSub">30 daqiqalik audit davomida biznesingiz qayerda vaqt va daromad yo'qotayotganini aniqlab, amaliy harakat rejasini taqdim etamiz.</p>
-<!-- Owner Pricing Slot (Requirement D: hidden until rate provided) -->
-<div class="hidden text-sm text-slate-500 font-medium mb-6" data-t="pricingSlot" id="pricing-slot">Oyiga $___ dan boshlab</div>
-<!-- Operational Guarantee -->
-<div class="p-4 rounded-xl bg-emerald-50 border border-emerald-100 text-xs sm:text-sm text-emerald-900 font-medium mb-8 max-w-lg mx-auto flex items-center gap-2.5 text-left">
-<svg class="w-5 h-5 text-emerald-600 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<div data-t="founderGuarantee"><strong>Bizning kafolat:</strong> Agar suhbat davomida biznesingizda yiliga kamida $2,000+ tejamkorlik nuqtalarini topa olmasak, buni ochiq aytamiz va vaqtingizni behuda olmaymiz.</div>
-</div>
-<div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-<button class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-emeraldBrand hover:bg-emeraldDark text-white font-bold text-sm shadow-md transition duration-150 flex items-center justify-center gap-2.5 cursor-pointer min-h-[44px]" onclick="openDemoModal('Final CTA')" type="button">
-<span data-t="btnBookDemo">Demoni band qilish</span>
-<svg class="w-4 h-4 text-limeSpark" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-</button>
-<a class="w-full sm:w-auto px-6 py-3.5 rounded-xl border border-divider hover:bg-subtle text-slateDark font-semibold text-sm transition duration-150 cursor-pointer min-h-[44px] flex items-center justify-center" data-t="founderCtaTelegram" href="https://t.me/GPTify_uz_bot?start=os_demo" rel="noopener noreferrer" target="_blank">Telegram orqali yozish</a>
-</div>
-<div class="mt-8 pt-6 border-t border-divider text-center">
-<div class="text-sm font-bold text-slateDark">GPTify Architecture Team</div>
-<div class="text-xs text-slateMuted mt-0.5">Pragmatic Workflow &amp; Operations Systems</div>
-</div>
-</div>
-</div>
+        <div style="display: inline-flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 999px; background: #087F6A; color: #FFFFFF; font-size: 13px; font-weight: 600">
+          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"></path></svg>
+          Ailo 6 soniyada javob berdi
+        </div>
+      </div>
+      
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <div style="align-self: flex-start; max-width: 86%; background: #F3F8F7; border-radius: 16px 16px 16px 4px; padding: 10px 14px; font-size: 15px; line-height: 1.4; color: #172B2A; animation: inA 10s ease infinite">Assalomu alaykum! Tish oqartirish qancha turadi va ertaga soat 16:00 atrofida doktor Rustamov bo‘shlarmi?</div>
+        <div style="align-self: flex-end; max-width: 86%; background: #172B2A; border-radius: 16px 16px 4px 16px; padding: 10px 14px; font-size: 15px; line-height: 1.4; color: #FFFFFF; animation: inB 10s ease infinite">Oqartirish $45 dan boshlanadi. Doktor Rustamovda ertaga soat 16:00 da bo‘sh joy bor. Band qilib beraymi?</div>
+        <div style="align-self: flex-start; max-width: 86%; background: #F3F8F7; border-radius: 16px 16px 16px 4px; padding: 10px 14px; font-size: 15px; line-height: 1.4; color: #172B2A; animation: inC 10s ease infinite">Ha, iltimos, Malika nomiga.</div>
+      </div>
+    </div>
+    
+    <div style="display: flex; flex-wrap: wrap; gap: 8px">
+      <div style="flex: 1 1 140px; background: #087F6A; border-radius: 12px; padding: 10px 14px; color: #FFFFFF; animation: inD 10s ease infinite">
+        <div style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: 16px">Ailo</div>
+        <div style="font-size: 14px; font-weight: 500; line-height: 1.3">Javob berdi va saraladi</div>
+      </div>
+      <div style="flex: 1 1 140px; background: #7C3AED; border-radius: 12px; padding: 10px 14px; color: #FFFFFF; animation: inE 10s ease infinite">
+        <div style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: 16px">Bandla</div>
+        <div style="font-size: 14px; font-weight: 500; line-height: 1.3">Soat 16:00 vaqtini band qildi</div>
+      </div>
+      <div style="flex: 1 1 140px; background: #B45309; border-radius: 12px; padding: 10px 14px; color: #FFFFFF; animation: inF 10s ease infinite">
+        <div style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: 16px">ILDAM</div>
+        <div style="font-size: 14px; font-weight: 500; line-height: 1.3">Bemor va bitimni saqladi</div>
+      </div>
+    </div>
+  </div>
 </section>
-<!-- ==================== FOOTER ==================== -->
-<footer class="bg-white border-t border-divider py-12 px-4 sm:px-6 lg:px-8">
-<div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-<div class="flex items-center gap-3">
-<div class="w-8 h-8 rounded-lg bg-white border border-divider flex items-center justify-center p-1.5 shadow-2xs">
-<svg class="w-full h-full" fill="none" viewbox="0 0 100 100">
-<path d="M51.4 9 A41 41 0 1 0 88 65.4 V42 H47 V58 H73.7 A25 25 0 1 1 50.9 25 Z" fill="#087F6A"></path>
-<path d="M61 9 H88 V36 H78 V19 H61 Z" fill="#B7F34A"></path>
-</svg>
-</div>
-<div>
-<div class="flex items-center gap-1.5">
-<span class="font-bold text-slateDark text-sm" style="font-family:'Poppins', sans-serif;">GPTify</span>
-<span class="bg-[#087F6A] text-white font-bold text-xs tracking-wider uppercase px-1.5 py-0.5 rounded" style="font-family:'Poppins', sans-serif;">OS</span>
-</div>
-<span class="text-xs text-slateMuted block" data-t="footerDesc">Xizmat ko'rsatish bizneslari uchun AI operatsion tizimi.</span>
-</div>
-</div>
-<div class="flex flex-wrap items-center gap-3 text-xs font-semibold text-slate-600">
-<a class="hover:text-emeraldBrand cursor-pointer" href="/uz/#services">Ailo</a>
-<span>•</span>
-<a class="hover:text-amberBrand cursor-pointer" href="/uz/#services">ILDAM</a>
-<span>•</span>
-<a class="hover:text-purpleBrand cursor-pointer" href="/uz/#services">Bandla</a>
-<span>•</span>
-<a class="hover:text-skyBrand cursor-pointer" href="/uz/#services">Mirzo</a>
-<span>•</span>
-<a class="hover:text-indigoBrand cursor-pointer" href="/uz/#services">Izlai</a>
-</div>
-<!-- Compliance & Legal Links -->
-<div class="flex flex-wrap items-center gap-3 text-xs font-semibold text-slate-500">
-<a class="hover:text-emeraldBrand transition cursor-pointer" data-t="footerPrivacy" href="/privacy.html">Maxfiylik Siyosati</a>
-<span>•</span>
-<a class="hover:text-emeraldBrand transition cursor-pointer" data-t="footerTerms" href="/terms.html">Foydalanish Shartlari</a>
-<span>•</span>
-<a class="hover:text-emeraldBrand transition cursor-pointer" data-t="footerSecurity" href="/privacy.html#security">Xavfsizlik va Standartlar</a>
-<span>•</span>
-<a class="hover:text-emeraldBrand transition" href="mailto:contact@gptify.co">contact@gptify.co</a>
-<span>•</span>
-<a class="hover:text-emeraldBrand transition" href="https://gptify.uz" rel="noopener noreferrer" target="_blank">gptify.uz</a>
-</div>
-<div class="text-xs text-slateMuted">
-        © 2026 GPTify Technologies MChJ. <span data-t="footerRights">Barcha huquqlar himoyalangan.</span>
-</div>
-</div>
+
+<!-- Integrations Strip Section -->
+<section aria-label="Works with" style="padding: 28px 0 36px; border-top: 1px solid #DCE8E6; display: flex; flex-direction: column; gap: 20px; overflow: hidden; max-width: 100vw">
+  <div style="text-align: center; padding: 0 clamp(20px, 5vw, 80px); font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.14em; color: #5F6F6D; text-transform: uppercase">Siz allaqachon ishlatayotgan vositalar bilan integratsiya qilinadi</div>
+  <div style="overflow: hidden; max-width: 100vw; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)">
+    <div style="display: flex; flex-wrap: nowrap; width: max-content; animation: marq 40s linear infinite">
+      <div style="display: flex; flex-wrap: nowrap; gap: 16px; padding-right: 16px">
+        <span style="flex: none; display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding: 0 20px; background: #F3F8F7; border: 1px solid #DCE8E6; border-radius: 999px; font-size: 16px; font-weight: 600; color: #172B2A; white-space: nowrap"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #0369A1"></span>Telegram</span>
+        <span style="flex: none; display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding: 0 20px; background: #F3F8F7; border: 1px solid #DCE8E6; border-radius: 999px; font-size: 16px; font-weight: 600; color: #172B2A; white-space: nowrap"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #087F6A"></span>WhatsApp Business</span>
+        <span style="flex: none; display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding: 0 20px; background: #F3F8F7; border: 1px solid #DCE8E6; border-radius: 999px; font-size: 16px; font-weight: 600; color: #172B2A; white-space: nowrap"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #BE185D"></span>Instagram Direct</span>
+        <span style="flex: none; display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding: 0 20px; background: #F3F8F7; border: 1px solid #DCE8E6; border-radius: 999px; font-size: 16px; font-weight: 600; color: #172B2A; white-space: nowrap"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #3730A3"></span>LinkedIn</span>
+        <span style="flex: none; display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding: 0 20px; background: #F3F8F7; border: 1px solid #DCE8E6; border-radius: 999px; font-size: 16px; font-weight: 600; color: #172B2A; white-space: nowrap"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #B45309"></span>Google Calendar</span>
+        <span style="flex: none; display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding: 0 20px; background: #F3F8F7; border: 1px solid #DCE8E6; border-radius: 999px; font-size: 16px; font-weight: 600; color: #172B2A; white-space: nowrap"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #0369A1"></span>Outlook</span>
+        <span style="flex: none; display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding: 0 20px; background: #F3F8F7; border: 1px solid #DCE8E6; border-radius: 999px; font-size: 16px; font-weight: 600; color: #172B2A; white-space: nowrap"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #3730A3"></span>Zoom</span>
+        <span style="flex: none; display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding: 0 20px; background: #F3F8F7; border: 1px solid #DCE8E6; border-radius: 999px; font-size: 16px; font-weight: 600; color: #172B2A; white-space: nowrap"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #087F6A"></span>Google Meet</span>
+        <span style="flex: none; display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding: 0 20px; background: #F3F8F7; border: 1px solid #DCE8E6; border-radius: 999px; font-size: 16px; font-weight: 600; color: #172B2A; white-space: nowrap"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #7C3AED"></span>Microsoft Teams</span>
+        <span style="flex: none; display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding: 0 20px; background: #F3F8F7; border: 1px solid #DCE8E6; border-radius: 999px; font-size: 16px; font-weight: 600; color: #172B2A; white-space: nowrap"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #B45309"></span>1C</span>
+        <span style="flex: none; display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding: 0 20px; background: #F3F8F7; border: 1px solid #DCE8E6; border-radius: 999px; font-size: 16px; font-weight: 600; color: #172B2A; white-space: nowrap"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #0369A1"></span>Click</span>
+        <span style="flex: none; display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding: 0 20px; background: #F3F8F7; border: 1px solid #DCE8E6; border-radius: 999px; font-size: 16px; font-weight: 600; color: #172B2A; white-space: nowrap"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #087F6A"></span>Payme</span>
+        <span style="flex: none; display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding: 0 20px; background: #F3F8F7; border: 1px solid #DCE8E6; border-radius: 999px; font-size: 16px; font-weight: 600; color: #172B2A; white-space: nowrap"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #7C3AED"></span>Uzum</span>
+      </div>
+      <div style="display: flex; flex-wrap: nowrap; gap: 16px; padding-right: 16px" aria-hidden="true">
+        <span style="flex: none; display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding: 0 20px; background: #F3F8F7; border: 1px solid #DCE8E6; border-radius: 999px; font-size: 16px; font-weight: 600; color: #172B2A; white-space: nowrap"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #0369A1"></span>Telegram</span>
+        <span style="flex: none; display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding: 0 20px; background: #F3F8F7; border: 1px solid #DCE8E6; border-radius: 999px; font-size: 16px; font-weight: 600; color: #172B2A; white-space: nowrap"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #087F6A"></span>WhatsApp Business</span>
+        <span style="flex: none; display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding: 0 20px; background: #F3F8F7; border: 1px solid #DCE8E6; border-radius: 999px; font-size: 16px; font-weight: 600; color: #172B2A; white-space: nowrap"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #BE185D"></span>Instagram Direct</span>
+        <span style="flex: none; display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding: 0 20px; background: #F3F8F7; border: 1px solid #DCE8E6; border-radius: 999px; font-size: 16px; font-weight: 600; color: #172B2A; white-space: nowrap"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #3730A3"></span>LinkedIn</span>
+        <span style="flex: none; display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding: 0 20px; background: #F3F8F7; border: 1px solid #DCE8E6; border-radius: 999px; font-size: 16px; font-weight: 600; color: #172B2A; white-space: nowrap"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #B45309"></span>Google Calendar</span>
+        <span style="flex: none; display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding: 0 20px; background: #F3F8F7; border: 1px solid #DCE8E6; border-radius: 999px; font-size: 16px; font-weight: 600; color: #172B2A; white-space: nowrap"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #0369A1"></span>Outlook</span>
+        <span style="flex: none; display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding: 0 20px; background: #F3F8F7; border: 1px solid #DCE8E6; border-radius: 999px; font-size: 16px; font-weight: 600; color: #172B2A; white-space: nowrap"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #3730A3"></span>Zoom</span>
+        <span style="flex: none; display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding: 0 20px; background: #F3F8F7; border: 1px solid #DCE8E6; border-radius: 999px; font-size: 16px; font-weight: 600; color: #172B2A; white-space: nowrap"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #087F6A"></span>Google Meet</span>
+        <span style="flex: none; display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding: 0 20px; background: #F3F8F7; border: 1px solid #DCE8E6; border-radius: 999px; font-size: 16px; font-weight: 600; color: #172B2A; white-space: nowrap"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #7C3AED"></span>Microsoft Teams</span>
+        <span style="flex: none; display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding: 0 20px; background: #F3F8F7; border: 1px solid #DCE8E6; border-radius: 999px; font-size: 16px; font-weight: 600; color: #172B2A; white-space: nowrap"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #B45309"></span>1C</span>
+        <span style="flex: none; display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding: 0 20px; background: #F3F8F7; border: 1px solid #DCE8E6; border-radius: 999px; font-size: 16px; font-weight: 600; color: #172B2A; white-space: nowrap"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #0369A1"></span>Click</span>
+        <span style="flex: none; display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding: 0 20px; background: #F3F8F7; border: 1px solid #DCE8E6; border-radius: 999px; font-size: 16px; font-weight: 600; color: #172B2A; white-space: nowrap"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #087F6A"></span>Payme</span>
+        <span style="flex: none; display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding: 0 20px; background: #F3F8F7; border: 1px solid #DCE8E6; border-radius: 999px; font-size: 16px; font-weight: 600; color: #172B2A; white-space: nowrap"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #7C3AED"></span>Uzum</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Industries Section [industries] -->
+<section id="industries" style="padding: 72px clamp(20px, 5vw, 80px) 88px; display: flex; flex-direction: column; gap: 28px">
+  <div style="display: flex; flex-direction: column; gap: 14px; max-width: 820px">
+    <div style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.14em; color: #087F6A; text-transform: uppercase">Sohangiz uchun moslashtirilgan</div>
+    <h2 style="margin: 0; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: clamp(30px, 3.3vw, 46px); line-height: 1.12; letter-spacing: -0.015em; color: #172B2A">4 ta biznes yo‘nalishi uchun tayyor yechimlar.</h2>
+  </div>
+  
+  <!-- Tabs Navigation -->
+  <div role="tablist" aria-label="Industries" style="display: flex; flex-wrap: wrap; gap: 10px">
+    <button role="tab" id="tab-btn-clinic" aria-selected="true" aria-controls="panel-industry" onclick="selectIndustryTab('clinic')" style="min-height: 52px; min-width: 44px; padding: 0 24px; border-radius: 999px; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 17px; background: #172B2A; color: #FFFFFF; border: 1px solid #172B2A; cursor: pointer">Klinikalar</button>
+    <button role="tab" id="tab-btn-edu" aria-selected="false" aria-controls="panel-industry" onclick="selectIndustryTab('edu')" style="min-height: 52px; min-width: 44px; padding: 0 24px; border-radius: 999px; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 17px; background: #FFFFFF; color: #172B2A; border: 1px solid #DCE8E6; cursor: pointer">O‘quv markazlari</button>
+    <button role="tab" id="tab-btn-auto" aria-selected="false" aria-controls="panel-industry" onclick="selectIndustryTab('auto')" style="min-height: 52px; min-width: 44px; padding: 0 24px; border-radius: 999px; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 17px; background: #FFFFFF; color: #172B2A; border: 1px solid #DCE8E6; cursor: pointer">Avtoservislar</button>
+    <button role="tab" id="tab-btn-advisory" aria-selected="false" aria-controls="panel-industry" onclick="selectIndustryTab('advisory')" style="min-height: 52px; min-width: 44px; padding: 0 24px; border-radius: 999px; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 17px; background: #FFFFFF; color: #172B2A; border: 1px solid #DCE8E6; cursor: pointer">Konsalting kompaniyalari</button>
+  </div>
+  
+  <!-- Active Tab Panel -->
+  <div id="panel-industry" role="tabpanel" style="background: #F3F8F7; border-radius: 28px; padding: clamp(20px, 3vw, 44px); display: flex; flex-wrap: wrap; gap: 32px 56px">
+    <div style="flex: 1 1 400px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+      <div id="ind-product-badge" style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; color: #087F6A">MEDPRO²⁴ · TIBBIYOT VA STOMATOLOGIYA</div>
+      <h3 id="ind-pitch-heading" style="margin: 0; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: clamp(26px, 2.5vw, 34px); line-height: 1.15; letter-spacing: -0.01em; color: #172B2A">Qabulxonada javobsiz qolgan qo‘ng‘iroqlar va kelmay qolishlarni kamaytiring.</h3>
+      
+      <div id="ind-bullets-container" style="display: flex; flex-direction: column; gap: 12px; margin-top: 4px">
+        <div style="display: flex; align-items: flex-start; gap: 12px; font-size: 18px; line-height: 1.45; color: #172B2A">
+          <svg aria-hidden="true" style="flex: none; margin-top: 3px" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#087F6A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"></path></svg>
+          <span>Bemorlar savollariga 24/7 javob beriladi, shoshilinch holatlar xodimlarga yo‘naltiriladi</span>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; font-size: 18px; line-height: 1.45; color: #172B2A">
+          <svg aria-hidden="true" style="flex: none; margin-top: 3px" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#087F6A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"></path></svg>
+          <span>Shifokorlarning real vaqtdagi bo‘sh vaqtlari, Telegram va SMS eslatmalari</span>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; font-size: 18px; line-height: 1.45; color: #172B2A">
+          <svg aria-hidden="true" style="flex: none; margin-top: 3px" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#087F6A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"></path></svg>
+          <span>Tish xaritalari va davolanish tarixi to‘liq maxfiy saqlanadi</span>
+        </div>
+      </div>
+      
+      <button id="ind-cta-btn" onclick="openDemoModal('Clinics')" style="align-self: flex-start; display: inline-flex; align-items: center; justify-content: center; min-height: 52px; min-width: 44px; margin-top: 8px; padding: 0 24px; background: #087F6A; color: #FFFFFF; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 16px; border-radius: 10px; border: none; cursor: pointer">Klinikalar uchun demoni band qilish</button>
+    </div>
+    
+    <div style="flex: 1 1 400px; min-width: 0; background: #FFFFFF; border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 14px">
+      <div style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 18px; color: #172B2A">Kim nima ish qiladi</div>
+      <div id="ind-steps-container" style="display: flex; flex-direction: column; gap: 14px">
+        <div style="display: flex; align-items: center; gap: 14px">
+          <div style="flex: none; width: 92px; box-sizing: border-box; text-align: center; border-radius: 10px; padding: 10px 0; font-family: inherit; font-weight: 700; font-size: 15px; color: #FFFFFF; background: #087F6A">Ailo</div>
+          <div style="font-size: 16px; line-height: 1.4; color: #172B2A">Instagram va Telegram’da bemor savollariga javob beradi</div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 14px">
+          <div style="flex: none; width: 92px; box-sizing: border-box; text-align: center; border-radius: 10px; padding: 10px 0; font-family: inherit; font-weight: 700; font-size: 15px; color: #FFFFFF; background: #7C3AED">Bandla</div>
+          <div style="font-size: 16px; line-height: 1.4; color: #172B2A">Shifokor qabulini band qiladi va eslatmalar yuboradi</div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 14px">
+          <div style="flex: none; width: 92px; box-sizing: border-box; text-align: center; border-radius: 10px; padding: 10px 0; font-family: inherit; font-weight: 700; font-size: 15px; color: #FFFFFF; background: #B45309">ILDAM</div>
+          <div style="font-size: 16px; line-height: 1.4; color: #172B2A">Stomatologiya va klinika qaydlarini yuritadi</div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 14px">
+          <div style="flex: none; width: 92px; box-sizing: border-box; text-align: center; border-radius: 10px; padding: 10px 0; font-family: inherit; font-weight: 700; font-size: 15px; color: #FFFFFF; background: #0369A1">Mirzo</div>
+          <div style="font-size: 16px; line-height: 1.4; color: #172B2A">Qabuldan so‘ng klinik xulosalarni rasmiylashtiradi</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- The Five Tools Section [tools] -->
+<section id="tools" style="padding: 88px clamp(20px, 5vw, 80px) 96px; border-top: 1px solid #DCE8E6; display: flex; flex-direction: column; gap: 40px">
+  <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px 48px">
+    <h2 style="margin: 0; flex: 1 1 480px; max-width: 760px; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: clamp(30px, 3.3vw, 46px); line-height: 1.12; letter-spacing: -0.015em; color: #172B2A">Yagona zanjir, besh qadam. Ular orasida hech narsa yo‘qolmaydi.</h2>
+    <p style="margin: 0; flex: 1 1 320px; max-width: 420px; font-size: 18px; line-height: 1.55; color: #5F6F6D">Bitta qadamdan boshlang yoki butun zanjirni ishga tushiring.</p>
+  </div>
+  
+  <!-- Connected Color Rail of 5 Tools (Stacks on Mobile) -->
+  <div style="display: flex; flex-wrap: wrap; border-radius: 28px; overflow: hidden">
+    <article class="tool-card-0" style="flex: 1 1 200px; min-width: 0; min-height: 340px; box-sizing: border-box; background: #3730A3; padding: 30px 24px; display: flex; flex-direction: column; gap: 12px; color: #FFFFFF">
+      <div style="font-size: 14px; font-weight: 600; letter-spacing: 0.12em">01 · TOPISH</div>
+      <h3 style="margin: 0; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: 40px; line-height: 1.05; letter-spacing: -0.02em">Izlai</h3>
+      <div style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 19px; line-height: 1.3">Yangi mijozlarni topadi</div>
+      <p style="margin: 0; font-size: 16px; line-height: 1.55">Sizga mos keladigan kompaniyalarga email va LinkedIn orqali xat yozadi.</p>
+      <div style="margin-top: auto; min-height: 44px; display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; font-size: 15px; font-weight: 600; line-height: 1.3">
+        <span>Javoblarni Ailo’ga uzatadi -></span>
+        <svg aria-hidden="true" style="flex: none" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B7F34A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
+      </div>
+    </article>
+    
+    <article class="tool-card-1" style="flex: 1 1 200px; min-width: 0; min-height: 340px; box-sizing: border-box; background: #087F6A; padding: 30px 24px; display: flex; flex-direction: column; gap: 12px; color: #FFFFFF">
+      <div style="font-size: 14px; font-weight: 600; letter-spacing: 0.12em">02 · MULOQOT</div>
+      <h3 style="margin: 0; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: 40px; line-height: 1.05; letter-spacing: -0.02em">Ailo</h3>
+      <div style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 19px; line-height: 1.3">Mijozlarning har bir xabariga javob beradi</div>
+      <p style="margin: 0; font-size: 16px; line-height: 1.55">WhatsApp, Instagram va Telegram’da 6 soniya ichida javob beradi.</p>
+      <div style="margin-top: auto; min-height: 44px; display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; font-size: 15px; font-weight: 600; line-height: 1.3">
+        <span>Kontaktlarni ILDAM’ga yuboradi -></span>
+        <svg aria-hidden="true" style="flex: none" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B7F34A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
+      </div>
+    </article>
+    
+    <article class="tool-card-2" style="flex: 1 1 200px; min-width: 0; min-height: 340px; box-sizing: border-box; background: #B45309; padding: 30px 24px; display: flex; flex-direction: column; gap: 12px; color: #FFFFFF">
+      <div style="font-size: 14px; font-weight: 600; letter-spacing: 0.12em">03 · NAZORAT</div>
+      <h3 style="margin: 0; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: 40px; line-height: 1.05; letter-spacing: -0.02em">ILDAM</h3>
+      <div style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 19px; line-height: 1.3">Bitimlar va to‘lovlarni nazorat qiladi</div>
+      <p style="margin: 0; font-size: 16px; line-height: 1.55">Avans to‘lovlari va schyotlar eslatmalari bilan oddiy boshqaruv taxtasi.</p>
+      <div style="margin-top: auto; min-height: 44px; display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; font-size: 15px; font-weight: 600; line-height: 1.3">
+        <span>Bandla’da bron qilishni boshlaydi -></span>
+        <svg aria-hidden="true" style="flex: none" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B7F34A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
+      </div>
+    </article>
+    
+    <article class="tool-card-3" style="flex: 1 1 200px; min-width: 0; min-height: 340px; box-sizing: border-box; background: #7C3AED; padding: 30px 24px; display: flex; flex-direction: column; gap: 12px; color: #FFFFFF">
+      <div style="font-size: 14px; font-weight: 600; letter-spacing: 0.12em">04 · BAND QILISH</div>
+      <h3 style="margin: 0; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: 40px; line-height: 1.05; letter-spacing: -0.02em">Bandla</h3>
+      <div style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 19px; line-height: 1.3">Uchrashuvni band qiladi</div>
+      <p style="margin: 0; font-size: 16px; line-height: 1.55">Bo‘sh vaqtlarni ko‘rsatadi va Telegram yoki SMS orqali eslatmalar yuboradi.</p>
+      <div style="margin-top: auto; min-height: 44px; display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; font-size: 15px; font-weight: 600; line-height: 1.3">
+        <span>Uchrashuvni Mirzo uchun tayyorlaydi -></span>
+        <svg aria-hidden="true" style="flex: none" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B7F34A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m13 6 6 6-6 6"></path></svg>
+      </div>
+    </article>
+    
+    <article class="tool-card-4" style="flex: 1 1 200px; min-width: 0; min-height: 340px; box-sizing: border-box; background: #0369A1; padding: 30px 24px; display: flex; flex-direction: column; gap: 12px; color: #FFFFFF">
+      <div style="font-size: 14px; font-weight: 600; letter-spacing: 0.12em">05 · QAYD ETISH</div>
+      <h3 style="margin: 0; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: 40px; line-height: 1.05; letter-spacing: -0.02em">Mirzo</h3>
+      <div style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 19px; line-height: 1.3">Uchrashuv qaydlarini yuritadi</div>
+      <p style="margin: 0; font-size: 16px; line-height: 1.55">Hech qanday bot qo‘shilmasdan, nutqni qarorlar va vazifalarga aylantiradi.</p>
+      <div style="margin-top: auto; min-height: 44px; display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; font-size: 15px; font-weight: 600; line-height: 1.3">
+        <span>ILDAM’dagi bitimni yangilaydi -></span>
+        <svg aria-hidden="true" style="flex: none" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B7F34A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12a8 8 0 0 1 14-5.3L20 9"></path><path d="M20 4v5h-5"></path></svg>
+      </div>
+    </article>
+  </div>
+  
+  <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px">
+    <div style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 24px; color: #172B2A">Bu zanjir sizning biznes jarayoningizda qanday ishlashini ko‘ring.</div>
+    <button onclick="openDemoModal('The Five Tools')" style="display: inline-flex; align-items: center; justify-content: center; min-height: 56px; min-width: 44px; padding: 0 28px; background: #087F6A; color: #FFFFFF; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 17px; border-radius: 10px; border: none; cursor: pointer">Demoning band qilish</button>
+  </div>
+</section>
+
+<!-- Savings Calculator Section [savings] -->
+<section id="savings" style="background: #F3F8F7; padding: 88px clamp(20px, 5vw, 80px); display: flex; flex-direction: column; gap: 36px">
+  <div style="display: flex; flex-direction: column; gap: 14px; max-width: 820px">
+    <div style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.14em; color: #087F6A; text-transform: uppercase">Tejash kalkulyatori</div>
+    <h2 style="margin: 0; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: clamp(30px, 3.3vw, 46px); line-height: 1.12; letter-spacing: -0.015em; color: #172B2A">Qancha vaqt va mablag‘ingizni tejab qolishingiz mumkin?</h2>
+  </div>
+  
+  <div style="display: flex; flex-wrap: wrap; gap: 24px">
+    <!-- Sliders Input Card -->
+    <div style="flex: 1.2 1 420px; min-width: 0; background: #FFFFFF; border-radius: 24px; padding: clamp(20px, 2.6vw, 36px); display: flex; flex-direction: column; gap: 22px">
+      <div style="display: flex; flex-direction: column; gap: 6px">
+        <div style="display: flex; justify-content: space-between; gap: 12px; font-size: 17px; font-weight: 600; color: #172B2A">
+          <label for="slider-team">Jamoa a’zolari soni</label>
+          <span id="val-team" style="color: #087F6A">5</span>
+        </div>
+        <input id="slider-team" type="range" min="1" max="50" step="1" value="5" aria-label="Jamoa a’zolari soni" style="width: 100%; height: 44px; margin: 0; accent-color: #087F6A">
+      </div>
+      
+      <div style="display: flex; flex-direction: column; gap: 6px">
+        <div style="display: flex; justify-content: space-between; gap: 12px; font-size: 17px; font-weight: 600; color: #172B2A">
+          <label for="slider-hours">Har bir xodimning haftasiga bir xil qo‘lda bajaradigan ishlari (soat)</label>
+          <span id="val-hours" style="color: #087F6A">15 h</span>
+        </div>
+        <input id="slider-hours" type="range" min="5" max="35" step="1" value="15" aria-label="Har bir xodimning haftasiga bir xil qo‘lda bajaradigan ishlari (soat)" style="width: 100%; height: 44px; margin: 0; accent-color: #087F6A">
+      </div>
+      
+      <div style="display: flex; flex-direction: column; gap: 6px">
+        <div style="display: flex; justify-content: space-between; gap: 12px; font-size: 17px; font-weight: 600; color: #172B2A">
+          <label for="slider-salary">O‘rtacha oylik maosh</label>
+          <span id="val-salary" style="color: #087F6A">$391</span>
+        </div>
+        <input id="slider-salary" type="range" min="300" max="1500" step="1" value="391" aria-label="O‘rtacha oylik maosh" style="width: 100%; height: 44px; margin: 0; accent-color: #087F6A">
+      </div>
+    </div>
+    
+    <!-- Results Dark Card -->
+    <div style="flex: 1 1 340px; min-width: 0; background: #172B2A; border-radius: 24px; padding: clamp(20px, 2.6vw, 36px); display: flex; flex-direction: column; gap: 10px; color: #FFFFFF">
+      <div style="font-size: 16px; font-weight: 600">Yillik taxminiy tejamkorlik</div>
+      <div id="res-year-text" style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: clamp(44px, 5vw, 68px); line-height: 1; letter-spacing: -0.02em; color: #B7F34A">~$6,415</div>
+      <div style="font-size: 17px; line-height: 1.45">
+        Taxminan oyiga <span id="res-month-text">$535</span> · har haftada · <span id="res-hours-text">52.5</span> soat tejaladi
+      </div>
+      <button onclick="openDemoModal('Savings Calculator')" style="align-self: flex-start; display: inline-flex; align-items: center; justify-content: center; min-height: 52px; min-width: 44px; margin-top: 14px; padding: 0 24px; background: #B7F34A; color: #172B2A; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 16px; border-radius: 10px; border: none; cursor: pointer">Demoni band qilish</button>
+      <div style="margin-top: auto; padding-top: 14px; font-size: 14px; line-height: 1.45; color: #C9DAD7">Faqat taxminiy hisob: takroriy soatlarning 70% avtomatlashtirilishi, 50 ish haftasi va oyiga 160 ish soatiga asoslangan.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Optional Extras Section [addons] -->
+<section id="addons" style="padding: 88px clamp(20px, 5vw, 80px) 40px; display: flex; flex-direction: column; gap: 32px">
+  <div style="display: flex; flex-direction: column; gap: 14px; max-width: 820px">
+    <div style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.14em; color: #087F6A; text-transform: uppercase">Qo‘shimcha imkoniyatlar</div>
+    <h2 style="margin: 0; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: clamp(30px, 3.3vw, 46px); line-height: 1.12; letter-spacing: -0.015em; color: #172B2A">Biznesingizga nima kerak bo‘lsa, shuni qo‘shing.</h2>
+  </div>
+  
+  <div style="display: flex; flex-wrap: wrap; gap: 16px">
+    <div style="flex: 1 1 300px; min-width: 0; border: 1px solid #DCE8E6; border-radius: 16px; padding: 20px 22px; display: flex; flex-direction: column; gap: 6px">
+      <div style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 18px; color: #172B2A">Kompaniya bilimlar bazasi yordamchisi</div>
+      <div style="font-size: 16px; line-height: 1.5; color: #5F6F6D">Xodimlar savollariga tartib-qoidalar, protokollar va narxlar ro‘yxati asosida javob beradi.</div>
+    </div>
+    
+    <div style="flex: 1 1 300px; min-width: 0; border: 1px solid #DCE8E6; border-radius: 16px; padding: 20px 22px; display: flex; flex-direction: column; gap: 6px">
+      <div style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 18px; color: #172B2A">Mahalliy to‘lovlar</div>
+      <div style="font-size: 16px; line-height: 1.5; color: #5F6F6D">Click, Payme va Uzum to‘lov havolalari, avans to‘lovlari va chek tasdiqlari to‘g‘ridan-to‘g‘ri chat ichida.</div>
+    </div>
+    
+    <div style="flex: 1 1 300px; min-width: 0; border: 1px solid #DCE8E6; border-radius: 16px; padding: 20px 22px; display: flex; flex-direction: column; gap: 6px">
+      <div style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 18px; color: #172B2A">1C va ERP sinxronizatsiyasi</div>
+      <div style="font-size: 16px; line-height: 1.5; color: #5F6F6D">Mijoz qoldiqlari, narxlar ro‘yxati va ombor qoldiqlarini qayta kiritmasdan sinxron saqlang.</div>
+    </div>
+    
+    <div style="flex: 1 1 300px; min-width: 0; border: 1px solid #DCE8E6; border-radius: 16px; padding: 20px 22px; display: flex; flex-direction: column; gap: 6px">
+      <div style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 18px; color: #172B2A">O‘zbek va rus tillarida ovoz transkripsiyasi</div>
+      <div style="font-size: 16px; line-height: 1.5; color: #5F6F6D">Mahalliy lahjalardagi ovozli xabarlar va telefon qo‘ng‘iroqlarini tushunadi hamda keyingi vazifalarni ajratib beradi.</div>
+    </div>
+    
+    <div style="flex: 1 1 300px; min-width: 0; border: 1px solid #DCE8E6; border-radius: 16px; padding: 20px 22px; display: flex; flex-direction: column; gap: 6px">
+      <div style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 18px; color: #172B2A">Filiallararo uchrashuvlarni band qilish</div>
+      <div style="font-size: 16px; line-height: 1.5; color: #5F6F6D">Bir nechta manzillardagi turli shifokorlar, o‘qituvchilar yoki bokslar yagona umumiy taqvimda.</div>
+    </div>
+    
+    <div style="flex: 1 1 300px; min-width: 0; border: 1px solid #DCE8E6; border-radius: 16px; padding: 20px 22px; display: flex; flex-direction: column; gap: 6px">
+      <div style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 18px; color: #172B2A">Maxsus autrich kampaniyalari</div>
+      <div style="font-size: 16px; line-height: 1.5; color: #5F6F6D">Sizning maqsadli sohangiz uchun sozlangan Izlai: tasdiqlangan kontaktlarni topadi va shaxsiy takliflar yuboradi.</div>
+    </div>
+  </div>
+</section>
+
+<!-- How We Start Section [process] -->
+<section id="process" style="padding: 56px clamp(20px, 5vw, 80px) 88px; display: flex; flex-direction: column; gap: 32px">
+  <div style="display: flex; flex-direction: column; gap: 14px; max-width: 820px">
+    <div style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.14em; color: #087F6A; text-transform: uppercase">Ishni qanday boshlaymiz</div>
+    <h2 style="margin: 0; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: clamp(30px, 3.3vw, 46px); line-height: 1.12; letter-spacing: -0.015em; color: #172B2A">Birinchi qo‘ng‘iroqdan ishlaydigan tizimgacha uch qadam.</h2>
+  </div>
+  
+  <div style="display: flex; flex-wrap: wrap; gap: 32px 48px">
+    <div style="flex: 1 1 280px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+      <div style="display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 12px; background: #172B2A; color: #B7F34A; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: 20px">1</div>
+      <div style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 22px; color: #172B2A">Tahlil qilish</div>
+      <div style="font-size: 17px; line-height: 1.5; color: #5F6F6D">Biznesingizning hozirgi jarayonini o‘rganib chiqamiz hamda vaqt, murojaatlar va uchrashuvlar qayerda yo‘qolayotganini aniqlaymiz.</div>
+    </div>
+    
+    <div style="flex: 1 1 280px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+      <div style="display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 12px; background: #172B2A; color: #B7F34A; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: 20px">2</div>
+      <div style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 22px; color: #172B2A">Loyihalash</div>
+      <div style="font-size: 17px; line-height: 1.5; color: #5F6F6D">Har bir eslatma va bosqich aniq maqsadga ega bo‘lishi uchun avval jarayonni soddalashtiramiz.</div>
+    </div>
+    
+    <div style="flex: 1 1 280px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+      <div style="display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 12px; background: #172B2A; color: #B7F34A; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: 20px">3</div>
+      <div style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 22px; color: #172B2A">Sozlash va ishga tushirish</div>
+      <div style="font-size: 17px; line-height: 1.5; color: #5F6F6D">Vositalarni ulaymiz, ularni to‘liq sinovdan o‘tkazamiz va jamoangizni o‘qitamiz.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Section [faq] -->
+<section id="faq" style="background: #F3F8F7; padding: 88px clamp(20px, 5vw, 80px); display: flex; flex-wrap: wrap; gap: 32px 64px">
+  <div style="flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+    <div style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.14em; color: #087F6A; text-transform: uppercase">Savollar</div>
+    <h2 style="margin: 0; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: clamp(30px, 3.3vw, 46px); line-height: 1.12; letter-spacing: -0.015em; color: #172B2A">Ko‘p beriladigan asosiy savollar.</h2>
+  </div>
+  
+  <div style="flex: 2 1 520px; min-width: 0; background: #FFFFFF; border-radius: 24px; padding: 8px clamp(18px, 2.4vw, 32px) 0">
+    <details open>
+      <summary>Beshta vosita birgalikda qanday ishlaydi?</summary>
+      <div class="faq-body">Ular yagona zanjirni tashkil qiladi: Izlai yangi mijozlarni topadi va bog‘lanadi, Ailo so‘rovlarga 6 soniya ichida javob beradi, ILDAM munosabatlar va to‘lovlarni nazorat qiladi, Bandla uchrashuvni band qiladi, Mirzo esa uchrashuvdagi kelishuvlarni qayd etadi. Ma’lumotlar bir vositadan ikkinchisiga avtomatik o‘tadi, shuning uchun hech kim bir narsani ikki marta kiritmaydi.</div>
+    </details>
+    
+    <details>
+      <summary>Faqat bitta vositadan boshlashimiz mumkinmi?</summary>
+      <div class="faq-body">Ha. Ko‘pchilik bizneslar ijtimoiy tarmoqlar va xabarlarni tartibga solish uchun Ailo’dan yoki o‘tkazib yuborilgan band qilishlarning oldini olish uchun Bandla’dan boshlaydi. Tayyor bo‘lganingizda boshqa vositalarni qo‘shishingiz mumkin.</div>
+    </details>
+    
+    <details>
+      <summary>Bu bizning amaldagi CRM yoki boshqa vositalarimiz o‘rnini bosadimi?</summary>
+      <div class="faq-body">Bu sizda nima borligiga bog‘liq. GPTify OS tarkibida xizmat ko‘rsatish sohasi uchun qulay ILDAM CRM mavjud, ammo u band qilishlar, kontaktlar va qaydlarni 1C, Google Calendar yoki amaldagi ma’lumotlar bazangizga ham uzata oladi.</div>
+    </details>
+    
+    <details>
+      <summary>Mijozlarimiz ma’lumotlariga kim egalik qiladi?</summary>
+      <div class="faq-body">Siz. Mijozlaringiz ma’lumotlari o‘zingizning hisoblaringiz yoki serverlaringizda saqlanadi, to‘liq shifrlanadi va hech qachon ommaviy sun’iy intellekt modellarini o‘qitish uchun ishlatilmaydi.</div>
+    </details>
+    
+    <details>
+      <summary>Tizimni sozlash qancha vaqt oladi?</summary>
+      <div class="faq-body">Bitta filial yoki jamoa uchun standart sozlash 5 dan 10 ish kunigacha davom etadi. Bu muddat kanallarni ulash, tartib-qoidalarni yuklash va xodimlarni o‘qitishni o‘z ichiga oladi.</div>
+    </details>
+  </div>
+</section>
+
+<!-- Closing CTA Section [demo] -->
+<section id="demo" style="padding: 88px clamp(20px, 5vw, 80px)">
+  <div style="background: #172B2A; border-radius: 32px; padding: clamp(28px, 5vw, 72px); display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center; color: #FFFFFF">
+    <h2 style="margin: 0; max-width: 820px; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: clamp(30px, 3.6vw, 50px); line-height: 1.1; letter-spacing: -0.015em; color: #FFFFFF">Jarayonlaringizning bepul 30 daqiqalik auditi.</h2>
+    <p style="margin: 0; max-width: 640px; font-size: 19px; line-height: 1.55; color: #EAF3F1">Biznesingiz qayerda soatlar va daromad yo‘qotayotganini aniqlaymiz va amaliy reja beramiz. Hech qanday bosimsiz.</p>
+    
+    <div style="max-width: 640px; border: 1px solid #3A5552; border-radius: 14px; padding: 14px 20px; font-size: 16px; line-height: 1.5; color: #EAF3F1">
+      <strong style="font-weight: 600; color: #B7F34A">Bizning va’damiz:</strong> agar suhbat davomida yiliga kamida $2,000 tejamkorlik topa olmasak, buni sizga ochiq aytamiz.
+    </div>
+    
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 8px">
+      <button onclick="openDemoModal('Closing CTA Demo')" style="display: inline-flex; align-items: center; justify-content: center; min-height: 58px; min-width: 44px; padding: 0 30px; background: #B7F34A; color: #172B2A; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 18px; border-radius: 10px; border: none; cursor: pointer">Demoni band qilish</button>
+      <a href="https://t.me/GPTify_uz_bot?start=os_demo" style="display: inline-flex; align-items: center; justify-content: center; min-height: 58px; min-width: 44px; padding: 0 30px; border: 1px solid #EAF3F1; color: #FFFFFF; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 18px; border-radius: 10px; text-decoration: none">Telegram’da yozish</a>
+    </div>
+    
+    <div style="font-size: 16px; color: #EAF3F1">
+      Yoki bu yerga yozing: <a href="mailto:team@gptify.co" style="color: #B7F34A; font-weight: 600; display: inline-flex; align-items: center; min-height: 44px">team@gptify.co</a>
+    </div>
+  </div>
+</section>
+
+<footer style="border-top: 1px solid #DCE8E6; padding: 36px clamp(20px, 5vw, 80px) 44px; display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 24px 48px">
+  <div style="display: flex; flex-direction: column; gap: 10px; max-width: 360px">
+    <div style="display: flex; align-items: center; gap: 10px">
+      <svg aria-hidden="true" width="30" height="30" viewBox="0 0 100 100" fill="none"><path fill="#087F6A" d="M51.4 9 A41 41 0 1 0 88 65.4 V42 H47 V58 H73.7 A25 25 0 1 1 50.9 25 Z"></path><path fill="#B7F34A" d="M61 9 H88 V36 H78 V19 H61 Z"></path></svg>
+      <span style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: 20px; color: #172B2A">GPTify OS</span>
+    </div>
+    <div style="font-size: 15px; line-height: 1.5; color: #5F6F6D">Xizmat ko‘rsatish bizneslari uchun sun’iy intellekt operatsion tizimi.</div>
+    <div style="display: flex; flex-direction: column; gap: 2px; font-size: 15px; line-height: 1.5; color: #5F6F6D">
+      <a href="mailto:team@gptify.co" style="display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; font-weight: 600; color: #172B2A">team@gptify.co</a>
+      <a href="https://t.me/GPTify_uz_bot?start=os_demo" style="display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; font-weight: 600; color: #172B2A">Telegram: @GPTify_uz_bot</a>
+      <span style="display: inline-flex; align-items: center; min-height: 32px">Qo‘llab-quvvatlash: support@gptify.co</span>
+      <span style="display: inline-flex; align-items: center; min-height: 32px">"GPTify Technologies" MChJ, Toshkent, O‘zbekiston</span>
+    </div>
+  </div>
+  <nav aria-label="Footer" style="display: flex; flex-wrap: wrap; gap: 4px 28px">
+    <a href="/uz/about.html" style="display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; font-size: 15px; font-weight: 500; color: #172B2A">Biz haqimizda</a>
+    <a href="/privacy.html" style="display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; font-size: 15px; font-weight: 500; color: #172B2A">Maxfiylik siyosati</a>
+    <a href="/terms.html" style="display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; font-size: 15px; font-weight: 500; color: #172B2A">Foydalanish shartlari</a>
+    <a href="/uz/architecture.html" style="display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; font-size: 15px; font-weight: 500; color: #172B2A">Xavfsizlik va arxitektura</a>
+  </nav>
+  <div style="flex: 1 1 100%; font-size: 14px; color: #5F6F6D">© 2026 "GPTify Technologies" MChJ. Barcha huquqlar himoyalangan.</div>
 </footer>
-<!-- ==================== LEAD CAPTURE DEMO MODAL ==================== -->
-<div aria-labelledby="modalTitle" aria-modal="true" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 sm:p-6 overflow-y-auto" id="demoModal" role="dialog">
-<!-- Backdrop with blur -->
-<div class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" onclick="closeDemoModal()"></div>
-<!-- Modal Card -->
-<div class="relative bg-white rounded-2xl sm:rounded-3xl border border-divider shadow-2xl max-w-lg w-full p-5 sm:p-6 z-10 my-auto text-left transition-all max-h-[92vh] overflow-y-auto">
-<!-- Close Button -->
-<button aria-label="Close" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-subtle hover:bg-slate-200 text-slate-500 hover:text-slate-800 flex items-center justify-center transition cursor-pointer" onclick="closeDemoModal()" type="button">
-<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-</button>
-<!-- Form Container -->
-<div id="leadFormContainer">
-<!-- Header -->
-<div class="mb-4 pr-6">
-<div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-mono font-bold text-emerald-800 uppercase tracking-wider mb-1.5">
-<span class="w-1.5 h-1.5 rounded-full bg-emeraldBrand badge-live-pulse"></span>
-<span data-t="modalBadge">JONLI DEMO &amp; AUDIT</span>
+<div id="demoModal" class="modal-overlay" onclick="if(event.target===this)closeDemoModal()" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-card">
+    <button type="button" class="modal-close" onclick="closeDemoModal()" aria-label="Yopish">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+    
+    <div id="modalLeadFormContainer">
+      <div style="margin-bottom: 20px">
+        <h3 id="modalTitle" style="margin: 0 0 6px 0; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-size: 24px; font-weight: 700; color: #172B2A">Demoni band qilish</h3>
+        <p style="margin: 0; font-size: 15px; color: #5F6F6D">GPTify OS sizning jarayonlaringizda qanday ishlashini 30 daqiqada ko‘ring.</p>
+      </div>
+      
+      <form id="leadForm" onsubmit="handleLeadSubmit(event)" style="display: flex; flex-direction: column; gap: 14px">
+        <input type="hidden" id="modalLeadInterest" name="interest" value="General">
+        
+        <div>
+          <label for="leadName" style="display: block; font-size: 14px; font-weight: 600; color: #172B2A; margin-bottom: 6px">Ismingiz</label>
+          <input type="text" id="leadName" name="name" required autocomplete="name" placeholder="Dilshod Karimov" style="width: 100%; min-height: 46px; border: 1px solid #DCE8E6; border-radius: 10px; padding: 10px 14px; font-size: 16px; color: #172B2A; background: #FFFFFF; outline: none">
+        </div>
+        
+        <div>
+          <label for="leadCompany" style="display: block; font-size: 14px; font-weight: 600; color: #172B2A; margin-bottom: 6px">Kompaniya yoki klinika nomi</label>
+          <input type="text" id="leadCompany" name="company" required autocomplete="organization" placeholder="Smile Clinic (stomatologiya)" style="width: 100%; min-height: 46px; border: 1px solid #DCE8E6; border-radius: 10px; padding: 10px 14px; font-size: 16px; color: #172B2A; background: #FFFFFF; outline: none">
+        </div>
+        
+        <div>
+          <label for="leadContact" style="display: block; font-size: 14px; font-weight: 600; color: #172B2A; margin-bottom: 6px">Telefon raqamingiz yoki Telegram</label>
+          <input type="text" id="leadContact" name="contact" required autocomplete="tel" placeholder="+998 90 123 45 67 yoki @foydalanuvchi" style="width: 100%; min-height: 46px; border: 1px solid #DCE8E6; border-radius: 10px; padding: 10px 14px; font-size: 16px; color: #172B2A; background: #FFFFFF; outline: none">
+        </div>
+        
+        <div style="display: flex; flex-direction: column; gap: 14px">
+          <div>
+            <label for="leadTeamSize" style="display: block; font-size: 14px; font-weight: 600; color: #172B2A; margin-bottom: 6px">Jamoa hajmi</label>
+            <select id="leadTeamSize" name="teamSize" style="width: 100%; min-height: 46px; border: 1px solid #DCE8E6; border-radius: 10px; padding: 10px 14px; font-size: 16px; color: #172B2A; background: #FFFFFF; outline: none">
+              <option value="1-5">1-5 kishi</option>
+              <option value="6-15" selected>6-15 kishi</option>
+              <option value="16-50">16-50 kishi</option>
+              <option value="50+">50+ kishi</option>
+            </select>
+          </div>
+          
+          <div>
+            <label style="display: block; font-size: 14px; font-weight: 600; color: #172B2A; margin-bottom: 6px">Siz foydalanadigan aloqa kanallari</label>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px">
+              <label style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: #172B2A; background: #F3F8F7; padding: 10px 12px; border-radius: 8px; border: 1px solid #DCE8E6; cursor: pointer; min-height: 44px">
+                <input type="checkbox" name="channels" value="Telegram" checked style="accent-color: #087F6A; width: 18px; height: 18px"> Telegram
+              </label>
+              <label style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: #172B2A; background: #F3F8F7; padding: 10px 12px; border-radius: 8px; border: 1px solid #DCE8E6; cursor: pointer; min-height: 44px">
+                <input type="checkbox" name="channels" value="WhatsApp" checked style="accent-color: #087F6A; width: 18px; height: 18px"> WhatsApp Business
+              </label>
+              <label style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: #172B2A; background: #F3F8F7; padding: 10px 12px; border-radius: 8px; border: 1px solid #DCE8E6; cursor: pointer; min-height: 44px">
+                <input type="checkbox" name="channels" value="Instagram" checked style="accent-color: #087F6A; width: 18px; height: 18px"> Instagram Direct
+              </label>
+              <label style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: #172B2A; background: #F3F8F7; padding: 10px 12px; border-radius: 8px; border: 1px solid #DCE8E6; cursor: pointer; min-height: 44px">
+                <input type="checkbox" name="channels" value="Calls" style="accent-color: #087F6A; width: 18px; height: 18px"> Telefon qo‘ng‘iroqlari
+              </label>
+            </div>
+          </div>
+        </div>
+        
+        <button type="submit" id="btnModalSubmit" style="width: 100%; min-height: 48px; border-radius: 10px; background: #087F6A; color: #FFFFFF; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-size: 16px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: none; cursor: pointer; margin-top: 8px">
+          <span>So‘rov yuborish</span>
+        </button>
+      </form>
+    </div>
+    
+    <div id="modalLeadSuccessContainer" style="display: none; text-align: center; padding: 24px 8px">
+      <div style="width: 56px; height: 56px; border-radius: 50%; background: #F3F8F7; border: 2px solid #087F6A; color: #087F6A; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 16px">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <h3 style="margin: 0 0 8px 0; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-size: 22px; font-weight: 700; color: #172B2A">So‘rovingiz qabul qilindi!</h3>
+      <p style="margin: 0 0 24px 0; font-size: 15px; color: #5F6F6D; line-height: 1.5">Uchrashuv vaqtini belgilash uchun siz bilan tez orada bog‘lanamiz.</p>
+      <button type="button" onclick="closeDemoModal()" style="min-height: 44px; padding: 0 24px; border-radius: 10px; background: #172B2A; color: #FFFFFF; font-weight: 600; border: none; cursor: pointer">OK</button>
+    </div>
+  </div>
 </div>
-<h3 class="text-xl sm:text-2xl font-black text-slateDark tracking-tight" data-t="modalTitle" id="modalTitle">Jonli Demo va Tizim Auditini Belgilash</h3>
-<p class="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed" data-t="modalSub">GPTify OS korxonangiz ish jarayonida qanday ishlashini jonli ko'ring. Tez orada siz bilan bog'lanamiz.</p>
-</div>
-<!-- Form with Context Tracking Hidden Input -->
-<form class="space-y-3.5" id="demoLeadForm" onsubmit="submitDemoLead(event)">
-<input id="leadInterest" name="interest" type="hidden" value="General"/>
-<!-- Row 1: Full Name & Company Name -->
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-<div>
-<label class="block text-sm font-bold text-slateDark mb-1" data-t="lblModalName" for="leadName">Ism va Familiyangiz</label>
-<input autocomplete="name" class="w-full px-3 py-2.5 rounded-xl border border-divider bg-subtle/50 text-slateDark text-base focus:outline-none focus:ring-2 focus:ring-emeraldBrand focus:bg-white transition" id="leadName" placeholder="Masalan: Dilshod Karimov" required="" type="text"/>
-</div>
-<div>
-<label class="block text-sm font-bold text-slateDark mb-1" data-t="lblModalCompany" for="leadCompany">Kompaniya va soha</label>
-<input class="w-full px-3 py-2.5 rounded-xl border border-divider bg-subtle/50 text-slateDark text-base focus:outline-none focus:ring-2 focus:ring-emeraldBrand focus:bg-white transition" id="leadCompany" placeholder="Masalan: Smile Clinic (stomatologiya)" required="" type="text"/>
-</div>
-</div>
-<!-- Row 2: Phone or Telegram -->
-<div>
-<label class="block text-sm font-bold text-slateDark mb-1" data-t="lblModalContact" for="leadContact">Telefon raqam yoki Telegram (@username)</label>
-<input autocomplete="tel" class="w-full px-3 py-2.5 rounded-xl border border-divider bg-subtle/50 text-slateDark text-base focus:outline-none focus:ring-2 focus:ring-emeraldBrand focus:bg-white transition" id="leadContact" placeholder="+998 90 123 45 67 yoki @username" required="" type="text"/>
-</div>
-<!-- Row 3: Team Size & Channels to Connect -->
-<div class="grid grid-cols-1 sm:grid-cols-12 gap-2.5">
-<div class="sm:col-span-5">
-<label class="block text-sm font-bold text-slateDark mb-1" data-t="lblModalTeam" for="leadTeamSize">Jamoa hajmi:</label>
-<select class="w-full px-3 py-2.5 rounded-xl border border-divider bg-subtle/50 text-slateDark text-base focus:outline-none focus:ring-2 focus:ring-emeraldBrand focus:bg-white transition cursor-pointer" id="leadTeamSize">
-<option value="1-5 xodim">1-5 xodim</option>
-<option selected="" value="6-20 xodim">6-20 xodim</option>
-<option value="20-50 xodim">20-50 xodim</option>
-<option value="50+ xodim (Enterprise)">50+ xodim (Enterprise)</option>
-</select>
-</div>
-<div class="sm:col-span-7">
-<label class="block text-sm font-bold text-slateDark mb-1" data-t="lblModalChannels">Ulanadigan kanallar:</label>
-<div class="grid grid-cols-3 gap-1.5 text-xs">
-<label class="flex items-center gap-1.5 p-1.5 rounded-lg bg-subtle/60 border border-divider cursor-pointer hover:bg-emerald-50/50">
-<input checked="" class="accent-emerald-600 rounded w-4 h-4" name="channels" type="checkbox" value="Telegram"/>
-<span class="text-slate-700 font-medium truncate">Telegram</span>
-</label>
-<label class="flex items-center gap-1.5 p-1.5 rounded-lg bg-subtle/60 border border-divider cursor-pointer hover:bg-emerald-50/50">
-<input checked="" class="accent-emerald-600 rounded w-4 h-4" name="channels" type="checkbox" value="WhatsApp"/>
-<span class="text-slate-700 font-medium truncate">WhatsApp</span>
-</label>
-<label class="flex items-center gap-1.5 p-1.5 rounded-lg bg-subtle/60 border border-divider cursor-pointer hover:bg-emerald-50/50">
-<input checked="" class="accent-emerald-600 rounded w-4 h-4" name="channels" type="checkbox" value="Instagram Direct"/>
-<span class="text-slate-700 font-medium truncate">Instagram</span>
-</label>
-<label class="flex items-center gap-1.5 p-1.5 rounded-lg bg-subtle/60 border border-divider cursor-pointer hover:bg-emerald-50/50">
-<input class="accent-emerald-600 rounded w-4 h-4" name="channels" type="checkbox" value="Corporate Email"/>
-<span class="text-slate-700 font-medium truncate">Email</span>
-</label>
-<label class="flex items-center gap-1.5 p-1.5 rounded-lg bg-subtle/60 border border-divider cursor-pointer hover:bg-emerald-50/50">
-<input class="accent-emerald-600 rounded w-4 h-4" name="channels" type="checkbox" value="LinkedIn Outreach"/>
-<span class="text-slate-700 font-medium truncate">LinkedIn</span>
-</label>
-<label class="flex items-center gap-1.5 p-1.5 rounded-lg bg-subtle/60 border border-divider cursor-pointer hover:bg-emerald-50/50">
-<input checked="" class="accent-emerald-600 rounded w-4 h-4" name="channels" type="checkbox" value="CRM &amp; Calendar"/>
-<span class="text-slate-700 font-medium truncate">CRM</span>
-</label>
-</div>
-</div>
-</div>
-<!-- Submit Button -->
-<div class="pt-2">
-<button class="w-full py-3 px-6 rounded-xl bg-emeraldBrand hover:bg-emeraldDark text-white font-bold text-sm shadow-md transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer min-h-[44px]" id="btnSubmitLead" type="submit">
-<span data-t="modalSubmitBtn" id="btnSubmitText">Demoni Tasdiqlash</span>
-<svg class="w-4 h-4 text-limeSpark" fill="none" id="btnSubmitIcon" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<svg class="hidden animate-spin w-4 h-4 text-white" fill="none" id="btnSubmitSpinner" viewbox="0 0 24 24">
-<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-<path class="opacity-75" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" fill="currentColor"></path>
-</svg>
-</button>
-</div>
-</form>
-</div>
-<!-- Success State Container -->
-<div class="hidden py-8 px-4 text-center space-y-4" id="leadSuccessContainer">
-<div class="w-16 h-16 rounded-full bg-emerald-50 text-emeraldBrand flex items-center justify-center mx-auto shadow-xs border border-emerald-100">
-<svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-</div>
-<div class="space-y-2">
-<h3 class="text-2xl font-black text-slateDark" data-t="successTitle">Rahmat! So'rovingiz Qabul Qilindi</h3>
-<p class="text-sm text-slate-600 max-w-sm mx-auto leading-relaxed" data-t="successDesc">GPTify OS tizimiga qiziqish bildirganingiz uchun rahmat. Ma'lumotlaringiz qabul qilindi, mutaxassisimiz tez orada siz bilan bog'lanadi.</p>
-</div>
-<div class="pt-4 max-w-xs mx-auto">
-<button class="w-full py-3 px-6 rounded-xl bg-slateDark hover:bg-slate-800 text-white font-bold text-sm shadow-sm transition cursor-pointer min-h-[44px]" data-t="modalCloseBtn" onclick="closeDemoModal()" type="button">Oynani yopish</button>
-</div>
-</div>
-</div>
-</div>
+
 <script>
-    let currentLang = 'uz';
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzM3GZEDsWDc-3SUI4sySAWnJFn6ZolQaYkwo7W4VWG-79J3WVLYeQL7qs5jgAtkK_C_g/exec';
+function openDemoModal(interest) {
+  var modal = document.getElementById('demoModal');
+  var interestField = document.getElementById('modalLeadInterest');
+  if (interestField && interest) {
+    interestField.value = interest;
+  }
+  if (modal) {
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+}
 
-    function openDemoModal(interest) {
-      const modal = document.getElementById('demoModal');
-      const interestInput = document.getElementById('leadInterest');
-      if (interestInput && interest) {
-        interestInput.value = interest;
-      }
-      if (modal) {
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-        document.body.style.overflow = 'hidden';
-      }
-    }
+function closeDemoModal() {
+  var modal = document.getElementById('demoModal');
+  if (modal) {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
 
-    function closeDemoModal() {
-      const modal = document.getElementById('demoModal');
-      if (modal) {
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-        document.body.style.overflow = '';
-      }
-    }
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeDemoModal();
+  }
+});
 
-    function toggleMobileMenu() {
-      const menu = document.getElementById('mobileMenuDropdown');
-      const btn = document.getElementById('mobileMenuBtn');
-      const ham = document.getElementById('hamburgerIcon');
-      const close = document.getElementById('closeIcon');
-      if (!menu || !btn) return;
-      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
-
-      if (isExpanded) {
-        closeMobileMenu();
-      } else {
-        menu.classList.remove('hidden');
-        if (ham) ham.classList.add('hidden');
-        if (close) close.classList.remove('hidden');
-        btn.setAttribute('aria-expanded', 'true');
-      }
-    }
-
-    function closeMobileMenu() {
-      const menu = document.getElementById('mobileMenuDropdown');
-      const btn = document.getElementById('mobileMenuBtn');
-      const ham = document.getElementById('hamburgerIcon');
-      const close = document.getElementById('closeIcon');
-      if (menu) menu.classList.add('hidden');
-      if (ham) ham.classList.remove('hidden');
-      if (close) close.classList.add('hidden');
-      if (btn) btn.setAttribute('aria-expanded', 'false');
-    }
-
-    function calculateLosses() {
-      const teamInput = document.getElementById('calcTeam');
-      const rateInput = document.getElementById('calcRate');
-      const hoursInput = document.getElementById('calcHours');
-
-      if (!teamInput || !rateInput || !hoursInput) return;
-
-      const team = parseInt(teamInput.value, 10) || 5;
-      const rate = parseInt(rateInput.value, 10) || 12;
-      const hoursPerWeek = parseInt(hoursInput.value, 10) || 10;
-
-      const teamVal = document.getElementById('calcTeamVal');
-      const rateVal = document.getElementById('calcRateVal');
-      const hoursVal = document.getElementById('calcHoursVal');
-
-      if (teamVal) teamVal.textContent = team + ' ' + (currentLang === 'ru' ? 'сотр.' : (currentLang === 'uz' ? 'xodim' : 'people'));
-      if (rateVal) rateVal.textContent = '$' + rate + '/hr';
-      if (hoursVal) hoursVal.textContent = hoursPerWeek + ' ' + (currentLang === 'ru' ? 'ч/нед' : (currentLang === 'uz' ? 's/hafta' : 'hrs/wk'));
-
-      const monthlyHoursRecovered = Math.round(team * hoursPerWeek * 3.8);
-      const monthlySaved = Math.round(monthlyHoursRecovered * rate * 0.85);
-      const annualSaved = monthlySaved * 12;
-
-      const resHours = document.getElementById('calcResHours');
-      const resMonthly = document.getElementById('calcResMonthly');
-      const resAnnual = document.getElementById('calcResAnnual');
-
-      if (resHours) resHours.textContent = monthlyHoursRecovered.toLocaleString() + 'h';
-      if (resMonthly) resMonthly.textContent = '$' + monthlySaved.toLocaleString();
-      if (resAnnual) resAnnual.textContent = '$' + annualSaved.toLocaleString();
-    }
-
-    async function sendLeadToBackend(leadData) {
-      const payload = {
-        source: 'gptify.si',
-        full_name: leadData.name,
-        company: leadData.company,
-        phone: leadData.contact,
-        contact: leadData.contact,
-        category: 'GPTify OS Demo: ' + leadData.interest,
-        course_name: 'GPTify OS Demo | Qiziqish: ' + leadData.interest + ' | Kompaniya: ' + leadData.company + ' | Jamoa: ' + leadData.teamSize + ' | Kanallar: ' + leadData.channels.join(', '),
-        team_size: leadData.teamSize,
-        channels: leadData.channels.join(', '),
-        interest: leadData.interest,
-        lang: currentLang,
-        created_at: new Date().toISOString()
-      };
-
-      try {
-        await fetch(SCRIPT_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-      } catch (err) {
-        console.warn('Lead submission error', err);
-      }
-    }
-
-    async function submitDemoLead(e) {
-      e.preventDefault();
-      const btnSubmit = document.getElementById('btnSubmitLead');
-      const btnText = document.getElementById('btnSubmitText');
-      const btnSpinner = document.getElementById('btnSubmitSpinner');
-      const btnIcon = document.getElementById('btnSubmitIcon');
-
-      if (btnSubmit) btnSubmit.disabled = true;
-      if (btnSpinner) btnSpinner.classList.remove('hidden');
-      if (btnIcon) btnIcon.classList.add('hidden');
-
-      const name = document.getElementById('leadName').value.trim();
-      const company = document.getElementById('leadCompany').value.trim();
-      const contact = document.getElementById('leadContact').value.trim();
-      const teamSize = document.getElementById('leadTeamSize').value;
-      const interest = (document.getElementById('leadInterest') && document.getElementById('leadInterest').value) || 'General';
-
-      const checkedBoxes = document.querySelectorAll('input[name="channels"]:checked');
-      const channels = Array.from(checkedBoxes).map(cb => cb.value);
-
-      const leadData = {
-        name,
-        company,
-        contact,
-        teamSize,
-        channels,
-        interest,
-        lang: currentLang,
-        timestamp: new Date().toISOString()
-      };
-
-      try {
-        await sendLeadToBackend(leadData);
-      } catch (e) {
-        console.warn('Send lead error', e);
-      }
-
-      const formContainer = document.getElementById('leadFormContainer');
-      const successContainer = document.getElementById('leadSuccessContainer');
-      if (formContainer && successContainer) {
-        formContainer.classList.add('hidden');
-        successContainer.classList.remove('hidden');
-      }
-
-      if (btnSubmit) btnSubmit.disabled = false;
-      if (btnSpinner) btnSpinner.classList.add('hidden');
-      if (btnIcon) btnIcon.classList.remove('hidden');
-    }
-
-    function switchIndustryTab(industry) {
-      const industries = ['clinics', 'education', 'auto', 'advisory'];
-      industries.forEach(ind => {
-        const panel = document.getElementById('panel-' + ind);
-        const btn = document.getElementById('tab-btn-' + ind);
-        if (panel) {
-          if (ind === industry) {
-            panel.classList.remove('hidden');
-          } else {
-            panel.classList.add('hidden');
-          }
-        }
-        if (btn) {
-          if (ind === industry) {
-            btn.classList.remove('bg-white', 'text-slate-700', 'border-divider');
-            btn.classList.add('bg-slateDark', 'text-white', 'shadow-sm');
-            btn.setAttribute('aria-selected', 'true');
-          } else {
-            btn.classList.remove('bg-slateDark', 'text-white', 'shadow-sm');
-            btn.classList.add('bg-white', 'text-slate-700', 'border-divider');
-            btn.setAttribute('aria-selected', 'false');
-          }
-        }
-      });
-    }
-
-    window.addEventListener('DOMContentLoaded', () => {
-      calculateLosses();
+async function handleLeadSubmit(e) {
+  e.preventDefault();
+  var btn = document.getElementById('btnModalSubmit');
+  if (btn) btn.disabled = true;
+  
+  var name = document.getElementById('leadName').value.trim();
+  var company = document.getElementById('leadCompany').value.trim();
+  var contact = document.getElementById('leadContact').value.trim();
+  var teamSize = document.getElementById('leadTeamSize').value;
+  var interest = document.getElementById('modalLeadInterest').value || 'General';
+  
+  var checkedChannels = [];
+  var cbs = document.querySelectorAll('input[name="channels"]:checked');
+  cbs.forEach(function(cb) { checkedChannels.push(cb.value); });
+  
+  var payload = {
+    source: 'gptify.si',
+    full_name: name,
+    company: company,
+    phone: contact,
+    contact: contact,
+    category: 'GPTify OS Demo: ' + interest,
+    course_name: 'GPTify OS Demo | Qiziqish: ' + interest + ' | Kompaniya: ' + company + ' | Jamoa: ' + teamSize + ' | Kanallar: ' + checkedChannels.join(', '),
+    team_size: teamSize,
+    channels: checkedChannels.join(', '),
+    interest: interest,
+    lang: 'uz',
+    created_at: new Date().toISOString()
+  };
+  
+  try {
+    await fetch('https://script.google.com/macros/s/AKfycbzM3GZEDsWDc-3SUI4sySAWnJFn6ZolQaYkwo7W4VWG-79J3WVLYeQL7qs5jgAtkK_C_g/exec', {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
     });
-  </script>
+  } catch (err) {
+    console.warn('Lead submit error:', err);
+  }
+  
+  document.getElementById('modalLeadFormContainer').style.display = 'none';
+  document.getElementById('modalLeadSuccessContainer').style.display = 'block';
+}
+</script>
+
+
+<script>
+const industriesData = {"clinic": {"label": "Klinikalar", "product": "MEDPRO²⁴ · TIBBIYOT VA STOMATOLOGIYA", "pitch": "Qabulxonada javobsiz qolgan qo‘ng‘iroqlar va kelmay qolishlarni kamaytiring.", "cta": "Klinikalar uchun demoni band qilish", "bullets": ["Bemorlar savollariga 24/7 javob beriladi, shoshilinch holatlar xodimlarga yo‘naltiriladi", "Shifokorlarning real vaqtdagi bo‘sh vaqtlari, Telegram va SMS eslatmalari", "Tish xaritalari va davolanish tarixi to‘liq maxfiy saqlanadi"], "steps": [{"name": "Ailo", "color": "#087F6A", "text": "Instagram va Telegram’da bemor savollariga javob beradi"}, {"name": "Bandla", "color": "#7C3AED", "text": "Shifokor qabulini band qiladi va eslatmalar yuboradi"}, {"name": "ILDAM", "color": "#B45309", "text": "Stomatologiya va klinika qaydlarini yuritadi"}, {"name": "Mirzo", "color": "#0369A1", "text": "Qabuldan so‘ng klinik xulosalarni rasmiylashtiradi"}]}, "edu": {"label": "O‘quv markazlari", "product": "EDUPRO²⁴ · AKADEMIYALAR VA TA’LIM", "pitch": "Ijtimoiy tarmoqlardagi so‘rovlarni ro‘yxatdan o‘tgan talabalarga aylantiring.", "cta": "O‘quv markazlari uchun demoni band qilish", "bullets": ["Kurslar va to‘lovlar bo‘yicha savollarga bir zumda javob beriladi", "Sinov darslari o‘qituvchi taqvimiga avtomatik kiritiladi", "Ota-onalar uchun to‘lov eslatmalari va Telegram ilovasi"], "steps": [{"name": "Ailo", "color": "#087F6A", "text": "Talaba qaysi kursda o‘qishni xohlashini aniqlaydi"}, {"name": "Bandla", "color": "#7C3AED", "text": "Bepul sinov darsi va darajani aniqlash testini belgilaydi"}, {"name": "ILDAM", "color": "#B45309", "text": "O‘qish to‘lovlarini nazorat qiladi"}, {"name": "Mirzo", "color": "#0369A1", "text": "Ota-onalar va jamoa bilan uchrashuvlarni umumlashtiradi"}]}, "auto": {"label": "Avtoservislar", "product": "AUTOPRO²⁴ · AVTO VA TA’MIRLASH USTAXONALARI", "pitch": "Har bir ta’mirlash boksini band qiling va har bir mijozni xabardor qilib turing.", "cta": "Avtoservislar uchun demoni band qilish", "bullets": ["Telefon qo‘ng‘iroqlarisiz servis va texnik xizmatni band qilish", "Kompaniya avtoparklariga to‘g‘ridan-to‘g‘ri taklif yuborish", "Foto-hisobotlar va Telegram orqali holat xabarlari"], "steps": [{"name": "Ailo", "color": "#087F6A", "text": "Trade-in va texnik xizmat savollarini qabul qiladi"}, {"name": "Bandla", "color": "#7C3AED", "text": "Ta’mirlash boksini band qiladi"}, {"name": "ILDAM", "color": "#B45309", "text": "Naryad-buyurtmalar va ehtiyot qismlar hisobini yuritadi"}, {"name": "Izlai", "color": "#3730A3", "text": "Avtoparkka ega kompaniyalar bilan bog‘lanadi"}]}, "advisory": {"label": "Konsalting kompaniyalari", "product": "ADVISORYPRO²⁴ · KORPORATIV VA B2B KONSALTING", "pitch": "Yangi mijozlarni jalb qiling va xizmatlarni yagona tizimda ko‘rsating.", "cta": "Konsalting kompaniyalari uchun demoni band qilish", "bullets": ["Email va LinkedIn orqali yangi mijozlar izlash", "Tijorat takliflari va doimiy to‘lovlar (retainer) nazorati", "Muzokaralarning maxfiy qisqacha xulosalari Telegram’ga yuboriladi"], "steps": [{"name": "Izlai", "color": "#3730A3", "text": "Mos keladigan korporativ mijozlarni topadi va bog‘lanadi"}, {"name": "ILDAM", "color": "#B45309", "text": "Kelib tushgan so‘rovlarni saralaydi"}, {"name": "Mirzo", "color": "#0369A1", "text": "Konsultatsiyalarni band qiladi"}, {"name": "Bandla", "color": "#7C3AED", "text": "Doimiy to‘lovlar va hisob-fakturalarni nazorat qiladi"}]}};
+
+function selectIndustryTab(id) {
+  const tabs = ['clinic', 'edu', 'auto', 'advisory'];
+  tabs.forEach(function(t) {
+    const btn = document.getElementById('tab-btn-' + t);
+    if (btn) {
+      if (t === id) {
+        btn.style.background = '#172B2A';
+        btn.style.color = '#FFFFFF';
+        btn.style.border = '1px solid #172B2A';
+        btn.setAttribute('aria-selected', 'true');
+      } else {
+        btn.style.background = '#FFFFFF';
+        btn.style.color = '#172B2A';
+        btn.style.border = '1px solid #DCE8E6';
+        btn.setAttribute('aria-selected', 'false');
+      }
+    }
+  });
+
+  const d = industriesData[id];
+  if (!d) return;
+
+  const badge = document.getElementById('ind-product-badge');
+  const pitch = document.getElementById('ind-pitch-heading');
+  const cta = document.getElementById('ind-cta-btn');
+  const bullets = document.getElementById('ind-bullets-container');
+  const steps = document.getElementById('ind-steps-container');
+
+  if (badge) badge.textContent = d.product;
+  if (pitch) pitch.textContent = d.pitch;
+  if (cta) {
+    cta.textContent = d.cta;
+    cta.setAttribute('onclick', "openDemoModal('" + d.label.replace(/'/g, "\\'") + "')");
+  }
+
+  if (bullets) {
+    bullets.innerHTML = d.bullets.map(function(b) {
+      return '<div style="display: flex; align-items: flex-start; gap: 12px; font-size: 18px; line-height: 1.45; color: #172B2A">' +
+        '<svg aria-hidden="true" style="flex: none; margin-top: 3px" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#087F6A" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"></path></svg>' +
+        '<span>' + b + '</span></div>';
+    }).join('');
+  }
+
+  if (steps) {
+    steps.innerHTML = d.steps.map(function(s) {
+      return '<div style="display: flex; align-items: center; gap: 14px">' +
+        '<div style="flex: none; width: 92px; box-sizing: border-box; text-align: center; border-radius: 10px; padding: 10px 0; font-family: inherit; font-weight: 700; font-size: 15px; color: #FFFFFF; background: ' + s.color + '">' + s.name + '</div>' +
+        '<div style="font-size: 16px; line-height: 1.4; color: #172B2A">' + s.text + '</div></div>';
+    }).join('');
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const tabList = document.querySelector('[role="tablist"]');
+  if (tabList) {
+    tabList.addEventListener('keydown', function(e) {
+      const tabs = Array.from(tabList.querySelectorAll('[role="tab"]'));
+      let index = tabs.indexOf(document.activeElement);
+      if (index === -1) return;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+        e.preventDefault();
+        const next = (index + 1) % tabs.length;
+        tabs[next].focus();
+        tabs[next].click();
+      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        const prev = (index - 1 + tabs.length) % tabs.length;
+        tabs[prev].focus();
+        tabs[prev].click();
+      }
+    });
+  }
+
+  const sTeam = document.getElementById('slider-team');
+  const sHours = document.getElementById('slider-hours');
+  const sSalary = document.getElementById('slider-salary');
+
+  if (sTeam) {
+    sTeam.addEventListener('input', updateCalculator);
+    sTeam.addEventListener('change', updateCalculator);
+  }
+  if (sHours) {
+    sHours.addEventListener('input', updateCalculator);
+    sHours.addEventListener('change', updateCalculator);
+  }
+  if (sSalary) {
+    sSalary.addEventListener('input', updateCalculator);
+    sSalary.addEventListener('change', updateCalculator);
+  }
+
+  updateCalculator();
+});
+
+function updateCalculator() {
+  const sTeam = document.getElementById('slider-team');
+  const sHours = document.getElementById('slider-hours');
+  const sSalary = document.getElementById('slider-salary');
+  if (!sTeam || !sHours || !sSalary) return;
+
+  const team = Number(sTeam.value);
+  const hours = Number(sHours.value);
+  const salary = Number(sSalary.value);
+
+  const valTeam = document.getElementById('val-team');
+  const valHours = document.getElementById('val-hours');
+  const valSalary = document.getElementById('val-salary');
+
+  if (valTeam) valTeam.textContent = team;
+  if (valHours) valHours.textContent = hours + ' h';
+  if (valSalary) valSalary.textContent = '$' + salary;
+
+  const weekHours = Math.round(team * hours * 0.7 * 10) / 10;
+  const yearly = Math.round(weekHours * 50 * (salary / 160));
+  const monthly = Math.round(yearly / 12);
+
+  const resYear = document.getElementById('res-year-text');
+  const resMonth = document.getElementById('res-month-text');
+  const resHours = document.getElementById('res-hours-text');
+
+  if (resYear) resYear.textContent = '~$' + yearly.toLocaleString('en-US');
+  if (resMonth) resMonth.textContent = '$' + monthly.toLocaleString('en-US');
+  if (resHours) resHours.textContent = weekHours.toFixed(1);
+}
+</script>
 </body>
 </html>
