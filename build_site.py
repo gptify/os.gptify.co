@@ -317,7 +317,7 @@ details[open] summary .faq-icon {
 def generate_header(lang, current_page='home'):
     prefix = '/uz/' if lang == 'uz' else ('/ru/' if lang == 'ru' else '/')
     about_url = f"{prefix}about.html" if lang != 'en' else "/about.html"
-    home_url = f"{prefix}" if current_page in ['about', 'arch'] else "#top"
+    home_url = prefix
     
     if current_page == 'about':
         url_en = "/about.html"
