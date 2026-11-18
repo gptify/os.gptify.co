@@ -2,9 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-  <script>if(location.protocol==='http:'&&!['localhost','127.0.0.1'].includes(location.hostname)){location.replace('https://'+location.host+location.pathname+location.search+location.hash);}</script>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>About GPTify OS · Practical AI for service businesses</title>
   <meta name="description" content="We are a team of B2B sales, marketing and AI practitioners based in Berlin and Tashkent, building practical AI for service businesses.">
   <link rel="canonical" href="https://gptify.si/about.html">
@@ -12,17 +10,8 @@
   <link rel="alternate" hreflang="uz" href="https://gptify.si/uz/about.html">
   <link rel="alternate" hreflang="ru" href="https://gptify.si/ru/about.html">
   <link rel="alternate" hreflang="x-default" href="https://gptify.si/about.html">
-  <link rel="stylesheet" href="style.min.css">
-  <link rel="icon" href="gptify-mark.svg" type="image/svg+xml">
-  <meta property="og:title" content="About GPTify OS · Practical AI for service businesses">
-  <meta property="og:description" content="We are a team of B2B sales, marketing and AI practitioners based in Berlin and Tashkent, building practical AI for service businesses.">
-  <meta property="og:image" content="https://gptify.si/og-image.png">
-  <meta property="og:url" content="https://gptify.si/about.html">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="About GPTify OS · Practical AI for service businesses">
-  <meta name="twitter:description" content="We are a team of B2B sales, marketing and AI practitioners based in Berlin and Tashkent, building practical AI for service businesses.">
-  <meta name="twitter:image" content="https://gptify.si/og-image.png">
+  <link rel="stylesheet" href="/style.min.css">
+  <link rel="icon" href="/gptify-app-icon.svg" type="image/svg+xml">
 </head>
 <body>
 <header style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 20px; padding: 14px clamp(16px, 2.5vw, 40px); border-bottom: 1px solid #DCE8E6; background: #FFFFFF; position: sticky; top: 0; z-index: 100;">
@@ -31,27 +20,66 @@
     <span style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: 24px; letter-spacing: -0.01em">GPTify</span>
     <span style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 13px; color: #FFFFFF; background: #087F6A; border-radius: 6px; padding: 3px 8px">OS</span>
   </a>
-  <nav aria-label="Main" style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 14px">
-    <a href="/#tools" style="display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; padding: 0 8px; font-size: 15px; font-weight: 500; color: #172B2A; text-decoration: none">The five tools</a>
-    <a href="/#industries" style="display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; padding: 0 8px; font-size: 15px; font-weight: 500; color: #172B2A; text-decoration: none">Industries</a>
+  <nav aria-label="Main" class="hdr-nav" style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 14px">
+    <a href="/#how" style="display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; padding: 0 8px; font-size: 15px; font-weight: 500; color: #172B2A; text-decoration: none">How it works</a>
+    <a href="/#savings" style="display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; padding: 0 8px; font-size: 15px; font-weight: 500; color: #172B2A; text-decoration: none">Savings</a>
+    <a href="/#privacy" style="display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; padding: 0 8px; font-size: 15px; font-weight: 500; color: #172B2A; text-decoration: none">Patient data</a>
     <a href="/#faq" style="display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; padding: 0 8px; font-size: 15px; font-weight: 500; color: #172B2A; text-decoration: none">FAQ</a>
     <a href="/about.html" style="display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; padding: 0 8px; font-size: 15px; text-decoration: none; color: #087F6A; font-weight: 600;">About</a>
+    <a href="/contact.html" style="display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; padding: 0 8px; font-size: 15px; text-decoration: none; color: #172B2A; font-weight: 500;">Contact</a>
   </nav>
   <div style="display: flex; align-items: center; gap: 12px; margin-left: auto; flex-shrink: 0">
-    <div style="display: flex; align-items: center; gap: 4px" role="navigation" aria-label="Language selection">
+    <div class="hdr-lang" style="display: flex; align-items: center; gap: 4px" role="navigation" aria-label="Language selection">
       <a href="/about.html" aria-current="true" style="display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; font-size: 14px; border-radius: 10px; text-decoration: none; background: #F3F8F7; font-weight: 600; color: #172B2A;">EN</a>
       <a href="/uz/about.html" aria-current="false" style="display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; font-size: 14px; border-radius: 10px; text-decoration: none; color: #5F6F6D; font-weight: 500;">UZ</a>
       <a href="/ru/about.html" aria-current="false" style="display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; font-size: 14px; border-radius: 10px; text-decoration: none; color: #5F6F6D; font-weight: 500;">RU</a>
     </div>
-    <button onclick="openDemoModal('Header Nav')" style="display: inline-flex; align-items: center; justify-content: center; min-height: 48px; min-width: 44px; padding: 0 18px; background: #087F6A; color: #FFFFFF; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 15px; border-radius: 10px; text-decoration: none; border: none; cursor: pointer; white-space: nowrap">Book a demo</button>
+    <a class="hdr-cta" href="/#demo" onclick="openLeadModal(); return false;" style="display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 20px; background: #087F6A; color: #FFFFFF; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 15px; border-radius: 10px; text-decoration: none">Book a demo</a>
+    <button type="button" class="hdr-menu" onclick="openMobileMenu()" aria-label="Open menu" style="align-items: center; justify-content: center; width: 48px; height: 48px; border: 1px solid #DCE8E6; border-radius: 10px; background: transparent; color: #172B2A; cursor: pointer">
+      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#172B2A" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+    </button>
   </div>
 </header>
 
-<main style="padding: 64px clamp(20px, 5vw, 80px) 24px; display: flex; flex-direction: column; overflow-x: hidden">
+<!-- Mobile Menu Overlay -->
+<div id="mobile-menu" style="display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(23, 43, 42, 0.6); backdrop-filter: blur(4px);" onclick="if(event.target === this) closeMobileMenu()">
+  <div style="position: absolute; top: 0; right: 0; bottom: 0; width: min(320px, 85vw); background: #FFFFFF; padding: 24px; display: flex; flex-direction: column; gap: 20px; box-shadow: -4px 0 24px rgba(0,0,0,0.15); overflow-y: auto;">
+    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #DCE8E6; padding-bottom: 16px;">
+      <span style="font-family: 'Poppins', 'Inter', sans-serif; font-weight: 700; font-size: 20px; color: #172B2A;">GPTify <span style="font-size: 12px; background: #087F6A; color: #fff; padding: 2px 6px; border-radius: 4px;">OS</span></span>
+      <button type="button" onclick="closeMobileMenu()" aria-label="Close menu" style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border: 1px solid #DCE8E6; border-radius: 10px; background: transparent; cursor: pointer;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#172B2A" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+      </button>
+    </div>
+    <nav style="display: flex; flex-direction: column; gap: 6px;">
+      <a href="/#how" onclick="closeMobileMenu()" style="display: flex; align-items: center; min-height: 48px; padding: 0 12px; font-size: 16px; font-weight: 500; color: #172B2A; text-decoration: none; border-radius: 8px;">How it works</a>
+      <a href="/#savings" onclick="closeMobileMenu()" style="display: flex; align-items: center; min-height: 48px; padding: 0 12px; font-size: 16px; font-weight: 500; color: #172B2A; text-decoration: none; border-radius: 8px;">Savings</a>
+      <a href="/#privacy" onclick="closeMobileMenu()" style="display: flex; align-items: center; min-height: 48px; padding: 0 12px; font-size: 16px; font-weight: 500; color: #172B2A; text-decoration: none; border-radius: 8px;">Patient data</a>
+      <a href="/#faq" onclick="closeMobileMenu()" style="display: flex; align-items: center; min-height: 48px; padding: 0 12px; font-size: 16px; font-weight: 500; color: #172B2A; text-decoration: none; border-radius: 8px;">FAQ</a>
+      <a href="/about.html" onclick="closeMobileMenu()" style="display: flex; align-items: center; min-height: 48px; padding: 0 12px; font-size: 16px; font-weight: 500; color: #172B2A; text-decoration: none; border-radius: 8px;">About</a>
+      <a href="/contact.html" onclick="closeMobileMenu()" style="display: flex; align-items: center; min-height: 48px; padding: 0 12px; font-size: 16px; font-weight: 500; color: #172B2A; text-decoration: none; border-radius: 8px;">Contact</a>
+    </nav>
+    <div style="border-top: 1px solid #DCE8E6; padding-top: 16px; display: flex; flex-direction: column; gap: 14px;">
+      <div style="font-size: 13px; font-weight: 600; color: #5F6F6D; text-transform: uppercase; letter-spacing: 0.05em;">Language</div>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <a href="/about.html" style="display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; font-size: 15px; border-radius: 8px; text-decoration: none; background: #F3F8F7; font-weight: 600; color: #172B2A;">EN</a>
+        <a href="/uz/about.html" style="display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; font-size: 15px; border-radius: 8px; text-decoration: none; color: #5F6F6D; font-weight: 500;">UZ</a>
+        <a href="/ru/about.html" style="display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; font-size: 15px; border-radius: 8px; text-decoration: none; color: #5F6F6D; font-weight: 500;">RU</a>
+      </div>
+      <a href="/#demo" onclick="closeMobileMenu(); openLeadModal(); return false;" style="display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 20px; background: #087F6A; color: #FFFFFF; font-family: 'Poppins', 'Inter', sans-serif; font-weight: 600; font-size: 16px; border-radius: 10px; text-decoration: none; margin-top: 8px;">Book a demo</a>
+    </div>
+  </div>
+</div>
+
+
+<main style="padding: 64px clamp(20px, 5vw, 80px) 24px; display: flex; flex-direction: column; background: #FFFFFF">
   <div style="display: flex; flex-direction: column; gap: 20px; max-width: 900px; padding-bottom: 56px">
     <div style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.14em; color: #087F6A; text-transform: uppercase">About</div>
-    <h1 style="margin: 0; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: clamp(36px, 4.2vw, 60px); line-height: 1.06; letter-spacing: -0.02em; color: #172B2A">Practical AI for service businesses,</h1>
-    <p style="margin: 0; font-size: 20px; line-height: 1.6; color: #5F6F6D">GPTify OS connects customer conversations, CRM, scheduling, meetings and outreach through five AI tools: Ailo, ILDAM, Bandla, Mirzo and Izlai. We set it up for clinics, education centres, auto workshops and advisory firms, so routine work gets done without manual data entry.</p>
+    <h1 style="margin: 0; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: clamp(36px, 4.2vw, 60px); line-height: 1.06; letter-spacing: -0.02em; color: #172B2A">
+      Practical AI for private clinics, <span style="color: #087F6A">without the hype.</span>
+    </h1>
+    <p style="margin: 0; font-size: 20px; line-height: 1.6; color: #5F6F6D">
+      GPTify OS answers patient messages, books appointments, sends reminders and keeps patient records for private clinics in Uzbekistan, in Uzbek and Russian. We also set it up for education centres, auto workshops and advisory firms.
+    </p>
   </div>
 
   <!-- The Team -->
@@ -62,260 +90,251 @@
     </div>
     <div style="flex: 2 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
       <p style="margin: 0; font-size: 18px; line-height: 1.65; color: #5F6F6D">We are a team of B2B sales, marketing and AI practitioners based in Europe and Central Asia, with offices in Berlin and Tashkent.</p>
-      
       <div style="display: flex; flex-wrap: wrap; gap: 16px">
-        <div style="flex: 1 1 240px; min-width: 0; background: #FFFFFF; border: 1px solid #DCE8E6; border-radius: 20px; padding: 22px; display: flex; flex-direction: column; gap: 12px">
+        <div style="flex: 1 1 260px; min-width: 0; background: #FFFFFF; border: 1px solid #DCE8E6; border-radius: 20px; padding: 22px; display: flex; flex-direction: column; gap: 12px">
           <div aria-hidden="true" style="display: flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 50%; background: #087F6A; color: #FFFFFF; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: 20px">SI</div>
-          <div style="display: flex; flex-direction: column; gap: 3px">
-            <div style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 20px; color: #172B2A">Shukhrat Iskandarov</div>
-            <div style="font-size: 16px; line-height: 1.45; color: #172B2A">Founder and Chief AI Strategist</div>
-            <div style="font-size: 15px; color: #5F6F6D">Berlin</div>
-          </div>
+          <div style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 20px; color: #172B2A">Shukhrat Iskandarov</div>
+          <div style="font-size: 16px; line-height: 1.45; color: #172B2A">Founder and Chief AI Strategist</div>
+          <div style="font-size: 15px; color: #5F6F6D">Berlin</div>
         </div>
-        
-        <div style="flex: 1 1 240px; min-width: 0; background: #FFFFFF; border: 1px solid #DCE8E6; border-radius: 20px; padding: 22px; display: flex; flex-direction: column; gap: 12px">
+        <div style="flex: 1 1 260px; min-width: 0; background: #FFFFFF; border: 1px solid #DCE8E6; border-radius: 20px; padding: 22px; display: flex; flex-direction: column; gap: 12px">
           <div aria-hidden="true" style="display: flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 50%; background: #3730A3; color: #FFFFFF; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: 20px">DI</div>
-          <div style="display: flex; flex-direction: column; gap: 3px">
-            <div style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 20px; color: #172B2A">Davlatbek Iskandarov</div>
-            <div style="font-size: 16px; line-height: 1.45; color: #172B2A">Chief Scientific and AI Expert</div>
-            <div style="font-size: 15px; color: #5F6F6D">Uzbekistan</div>
-          </div>
-        </div>
-        
-        <div style="flex: 1 1 240px; min-width: 0; background: #FFFFFF; border: 1px solid #DCE8E6; border-radius: 20px; padding: 22px; display: flex; flex-direction: column; gap: 12px">
-          <div aria-hidden="true" style="display: flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 50%; background: #7C3AED; color: #FFFFFF; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: 20px">GC</div>
-          <div style="display: flex; flex-direction: column; gap: 3px">
-            <div style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 20px; color: #172B2A">George Calceo</div>
-            <div style="font-size: 16px; line-height: 1.45; color: #172B2A">Founder of Cubeo AI, international partner</div>
-            <div style="font-size: 15px; color: #5F6F6D">Romania</div>
-          </div>
-        </div>
-        
-        <div style="flex: 1 1 240px; min-width: 0; background: #FFFFFF; border: 1px solid #DCE8E6; border-radius: 20px; padding: 22px; display: flex; flex-direction: column; gap: 12px">
-          <div aria-hidden="true" style="display: flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 50%; background: #B45309; color: #FFFFFF; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: 20px">CB</div>
-          <div style="display: flex; flex-direction: column; gap: 3px">
-            <div style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 20px; color: #172B2A">Chris Briest</div>
-            <div style="font-size: 16px; line-height: 1.45; color: #172B2A">GTM Enablement Manager at Apollo, adviser</div>
-            <div style="font-size: 15px; color: #5F6F6D">USA</div>
-          </div>
+          <div style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 20px; color: #172B2A">Davlatbek Iskandarov</div>
+          <div style="font-size: 16px; line-height: 1.45; color: #172B2A">Chief Scientific and AI Expert</div>
+          <div style="font-size: 15px; color: #5F6F6D">Uzbekistan</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- How we work -->
+  <!-- Our Method -->
   <div style="display: flex; flex-wrap: wrap; gap: 12px 56px; padding: 40px 0; border-top: 1px solid #DCE8E6">
     <div style="flex: 1 1 260px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
       <div style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.14em; color: #087F6A; text-transform: uppercase">Our method</div>
       <h2 style="margin: 0; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: clamp(26px, 2.6vw, 36px); line-height: 1.15; letter-spacing: -0.01em; color: #172B2A">How we work</h2>
     </div>
     <div style="flex: 2 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
-      <p style="margin: 0; font-size: 18px; line-height: 1.65; color: #5F6F6D">We review and simplify how your business runs before we build anything. First we map where time, enquiries and bookings are lost. Then we design the process so every reminder and hand-off has a clear purpose. Only then do we connect the tools, test them end to end and train your team.</p>
+      <p style="margin: 0; font-size: 18px; line-height: 1.65; color: #5F6F6D">Before we switch anything on, we look at how your clinic handles messages, bookings and no-shows today, and agree what to measure. Then we connect your channels, load your doctors’ schedules and prices, and train your reception team. After launch we review the numbers with you every week.</p>
     </div>
   </div>
 
-  <!-- How we handle your data -->
+  <!-- Your Data -->
   <div style="display: flex; flex-wrap: wrap; gap: 12px 56px; padding: 40px 0; border-top: 1px solid #DCE8E6">
     <div style="flex: 1 1 260px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
       <div style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.14em; color: #087F6A; text-transform: uppercase">Your data</div>
       <h2 style="margin: 0; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: clamp(26px, 2.6vw, 36px); line-height: 1.15; letter-spacing: -0.01em; color: #172B2A">How we handle your data</h2>
     </div>
     <div style="flex: 2 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
-      <p style="margin: 0; font-size: 18px; line-height: 1.65; color: #5F6F6D">Everything runs on your own cloud accounts or servers. We use the official Meta APIs, encrypted databases and strict access controls. Your client data stays yours and is never used to train AI models. Details are in our Privacy Policy.</p>
+      <p style="margin: 0; font-size: 18px; line-height: 1.65; color: #5F6F6D">
+        Patients are told they are talking to an automated assistant and asked for consent before they share their details. Where patient data is stored is agreed with each clinic in writing. We use the official Meta APIs, encrypted databases and strict access controls, and patient data is never sold or used to train AI models. Details are in our Privacy Policy.
+      </p>
     </div>
   </div>
 
-  <!-- What else we do -->
+  <!-- The Wider GPTify -->
   <div style="display: flex; flex-wrap: wrap; gap: 12px 56px; padding: 40px 0; border-top: 1px solid #DCE8E6">
     <div style="flex: 1 1 260px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
       <div style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.14em; color: #087F6A; text-transform: uppercase">The wider GPTify</div>
       <h2 style="margin: 0; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: clamp(26px, 2.6vw, 36px); line-height: 1.15; letter-spacing: -0.01em; color: #172B2A">What else we do</h2>
     </div>
     <div style="flex: 2 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
-      <p style="margin: 0; font-size: 18px; line-height: 1.65; color: #5F6F6D">GPTify also publishes AI Insights for Sales & Marketing, a weekly newsletter, runs GTM Shelf, a directory of AI tools for sales and marketing teams, and trains teams in Uzbekistan through GPTify Uzbekistan. We build custom AI agents with our partner Cubeo AI.</p>
+      <p style="margin: 0; font-size: 18px; line-height: 1.65; color: #5F6F6D">
+        GPTify also publishes AI Insights for Sales & Marketing, a weekly newsletter, runs GTM Shelf, a directory of AI tools for sales and marketing teams, and trains teams in Uzbekistan through GPTify Uzbekistan. We build custom AI agents with our partner Cubeo AI.
+      </p>
     </div>
   </div>
 
-  <!-- Talk to us -->
+  <!-- Contact -->
   <div style="display: flex; flex-wrap: wrap; gap: 12px 56px; padding: 40px 0; border-top: 1px solid #DCE8E6">
     <div style="flex: 1 1 260px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
       <div style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.14em; color: #087F6A; text-transform: uppercase">Contact</div>
       <h2 style="margin: 0; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: clamp(26px, 2.6vw, 36px); line-height: 1.15; letter-spacing: -0.01em; color: #172B2A">Talk to us</h2>
     </div>
     <div style="flex: 2 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
-      <p style="margin: 0; font-size: 18px; line-height: 1.65; color: #5F6F6D">Questions, or want to see GPTify OS on your own process? Write to team@gptify.co or message us on Telegram.</p>
-      <div>
-        <button onclick="openDemoModal('About Page Contact')" style="align-self: flex-start; display: inline-flex; align-items: center; justify-content: center; min-height: 56px; min-width: 44px; padding: 0 28px; background: #087F6A; color: #FFFFFF; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 17px; border-radius: 10px; border: none; cursor: pointer">Book a demo</button>
-      </div>
+      <p style="margin: 0; font-size: 18px; line-height: 1.65; color: #5F6F6D">Want to see GPTify OS working with your clinic’s own messages? Write to team@gptify.co, message us on Telegram, or use the contact page.</p>
+      <a href="#demo" onclick="openLeadModal(); return false;" style="align-self: flex-start; display: inline-flex; align-items: center; min-height: 56px; padding: 0 28px; background: #087F6A; color: #FFFFFF; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 17px; border-radius: 10px; text-decoration: none">
+        Book a demo
+      </a>
     </div>
   </div>
 </main>
 
-<footer style="border-top: 1px solid #DCE8E6; padding: 36px clamp(20px, 5vw, 80px) 44px; display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 24px 48px">
-  <div style="display: flex; flex-direction: column; gap: 10px; max-width: 360px">
+<footer style="border-top: 1px solid #DCE8E6; padding: 36px clamp(20px, 5vw, 80px) 44px; display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 24px 48px; background: #FFFFFF">
+  <div style="display: flex; flex-direction: column; gap: 10px; max-width: 380px">
     <div style="display: flex; align-items: center; gap: 10px">
       <svg aria-hidden="true" width="30" height="30" viewBox="0 0 100 100" fill="none"><path fill="#087F6A" d="M51.4 9 A41 41 0 1 0 88 65.4 V42 H47 V58 H73.7 A25 25 0 1 1 50.9 25 Z"></path><path fill="#B7F34A" d="M61 9 H88 V36 H78 V19 H61 Z"></path></svg>
       <span style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: 20px; color: #172B2A">GPTify OS</span>
     </div>
-    <div style="font-size: 15px; line-height: 1.5; color: #5F6F6D">The AI operating system for service businesses.</div>
+    <div style="font-size: 15px; line-height: 1.5; color: #5F6F6D">Patient messaging, booking and records for private clinics in Uzbekistan.</div>
+    <div style="display: flex; flex-direction: column; gap: 2px; font-size: 15px; line-height: 1.5; color: #5F6F6D">
+      <a href="mailto:team@gptify.co" style="display: inline-flex; align-items: center; min-height: 44px; font-weight: 600">team@gptify.co</a>
+      <a href="https://t.me/GPTify_uz_bot?start=os_demo" style="display: inline-flex; align-items: center; min-height: 44px; font-weight: 600">Telegram: @GPTify_uz_bot</a>
+      <span style="display: inline-flex; align-items: center; min-height: 32px">Support: support@gptify.co</span>
+      <span>GPTify Technologies MChJ, Tashkent, Uzbekistan</span>
+    </div>
   </div>
   <nav aria-label="Footer" style="display: flex; flex-wrap: wrap; gap: 4px 28px">
-    <a href="/about.html" style="display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; font-size: 15px; font-weight: 500; color: #172B2A">About us</a>
-    <a href="/privacy.html" style="display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; font-size: 15px; font-weight: 500; color: #172B2A">Privacy Policy</a>
-    <a href="/terms.html" style="display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; font-size: 15px; font-weight: 500; color: #172B2A">Terms of Service</a>
-    <a href="/architecture.html" style="display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; font-size: 15px; font-weight: 500; color: #172B2A">Security and architecture</a>
+    <a href="/about.html" style="display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; font-size: 15px; font-weight: 500; color: #172B2A">About us</a>
+    <a href="/contact.html" style="display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; font-size: 15px; font-weight: 500; color: #172B2A">Contact</a>
+    <a href="/privacy.html" style="display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; font-size: 15px; font-weight: 500; color: #172B2A">Privacy Policy</a>
+    <a href="/terms.html" style="display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; font-size: 15px; font-weight: 500; color: #172B2A">Terms of Service</a>
+    <a href="/architecture.html" style="display: inline-flex; align-items: center; min-height: 44px; min-width: 44px; font-size: 15px; font-weight: 500; color: #172B2A">Security and architecture</a>
   </nav>
   <div style="flex: 1 1 100%; font-size: 14px; color: #5F6F6D">© 2026 GPTify Technologies MChJ. All rights reserved.</div>
 </footer>
-<div id="demoModal" class="modal-overlay" onclick="if(event.target===this)closeDemoModal()" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-  <div class="modal-card">
-    <button type="button" class="modal-close" onclick="closeDemoModal()" aria-label="Close">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+
+<!-- Lead Capture Modal -->
+<div id="leadModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" style="display: none; position: fixed; inset: 0; z-index: 1000; background: rgba(23, 43, 42, 0.6); backdrop-filter: blur(4px); overflow-y: auto; padding: 20px" onclick="if(event.target === this) closeLeadModal()">
+  <div style="position: relative; max-width: 520px; margin: 40px auto; background: #FFFFFF; border-radius: 20px; padding: clamp(24px, 4vw, 36px); box-shadow: 0 20px 40px rgba(0,0,0,0.2); border: 1px solid #DCE8E6">
+    <button type="button" onclick="closeLeadModal()" aria-label="Close" style="position: absolute; top: 18px; right: 18px; width: 44px; height: 44px; border-radius: 10px; background: #F3F8F7; border: 1px solid #DCE8E6; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #172B2A">
+      <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"></path></svg>
     </button>
     
-    <div id="modalLeadFormContainer">
-      <div style="margin-bottom: 20px">
-        <h3 id="modalTitle" style="margin: 0 0 6px 0; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-size: 24px; font-weight: 700; color: #172B2A">Book a demo</h3>
-        <p style="margin: 0; font-size: 15px; color: #5F6F6D">See GPTify OS on your own process in 30 minutes.</p>
-      </div>
+    <div id="modalBody">
+      <h3 id="modalTitle" style="margin: 0 0 8px; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-size: 24px; font-weight: 700; color: #172B2A">Book a demo</h3>
+      <p style="margin: 0 0 20px; font-size: 15px; color: #5F6F6D; line-height: 1.5">See GPTify OS on your own process in 30 minutes.</p>
       
       <form id="leadForm" onsubmit="handleLeadSubmit(event)" style="display: flex; flex-direction: column; gap: 14px">
-        <input type="hidden" id="modalLeadInterest" name="interest" value="General">
+        <input type="hidden" id="modalLeadInterest" name="interest" value="Clinic Demo">
         
         <div>
           <label for="leadName" style="display: block; font-size: 14px; font-weight: 600; color: #172B2A; margin-bottom: 6px">Your name</label>
-          <input type="text" id="leadName" name="name" required autocomplete="name" placeholder="Dilshod Karimov" style="width: 100%; min-height: 46px; border: 1px solid #DCE8E6; border-radius: 10px; padding: 10px 14px; font-size: 16px; color: #172B2A; background: #FFFFFF; outline: none">
+          <input type="text" id="leadName" name="name" required autocomplete="name" placeholder="Dilshod Karimov" style="width: 100%; min-height: 48px; border: 1px solid #DCE8E6; border-radius: 10px; padding: 10px 14px; font-size: 16px; color: #172B2A; background: #FFFFFF; outline: none">
         </div>
         
         <div>
           <label for="leadCompany" style="display: block; font-size: 14px; font-weight: 600; color: #172B2A; margin-bottom: 6px">Company or clinic name</label>
-          <input type="text" id="leadCompany" name="company" required autocomplete="organization" placeholder="Smile Clinic (stomatologiya)" style="width: 100%; min-height: 46px; border: 1px solid #DCE8E6; border-radius: 10px; padding: 10px 14px; font-size: 16px; color: #172B2A; background: #FFFFFF; outline: none">
+          <input type="text" id="leadCompany" name="company" required autocomplete="organization" placeholder="Smile Clinic (stomatologiya)" style="width: 100%; min-height: 48px; border: 1px solid #DCE8E6; border-radius: 10px; padding: 10px 14px; font-size: 16px; color: #172B2A; background: #FFFFFF; outline: none">
         </div>
         
         <div>
           <label for="leadContact" style="display: block; font-size: 14px; font-weight: 600; color: #172B2A; margin-bottom: 6px">Phone number or Telegram</label>
-          <input type="text" id="leadContact" name="contact" required autocomplete="tel" placeholder="+998 90 123 45 67 or @username" style="width: 100%; min-height: 46px; border: 1px solid #DCE8E6; border-radius: 10px; padding: 10px 14px; font-size: 16px; color: #172B2A; background: #FFFFFF; outline: none">
+          <input type="text" id="leadContact" name="contact" required autocomplete="tel" placeholder="+998 90 123 45 67 or @username" style="width: 100%; min-height: 48px; border: 1px solid #DCE8E6; border-radius: 10px; padding: 10px 14px; font-size: 16px; color: #172B2A; background: #FFFFFF; outline: none">
         </div>
         
-        <div style="display: flex; flex-direction: column; gap: 14px">
-          <div>
-            <label for="leadTeamSize" style="display: block; font-size: 14px; font-weight: 600; color: #172B2A; margin-bottom: 6px">Team size</label>
-            <select id="leadTeamSize" name="teamSize" style="width: 100%; min-height: 46px; border: 1px solid #DCE8E6; border-radius: 10px; padding: 10px 14px; font-size: 16px; color: #172B2A; background: #FFFFFF; outline: none">
-              <option value="1-5">1-5 people</option>
-              <option value="6-15" selected>6-15 people</option>
-              <option value="16-50">16-50 people</option>
-              <option value="50+">50+ people</option>
-            </select>
-          </div>
-          
-          <div>
-            <label style="display: block; font-size: 14px; font-weight: 600; color: #172B2A; margin-bottom: 6px">Channels you use</label>
-            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px">
-              <label style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: #172B2A; background: #F3F8F7; padding: 10px 12px; border-radius: 8px; border: 1px solid #DCE8E6; cursor: pointer; min-height: 44px">
-                <input type="checkbox" name="channels" value="Telegram" checked style="accent-color: #087F6A; width: 18px; height: 18px"> Telegram
-              </label>
-              <label style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: #172B2A; background: #F3F8F7; padding: 10px 12px; border-radius: 8px; border: 1px solid #DCE8E6; cursor: pointer; min-height: 44px">
-                <input type="checkbox" name="channels" value="WhatsApp" checked style="accent-color: #087F6A; width: 18px; height: 18px"> WhatsApp Business
-              </label>
-              <label style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: #172B2A; background: #F3F8F7; padding: 10px 12px; border-radius: 8px; border: 1px solid #DCE8E6; cursor: pointer; min-height: 44px">
-                <input type="checkbox" name="channels" value="Instagram" checked style="accent-color: #087F6A; width: 18px; height: 18px"> Instagram Direct
-              </label>
-              <label style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: #172B2A; background: #F3F8F7; padding: 10px 12px; border-radius: 8px; border: 1px solid #DCE8E6; cursor: pointer; min-height: 44px">
-                <input type="checkbox" name="channels" value="Calls" style="accent-color: #087F6A; width: 18px; height: 18px"> Phone calls
-              </label>
-            </div>
+        <div>
+          <label for="leadTeamSize" style="display: block; font-size: 14px; font-weight: 600; color: #172B2A; margin-bottom: 6px">Team size</label>
+          <select id="leadTeamSize" name="teamSize" style="width: 100%; min-height: 48px; border: 1px solid #DCE8E6; border-radius: 10px; padding: 10px 14px; font-size: 16px; color: #172B2A; background: #FFFFFF; outline: none">
+            <option value="1-5">1-5 people</option>
+            <option value="6-20" selected>6-15 people</option>
+            <option value="21-50">16-50 people</option>
+            <option value="50+">50+ people</option>
+          </select>
+        </div>
+        
+        <div>
+          <label style="display: block; font-size: 14px; font-weight: 600; color: #172B2A; margin-bottom: 6px">Channels you use</label>
+          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px">
+            <label style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: #172B2A; background: #F3F8F7; padding: 10px 12px; border-radius: 8px; border: 1px solid #DCE8E6; cursor: pointer; min-height: 44px">
+              <input type="checkbox" name="channels" value="Telegram" checked style="accent-color: #087F6A; width: 18px; height: 18px"> Telegram
+            </label>
+            <label style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: #172B2A; background: #F3F8F7; padding: 10px 12px; border-radius: 8px; border: 1px solid #DCE8E6; cursor: pointer; min-height: 44px">
+              <input type="checkbox" name="channels" value="WhatsApp" checked style="accent-color: #087F6A; width: 18px; height: 18px"> WhatsApp Business
+            </label>
+            <label style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: #172B2A; background: #F3F8F7; padding: 10px 12px; border-radius: 8px; border: 1px solid #DCE8E6; cursor: pointer; min-height: 44px">
+              <input type="checkbox" name="channels" value="Instagram" checked style="accent-color: #087F6A; width: 18px; height: 18px"> Instagram Direct
+            </label>
+            <label style="display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: #172B2A; background: #F3F8F7; padding: 10px 12px; border-radius: 8px; border: 1px solid #DCE8E6; cursor: pointer; min-height: 44px">
+              <input type="checkbox" name="channels" value="Calls" style="accent-color: #087F6A; width: 18px; height: 18px"> Phone calls
+            </label>
           </div>
         </div>
         
-        <button type="submit" id="btnModalSubmit" style="width: 100%; min-height: 48px; border-radius: 10px; background: #087F6A; color: #FFFFFF; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-size: 16px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: none; cursor: pointer; margin-top: 8px">
-          <span>Send request</span>
+        <p style="margin: 4px 0 0; font-size: 13px; color: #5F6F6D; line-height: 1.4">No spam. We only use this information to contact you about your demo.</p>
+        
+        <button type="submit" id="modalSubmitBtn" style="width: 100%; min-height: 52px; background: #087F6A; color: #FFFFFF; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-size: 16px; font-weight: 600; border-radius: 10px; margin-top: 8px; cursor: pointer">
+          Send request
         </button>
       </form>
     </div>
     
-    <div id="modalLeadSuccessContainer" style="display: none; text-align: center; padding: 24px 8px">
-      <div style="width: 56px; height: 56px; border-radius: 50%; background: #F3F8F7; border: 2px solid #087F6A; color: #087F6A; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 16px">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    <div id="modalSuccess" style="display: none; text-align: center; padding: 20px 10px">
+      <div style="width: 64px; height: 64px; border-radius: 50%; background: #EAF8D2; color: #087F6A; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 16px">
+        <svg aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
       </div>
-      <h3 style="margin: 0 0 8px 0; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-size: 22px; font-weight: 700; color: #172B2A">Request received!</h3>
-      <p style="margin: 0 0 24px 0; font-size: 15px; color: #5F6F6D; line-height: 1.5">We will contact you to schedule your session.</p>
-      <button type="button" onclick="closeDemoModal()" style="min-height: 44px; padding: 0 24px; border-radius: 10px; background: #172B2A; color: #FFFFFF; font-weight: 600; border: none; cursor: pointer">OK</button>
+      <h3 style="margin: 0 0 8px; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-size: 22px; font-weight: 700; color: #172B2A">Request received!</h3>
+      <p style="margin: 0; font-size: 15px; color: #5F6F6D; line-height: 1.5">We will contact you to schedule your session.</p>
+      <button type="button" onclick="closeLeadModal()" style="margin-top: 24px; min-height: 44px; padding: 0 24px; background: #087F6A; color: #FFFFFF; border-radius: 8px; font-weight: 600">OK</button>
     </div>
   </div>
 </div>
 
 <script>
-function openDemoModal(interest) {
-  var modal = document.getElementById('demoModal');
-  var interestField = document.getElementById('modalLeadInterest');
-  if (interestField && interest) {
-    interestField.value = interest;
-  }
+function openLeadModal(interest) {
+  var modal = document.getElementById('leadModal');
   if (modal) {
-    modal.classList.add('active');
+    if (interest) {
+      var field = document.getElementById('modalLeadInterest');
+      if (field) field.value = interest;
+    }
+    modal.style.display = 'block';
     document.body.style.overflow = 'hidden';
   }
 }
 
-function closeDemoModal() {
-  var modal = document.getElementById('demoModal');
+function closeLeadModal() {
+  var modal = document.getElementById('leadModal');
   if (modal) {
-    modal.classList.remove('active');
+    modal.style.display = 'none';
     document.body.style.overflow = '';
   }
 }
 
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') {
-    closeDemoModal();
+function openMobileMenu() {
+  var m = document.getElementById('mobile-menu');
+  if (m) {
+    m.style.display = 'block';
+    document.body.style.overflow = 'hidden';
   }
-});
+}
 
-async function handleLeadSubmit(e) {
+function closeMobileMenu() {
+  var m = document.getElementById('mobile-menu');
+  if (m) {
+    m.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+}
+
+function handleLeadSubmit(e) {
   e.preventDefault();
-  var btn = document.getElementById('btnModalSubmit');
-  if (btn) btn.disabled = true;
-  
-  var name = document.getElementById('leadName').value.trim();
-  var company = document.getElementById('leadCompany').value.trim();
-  var contact = document.getElementById('leadContact').value.trim();
-  var teamSize = document.getElementById('leadTeamSize').value;
-  var interest = document.getElementById('modalLeadInterest').value || 'General';
-  
-  var checkedChannels = [];
-  var cbs = document.querySelectorAll('input[name="channels"]:checked');
-  cbs.forEach(function(cb) { checkedChannels.push(cb.value); });
+  var btn = document.getElementById('modalSubmitBtn');
+  var form = document.getElementById('leadForm');
+  var channels = Array.from(form.querySelectorAll('input[name="channels"]:checked')).map(function(c) { return c.value; });
   
   var payload = {
-    source: 'gptify.si',
-    full_name: name,
-    company: company,
-    phone: contact,
-    contact: contact,
-    category: 'GPTify OS Demo: ' + interest,
-    course_name: 'GPTify OS Demo | Qiziqish: ' + interest + ' | Kompaniya: ' + company + ' | Jamoa: ' + teamSize + ' | Kanallar: ' + checkedChannels.join(', '),
-    team_size: teamSize,
-    channels: checkedChannels.join(', '),
-    interest: interest,
-    lang: 'en',
-    created_at: new Date().toISOString()
+    source: 'modal',
+    interest: document.getElementById('modalLeadInterest').value,
+    name: document.getElementById('leadName').value,
+    clinic: document.getElementById('leadCompany').value,
+    contact: document.getElementById('leadContact').value,
+    teamSize: document.getElementById('leadTeamSize').value,
+    channels: channels.join(', '),
+    timestamp: new Date().toISOString()
   };
   
-  try {
-    await fetch('https://script.google.com/macros/s/AKfycbzM3GZEDsWDc-3SUI4sySAWnJFn6ZolQaYkwo7W4VWG-79J3WVLYeQL7qs5jgAtkK_C_g/exec', {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
-  } catch (err) {
-    console.warn('Lead submit error:', err);
+  if (btn) {
+    btn.disabled = true;
+    btn.textContent = "Sending...";
   }
   
-  document.getElementById('modalLeadFormContainer').style.display = 'none';
-  document.getElementById('modalLeadSuccessContainer').style.display = 'block';
+  fetch("https://script.google.com/macros/s/AKfycbzM3GZEDsWDc-3SUI4sySAWnJFn6ZolQaYkwo7W4VWG-79J3WVLYeQL7qs5jgAtkK_C_g/exec", {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  }).then(function() {
+    document.getElementById('modalBody').style.display = 'none';
+    document.getElementById('modalSuccess').style.display = 'block';
+  }).catch(function(err) {
+    if (btn) {
+      btn.disabled = false;
+      btn.textContent = "Submission failed. Please write to us directly on Telegram or team@gptify.co";
+    }
+  });
 }
 </script>
+
 
 </body>
 </html>

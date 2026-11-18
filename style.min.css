@@ -1,4 +1,4 @@
-/* GPTify OS Design System Stylesheet */
+/* GPTify OS Stylesheet */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap');
 
 :root {
@@ -61,7 +61,7 @@ button {
   border: none;
 }
 
-button, a.btn, input[type="button"], input[type="submit"], .tab-btn {
+button, a.btn, input[type="button"], input[type="submit"] {
   min-height: 44px;
 }
 
@@ -112,12 +112,32 @@ input, select, textarea {
   to { transform: translateX(-50%); }
 }
 
-@keyframes lit {
-  0%, 100% { filter: brightness(1); }
-  50% { filter: brightness(1.15); }
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.7); opacity: 0.35; }
 }
 
-/* Reduced Motion Override */
+@keyframes lit {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.12); }
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marq 40s linear infinite;
+}
+
+.marquee-container:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation: none !important;
@@ -125,159 +145,22 @@ input, select, textarea {
   }
 }
 
-/* Sliders */
-input[type="range"] {
-  -webkit-appearance: none;
-  width: 100%;
-  height: 44px;
-  background: transparent;
-  outline: none;
-  cursor: pointer;
-  margin: 0;
-}
-
-input[type="range"]::-webkit-slider-runnable-track {
-  width: 100%;
-  height: 8px;
-  background: var(--color-lines);
-  border-radius: 999px;
-}
-
-input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  background: var(--color-teal);
-  box-shadow: 0 2px 6px rgba(8, 127, 106, 0.4);
-  cursor: pointer;
-  margin-top: -9px;
-  transition: transform 0.1s ease;
-}
-
-input[type="range"]::-webkit-slider-thumb:hover {
-  transform: scale(1.12);
-}
-
-input[type="range"]::-moz-range-track {
-  width: 100%;
-  height: 8px;
-  background: var(--color-lines);
-  border-radius: 999px;
-}
-
-input[type="range"]::-moz-range-thumb {
-  width: 26px;
-  height: 26px;
-  border: none;
-  border-radius: 50%;
-  background: var(--color-teal);
-  box-shadow: 0 2px 6px rgba(8, 127, 106, 0.4);
-  cursor: pointer;
-}
-
-/* Tool Rail Active Glow Stagger */
-.tool-card-0 { animation: lit 10s ease-in-out infinite; animation-delay: 0s; }
-.tool-card-1 { animation: lit 10s ease-in-out infinite; animation-delay: 2s; }
-.tool-card-2 { animation: lit 10s ease-in-out infinite; animation-delay: 4s; }
-.tool-card-3 { animation: lit 10s ease-in-out infinite; animation-delay: 6s; }
-.tool-card-4 { animation: lit 10s ease-in-out infinite; animation-delay: 8s; }
-
-/* FAQ Details */
-details {
-  border-bottom: 1px solid var(--color-lines);
-  background: #FFFFFF;
-}
-summary {
-  list-style: none;
-  padding: 22px 0;
-  font-family: 'Poppins', 'Inter', system-ui, sans-serif;
-  font-size: 19px;
-  font-weight: 600;
-  color: var(--color-text);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  min-height: 44px;
-  user-select: none;
-}
-summary::-webkit-details-marker {
+/* Responsive Header */
+.hdr-menu {
   display: none;
 }
-summary .faq-icon {
-  width: 24px;
-  height: 24px;
-  flex: none;
-  border-radius: 50%;
-  background: var(--color-tint);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.2s ease, background 0.2s ease;
-}
-details[open] summary .faq-icon {
-  transform: rotate(45deg);
-  background: var(--color-lime);
-  color: var(--color-dark);
-}
-.faq-body {
-  padding: 0 0 22px;
-  font-size: 17px;
-  line-height: 1.6;
-  color: var(--color-secondary);
-  max-width: 820px;
+
+@media (max-width: 760px) {
+  .hdr-nav, .hdr-lang, .hdr-cta {
+    display: none !important;
+  }
+  .hdr-menu {
+    display: inline-flex !important;
+  }
 }
 
-/* Modal Overlay & Card */
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 999;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 16px;
-  background: rgba(23, 43, 42, 0.65);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  overflow-y: auto;
-}
-.modal-overlay.active {
-  display: flex;
-}
-.modal-card {
-  position: relative;
-  background: #FFFFFF;
-  border-radius: 20px;
-  border: 1px solid var(--color-lines);
-  box-shadow: 0 20px 48px rgba(23, 43, 42, 0.2);
-  max-width: 540px;
-  width: 100%;
-  padding: 28px;
-  margin: auto;
-  max-height: 94vh;
-  overflow-y: auto;
-}
-.modal-close {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  width: 44px;
-  height: 44px;
-  min-width: 44px;
-  min-height: 44px;
-  border-radius: 50%;
-  background: var(--color-tint);
-  border: 1px solid var(--color-lines);
-  color: var(--color-text);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: background 0.15s ease;
-}
-.modal-close:hover {
-  background: #e2edea;
+/* Accessible focus outline */
+:focus-visible {
+  outline: 2px solid var(--color-teal);
+  outline-offset: 2px;
 }
