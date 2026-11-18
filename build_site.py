@@ -574,8 +574,10 @@ function updateSavings() {
           </div>
           <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px">
             <div style="display: inline-flex; align-items: center; padding: 7px 12px; border-radius: 999px; background: #EAF8D2; color: #172B2A; font-size: 13px; font-weight: 600">{T[lang]['chat_lang_tag']}</div>
-            <div style="display: inline-flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 999px; background: #087F6A; color: #FFFFFF; font-size: 13px; font-weight: 600">
-              <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"></path></svg>
+            <div style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px 6px 8px; border-radius: 999px; background: #087F6A; color: #FFFFFF; font-size: 13px; font-weight: 600">
+              <span style="display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 6px; background: #FFFFFF; padding: 2px; overflow: hidden; box-shadow: 0 1px 2px rgba(0,0,0,0.15)">
+                <img src="/assets/ailo-logo.png" alt="Ailo" style="width: 100%; height: 100%; object-fit: contain">
+              </span>
               {T[lang]['chat_badge_ailo']}
             </div>
           </div>
@@ -596,17 +598,32 @@ function updateSavings() {
         </div>
       </div>
       <div style="display: flex; flex-wrap: wrap; gap: 8px">
-        <div style="flex: 1 1 140px; background: #087F6A; border-radius: 12px; padding: 10px 14px; color: #FFFFFF; animation: inD 10s ease infinite">
-          <div style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: 16px">Ailo</div>
-          <div style="font-size: 14px; font-weight: 500; line-height: 1.3">{T[lang]['chat_chip_ailo']}</div>
+        <div style="flex: 1 1 140px; background: #087F6A; border-radius: 12px; padding: 12px 14px; color: #FFFFFF; animation: inD 10s ease infinite; display: flex; flex-direction: column; gap: 8px">
+          <div style="display: flex; align-items: center; gap: 8px">
+            <span style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 7px; background: #FFFFFF; padding: 3px; box-shadow: 0 2px 4px rgba(0,0,0,0.15); flex-shrink: 0">
+              <img src="/assets/ailo-logo.png" alt="Ailo" style="width: 100%; height: 100%; object-fit: contain">
+            </span>
+            <span style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: 16px">Ailo</span>
+          </div>
+          <div style="font-size: 14px; font-weight: 500; line-height: 1.35">{T[lang]['chat_chip_ailo']}</div>
         </div>
-        <div style="flex: 1 1 140px; background: #7C3AED; border-radius: 12px; padding: 10px 14px; color: #FFFFFF; animation: inE 10s ease infinite">
-          <div style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: 16px">Bandla</div>
-          <div style="font-size: 14px; font-weight: 500; line-height: 1.3">{T[lang]['chat_chip_bandla']}</div>
+        <div style="flex: 1 1 140px; background: #7C3AED; border-radius: 12px; padding: 12px 14px; color: #FFFFFF; animation: inE 10s ease infinite; display: flex; flex-direction: column; gap: 8px">
+          <div style="display: flex; align-items: center; gap: 8px">
+            <span style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 7px; background: #FFFFFF; padding: 2px; box-shadow: 0 2px 4px rgba(0,0,0,0.15); flex-shrink: 0">
+              <img src="/assets/bandla-app-icon.svg" alt="Bandla" style="width: 100%; height: 100%; object-fit: contain; border-radius: 5px">
+            </span>
+            <span style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: 16px">Bandla</span>
+          </div>
+          <div style="font-size: 14px; font-weight: 500; line-height: 1.35">{T[lang]['chat_chip_bandla']}</div>
         </div>
-        <div style="flex: 1 1 140px; background: #B45309; border-radius: 12px; padding: 10px 14px; color: #FFFFFF; animation: inF 10s ease infinite">
-          <div style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: 16px">ILDAM</div>
-          <div style="font-size: 14px; font-weight: 500; line-height: 1.3">{T[lang]['chat_chip_ildam']}</div>
+        <div style="flex: 1 1 140px; background: #B45309; border-radius: 12px; padding: 12px 14px; color: #FFFFFF; animation: inF 10s ease infinite; display: flex; flex-direction: column; gap: 8px">
+          <div style="display: flex; align-items: center; gap: 8px">
+            <span style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 7px; background: #FFFFFF; padding: 3px; box-shadow: 0 2px 4px rgba(0,0,0,0.15); flex-shrink: 0">
+              <img src="/assets/ildam-logo.png" alt="ILDAM" style="width: 100%; height: 100%; object-fit: contain">
+            </span>
+            <span style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: 16px">ILDAM</span>
+          </div>
+          <div style="font-size: 14px; font-weight: 500; line-height: 1.35">{T[lang]['chat_chip_ildam']}</div>
         </div>
       </div>
     </div>
@@ -700,7 +717,12 @@ function updateSavings() {
     </div>
     <div style="display: flex; flex-wrap: wrap; gap: 16px">
       <article style="flex: 1 1 240px; min-width: 0; min-height: 340px; box-sizing: border-box; background: #087F6A; border-radius: 20px; padding: 30px 26px; display: flex; flex-direction: column; gap: 12px; color: #FFFFFF; animation: lit 8s ease-in-out infinite">
-        <div style="font-size: 14px; font-weight: 600; letter-spacing: 0.12em">{T[lang]['how_s1_tag']}</div>
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px">
+          <div style="font-size: 14px; font-weight: 600; letter-spacing: 0.12em">{T[lang]['how_s1_tag']}</div>
+          <span style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 12px; background: #FFFFFF; padding: 5px; box-shadow: 0 4px 14px rgba(0,0,0,0.18); flex-shrink: 0">
+            <img src="/assets/ailo-logo.png" alt="Ailo" style="width: 100%; height: 100%; object-fit: contain">
+          </span>
+        </div>
         <h3 style="margin: 0; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: 40px; line-height: 1.05; letter-spacing: -0.02em">{T[lang]['how_s1_name']}</h3>
         <div style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 19px; line-height: 1.3">{T[lang]['how_s1_role']}</div>
         <p style="margin: 0; font-size: 16px; line-height: 1.55">{T[lang]['how_s1_desc']}</p>
@@ -710,7 +732,12 @@ function updateSavings() {
         </div>
       </article>
       <article style="flex: 1 1 240px; min-width: 0; min-height: 340px; box-sizing: border-box; background: #7C3AED; border-radius: 20px; padding: 30px 26px; display: flex; flex-direction: column; gap: 12px; color: #FFFFFF; animation: lit 8s ease-in-out 2s infinite">
-        <div style="font-size: 14px; font-weight: 600; letter-spacing: 0.12em">{T[lang]['how_s2_tag']}</div>
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px">
+          <div style="font-size: 14px; font-weight: 600; letter-spacing: 0.12em">{T[lang]['how_s2_tag']}</div>
+          <span style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 12px; background: #FFFFFF; padding: 4px; box-shadow: 0 4px 14px rgba(0,0,0,0.18); flex-shrink: 0">
+            <img src="/assets/bandla-app-icon.svg" alt="Bandla" style="width: 100%; height: 100%; object-fit: contain; border-radius: 8px">
+          </span>
+        </div>
         <h3 style="margin: 0; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: 40px; line-height: 1.05; letter-spacing: -0.02em">{T[lang]['how_s2_name']}</h3>
         <div style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 19px; line-height: 1.3">{T[lang]['how_s2_role']}</div>
         <p style="margin: 0; font-size: 16px; line-height: 1.55">{T[lang]['how_s2_desc']}</p>
@@ -720,7 +747,12 @@ function updateSavings() {
         </div>
       </article>
       <article style="flex: 1 1 240px; min-width: 0; min-height: 340px; box-sizing: border-box; background: #B45309; border-radius: 20px; padding: 30px 26px; display: flex; flex-direction: column; gap: 12px; color: #FFFFFF; animation: lit 8s ease-in-out 4s infinite">
-        <div style="font-size: 14px; font-weight: 600; letter-spacing: 0.12em">{T[lang]['how_s3_tag']}</div>
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px">
+          <div style="font-size: 14px; font-weight: 600; letter-spacing: 0.12em">{T[lang]['how_s3_tag']}</div>
+          <span style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 12px; background: #FFFFFF; padding: 5px; box-shadow: 0 4px 14px rgba(0,0,0,0.18); flex-shrink: 0">
+            <img src="/assets/ildam-logo.png" alt="ILDAM" style="width: 100%; height: 100%; object-fit: contain">
+          </span>
+        </div>
         <h3 style="margin: 0; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: 40px; line-height: 1.05; letter-spacing: -0.02em">{T[lang]['how_s3_name']}</h3>
         <div style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 19px; line-height: 1.3">{T[lang]['how_s3_role']}</div>
         <p style="margin: 0; font-size: 16px; line-height: 1.55">{T[lang]['how_s3_desc']}</p>
@@ -730,7 +762,12 @@ function updateSavings() {
         </div>
       </article>
       <article style="flex: 1 1 240px; min-width: 0; min-height: 340px; box-sizing: border-box; background: #0369A1; border-radius: 20px; padding: 30px 26px; display: flex; flex-direction: column; gap: 12px; color: #FFFFFF; animation: lit 8s ease-in-out 6s infinite">
-        <div style="font-size: 14px; font-weight: 600; letter-spacing: 0.12em">{T[lang]['how_s4_tag']}</div>
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px">
+          <div style="font-size: 14px; font-weight: 600; letter-spacing: 0.12em">{T[lang]['how_s4_tag']}</div>
+          <span style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 12px; background: #FFFFFF; padding: 5px; box-shadow: 0 4px 14px rgba(0,0,0,0.18); flex-shrink: 0">
+            <img src="/assets/mirzo-mark.svg" alt="Mirzo" style="width: 100%; height: 100%; object-fit: contain; border-radius: 50%">
+          </span>
+        </div>
         <h3 style="margin: 0; font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 700; font-size: 40px; line-height: 1.05; letter-spacing: -0.02em">{T[lang]['how_s4_name']}</h3>
         <div style="font-family: 'Poppins', 'Inter', system-ui, sans-serif; font-weight: 600; font-size: 19px; line-height: 1.3">{T[lang]['how_s4_role']}</div>
         <p style="margin: 0; font-size: 16px; line-height: 1.55">{T[lang]['how_s4_desc']}</p>
