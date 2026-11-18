@@ -228,7 +228,6 @@ def generate_header(lang, current_page='home'):
   </a>
   <nav aria-label="Main" class="hdr-nav" style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 14px">
     <a href="{how_href}" style="display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; padding: 0 8px; font-size: 15px; font-weight: 500; color: #172B2A; text-decoration: none">{T[lang]['nav_how']}</a>
-    <a href="{savings_href}" style="display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; padding: 0 8px; font-size: 15px; font-weight: 500; color: #172B2A; text-decoration: none">{T[lang]['nav_savings']}</a>
     <a href="{privacy_href}" style="display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; padding: 0 8px; font-size: 15px; font-weight: 500; color: #172B2A; text-decoration: none">{T[lang]['nav_privacy']}</a>
     <a href="{faq_href}" style="display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; padding: 0 8px; font-size: 15px; font-weight: 500; color: #172B2A; text-decoration: none">{T[lang]['nav_faq']}</a>
     <a href="{about_url}" style="display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; padding: 0 8px; font-size: 15px; text-decoration: none; {about_active_style}">{T[lang]['nav_about']}</a>
@@ -258,7 +257,6 @@ def generate_header(lang, current_page='home'):
     </div>
     <nav style="display: flex; flex-direction: column; gap: 6px;">
       <a href="{how_href}" onclick="closeMobileMenu()" style="display: flex; align-items: center; min-height: 48px; padding: 0 12px; font-size: 16px; font-weight: 500; color: #172B2A; text-decoration: none; border-radius: 8px;">{T[lang]['nav_how']}</a>
-      <a href="{savings_href}" onclick="closeMobileMenu()" style="display: flex; align-items: center; min-height: 48px; padding: 0 12px; font-size: 16px; font-weight: 500; color: #172B2A; text-decoration: none; border-radius: 8px;">{T[lang]['nav_savings']}</a>
       <a href="{privacy_href}" onclick="closeMobileMenu()" style="display: flex; align-items: center; min-height: 48px; padding: 0 12px; font-size: 16px; font-weight: 500; color: #172B2A; text-decoration: none; border-radius: 8px;">{T[lang]['nav_privacy']}</a>
       <a href="{faq_href}" onclick="closeMobileMenu()" style="display: flex; align-items: center; min-height: 48px; padding: 0 12px; font-size: 16px; font-weight: 500; color: #172B2A; text-decoration: none; border-radius: 8px;">{T[lang]['nav_faq']}</a>
       <a href="{about_url}" onclick="closeMobileMenu()" style="display: flex; align-items: center; min-height: 48px; padding: 0 12px; font-size: 16px; font-weight: 500; color: #172B2A; text-decoration: none; border-radius: 8px;">{T[lang]['nav_about']}</a>
@@ -381,6 +379,53 @@ function handleLeadSubmit(e) {
       btn.textContent = """ + json.dumps(err_text) + """;
     }
   });
+}
+
+// Clean hashtag handling & smooth scrolling
+document.addEventListener('click', function(e) {
+  var a = e.target.closest('a');
+  if (!a) return;
+  var href = a.getAttribute('href');
+  if (!href) return;
+  
+  var hash = '';
+  if (href.startsWith('#') && href.length > 1) {
+    hash = href.slice(1);
+  } else if (href.indexOf('#') !== -1) {
+    var parts = href.split('#');
+    var targetPath = parts[0];
+    var curPath = window.location.pathname;
+    if (targetPath === curPath || (targetPath === '/' && (curPath === '/' || curPath === '/index.html')) || (targetPath === '/uz/' && (curPath === '/uz/' || curPath === '/uz/index.html')) || (targetPath === '/ru/' && (curPath === '/ru/' || curPath === '/ru/index.html'))) {
+      hash = parts[1];
+    }
+  }
+  
+  if (hash) {
+    var targetEl = document.getElementById(hash);
+    if (targetEl) {
+      e.preventDefault();
+      targetEl.scrollIntoView({ behavior: 'smooth' });
+      if (window.history && window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.pathname + window.location.search);
+      }
+    }
+  }
+});
+
+if (window.location.hash) {
+  var initialTarget = document.getElementById(window.location.hash.slice(1));
+  if (initialTarget) {
+    setTimeout(function() {
+      initialTarget.scrollIntoView({ behavior: 'smooth' });
+      if (window.history && window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.pathname + window.location.search);
+      }
+    }, 150);
+  } else {
+    if (window.history && window.history.replaceState) {
+      window.history.replaceState(null, null, window.location.pathname + window.location.search);
+    }
+  }
 }
 </script>
 """
