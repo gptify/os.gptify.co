@@ -2,8 +2,8 @@
   "en": {
     "page_title": "GPTify OS · AI for Private Clinics in Uzbekistan",
     "meta_description": "Replies to patients on Telegram, Instagram and WhatsApp in Uzbek and Russian, books them in and sends reminders. Built for private clinics in Uzbekistan.",
-    "about_page_title": "About GPTify OS · Practical AI for service businesses",
-    "about_meta_desc": "We are a team of B2B sales, marketing and AI practitioners based in Berlin and Tashkent, building practical AI for service businesses.",
+    "about_page_title": "About GPTify OS · Practical AI for private clinics, without the hype",
+    "about_meta_desc": "We are a team of B2B sales, marketing and AI practitioners based in Berlin and Tashkent, building practical AI for private clinics in Uzbekistan, without the hype.",
     "arch_page_title": "Security and Architecture | GPTify OS",
     "arch_meta_desc": "Enterprise cloud and AI foundation engineered for high-throughput inference, zero data leakage, and seamless scale.",
     "nav_logo_sub": "OS",
@@ -468,8 +468,8 @@
   "uz": {
     "page_title": "GPTify OS · O‘zbekistondagi xususiy klinikalar uchun sun’iy intellekt",
     "meta_description": "Telegram, Instagram va WhatsApp’da bemorlarga o‘zbek va rus tillarida javob beradi, qabulga yozadi va eslatmalar yuboradi. O‘zbekistondagi xususiy klinikalar uchun qurilgan.",
-    "about_page_title": "GPTify OS haqida · Xizmat ko‘rsatish bizneslari uchun amaliy sun’iy intellekt",
-    "about_meta_desc": "Biz Berlin va Toshkentda joylashgan, xizmat ko‘rsatish bizneslari uchun amaliy sun’iy intellekt tizimlarini quruvchi B2B va sun’iy intellekt amaliyotchilarimiz.",
+    "about_page_title": "GPTify OS haqida · Xususiy klinikalar uchun amaliy sun’iy intellekt, quruq gaplarsiz",
+    "about_meta_desc": "Biz Berlin va Toshkentda joylashgan, O‘zbekistondagi xususiy klinikalar uchun amaliy sun’iy intellekt tizimlarini quruvchi B2B va sun’iy intellekt amaliyotchilarimiz, quruq gaplarsiz.",
     "arch_page_title": "Xavfsizlik va arxitektura | GPTify OS",
     "arch_meta_desc": "Yuqori o‘tkazuvchanlik, ma’lumotlar xavfsizligi va uzluksiz masshtablash uchun korxona bulut va sun’iy intellekt asosi.",
     "nav_logo_sub": "OS",
@@ -934,8 +934,8 @@
   "ru": {
     "page_title": "GPTify OS · ИИ для частных клиник в Узбекистане",
     "meta_description": "Отвечает пациентам в Telegram, Instagram и WhatsApp на узбекском и русском языках, записывает на приём и отправляет напоминания. Создано для частных клиник Узбекистана.",
-    "about_page_title": "О GPTify OS · Практичный ИИ для сферы услуг",
-    "about_meta_desc": "Мы — команда практиков B2B-продаж, маркетинга и ИИ в Берлине и Ташкенте, внедряющая практичный ИИ для сферы услуг.",
+    "about_page_title": "О GPTify OS · Практичный искусственный интеллект для частных клиник, без громких слов",
+    "about_meta_desc": "Мы — команда практиков B2B-продаж, маркетинга и ИИ в Берлине и Ташкенте, внедряющая практичный искусственный интеллект для частных клиник в Узбекистане, без громких слов.",
     "arch_page_title": "Безопасность и архитектура | GPTify OS",
     "arch_meta_desc": "Корпоративная облачная и ИИ-инфраструктура для высокой скорости, защиты данных и масштабирования.",
     "nav_logo_sub": "OS",
